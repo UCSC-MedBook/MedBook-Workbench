@@ -1,0 +1,24 @@
+<template name="StudiesIndex">
+<h3>Contrast Two Groups</h3>
+   <div class="studies-panel">
+  	 Study: <select id="study" class="span1-12">
+  		{{#each studies}}
+  		 	<option value="{{id}}">
+				{{short_name}}
+			</option>
+  		{{else}}
+			<li class="study-item empty">
+  			No studies yet.
+			</li>
+  		{{/each}}
+	</select>
+  </div>
+  <div id="group1" name="group1"> 
+  		Group1 {{> StudyGroupsIndex}} 
+  </div>
+  <div id="group2" name="group2">
+	  	Group2 {{> StudyGroupsIndex}} 
+  </div>
+ <button id="scv">Contrast View</button>
+</template>
+

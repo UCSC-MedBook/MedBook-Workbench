@@ -1,0 +1,15 @@
+
+<template name="SampleGroupsIndex">
+	 <ul class="todos-list">
+		{{#each sample_group}}
+		 	<li class="todo-item ">
+				{{sample}}
+			</li>
+		{{else}}
+		<li class="todo-item empty">
+			No samples in group yet.
+		</li>
+		{{/each}}
+	</ul>
+</template>
+
