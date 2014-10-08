@@ -23,8 +23,8 @@ Template.StudiesIndex.events({
 		'click #scv': function (e,t) {
 			var g1=Session.get('group1')
 			var g2=Session.get('group2')
-			console.log('scv',g1,g2)
-			Router.go('/scv&query1='+g1+'&query2='+g2);
+			console.log('scv',g1,g2);
+			Router.go('/scv/'+g1+'/'+g2);
 		}
 });
 
