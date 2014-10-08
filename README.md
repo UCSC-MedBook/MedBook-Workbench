@@ -1,5 +1,8 @@
 install meteor before installing this package
 
+good videos for getting started on meteor
+https://www.eventedmind.com/
+
 
 this add these meteor packages
 

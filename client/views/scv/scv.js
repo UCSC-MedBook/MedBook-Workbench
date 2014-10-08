@@ -1,4 +1,4 @@
-
+ 
 /*****************************************************************************/
 /* Scv: Event Handlers and Helpersss .js*/
 /*****************************************************************************/
@@ -16,8 +16,12 @@ Template.Scv.helpers({
    * Example:
    *  items: function () {
    *    return Items.find();
-   *  }
+   *  
    */
+  sampleGroups: function(g1,g2) {
+	  console.dir(this)
+  	return SampleGroups.find({group: g1});
+	}
 });
 
 /*****************************************************************************/
