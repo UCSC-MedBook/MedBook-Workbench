@@ -1,0 +1,15 @@
+
+<template name="ClinicalEventsIndex">
+ 
+	{{#each clinical_events}}
+	 	<div class="row-fluid">
+		   {{sample}} {{site}} {{Met_site}}
+		</div>
+	{{else}}
+	<div class="todo-item empty">
+		No clinical events yet.
+	</div>
+	{{/each}}
+
+ </template>
+
