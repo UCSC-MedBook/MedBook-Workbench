@@ -18,4 +18,5 @@ Router.map(function () {
   this.route('study.groups.index', {path: '/studyGroups'});
   this.route('scv', {path: '/scv/:g1/:g2'});
   this.route('sample.groups.index', {path: '/sampleGroups'});
+  this.route('clinical.events.index', {path: '/clinical'});
 });
