@@ -1,15 +1,15 @@
 
 <template name="StudyGroupsIndex">
-  	 <ul class="sg-list">
-  		{{#each sample_group}}
-  		 	<li class="sg-item">
-  				{{sample}}
-  			</li>
-  		{{else}}
-			<li class="todo-item empty">
-  			No samples in group yet.
-			</li>
-  		{{/each}}
-  	</ul>
+	 <select id="group" name="zebra" class="span1-12">
+		{{#each study_groups}}
+		 	<option value="{{study}}">
+			{{group}}
+		</option>
+		{{else}}
+		<li class="study-item empty">
+			No groups yet.
+		</li>
+		{{/each}}
+</select>
 </template>
 

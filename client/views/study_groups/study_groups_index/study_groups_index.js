@@ -12,7 +12,7 @@ Template.StudyGroupsIndex.events({
 });
 
 Template.StudyGroupsIndex.helpers({
-	studies: function(){
+	study_groups: function(){
 		console.dir(Session);
 		var study = Session.get('studyID') ;
 		return StudyGroups.find({study:study},{sort: {group:1}});
