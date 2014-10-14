@@ -1,4 +1,7 @@
-
+if (Meteor.isClient) {
+	
+}
+console.log('init tabs');
 /*****************************************************************************/
 /* StudiesIndex: Event Handlers and Helpersss .js*/
 /*****************************************************************************/
@@ -8,6 +11,9 @@ Template.StudiesIndex.events({
 		  this.currStudy = event.currentTarget.value;
 		  console.log('Session studyID:', Session.get('studyID'));
 		}, 
+		'click #cohort': function(e,t) {
+			console.log('click cohort');
+		},
   	  'change #group1': function(event,template){
 		  var x = $(event.target).find('[name=group1]').context.selectedOptions;
 		  var group_name = x[0].text;
@@ -38,9 +44,14 @@ Template.StudiesIndex.helpers({
 /* StudiesIndex: Lifecycle Hooks */
 /*****************************************************************************/
 Template.StudiesIndex.created = function () {
+   
 };
 
 Template.StudiesIndex.rendered = function () {
+	$(function() {
+	 $( "#tabs" ).tabs();
+	});
+   
 };
 
 Template.StudiesIndex.destroyed = function () {

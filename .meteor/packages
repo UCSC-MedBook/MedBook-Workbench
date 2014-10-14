@@ -6,5 +6,11 @@
 meteor-platform
 autopublish
 insecure
+accounts-password
+alanning:roles
+sujith3g:handsontable-latest
+mrt:jquery-ui
+mrt:jquery-ui-bootstrap
+bootstrap
 iron:router
 
