@@ -1,15 +1,20 @@
 
 <template name="ClinicalEventsIndex">
- 
+ <div id="clinical">
+	 choose pair of features<br>
+	 Venn diagram for pair of features<br>
+	 <br>
+	 matrix of counts of pairs of features<br>
+	 allow user to select features<br>
 	{{#each clinical_events}}
 	 	<div class="row-fluid">
-		   {{sample}} {{site}} {{Met_site}}
-			</div>
+		   {{Sample}}: {{Met_site}} Met, Abi-{{Abiraterone_vs_naive}} Enza-{{Enzalutamid_vs_naive}}
+		</div>
 	{{else}}
 	<div class="todo-item empty">
 		No clinical events yet.
 	</div>
 	{{/each}}
-
+ </div>
  </template>
 

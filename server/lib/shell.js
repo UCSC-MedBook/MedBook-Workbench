@@ -5,14 +5,14 @@ Meteor.startup(function () {
 		return new Date();
 	  },
  
-	  runshell: function (name) {
-		console.log('on server, welcome called with name: ', name);
+	  runshell: function (name, argArray) {
+		console.log('on server, calling : ', name , ' with args ', argArray);
 		if(name==undefined || name.length<=0) {
 	      throw new Meteor.Error(404, "Please enter your name");
 		}
 		spawn = Npm.require('child_process').spawn;
 
-		command = spawn(name, ['-la']);
+		command = spawn(name, argArray);
 
 		command.stdout.on('data',  function (data) {
 	  	  console.log('stdout: ' + data);

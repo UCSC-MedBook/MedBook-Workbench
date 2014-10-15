@@ -13,7 +13,9 @@ Template.ClinicalEventsIndex.events({
 
 Template.ClinicalEventsIndex.helpers({
 	clinical_events: function(){
-		return ClinicalEvents.find({});
+		var study = Session.get('studyID');
+		console.log('get clinical events for '+study);
+		return ClinicalEvents.find({'study_id':study});
 	}
 });
 

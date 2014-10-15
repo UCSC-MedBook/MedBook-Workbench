@@ -1,8 +1,8 @@
- 
+
 /*****************************************************************************/
-/* Scv: Event Handlers and Helpersss .js*/
+/* Genes: Event Handlers and Helpersss .js*/
 /*****************************************************************************/
-Template.Scv.events({
+Template.Genes.events({
   /*
    * Example:
    *  'click .selector': function (e, tmpl) {
@@ -11,29 +11,25 @@ Template.Scv.events({
    */
 });
 
-Template.Scv.helpers({
+Template.Genes.helpers({
   /*
    * Example:
    *  items: function () {
    *    return Items.find();
-   *  
+   *  }
    */
-  sampleGroups: function(g1,g2) {
-	  console.log('find sampleGroups:',g1,' ',g2)
-  	return SampleGroups.find({group: g1});
-	}
 });
 
 /*****************************************************************************/
-/* Scv: Lifecycle Hooks */
+/* Genes: Lifecycle Hooks */
 /*****************************************************************************/
-Template.Scv.created = function () {
+Template.Genes.created = function () {
 };
 
-Template.Scv.rendered = function () {
+Template.Genes.rendered = function () {
 };
 
-Template.Scv.destroyed = function () {
+Template.Genes.destroyed = function () {
 };
 
 
