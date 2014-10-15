@@ -1,9 +1,15 @@
 
 <template name="Scv">
-<title>Small Cell vs Adeno - Sample Contrast View</title>
-<h1>Small Cell vs Adeno - Sample Contrast View</h1>
-<h2>Group 1: <a href="sgv_smallCell.html">Small Cell</a> </h2>
-<h2>Group 2: <a href="sgv_Adeno.html">Adeno</a> </h2>
+<h2>Small Cell vs Adeno - Sample Contrast View</h2>
+	 <h3>Contrast Two Groups</h3>
+	    <div id="group1" name="group1"> 
+	    		Group1 {{> StudyGroupsIndex}} 
+	    </div>
+	    <div id="group2" name="group2">
+	  	  	Group2 {{> StudyGroupsIndex}} 
+	    </div>
+<h3>Group 1: <a href="sgv_smallCell.html">Small Cell</a> </h3>
+<h3>Group 2: <a href="sgv_Adeno.html">Adeno</a> </h3>
 <ul>
 	
   		{{#each sampleGroups}}

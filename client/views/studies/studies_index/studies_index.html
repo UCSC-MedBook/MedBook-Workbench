@@ -1,47 +1,24 @@
 <template name="StudiesIndex">
 
-   <div class="studies-panel">
-  	 Study: <select id="study" class="span1-12">
-  		{{#each studies}}
-  		 	<option value="{{id}}">
-				{{short_name}}
-			</option>
-  		{{else}}
-			<li class="study-item empty">
-  			No studies yet.
-			</li>
-  		{{/each}}
-	</select>
-	
-	
-  </div>
- 
-  	<div class="tabs" id="tabs">
-  		<ul class="nav nav-tabs" role="tablist" >
-     		<li ><a href="#home">Home </a></li>
-     	   	<li class="active"><a href="#cohort" >View Cohort</a></li>
-			<li><a href="#contrast" >View Contrast</a></li>
-			<li><a href="#gene" >View Gene</a></li>
-			<li><a href="#pathway" >View Pathway</a></li>
- 		</ul>
-	<div id="home">
+   
+  	<div id="home">
 		Home
 	</div>
 	<div id="contrast">
-	 <h3>Contrast Two Groups</h3>
-	    <div id="group1" name="group1"> 
-	    		Group1 {{> StudyGroupsIndex}} 
-	    </div>
-	    <div id="group2" name="group2">
-	  	  	Group2 {{> StudyGroupsIndex}} 
-	    </div>
-	 
+	 <button id="scv">Display Signatures for Contrast</button>
 	</div>
 	<div id="gene">
 	 gene
 	</div>
   
+	<div id="clinical">
+	 Clinical
+	</div>
+<div id="job">
+ job
+ <button id="shell">Run ls</button>
 </div>
+  
  
  
 </template>

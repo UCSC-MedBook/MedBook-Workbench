@@ -1,3 +1,26 @@
 <template name="MasterLayout">
+     <div class="studies-panel">
+    	 Study: <select id="study" class="span1-12">
+    		{{#each studies}}
+    		 	<option value="{{id}}">
+  				{{short_name}}
+  			</option>
+    		{{else}}
+  			<li class="study-item empty">
+    			No studies yet.
+  			</li>
+    		{{/each}}
+  	</select>
+    </div>	
+<div class="tabs" id="tabs">
+	<ul class="nav nav-tabs" role="tablist" >
+  		<li ><a href="#home">Home </a></li>
+  	   	<li class="active"><a href="#cohort" >View Cohort</a></li>
+		<li><a href="#scv" >View Contrast</a></li>
+		<li><a href="#gene" >View Gene</a></li>
+		<li><a href="#pathway" >View Pathway</a></li>
+		<li><a href="#clinical" >View Clinical</a></li>
+		<li><a href="#job" >Run Job</a></li>	</ul>
   {{> yield}}
+</div>
 </template>
