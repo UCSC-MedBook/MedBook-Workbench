@@ -1,0 +1,10 @@
+// https://www.eventedmind.com/feed/meteor-introducing-the-package-system
+// packaging existing libraries http://www.meteorpedia.com/read/Packaging_existing_Libraries#!
+
+first create a package using meteor create --package <pkgname>
+then edit the package
+by giving it proper name , description etc.
+put some js in
+then go meteor add pkgname
+that's basically the layout
+ur package should be created under app/packages/<pkgname>
