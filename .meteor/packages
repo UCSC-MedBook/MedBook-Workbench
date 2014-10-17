@@ -13,4 +13,5 @@ mrt:jquery-ui
 mrt:jquery-ui-bootstrap
 bootstrap
 iron:router
+observation-deck
 

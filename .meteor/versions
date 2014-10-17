@@ -44,6 +44,7 @@ mongo@1.0.6
 mrt:jquery-ui-bootstrap@1.8.16
 mrt:jquery-ui@1.9.2
 npm-bcrypt@0.7.7
+observation-deck@1.0.0
 observe-sequence@1.0.2
 ordered-dict@1.0.0
 random@1.0.0
