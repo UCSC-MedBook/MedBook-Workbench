@@ -40,7 +40,7 @@ Template.ClinicalEventsIndex.rendered = function() {
     // TODO DOM rendered or changed
     console.log('Template.ClinicalEventsIndex.rendered');
 
-    var divElem = document.getElementById("test_div");
+    var divElem = document.getElementById("ClinicalEventsIndex_OD_Div");
 
     // TODO Deps.autorun is triggered when reactive data source has changed
     Deps.autorun(function() {
