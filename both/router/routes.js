@@ -21,5 +21,6 @@ Router.map(function () {
   this.route('clinical.events.index', {path: '/clinical'});
   this.route('shell', {path: '/shell/:name'});
   this.route('genes', {path: '/gene'});
-  this.route('drugs', {path: '/'});
+  this.route('drugs', {path: '/drug'});
+  this.route('cohort', {path: '/cohort'});
 });
