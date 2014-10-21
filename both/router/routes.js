@@ -14,13 +14,14 @@ Router.map(function () {
     Example:
       this.route('home', {path: '/'});
   */
-  this.route('studies.index', {path: '/'});
-  this.route('study.groups.index', {path: '/studyGroups'});
-  this.route('scv', {path: '/scv/:g1/:g2'});
-  this.route('sample.groups.index', {path: '/sampleGroups'});
-  this.route('clinical.events.index', {path: '/clinical'});
-  this.route('shell', {path: '/shell/:name'});
-  this.route('genes', {path: '/gene'});
-  this.route('drugs', {path: '/drug'});
-  this.route('cohort', {path: '/cohort'});
+  this.route('studies.index', {path: '/wb'});
+  this.route('cohort', {path: '/wb/cohort'});
+  this.route('scv', {path: '/wb/scv'});
+  this.route('sample.groups.index', {path: '/wb/sampleGroups'});
+  this.route('clinical.events.index', {path: '/wb/clinical'});
+  this.route('shell', {path: '/wb/shell/:name'});
+  this.route('genes', {path: '/wb/gene'});
+  this.route('drugs', {path: '/wb/drug'});
+  this.route('cohort', {path: '/wb/cohort'});
+  this.route('pathways', {path: '/wb/pathway'});
 });

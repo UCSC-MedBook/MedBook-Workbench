@@ -9,25 +9,25 @@ Template.MasterLayout.events({
 	  console.log('Session studyID:', Session.get('studyID'));
 	},
     'click #home_tab': function(event,template){
-		Router.go('/');
+		Router.go('/wb/');
     },
     'click #cohort_tab': function(event,template){
- 	  	Router.go('/studyGroups/');
+ 	  	Router.go('/wb/cohort/');
     },
  	'click #contrast_tab': function(event,template){
-  		Router.go('/scv/');
+  		Router.go('/wb/scv/');
 	},
   	'click #gene_tab': function(event,template){
-   		Router.go('/gene/');
+   		Router.go('/wb/gene/');
     },
    	'click #pathway_tab': function(event,template){
-    	Router.go('/pathway/');
+    	Router.go('/wb/pathway/');
     },
 	'click #clinical_tab': function(event,template){
-	   	Router.go('/clinical/');
+	   	Router.go('/wb/clinical/');
 	},
     'click #job_tab': function(event,template){
-	  	Router.go('/shell/'+'dipsc');
+	  	Router.go('/wb/shell/'+'dipsc');
   	  	//Session.set('studyID', event.currentTarget.value);
 	  	Meteor.call('runshell', 'ls', ['-F'], function(err,response) {
 	  		if(err) {
@@ -38,7 +38,10 @@ Template.MasterLayout.events({
 			console.log('serverDataResponse: '+response);
 		});
 	  	console.log('goto shell:');
-  	} 
+  	},
+	'click #drug_tab': function(event,template){
+	   	Router.go('/wb/drug/');
+	},
 });
 
 Template.MasterLayout.helpers({
