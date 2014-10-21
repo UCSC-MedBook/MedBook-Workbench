@@ -1,4 +1,4 @@
-	// example: https://meteor.hackpad.com/Meteor-Cookbook-Reactive-D3-Visualizations-YUR9JT4mrm9
+// example: https://meteor.hackpad.com/Meteor-Cookbook-Reactive-D3-Visualizations-YUR9JT4mrm9
 // example: http://blog.benmcmahen.com/post/41124327100/using-d3-and-meteor-to-generate-scalable-vector
 
 // https://www.eventedmind.com/feed/meteor-introducing-the-package-system
@@ -38,18 +38,18 @@ Template.ClinicalEventsIndex.created = function() {
 
 Template.ClinicalEventsIndex.rendered = function() {
     // TODO DOM rendered or changed
-    console.log('Template.ClinicalEventsIndex.rendered');
+    // console.log('Template.ClinicalEventsIndex.rendered');
 
     var divElem = document.getElementById("ClinicalEventsIndex_OD_Div");
 
     // TODO Deps.autorun is triggered when reactive data source has changed
     Deps.autorun(function() {
-        console.log('Deps.autorun');
+        // console.log('Deps.autorun');
 
         var response = ClinicalEvents.find({});
 
         var docList = response.fetch();
-        // console.log('docList:', docList.length, ' <-- Deps.autorun');
+        // console.log('docList.length:', docList.length, ' <-- Deps.autorun');
         // console.log('docList:', JSON.stringify(docList), ' <-- Deps.autorun');
 
         if (docList.length > 0) {
@@ -58,6 +58,11 @@ Template.ClinicalEventsIndex.rendered = function() {
                     'clinical' : docList
                 }
             });
+        } else {
+            // remove child elements of divElem
+            while (divElem.firstChild) {
+                divElem.removeChild(divElem.firstChild);
+            }
         }
 
     });
