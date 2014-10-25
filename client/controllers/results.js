@@ -1,6 +1,5 @@
-StudyGroupsIndexController = RouteController.extend({
+ResultsController = RouteController.extend({
   waitOn: function () {
-	   Meteor.subscribe('study_groups_index');
   },
 
   data: function () {

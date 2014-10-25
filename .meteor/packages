@@ -4,7 +4,6 @@
 # but you can also edit it by hand.
 
 meteor-platform
-autopublish
 insecure
 accounts-password
 alanning:roles
@@ -14,4 +13,6 @@ mrt:jquery-ui-bootstrap
 bootstrap
 iron:router
 observation-deck
+autopublish
+email
 

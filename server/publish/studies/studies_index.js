@@ -3,6 +3,9 @@
 /*****************************************************************************/
 
 Meteor.publish('studies_index', function () {
-  // you can remove this if you return a cursor
-  this.ready();
+  var s = Studies.find();
+  var cnt = Studies.find().count();
+  console.log('studies count', cnt);
+  return s;
+  //this.ready();
 });

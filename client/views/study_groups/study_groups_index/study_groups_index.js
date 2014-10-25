@@ -14,8 +14,11 @@ Template.StudyGroupsIndex.events({
 Template.StudyGroupsIndex.helpers({
 	study_groups: function(){
 		var study = Session.get('studyID') ;
-		console.log('studyID:'+study);
+		console.log('find studygroups for studyID:'+study);
 		return StudyGroups.find({study:study},{sort: {group:1}});
+	},
+	isSelected: function(item){
+	
 	}
 });
 

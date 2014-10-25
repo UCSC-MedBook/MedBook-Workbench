@@ -3,7 +3,7 @@
 
 	 <select id="group" name="zebra" class="span1-12">
 		{{#each study_groups}}
-		 	<option value="{{study}}">
+		 	<option {{isSelected}} value="{{study}}">
 			{{group}}
 		</option>
 		{{else}}

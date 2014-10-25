@@ -1,0 +1,16 @@
+
+<template name="Contrast">
+  	 <select id="contrast" width="200">
+  		{{#each contrast}}
+  		 	<option {{isSelected}} value="{{nane}}">
+  			{{name}}
+  		</option>
+  		{{else}}
+  		<li class="contrast-item empty">
+  			No Contrasts defined yet.
+  		</li>
+  		{{/each}}
+		
+  </select>
+</template>
+

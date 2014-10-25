@@ -1,3 +1,4 @@
 export MONGO_URL=mongodb://localhost:27017/MedBook
-export ROOT_URL=http://localhost:10000/wb
-meteor  --port 10003 
+export MAIL_URL=smtp://baertsch@soe.ucsc.edu@localhost
+#export ROOT_URL=http://localhost:10000/wb
+meteor  --port 4000 

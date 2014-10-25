@@ -2,23 +2,86 @@
 <template name="Scv">
 <div id="scv">
 	 <h3>Contrast Two Groups</h3>
+	 	<div id="contrast1" width=200>
+			Contrast {{> Contrast}}
+		</div>
+		
+		<button class="btn" id="showContrast">Show Results for Contrast</button>
+		<div class="btn-group">
+		    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Analyze Contrast<span class="caret"></span></a>
+		    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+		        <li><a tabindex="-1" href="#occam">Differential Gene Expression (microarray)</a></li>
+		        <li><a tabindex="1" href="#limma">Differential Gene Expression (RNAseq)</a></li>
+		        <li><a tabindex="2" href="/wb/shell/diffparadigm">Differential Paradigm</a></li>
+				<li><a tabindex="3" href="/wb/shell/dipsc">DIPSC Generate Differenial signatures and correlate to clinical</a></li>
+				<li><a tabindex="-1" href="/wb/shell/dipsc">Train Classifier for contrast (supervised)</a></li>
+		        <li class="divider"></li>
+				<li><a tabindex="-1" href="#">Generate Subtypes from Contrast</a></li>
+				<li><a tabindex="-1" href="#">Pathway Enrichment of Contrast</a></li>
+		    </ul>
+		</div>
+	  
+		<p></p>
 	    <div id="group1" name="group1"> 
-	    		Group1 {{> StudyGroupsIndex}} 
+	    	Group1 {{> StudyGroupsIndex}} 
 	    </div>
-	    <div id="group2" name="group2">
+	    <div id="group2" name="group2" value="{{_id}}">
 	  	  	Group2 {{> StudyGroupsIndex}} 
 	    </div>
-		<button id="createGroup">Create new Contrast</button>
+		<button class="btn" id="createGroup">Create new Contrast from two groups</button>
 		<h3>Group 1: <a href="sgv_smallCell.html">Small Cell</a> </h3>
+		DTB-009
+		DTB-011
+		DTB-031
+		DTB-032
+		DTB-036
+		DTB-037
+		DTB-040
+		DTB-043
+		DTB-059
+		DTB-061
+		DTB-065
+		DTB-069
+		DTB-071
+		DTB-080
+		DTB-083
+		
 		<h3>Group 2: <a href="sgv_Adeno.html">Adeno</a> </h3>
+		DTB-001
+		DTB-002
+		DTB-004
+		DTB-005
+		DTB-010Pro
+		DTB-018
+		DTB-001 DTB-001
+		DTB-020
+		DTB-001
+		DTB-022
+		DTB-023
+		DTB-024Pro
+		DTB-024Pro2
+		DTB-030
+		DTB-034
+		DTB-035
+		DTB-038
+		DTB-046
+		DTB-053
+		DTB-060
+		DTB-063
+		DTB-064
+		DTB-089
+		DTB-089Pro
+		
+		
 		<ul>
 	
   		{{#each sampleGroups}}
 		<li>{{sample}} </li>
   		{{else}}
-  			No samples in group .
+  			
   		{{/each}}
 	</ul>
+		<img src="/shazam.png" height="450" width="400 !important;"/>
 	<b>Best Signature </b>- <a href="/wb/siv/smallCell">Small Cell</a>
 	<img src="/waterfall.png" height="450" width="400 !important;"/>
 
