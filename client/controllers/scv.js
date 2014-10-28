@@ -1,12 +1,13 @@
 ScvController = RouteController.extend({
-  waitOn: function () {
+  waitOn: function () {	
+	  Meteor.subscribe('sample_groups_index');
   },
 
   data: function () {
 	  var g1 = this.params.g1;
 	  var g2 = this.params.g2;
 	  var tool = this.params.hash;
-	  var studyID = Session.get('studyID');
+	  var studyID = Session.get('studyID');	
 	  if (this.params.hash){
 		  console.log('scv: run tool: '+tool);
 		  var results_name="result abi resistant vs naive";

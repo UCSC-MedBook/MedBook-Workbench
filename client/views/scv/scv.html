@@ -30,51 +30,11 @@
 	    </div>
 		<button class="btn" id="createGroup">Create new Contrast from two groups</button>
 		<h3>Group 1: <a href="sgv_smallCell.html">Small Cell</a> </h3>
-		DTB-009
-		DTB-011
-		DTB-031
-		DTB-032
-		DTB-036
-		DTB-037
-		DTB-040
-		DTB-043
-		DTB-059
-		DTB-061
-		DTB-065
-		DTB-069
-		DTB-071
-		DTB-080
-		DTB-083
-		
+		{{> ContrastDetail}}
+		list of sample ids from group 1		
 		<h3>Group 2: <a href="sgv_Adeno.html">Adeno</a> </h3>
-		DTB-001
-		DTB-002
-		DTB-004
-		DTB-005
-		DTB-010Pro
-		DTB-018
-		DTB-001 DTB-001
-		DTB-020
-		DTB-001
-		DTB-022
-		DTB-023
-		DTB-024Pro
-		DTB-024Pro2
-		DTB-030
-		DTB-034
-		DTB-035
-		DTB-038
-		DTB-046
-		DTB-053
-		DTB-060
-		DTB-063
-		DTB-064
-		DTB-089
-		DTB-089Pro
-		
-		
-		<ul>
-	
+   		list of sample ids
+		<ul>	
   		{{#each sampleGroups}}
 		<li>{{sample}} </li>
   		{{else}}

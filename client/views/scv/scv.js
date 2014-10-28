@@ -11,7 +11,7 @@ Template.Scv.events({
 		var sampleList1 = SampleGroups.find({group:g1},{'sample':1}).fetch();
 		var sampleList2 = SampleGroups.find({group:g2},{'sample':1}).fetch();
 		console.log('contrast: '+contrast_name);
-		console.dir('s list'+sampleList1)
+		console.dir('samples for group '+g1+' :'+sampleList1);
 		Contrast.insert({'name':contrast_name,'studyID':studyID,
 			'group1':g1,'group2':g2,'list1':sampleList1,'list2':sampleList2});
 	},
@@ -27,6 +27,7 @@ Template.Scv.events({
 	},
 	'change #contrast1': function(e,t){
 		var c = t.$( "#contrast1 option:selected" ).text();
+		Session.set('selectedContrast')
 		console.log('switch contrasts:',c);
 	},
     'change .dropdown-menu': function (e,t) {

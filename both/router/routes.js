@@ -16,8 +16,10 @@ Router.map(function () {
   */
   this.route('studies.index', {path: '/wb'});
   this.route('cohort', {path: '/wb/cohort'});
-  this.route('scv', {path: '/wb/scv'});
   this.route('scv', {path: '/wb/scv/'}, function(){
+	  console.log('route '+this.hash);
+  });
+  this.route('scv.detail', {path: '/wb/scv/:name'}, function(){
 	  console.log('route '+this.hash);
   });
   this.route('sample.groups.index', {path: '/wb/sampleGroups'});

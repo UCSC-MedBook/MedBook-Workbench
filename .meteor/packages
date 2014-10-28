@@ -13,6 +13,6 @@ mrt:jquery-ui-bootstrap
 bootstrap
 iron:router
 observation-deck
-autopublish
 email
+sample-pie-charts
 

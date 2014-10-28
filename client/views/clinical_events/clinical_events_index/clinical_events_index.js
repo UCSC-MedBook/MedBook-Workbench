@@ -46,15 +46,19 @@ Template.ClinicalEventsIndex.rendered = function() {
     Deps.autorun(function() {
         // console.log('Deps.autorun');
 
-        // var response = ClinicalEvents.find({});
+        var response = ClinicalEvents.find({});
         //
-        // var docList = response.fetch();
+        var docList = response.fetch();
         //
-        // console.log('docList.length:', docList.length, ' <-- Deps.autorun');
-        // console.log('docList:', JSON.stringify(docList), ' <-- Deps.autorun');
+        console.log('docList.length:', docList.length, ' <-- Deps.autorun');
+        //console.log('docList:', JSON.stringify(docList), ' <-- Deps.autorun');
         //
-        buildObservationDeck(divElem, null);
-
+        //buildObservationDeck(divElem, null);
+		pie_charts(divElem ,{
+			'mongoData': {
+				'clinical' : docList
+			}
+		});
         // if (docList.length > 0) {
         // buildObservationDeck(divElem, {
         // 'mongoData' : {
