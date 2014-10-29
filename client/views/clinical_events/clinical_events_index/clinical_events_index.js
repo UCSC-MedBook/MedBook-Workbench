@@ -47,30 +47,23 @@ Template.ClinicalEventsIndex.rendered = function() {
         // console.log('Deps.autorun');
 
         var response = ClinicalEvents.find({});
-        //
         var docList = response.fetch();
-        //
         console.log('docList.length:', docList.length, ' <-- Deps.autorun');
         //console.log('docList:', JSON.stringify(docList), ' <-- Deps.autorun');
-        //
-        //buildObservationDeck(divElem, null);
-		pie_charts(divElem ,{
-			'mongoData': {
-				'clinical' : docList
-			}
-		});
-        // if (docList.length > 0) {
-        // buildObservationDeck(divElem, {
-        // 'mongoData' : {
-        // 'clinical' : docList
-        // }
-        // });
-        // } else {
-        // // remove child elements of divElem
-        // while (divElem.firstChild) {
-        // divElem.removeChild(divElem.firstChild);
-        // }
-        // }
+
+        if (docList.length > 0) {
+            pie_charts(divElem, {
+                'mongoData' : {
+                    'clinical' : docList
+                }
+            });
+        } else {
+            // remove child elements of divElem
+            while (divElem.firstChild) {
+                divElem.removeChild(divElem.firstChild);
+                divElem.innerHTML('no clinical data');
+            }
+        }
 
     });
 
