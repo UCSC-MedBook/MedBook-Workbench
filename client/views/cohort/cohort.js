@@ -37,6 +37,10 @@ Template.Cohort.rendered = function() {
         console.log('clinDocList.length:', clinDocList.length, ' <-- Deps.autorun');
         // console.log('clinDocList:', JSON.stringify(clinDocList), ' <-- Deps.autorun');
 
+        var expResp = Expression.find({});
+        var expDocList = expResp.fetch();
+        console.log('expDocList.length:', expDocList.length, ' <-- Deps.autorun');
+
         if ((clinDocList.length > 0)) {
             buildObservationDeck(divElem, {
                 'mongoData' : {
