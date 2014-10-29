@@ -30,29 +30,39 @@ Template.Cohort.rendered = function() {
 
     // TODO Deps.autorun is triggered when reactive data source has changed
     Deps.autorun(function() {
+        var s = ' <-- Deps.autorun in cohort.js';
         // console.log('Deps.autorun');
 
+        // get clinical data
         var clinResp = ClinicalEvents.find({});
         var clinDocList = clinResp.fetch();
-        console.log('clinDocList.length:', clinDocList.length, ' <-- Deps.autorun');
-        // console.log('clinDocList:', JSON.stringify(clinDocList), ' <-- Deps.autorun');
+        console.log('clinDocList.length:', clinDocList.length, s);
 
-        var expResp = Expression.find({});
+        // get expression data
+        var geneList = ['PEG10', 'KCNJ6', 'FGF9', 'CNKSR3', 'ANK2', 'ST8SIA4', 'RUNX1T1', 'GPRIN2', 'KIT', 'GABRB3', 'IPCEF1', 'GRIN3A', 'CACHD1', 'GYG2', 'ADM', 'F2RL1', 'TMPRSS2', 'TEAD2', 'DHODH', 'FXYD3', 'SERTAD1', 'NQO1', 'DHCR24', 'BANK1', 'INO80C', 'SLC30A4', 'F5', 'HK2', 'PPARG', 'CXCL2', 'FGFRL1', 'NNMT', 'PFKFB4', 'PRR5', 'SPINK1', 'OPHN1', 'KLRB1', 'ERP27', 'SELL', 'IRAK2', 'APOH', 'HSH2D', 'REEP6', 'KLK3', 'MAFK', 'ATP2C2', 'AGR2', 'ACOT9', 'ANG', 'CEACAM1'];
+        var expResp = Expression.find({
+            'id' : {
+                $in : geneList
+            }
+        });
         var expDocList = expResp.fetch();
-        console.log('expDocList.length:', expDocList.length, ' <-- Deps.autorun');
+        console.log('expDocList.length:', expDocList.length, s);
 
-        if ((clinDocList.length > 0)) {
+        // build observation deck
+        if ((clinDocList.length > 0) || (expDocList.length > 0)) {
             buildObservationDeck(divElem, {
                 'mongoData' : {
+                    // 'clinical' : 'aaa',
                     'clinical' : clinDocList,
-                    'expression' : 'bbb'
+                    // 'expression' : 'bbb'
+                    'expression' : expDocList
                 }
             });
         } else {
             // remove child elements of divElem
             while (divElem.firstChild) {
                 divElem.removeChild(divElem.firstChild);
-                divElem.innerHTML('no clinical data');
+                divElem.innerHTML('no clinical data', s);
             }
         }
 
