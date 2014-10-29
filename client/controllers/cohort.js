@@ -1,11 +1,13 @@
 CohortController = RouteController.extend({
-  waitOn: function () {
-  },
+    waitOn : function() {
+        Meteor.subscribe('clinical_events_index');
+        Meteor.subscribe('expression');
+    },
 
-  data: function () {
-  },
+    data : function() {
+    },
 
-  action: function () {
-    this.render();
-  }
+    action : function() {
+        this.render();
+    }
 });
