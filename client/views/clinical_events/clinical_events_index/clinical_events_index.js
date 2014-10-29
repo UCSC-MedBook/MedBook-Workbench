@@ -45,10 +45,11 @@ Template.ClinicalEventsIndex.rendered = function() {
     // TODO Deps.autorun is triggered when reactive data source has changed
     Deps.autorun(function() {
         // console.log('Deps.autorun');
+        var s = ' <-- Deps.autorun in clinical_events_index.js';
 
         var response = ClinicalEvents.find({});
         var docList = response.fetch();
-        console.log('docList.length:', docList.length, ' <-- Deps.autorun');
+        console.log('docList.length:', docList.length, s);
         //console.log('docList:', JSON.stringify(docList), ' <-- Deps.autorun');
 
         if (docList.length > 0) {
