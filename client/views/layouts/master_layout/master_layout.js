@@ -14,6 +14,9 @@ Template.MasterLayout.events({
     'click #cohort_tab': function(event,template){
  	  	Router.go('/wb/cohort/');
     },
+    'click #patient_tab': function(event,template){
+ 	  	Router.go('/wb/patient/');
+    },
  	'click #contrast_tab': function(event,template){
   		Router.go('/wb/scv/');
 	},
