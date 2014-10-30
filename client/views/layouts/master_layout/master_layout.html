@@ -1,29 +1,31 @@
 <template name="MasterLayout">
-     <div class="studies-panel">
-    	 Study: <select id="study" class="span1-12">
-    		{{#each studies}}
-    		 	<option value="{{id}}">
-  				{{short_name}}
-  			</option>
-    		{{else}}
-  			<li class="study-item empty">
-    			No studies yet.
-  			</li>
-    		{{/each}}
-  	</select>
-    </div>	
-<div class="tabs" id="tabs">
-	<ul class="nav nav-tabs" role="tablist" >
-  		<li><a href="#home" id="home_tab">Home </a></li>
-  	   	<li class="active"><a href="#cohort" id="cohort_tab">Cohort</a></li>
-	   	<li><a href="#patient" id="patient_tab">Patient</a></li>
-		<li><a href="#scv" id="contrast_tab">Differential Analysis</a></li>
-		<li><a href="#gene" id="gene_tab">Genes</a></li>
-		<li><a href="#pathway" id="pathway_tab">Pathways</a></li>
-		<li><a href="#clinical" id="clinical_tab" >Clinical</a></li>
-		<li><a href="#job" id="job_tab">Tools</a></li>	
-		<li><a href="#drug" id="drug_tab">Drugs</a></li>	
-	</ul>
-  {{> yield}}
-</div>
+    <div class="container-fluid">
+		 <div class="studies-panel">
+			 Study:
+			{{#with studies}}
+				<select id="study" class="span1-12">
+					{{#each this}}
+					<option value="{{id}}">{{short_name}}</option>
+					{{/each}}
+				</select>
+			{{else}}
+				No studies yet.
+			{{/with}}
+		</div>
+
+		<ul class="nav nav-tabs" role="tablist">
+			<li class="{{isActiveRoute 'studies.index'}}"><a href="{{pathFor 'studies.index'}}">Home</a></li>
+			<li class="{{isActiveRoute 'cohort'}}"><a href="{{pathFor 'cohort'}}">Cohort</a></li>
+			<li class="{{isActiveRoute 'patient'}}"><a href="{{pathFor 'patient'}}">Patient</a></li>
+			<li class="{{isActiveRoute 'scv'}}"><a href="{{pathFor 'scv'}}">Differential Analysis</a></li>
+			<li class="{{isActiveRoute 'genes'}}"><a href="{{pathFor 'genes'}}">Genes</a></li>
+			<li class="{{isActiveRoute 'pathways'}}"><a href="{{pathFor 'pathways'}}">Pathways</a></li>
+			<li class="{{isActiveRoute 'clinical.events.index'}}"><a href="{{pathFor 'clinical.events.index'}}">Clinical</a></li>
+			<li class="{{isActiveRoute 'shell'}} shell-tab"><a href="{{pathFor 'shell'}}">Tools</a></li>
+			<li class="{{isActiveRoute 'drugs'}}"><a href="{{pathFor 'drugs'}}">Drugs</a></li>
+		</ul>
+		<div class="tab-content">
+			{{> yield}}
+		</div>
+    </div>
 </template>

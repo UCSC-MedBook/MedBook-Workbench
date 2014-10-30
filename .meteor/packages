@@ -15,4 +15,5 @@ iron:router
 observation-deck
 email
 sample-pie-charts
+zimme:iron-router-active
 

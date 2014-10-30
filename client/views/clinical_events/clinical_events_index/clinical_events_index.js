@@ -43,7 +43,7 @@ Template.ClinicalEventsIndex.rendered = function() {
     var divElem = document.getElementById("ClinicalEventsIndex_OD_Div");
 
     // TODO Deps.autorun is triggered when reactive data source has changed
-    Deps.autorun(function() {
+    this.autorun(function() {
         // console.log('Deps.autorun');
         var s = ' <-- Deps.autorun in clinical_events_index.js';
 
@@ -62,8 +62,8 @@ Template.ClinicalEventsIndex.rendered = function() {
             // remove child elements of divElem
             while (divElem.firstChild) {
                 divElem.removeChild(divElem.firstChild);
-                divElem.innerHTML('no clinical data');
             }
+            divElem.innerHTML = 'no clinical data';
         }
 
     });
