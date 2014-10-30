@@ -5,6 +5,9 @@ _.extend(App, {
 });
 
 App.helpers = {
+	selectedStudy: function () {
+		return Session.get('studyID');
+	}
 };
 
 _.each(App.helpers, function (helper, key) {

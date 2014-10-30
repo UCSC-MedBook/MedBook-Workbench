@@ -24,6 +24,12 @@ Template.MasterLayout.events({
 Template.MasterLayout.helpers({
 	studies: function(){
 		return Studies.find({},{sort: {short_name:1}});
+	},
+	selected: function(){
+		if (Session.get('studyID') == this._id) 
+			return true;
+		else 
+			return false;
 	}
   
 });
