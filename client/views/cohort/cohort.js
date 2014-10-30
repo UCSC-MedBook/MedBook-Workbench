@@ -29,7 +29,8 @@ Template.Cohort.rendered = function() {
     var divElem = document.getElementById("Cohort_OD_Div");
 
     // TODO Deps.autorun is triggered when reactive data source has changed
-    Deps.autorun(function() {
+    // Deps.autorun(function() {
+    this.autorun(function() {
         var s = ' <-- Deps.autorun in cohort.js';
         // console.log('Deps.autorun');
 
@@ -54,6 +55,7 @@ Template.Cohort.rendered = function() {
 
         // build observation deck
         if ((clinDocList.length > 0) || (expDocList.length > 0)) {
+            console.log('build observation deck', s);
             buildObservationDeck(divElem, {
                 'mongoData' : {
                     // 'clinical' : 'aaa',
@@ -64,10 +66,11 @@ Template.Cohort.rendered = function() {
             });
         } else {
             // remove child elements of divElem
+            console.log('no data', s);
             while (divElem.firstChild) {
                 divElem.removeChild(divElem.firstChild);
-                divElem.innerHTML('no clinical data', s);
             }
+            divElem.innerHTML('no data for observation deck', s);
         }
 
     });
