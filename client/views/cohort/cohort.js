@@ -34,7 +34,9 @@ Template.Cohort.rendered = function() {
         // console.log('Deps.autorun');
 
         // get clinical data
-        var clinResp = ClinicalEvents.find({});
+        var clinResp = ClinicalEvents.find({}, {
+            reactive : true
+        });
         var clinDocList = clinResp.fetch();
         console.log('clinDocList.length:', clinDocList.length, s);
 
@@ -44,6 +46,8 @@ Template.Cohort.rendered = function() {
             'id' : {
                 $in : geneList
             }
+        }, {
+            reactive : true
         });
         var expDocList = expResp.fetch();
         console.log('expDocList.length:', expDocList.length, s);
