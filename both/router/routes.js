@@ -25,10 +25,11 @@ Router.map(function () {
   this.route('sample.groups.index', {path: '/wb/sampleGroups'});
   this.route('clinical.events.index', {path: '/wb/clinical'});
   this.route('shell', {path: '/wb/shell/:name'});
-  this.route('genes', {path: '/wb/gene'});
+  this.route('genes', {path: '/wb/gene/:name'});
   this.route('drugs', {path: '/wb/drug'});
   this.route('cohort', {path: '/wb/cohort'});
   this.route('pathways', {path: '/wb/pathway'});
-  this.route('results', {path: '/'});
-  this.route('results', {path: '/'});
+  this.route('results', {path: '/wb/results'});
+  this.route('patient.index', {path: '/wb/patient/:name'});
+  this.route('mutations.index', {path: '/wb/mutations/:study'});
 });
