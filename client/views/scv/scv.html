@@ -30,10 +30,9 @@
 	    </div>
 		<button class="btn" id="createGroup">Create new Contrast from two groups</button>
 		<h3>Group 1: <a href="sgv_smallCell.html">Small Cell</a> </h3>
-		{{> ContrastDetail}}
-		list of sample ids from group 1		
+		{{> ContrastDetail _id=contrast_id list="list1"}}
 		<h3>Group 2: <a href="sgv_Adeno.html">Adeno</a> </h3>
-   		list of sample ids
+		{{> ContrastDetail _id=contrast_id list="list2"}}	
 		<ul>	
   		{{#each sampleGroups}}
 		<li>{{sample}} </li>

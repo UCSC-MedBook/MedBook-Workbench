@@ -27,7 +27,7 @@ Template.Scv.events({
 	},
 	'change #contrast1': function(e,t){
 		var c = t.$( "#contrast1 option:selected" ).text();
-		Session.set('selectedContrast')
+		Session.set('selectedContrast',e.target.value);
 		console.log('switch contrasts:',c);
 	},
     'change .dropdown-menu': function (e,t) {
@@ -50,7 +50,11 @@ Template.Scv.helpers({
 	},
 	isSelected: function(item){
 		console.log ("SCV IS_SELECTED",item);
+	},
+	contrast_id: function() {
+		return Session.get('selectedContrast');
 	}
+	
 });
 
 /*****************************************************************************/

@@ -12,15 +12,11 @@ Template.ContrastDetail.events({
 });
 
 Template.ContrastDetail.helpers({
-	contrast: function(name){
+	contrast: function(){
 		var study = Session.get('studyID') ;
 		console.log('find contrasts for studyID:'+study);
-		return Contrast.find({name:name},{sort: {name:1}});
-	},
-	sample: function(){
-		var contrast = Session.get('selectedContrast')
-		console.log('contrast detail sample helper for '+contrast);
-	    return Contrast.find({'name':contrast}).fetch();
+		var c =  Contrast.findOne({_id:this._id});
+		return c[this.list];
 	}
 });
 

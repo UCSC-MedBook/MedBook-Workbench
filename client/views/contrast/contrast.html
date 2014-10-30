@@ -1,8 +1,9 @@
 
 <template name="Contrast">
-  	 <select id="contrast" width="200">
+  	 <select id="contrast" width="200"	  >
+		 <option value="">Select a contrast</option>
   		{{#each contrast}}
-  		 	<option {{isSelected}} value="{{nane}}">
+  		 	<option {{isSelected}} value="{{_id}}">
   			{{name}}
   		</option>
   		{{else}}
