@@ -1,5 +1,5 @@
 
 <template name="ContrastDetail">
-{{#each contrast}}{{sample}} {{/each}}
+{{contrast.group}}{{#each contrast}}<a href="/wb/patient/{{sample}}">{{sample}} </a>{{/each}}
 </template>
 

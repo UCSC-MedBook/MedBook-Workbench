@@ -30,10 +30,12 @@
 	  	  	Group2 {{> StudyGroupsIndex}} 
 	    </div>
 		<button class="btn" id="createGroup">Create new Contrast from two groups</button>
-		<h3>Group 1: <a href="sgv_smallCell.html">Small Cell</a> </h3>
-		{{> ContrastDetail _id=contrast_id list="list1"}}
-		<h3>Group 2: <a href="sgv_Adeno.html">Adeno</a> </h3>
-		{{> ContrastDetail _id=contrast_id list="list2"}}	
+		{{#with selectedContrast}}
+			<h5>Group 1: <a href={{pathFor 'sample.groups.index' study=this.studyID name=this.group1}}>{{this.group1}}</a>
+			{{> ContrastDetail _id=this._id list="list1"}}</h5>
+			<h5>Group 2: <a href={{pathFor 'sample.groups.index' study=this.studyID name=this.group2}}>{{this.group2}}</a>
+			{{> ContrastDetail _id=contrast_id list="list2"}}</h5>
+		{{/with}}	
 		<ul>	
   		{{#each sampleGroups}}
 		<li>{{sample}} </li>

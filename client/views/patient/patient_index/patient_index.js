@@ -15,6 +15,10 @@ Template.PatientIndex.helpers({
 	mutations: function () {
 		var name = this.params.name;
 		return Mutations.find({name:name});
+	},
+	patient: function () {
+		var name = this.params.name;
+		return Patient.findOne({name:name});
 	}
 
 });

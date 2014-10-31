@@ -12,12 +12,11 @@ Template.SampleGroupsIndex.events({
 });
 
 Template.SampleGroupsIndex.helpers({
-  /*
-   * Example:
-   *  items: function () {
-   *    return Items.find();
-   *  }
-   */
+    sample_groups : function() {
+        var response = SampleGroups.find({});
+        var docList = response.fetch();
+        return response;
+    }
 });
 
 /*****************************************************************************/

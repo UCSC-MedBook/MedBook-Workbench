@@ -9,6 +9,10 @@ Router.configure({
   routeControllerNameConverter: 'upperCamelCase'
 });
 
+Router.onBeforeAction(function() {
+	console.log('BEFORE route: ',this.path);
+	
+});
 Router.map(function () {
   /*
     Example:
@@ -16,20 +20,13 @@ Router.map(function () {
   */
   this.route('studies.index', {path: '/wb'});
   this.route('cohort', {path: '/wb/cohort'});
-  this.route('scv', {path: '/wb/scv/'}, function(){
-	  console.log('route '+this.hash);
-  });
-  this.route('scv.detail', {path: '/wb/scv/:name'}, function(){
-	  console.log('route '+this.hash);
-  });
-  this.route('sample.groups.index', {path: '/wb/sampleGroups'});
+  this.route('scv', {path: '/wb/scv'});
+  this.route('sample.groups.index', {path: '/wb/sampleGroups/:study/:name'});
   this.route('clinical.events.index', {path: '/wb/clinical'});
   this.route('shell', {path: '/wb/shell/:name'});
-  this.route('genes', {path: '/wb/gene/:name'});
+  this.route('genes', {path: '/wb/gene'});
   this.route('drugs', {path: '/wb/drug'});
   this.route('cohort', {path: '/wb/cohort'});
   this.route('pathways', {path: '/wb/pathway'});
-  this.route('results', {path: '/wb/results'});
-  this.route('patient.index', {path: '/wb/patient/:name'});
-  this.route('mutations.index', {path: '/wb/mutations/:study'});
+  this.route('patient.index', {path: '/wb/patient/:name'})
 });

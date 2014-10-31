@@ -40,11 +40,11 @@ Template.Scv.events({
 Template.Scv.helpers({
   /*
    * Example:
-   *  items: function () {
+   *  items: function () 
    *    return Items.find();
    *  
    */
-  sampleGroups: function(g1,g2) {
+ 	sampleGroups: function(g1,g2) {
 	  console.log('find sampleGroups:',g1,' ',g2)
   	return SampleGroups.find({group: g1});
 	},
@@ -53,8 +53,13 @@ Template.Scv.helpers({
 	},
 	contrast_id: function() {
 		return Session.get('selectedContrast');
+	},
+	selectedContrast: function() {
+		var id = Session.get('selectedContrast');
+		console.log('contrast id ',id);
+		return Contrast.findOne({_id: id });
 	}
-	
+
 });
 
 /*****************************************************************************/
