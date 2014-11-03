@@ -13,7 +13,10 @@ Template.Scv.events({
 		console.log('contrast: '+contrast_name);
 		console.dir('samples for group '+g1+' :'+sampleList1);
 		Contrast.insert({'name':contrast_name,'studyID':studyID,
-			'group1':g1,'group2':g2,'list1':sampleList1,'list2':sampleList2});
+			'group1':g1,'group2':g2,'list1':sampleList1,'list2':sampleList2} , function(error, result) {
+				if (error)
+					console.log('insert contrast error: ' , error);
+			});
 	},
     'change #group1': function (e,t) {
 		var sg = t.$( "#group1 option:selected" ).text();
