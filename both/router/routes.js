@@ -23,7 +23,7 @@ Router.map(function () {
   this.route('scv', {path: '/wb/scv'});
   this.route('sample.groups.index', {path: '/wb/sampleGroups/:study/:name'});
   this.route('clinical.events.index', {path: '/wb/clinical'});
-  this.route('shell', {path: '/wb/shell/:name'});
+  this.route('shell', {path: '/wb/shell'});
   this.route('genes', {path: '/wb/gene'});
   this.route('drugs', {path: '/wb/drug'});
   this.route('cohort', {path: '/wb/cohort'});

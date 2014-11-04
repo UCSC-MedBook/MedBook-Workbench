@@ -1,4 +1,7 @@
 Meteor.startup(function () {
+	var Fiber = Npm.require('fibers');
+	//var Fiber = require('fibers');
+	
 	Meteor.methods({
 	  getCurrentTime: function () {
 		console.log('on server, getCurrentTime called');
@@ -6,7 +9,7 @@ Meteor.startup(function () {
 	  },
  
 	  runshell: function (name, argArray) {
-		console.log('on server, calling : ', name , ' with args ', argArray);
+	   console.log('server, calling : ', name , ' with args ', argArray);
 		if(name==undefined || name.length<=0) {
 	      throw new Meteor.Error(404, "Please enter your name");
 		}
@@ -16,6 +19,38 @@ Meteor.startup(function () {
 
 		command.stdout.on('data',  function (data) {
 	  	  console.log('stdout: ' + data);
+  	    Fiber(function() { 
+			console.log('inside FIBER starting io')
+			var fiber = Fiber.current;
+			
+		  	blobStream = Blobs.upsertStream({ filename: 'ls_result.txt',
+		                                 	contentType: 'text/plain',
+		                                 	metadata: { caption: 'Not again!', 
+										 				command: name,
+														args: argArray
+												      }
+		                               	 },
+									 	{options:{mode:'w'}},
+										function() {
+											console.log('inside callback');
+											fiber.run(data);
+										});
+			
+			console.log('data to write',data);
+			ret = blobStream.write(data, function(){
+				console.log('write is DONE')
+			});
+			if (!ret) {
+				ret = blobStream.write(data, function(){
+					console.log('write is DONE')
+				});
+			}
+			console.log('write returns',ret)
+			console.log('yielding back');
+			var results = Fiber.yield();
+			blobStream.end();
+		}).run();   /* Fiber */
+						
 		});
 
 		command.stderr.on('data', function (data) {

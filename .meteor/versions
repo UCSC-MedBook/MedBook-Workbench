@@ -14,6 +14,7 @@ boilerplate-generator@1.0.0
 bootstrap@1.0.1
 callback-hook@1.0.0
 check@1.0.1
+coffeescript@1.0.3
 ctl-helper@1.0.3
 ctl@1.0.1
 ddp@1.0.9
@@ -39,6 +40,8 @@ localstorage@1.0.0
 logging@1.0.3
 meteor-platform@1.1.1
 meteor@1.1.1
+meteorhacks:async@1.0.0
+meteorhacks:npm@1.2.0
 minifiers@1.1.0
 minimongo@1.0.3
 mobile-status-bar@1.0.0
@@ -48,6 +51,7 @@ mrt:jquery-ui-bootstrap@1.8.16
 mrt:jquery-ui@1.9.2
 mrt:moment@2.6.0
 npm-bcrypt@0.7.7
+npm-container@1.0.0
 observation-deck@1.0.0
 observe-sequence@1.0.2
 ordered-dict@1.0.0
@@ -70,6 +74,7 @@ tracker@1.0.2
 ui@1.0.3
 underscore@1.0.0
 url@1.0.0
+vsivsi:file-collection@0.3.3
 webapp-hashing@1.0.0
 webapp@1.1.2
 zimme:iron-router-active@0.2.2
