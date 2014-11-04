@@ -11,11 +11,11 @@ Template.MasterLayout.events({
 	'click .shell-tab': function(event,template){
 		Meteor.call('runshell', 'ls', ['-F'], function(err,response) {
 			if(err) {
-				Session.set('serverDataResponse', "Error:" + err.reason);
+				Session.set('serverDataResponse', "ls Error:" + err.reason);
 				return;
 			}
 			Session.set('serverDataResponse', response);
-			console.log('serverDataResponse: '+response);
+			console.log('ls OK: '+response);
 		});
 		console.log('goto shell:');
 	}

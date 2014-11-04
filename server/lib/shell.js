@@ -45,10 +45,11 @@ Meteor.startup(function () {
 					console.log('write is DONE')
 				});
 			}
-			console.log('write returns',ret)
+			retend = blobStream.end();
+			console.log('write returns',ret,' end returns ',retend)
 			console.log('yielding back');
 			var results = Fiber.yield();
-			blobStream.end();
+			console.log('DONE results: ',results);
 		}).run();   /* Fiber */
 						
 		});
