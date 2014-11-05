@@ -20,7 +20,6 @@ Meteor.startup(function () {
 		command.stdout.on('data',  function (data) {
 	  	  console.log('stdout: ' + data);
   	    Fiber(function() { 
-			console.log('inside FIBER starting io')
 			var fiber = Fiber.current;
 			
 		  	blobStream = Blobs.upsertStream({ filename: 'ls_result.txt',
@@ -35,8 +34,6 @@ Meteor.startup(function () {
 											console.log('inside callback');
 											fiber.run(data);
 										});
-			
-			console.log('data to write',data);
 			ret = blobStream.write(data, function(){
 				console.log('write is DONE')
 			});
@@ -47,7 +44,6 @@ Meteor.startup(function () {
 			}
 			retend = blobStream.end();
 			console.log('write returns',ret,' end returns ',retend)
-			console.log('yielding back');
 			var results = Fiber.yield();
 			console.log('DONE results: ',results);
 		}).run();   /* Fiber */

@@ -29,4 +29,5 @@ Router.map(function () {
   this.route('cohort', {path: '/wb/cohort'});
   this.route('pathways', {path: '/wb/pathway'});
   this.route('patient.index', {path: '/wb/patient/:name'})
+  this.route('signature.index', {path: '/'});
 });

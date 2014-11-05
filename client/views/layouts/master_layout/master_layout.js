@@ -8,6 +8,9 @@ Template.MasterLayout.events({
 		this.currStudy = event.currentTarget.value;
 		console.log('Session studyID:', Session.get('studyID'));
 	},
+	'click .nuc' : function(){
+		location.reload(true);
+	},
 	'click .shell-tab': function(event,template){
 		Meteor.call('runshell', 'ls', ['-F'], function(err,response) {
 			if(err) {
