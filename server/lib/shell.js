@@ -1,6 +1,7 @@
+var Future = Npm.require('fibers/future');
+var spawn = Npm.require('child_process').spawn;
+
 Meteor.startup(function () {
-	var Fiber = Npm.require('fibers');
-	//var Fiber = require('fibers');
 	
 	Meteor.methods({
 	  getCurrentTime: function () {
@@ -9,54 +10,39 @@ Meteor.startup(function () {
 	  },
  
 	  runshell: function (name, argArray) {
-	   console.log('server, calling : ', name , ' with args ', argArray);
+
+		console.log('server, calling : ', name , ' with args ', argArray);
+
 		if(name==undefined || name.length<=0) {
 	      throw new Meteor.Error(404, "Please enter your name");
 		}
-		spawn = Npm.require('child_process').spawn;
 
-		command = spawn(name, argArray);
+		// create a new Future, allowing this method to be synchronous
+		var fut = new Future();
 
-		command.stdout.on('data',  function (data) {
-	  	  console.log('stdout: ' + data);
-  	    Fiber(function() { 
-			var fiber = Fiber.current;
-			
-		  	blobStream = Blobs.upsertStream({ filename: 'ls_result.txt',
-		                                 	contentType: 'text/plain',
-		                                 	metadata: { caption: 'Not again!', 
-										 				command: name,
-														args: argArray
-												      }
-		                               	 },
-									 	{options:{mode:'w'}},
-										function() {
-											console.log('inside callback');
-											fiber.run(data);
-										});
-			ret = blobStream.write(data, function(){
-				console.log('write is DONE')
-			});
-			if (!ret) {
-				ret = blobStream.write(data, function(){
-					console.log('write is DONE')
-				});
-			}
-			retend = blobStream.end();
-			console.log('write returns',ret,' end returns ',retend)
-			var results = Fiber.yield();
-			console.log('DONE results: ',results);
-		}).run();   /* Fiber */
-						
+		// get writestream for putting file into gridFS
+		var blobStream = Blobs.upsertStream({
+		  filename: 'ls_result.txt',
+		  contentType: 'text/plain',
+		  metadata: {
+			  caption: 'Not again!',
+			  command: name,
+			  args: argArray
+		  }
+		}, {mode:'w'}, function (error, file) {
+		  //file is the gridFS file document following the write
+		  fut.return(file._id);
 		});
 
-		command.stderr.on('data', function (data) {
-	  	  console.log('stderr: ' + data);
-		});
+		// run the command with the provided arguments
+		var command = spawn(name, argArray);
 
-		command.on('exit', function (code) {
-	  	  console.log('child process exited with code ' + code);
-		});
+		// pipe the results of the command to the new GridFS file
+		command.stdout.pipe(blobStream);
+
+		// wait for file writing to complete and then return the new
+		// file's ID
+		return fut.wait();
 	  }
 	});
   });
