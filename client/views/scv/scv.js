@@ -8,8 +8,9 @@ Template.Scv.events({
 		var g2 = Session.get('studyGroup2');
 		var contrast_name = g1+' vs '+g2;
 		var studyID = Session.get('studyID');
-		var sampleList1 = SampleGroups.find({group:g1},{'sample':1}).fetch();
-		var sampleList2 = SampleGroups.find({group:g2},{'sample':1}).fetch();
+		var sampleList1 = _.pluck(SampleGroups.find({group:g1}).fetch(), 'sample');
+		var sampleList2 = _.pluck(SampleGroups.find({group:g2}).fetch(), 'sample');
+		//var sampleList2 = SampleGroups.find({group:g2},{'sample':1}).fetch();
 		console.log('contrast: '+contrast_name);
 		console.dir('samples for group '+g1+' :'+sampleList1);
 		Contrast.insert({'name':contrast_name,'studyID':studyID,
