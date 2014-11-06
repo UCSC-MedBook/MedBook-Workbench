@@ -10,6 +10,6 @@ Blobs = new FS.Collection("blobs", {
   stores: [blobStore]
 });
 
-Images = new FS.Collection("images", {
+   Images = new FS.Collection("images", {
   stores: [new FS.Store.FileSystem("images", {path: "~/uploads"})]
 });
