@@ -17,10 +17,10 @@ Template.Shell.helpers({
 		file_id = Session.get('serverDataResponse');
 	
 		//var rstream = Blobs.findOneStream({filename:'ls_result.txt'});
-		debugger;
+		/*
 		var fd = rstream.open();
 		var stuff = fd.read();
-
+*/
 		return file_id;
 	}
 });

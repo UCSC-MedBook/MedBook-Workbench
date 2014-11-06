@@ -32,6 +32,7 @@ cfs:tempstore@0.0.2
 cfs:upload-http@0.0.2
 cfs:worker@0.0.0
 check@1.0.1
+coffeescript@1.0.3
 ctl-helper@1.0.3
 ctl@1.0.1
 ddp@1.0.9
@@ -92,6 +93,7 @@ tracker@1.0.2
 ui@1.0.3
 underscore@1.0.0
 url@1.0.0
+vsivsi:file-collection@0.3.3
 webapp-hashing@1.0.0
 webapp@1.1.2
 zimme:iron-router-active@0.2.2
