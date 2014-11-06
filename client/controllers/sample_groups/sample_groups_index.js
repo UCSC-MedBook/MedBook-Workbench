@@ -4,6 +4,9 @@ SampleGroupsIndexController = RouteController.extend({
   },
 
   data: function () {
+	  var params = this.params;
+	  group_name = this.params.name;
+	  console.log('sample group: ', params.name);
   },
 
   action: function () {
