@@ -42,7 +42,9 @@ Meteor.startup(function () {
 
 		// wait for file writing to complete and then return the new
 		// file's ID
-		return fut.wait();
+		var file_id = fut.wait();
+		console.log('file id is',file_id);
+		return file_id;
 	  }
 	});
   });

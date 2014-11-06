@@ -14,7 +14,14 @@ Template.Shell.events({
 Template.Shell.helpers({
 	response1: function() {
 		console.log('lookup response in session serverDataResponse');
-		return Session.get('serverDataResponse');
+		file_id = Session.get('serverDataResponse');
+	
+		//var rstream = Blobs.findOneStream({filename:'ls_result.txt'});
+		debugger;
+		var fd = rstream.open();
+		var stuff = fd.read();
+
+		return file_id;
 	}
 });
 

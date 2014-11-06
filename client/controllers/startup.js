@@ -4,5 +4,8 @@ Meteor.startup(function () {
 	Meteor.subscribe('study_groups_index');
 	Meteor.subscribe('clinical_events_index');
 	Meteor.subscribe('contrast');	
+	Meteor.subscribe('images');
+	Meteor.subscribe('blobs');
+	
 	Session.set('selectedContrast','')
 });
