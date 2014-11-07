@@ -11,10 +11,15 @@ Schemas = {};
 UI.registerHelper("Schemas", Schemas);
 
 Schemas.Signature = new SimpleSchema({
+  name: {
+      type: String,
+      index: 1,
+      unique: false
+  },
   gene: {
     type: String,
     index: 1,
-    unique: true
+    unique: false
   },
   weight: {
     type: Number,

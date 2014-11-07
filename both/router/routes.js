@@ -31,4 +31,5 @@ Router.map(function () {
   this.route('patient.index', {path: '/wb/patient/:name'})
   this.route('signature.index', {path: '/wb/signature'});
   this.route('SignatureForm', {path: '/wb/signatureForm'});
+  this.route('signature.scores.index', {path: '/'});
 });
