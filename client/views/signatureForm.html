@@ -1,0 +1,25 @@
+<template name="SignatureForm">
+{{#autoForm id="afInsertDemo" type="insert" collection=Collections.Signature}}
+  <div class="form-group {{#if afFieldIsInvalid name='weight'}}has-error{{/if}}">
+    <label class="control-label">{{afFieldLabelText name='gene'}}</label>
+    {{> afFieldInput name='gene'}}
+    {{#if afFieldIsInvalid name='gene'}}
+    <span class="help-block">{{{afFieldMessage name='gene'}}}</span>
+    {{/if}}
+  </div>
+  <div class="form-group {{#if afFieldIsInvalid name='weight'}}has-error{{/if}}">
+    <label class="control-label">{{afFieldLabelText name='weight'}}</label>
+    {{> afFieldInput name='weight'}}
+    {{#if afFieldIsInvalid name='weight'}}
+    <span class="help-block">{{{afFieldMessage name='weight'}}}</span>
+    {{/if}}
+  </div>
+ 
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">Add Gene</button>
+    <button type="reset" class="btn btn-default">Reset Form</button>
+  </div>
+{{/autoForm}}
+{{> quickForm id="sig" schema=Schemas.Signature}}
+</template>
+
