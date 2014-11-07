@@ -10,6 +10,8 @@ Package.onUse(function(api) {
     api.use(['jquery']);
 
     api.export('buildObservationDeck', 'client');
+    api.export('smallCellSigEventObj', 'client');
+    api.export('arSigEventObj', 'client');
     api.addFiles('observation-deck.js', 'client');
 });
 
