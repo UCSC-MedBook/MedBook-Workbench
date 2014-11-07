@@ -12,7 +12,6 @@ mrt:jquery-ui
 mrt:jquery-ui-bootstrap
 bootstrap
 iron:router
-observation-deck
 email
 sample-pie-charts
 zimme:iron-router-active
@@ -26,4 +25,5 @@ cfs:standard-packages
 cfs:filesystem
 cfs:gridfs
 vsivsi:file-collection
+observation-deck
 

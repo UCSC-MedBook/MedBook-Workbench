@@ -9,3 +9,4 @@ Meteor.publish('signature_index', function () {
   console.log('Signature count', cnt);
   return sg;
 });
+
