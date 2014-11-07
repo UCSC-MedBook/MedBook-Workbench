@@ -50,7 +50,18 @@ Template.Cohort.rendered = function() {
         console.log('expDocList.length:', expDocList.length, s);
 
         // TODO get signature gene:weight vectors + metadata
+	    var smallCellSigEventDb = SignatureScores.find({});
+		
+		smallCellSigEventObj['data'] = SignatureScores.find({}).fetch();
+		/*[{
+	               'id' : 'sample1',
+	               'val' : 0.123
+	           }, {
+	               'id' : 'sample2',
+	               'val' : 0.234
+	           }];
 
+	           arSigEventObj['data'] = [];*/
         // build observation deck
         if ((clinDocList.length > 0) || (expDocList.length > 0)) {
             buildObservationDeck(divElem, {
