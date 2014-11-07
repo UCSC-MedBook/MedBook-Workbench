@@ -53,24 +53,8 @@ Template.Cohort.rendered = function() {
         var signatureScoresResp = SignatureScores.find({});
         var signatureScoresDoclist = signatureScoresResp.fetch();
 
-        var sigScoresData = {};
-        for (var qq = 0; qq < signatureScoresDoclist.length; qq++) {
-            var doc = signatureScoresDoclist[qq];
-            var id = doc['id'];
-            var val = doc['val'];
-            sigScoresData[id] = val;
-        }
+        smallCellSigEventObj['data'] = signatureScoresDoclist;
 
-        smallCellSigEventObj['data'] = sigScoresData;
-        /*[{
-        'id' : 'sample1',
-        'val' : 0.123
-        }, {
-        'id' : 'sample2',
-        'val' : 0.234
-        }];
-
-        arSigEventObj['data'] = [];*/
         // build observation deck
         if ((clinDocList.length > 0) || (expDocList.length > 0)) {
             buildObservationDeck(divElem, {
