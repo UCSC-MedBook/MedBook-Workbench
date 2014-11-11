@@ -2,7 +2,10 @@
 <template name="Shell"> 
 <div id="job">	
 	<button id="shell">Run ls</button>
- 	Response:  {{response1}}
+   <h2>Results</h2>
+	{{#each blobs}}
+		<p><a href="{{this.url store='blobs' download=true}}">{{this.name}} ({{this.size}} bytes)</a></p>
+	{{/each}}
 </div>
 </template>
 

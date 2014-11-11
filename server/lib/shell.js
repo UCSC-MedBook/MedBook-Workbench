@@ -1,4 +1,4 @@
-var Future = Npm.require('fibers/future');
+//var Future = Npm.require('fibers/future');
 var spawn = Npm.require('child_process').spawn;
 
 Meteor.startup(function () {
@@ -16,35 +16,50 @@ Meteor.startup(function () {
 		if(name==undefined || name.length<=0) {
 	      throw new Meteor.Error(404, "Please enter your name");
 		}
-
-		// create a new Future, allowing this method to be synchronous
-		var fut = new Future();
-
-		// get writestream for putting file into gridFS
-		var blobStream = Blobs.upsertStream({
-		  filename: 'ls_result.txt',
-		  contentType: 'text/plain',
-		  metadata: {
-			  caption: 'Not again!',
-			  command: name,
-			  args: argArray
-		  }
-		}, {mode:'w'}, function (error, file) {
-		  //file is the gridFS file document following the write
-		  fut.return(file._id);
-		});
-
+        //
+		//// create a new Future, allowing this method to be synchronous
+		//var fut = new Future();
+        //
+		//// get writestream for putting file into gridFS
+		//var blobStream = Blobs.upsertStream({
+		//  filename: 'ls_result.txt',
+		//  contentType: 'text/plain',
+		//  metadata: {
+		//	  caption: 'Not again!',
+		//	  command: name,
+		//	  args: argArray
+		//  }
+		//}, {mode:'w'}, function (error, file) {
+		//  //file is the gridFS file document following the write
+		//  fut.return(file._id);
+		//});
+        //
 		// run the command with the provided arguments
 		var command = spawn(name, argArray);
+        //
+		//// pipe the results of the command to the new GridFS file
+		//command.stdout.pipe(blobStream);
+        //
+		//// wait for file writing to complete and then return the new
+		//// file's ID
+		//var file_id = fut.wait();
 
-		// pipe the results of the command to the new GridFS file
-		command.stdout.pipe(blobStream);
+	  	FS.debug = true;
+		var newFile = new FS.File();
+	    newFile.name('ls_result.txt');
+	    newFile.type('text/plain');
+	    newFile.metadata = {
+		  caption: 'Not again!',
+		  command: name,
+		  args: argArray
+	    };
+	  newFile.size(200);
+	  console.log("before attachData", command.stdout instanceof Npm.require('stream').Readable);
+	  newFile.attachData(command.stdout, {type: 'text/plain'});
+console.log("before insert", newFile);
+	  var fileObj = Blobs.insert(newFile);
 
-		// wait for file writing to complete and then return the new
-		// file's ID
-		var file_id = fut.wait();
-		console.log('file id is',file_id);
-		return file_id;
+		return fileObj._id;
 	  }
 	});
   });
