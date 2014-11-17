@@ -17,7 +17,7 @@ Meteor.startup(function () {
 			  throw new Meteor.Error(404, "Please enter your name");
 		  }
 
-		  FS.debug = true;
+		  //FS.debug = true;
 		  var newFile = new FS.File();
 		  newFile.name('ls_result.txt');
 		  newFile.type('text/plain');
@@ -28,16 +28,13 @@ Meteor.startup(function () {
 			  args: argArray
 		  };
 
+		  // Create a bufferable / paused new stream...
+		  var pt = new PassThrough();
 		  // run the command with the provided arguments
-		  var command = spawn(name, argArray);
+		  spawn(name, argArray).stdout.pipe(pt);
 
 		  // Set the createReadStream...
 		  newFile.createReadStream = function() {
-			  // Not sure why, but for now use the pass through stream
-			  // We have to investigate why the spawn stream doesn't work directly
-			  // with tempstore streams
-			  var pt = new PassThrough();
-			  command.stdout.pipe(pt);
 			  return pt;
 		  };
 
