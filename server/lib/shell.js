@@ -1,5 +1,5 @@
-//var Future = Npm.require('fibers/future');
 var spawn = Npm.require('child_process').spawn;
+var PassThrough = Npm.require('stream').PassThrough;
 
 Meteor.startup(function () {
 	
@@ -11,55 +11,39 @@ Meteor.startup(function () {
  
 	  runshell: function (name, argArray) {
 
-		console.log('server, calling : ', name , ' with args ', argArray);
+		  console.log('server, calling : ', name , ' with args ', argArray);
 
-		if(name==undefined || name.length<=0) {
-	      throw new Meteor.Error(404, "Please enter your name");
-		}
-        //
-		//// create a new Future, allowing this method to be synchronous
-		//var fut = new Future();
-        //
-		//// get writestream for putting file into gridFS
-		//var blobStream = Blobs.upsertStream({
-		//  filename: 'ls_result.txt',
-		//  contentType: 'text/plain',
-		//  metadata: {
-		//	  caption: 'Not again!',
-		//	  command: name,
-		//	  args: argArray
-		//  }
-		//}, {mode:'w'}, function (error, file) {
-		//  //file is the gridFS file document following the write
-		//  fut.return(file._id);
-		//});
-        //
-		// run the command with the provided arguments
-		var command = spawn(name, argArray);
-        //
-		//// pipe the results of the command to the new GridFS file
-		//command.stdout.pipe(blobStream);
-        //
-		//// wait for file writing to complete and then return the new
-		//// file's ID
-		//var file_id = fut.wait();
+		  if(name==undefined || name.length<=0) {
+			  throw new Meteor.Error(404, "Please enter your name");
+		  }
 
-	  	FS.debug = true;
-		var newFile = new FS.File();
-	    newFile.name('ls_result.txt');
-	    newFile.type('text/plain');
-	    newFile.metadata = {
-		  caption: 'Not again!',
-		  command: name,
-		  args: argArray
-	    };
-	  newFile.size(200);
-	  console.log("before attachData", command.stdout instanceof Npm.require('stream').Readable);
-	  newFile.attachData(command.stdout, {type: 'text/plain'});
-console.log("before insert", newFile);
-	  var fileObj = Blobs.insert(newFile);
+		  FS.debug = true;
+		  var newFile = new FS.File();
+		  newFile.name('ls_result.txt');
+		  newFile.type('text/plain');
+		  newFile.size(200); //TODO CFS needs to properly calculate size for streams if not provided; this dummy value makes things work for now
+		  newFile.metadata = {
+			  caption: 'Not again!',
+			  command: name,
+			  args: argArray
+		  };
 
-		return fileObj._id;
+		  // run the command with the provided arguments
+		  var command = spawn(name, argArray);
+
+		  // Set the createReadStream...
+		  newFile.createReadStream = function() {
+			  // Not sure why, but for now use the pass through stream
+			  // We have to investigate why the spawn stream doesn't work directly
+			  // with tempstore streams
+			  var pt = new PassThrough();
+			  command.stdout.pipe(pt);
+			  return pt;
+		  };
+
+		  var fileObj = Blobs.insert(newFile);
+
+		  return fileObj._id;
 	  }
 	});
   });

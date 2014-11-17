@@ -26,4 +26,5 @@ cfs:filesystem
 cfs:gridfs
 vsivsi:file-collection
 observation-deck
+cfs:ui
 
