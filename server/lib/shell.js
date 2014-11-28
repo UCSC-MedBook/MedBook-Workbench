@@ -1,5 +1,5 @@
-var Future = Npm.require('fibers/future');
 var spawn = Npm.require('child_process').spawn;
+var PassThrough = Npm.require('stream').PassThrough;
 
 Meteor.startup(function () {
 	
@@ -17,35 +17,41 @@ Meteor.startup(function () {
 	      throw new Meteor.Error(404, "Please enter your name");
 		}
 
-		// create a new Future, allowing this method to be synchronous
-		var fut = new Future();
-
-		// get writestream for putting file into gridFS
-		var blobStream = Blobs.upsertStream({
-		  filename: 'ls_result.txt',
-		  contentType: 'text/plain',
-		  metadata: {
+		//FS.debug = true;
+		var newFile = new FS.File();
+		newFile.name('ls_result.txt');
+		newFile.type('text/plain');
+		newFile.size(200); //TODO CFS needs to properly calculate size for streams if not provided; this dummy value makes things work for now
+		newFile.metadata = {
 			  caption: 'Not again!',
 			  command: name,
 			  args: argArray
-		  }
-		}, {mode:'w'}, function (error, file) {
-		  //file is the gridFS file document following the write
-		  fut.return(file._id);
-		});
+		};
 
+        // Create a bufferable / paused new stream...
+        var pt = new PassThrough();
+        // run the command with the provided arguments
+        spawn(name, argArray).stdout.pipe(pt);
+  
+        // Set the createReadStream...
+        newFile.createReadStream = function() {
+            return pt;
+        };
+
+		// Create a bufferable / paused new stream...
+		var pt = new PassThrough();
 		// run the command with the provided arguments
-		var command = spawn(name, argArray);
+		spawn(name, argArray).stdout.pipe(pt);
 
-		// pipe the results of the command to the new GridFS file
-		command.stdout.pipe(blobStream);
+		// Set the createReadStream...
+		newFile.createReadStream = function() {
+			  return pt;
+		};
 
-		// wait for file writing to complete and then return the new
-		// file's ID
-		var file_id = fut.wait();
-		console.log('file id is',file_id);
-		return file_id;
-	  }
+		var fileObj = Blobs.insert(newFile);
+
+		return fileObj._id;
+      }
 	});
   });
 

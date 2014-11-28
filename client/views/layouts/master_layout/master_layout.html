@@ -16,15 +16,15 @@
 		</div>
 
 		<ul class="nav nav-tabs" role="tablist">
-			<li class="{{isActiveRoute 'studies.index'}}"><a href="{{pathFor 'studies.index'}}">Home</a></li>
-			<li class="{{isActiveRoute 'cohort'}}"><a href="{{pathFor 'cohort'}}">Cohort</a></li>
-			<li class="{{isActiveRoute 'patient'}}"><a href="{{pathFor 'patient'}}">Patient</a></li>
-			<li class="{{isActiveRoute 'scv'}}"><a href="{{pathFor 'scv'}}">Differential Analysis</a></li>
-			<li class="{{isActiveRoute 'genes'}}"><a href="{{pathFor 'genes'}}">Genes</a></li>
-			<li class="{{isActiveRoute 'pathways'}}"><a href="{{pathFor 'pathways'}}">Pathways</a></li>
-			<li class="{{isActiveRoute 'clinical.events.index'}}"><a href="{{pathFor 'clinical.events.index'}}">Clinical</a></li>
-			<li class="{{isActiveRoute 'shell'}} shell-tab"><a href="{{pathFor 'shell'}}">Tools</a></li>
-			<li class="{{isActiveRoute 'drugs'}}"><a href="{{pathFor 'drugs'}}">Drugs</a></li>
+			<li class="{{isActiveRoute regex='studies.index'}}"><a href="{{pathFor 'studies.index'}}">Home</a></li>
+			<li class="{{isActiveRoute regex='cohort'}}"><a href="{{pathFor 'cohort'}}">Cohort</a></li>
+			<li class="{{isActiveRoute regex='patient'}}"><a href="{{pathFor 'patient'}}">Patient</a></li>
+			<li class="{{isActiveRoute regex='scv'}}"><a href="{{pathFor 'scv'}}">Differential Analysis</a></li>
+			<li class="{{isActiveRoute regex='genes'}}"><a href="{{pathFor 'genes'}}">Genes</a></li>
+			<li class="{{isActiveRoute regex='pathways'}}"><a href="{{pathFor 'pathways'}}">Pathways</a></li>
+			<li class="{{isActiveRoute regex='clinical.events.index'}}"><a href="{{pathFor 'clinical.events.index'}}">Clinical</a></li>
+			<li class="{{isActiveRoute regex='shell'}} shell-tab"><a href="{{pathFor 'shell'}}">Tools</a></li>
+			<li class="{{isActiveRoute regex='drugs'}}"><a href="{{pathFor 'drugs'}}">Drugs</a></li>
 		</ul>
 		<div class="tab-content">
 			{{> yield}}
