@@ -1,1 +1,7 @@
 .build*
+/velocity
+/jasmine-unit
+/package-stubber
+/mocha-web-velocity
+/mirror
+/velocity-html-reporter

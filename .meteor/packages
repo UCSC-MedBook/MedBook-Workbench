@@ -26,4 +26,8 @@ cfs:filesystem
 cfs:gridfs
 vsivsi:file-collection
 observation-deck
+clinical:nightwatch
+sanjo:jasmine
+velocity:html-reporter
+mike:mocha
 
