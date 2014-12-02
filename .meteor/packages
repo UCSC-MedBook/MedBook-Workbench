@@ -30,4 +30,5 @@ clinical:nightwatch
 sanjo:jasmine
 velocity:html-reporter
 mike:mocha
+cfs:ui
 

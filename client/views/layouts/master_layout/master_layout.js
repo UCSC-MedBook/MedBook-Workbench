@@ -10,17 +10,6 @@ Template.MasterLayout.events({
 	},
 	'click .nuc' : function(){
 		location.reload(true);
-	},
-	'click .shell-tab': function(event,template){
-		Meteor.call('runshell', 'ls', ['-F'], function(err,response) {
-			if(err) {
-				Session.set('serverDataResponse', "ls Error:" + err.reason);
-				return;
-			}
-			Session.set('serverDataResponse', response);
-			console.log('ls OK: '+response);
-		});
-		console.log('goto shell:');
 	}
 });
 
