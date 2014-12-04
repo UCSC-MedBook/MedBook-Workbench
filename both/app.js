@@ -2,3 +2,4 @@
 /* App: The Global Application Namespace */
 /*****************************************************************************/
 App = {};
+FS.HTTP.setBaseUrl('/wb/cfs/') ;

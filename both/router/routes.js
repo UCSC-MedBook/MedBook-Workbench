@@ -9,10 +9,6 @@ Router.configure({
   routeControllerNameConverter: 'upperCamelCase'
 });
 
-Router.onBeforeAction(function() {
-	console.log('BEFORE route: ',this.path);
-	
-});
 Router.map(function () {
   /*
     Example:
@@ -26,10 +22,9 @@ Router.map(function () {
   this.route('shell', {path: '/wb/shell'});
   this.route('genes', {path: '/wb/gene'});
   this.route('drugs', {path: '/wb/drug'});
-  this.route('cohort', {path: '/wb/cohort'});
   this.route('pathways', {path: '/wb/pathway'});
   this.route('patient.index', {path: '/wb/patient/:name'})
   this.route('signature.index', {path: '/wb/signature'});
   this.route('SignatureForm', {path: '/wb/signatureForm'});
-  this.route('signature.scores.index', {path: '/'});
+  this.route('signature.scores.index', {path: '/wb/sigIndex'});
 });
