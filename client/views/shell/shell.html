@@ -2,10 +2,14 @@
 <template name="Shell"> 
 <div id="job">	
 	<button id="shell">Run ls</button>
+	<button id="pa">Run pathmark adapter</button>
    <h2>Results</h2>
 	{{#each blobs}}
-		<p><a href="{{this.url store='blobs' download=false}}">{{this.name}} ({{this.size}} bytes)</a> {{> FS.DeleteButton class="btn btn-danger btn-xs"}}</p>
+		<p><a target="_blank" href="{{this.url store='blobs' download=false}}">{{this.name}} ({{this.size}} bytes)</a> {{> FS.DeleteButton class="btn btn-danger btn-xs"}}</p>
 	{{/each}}
 </div>
+
 </template>
+
+
 

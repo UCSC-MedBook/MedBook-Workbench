@@ -2,3 +2,6 @@
 /* App: The Global Application Namespace */
 /*****************************************************************************/
 App = {};
+
+FS.HTTP.setBaseUrl('/wb/cfs/') ;
+hugoGenes = ['ERG', 'AR','FOXP2', 'KLK3'];
