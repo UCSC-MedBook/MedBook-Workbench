@@ -1,5 +1,7 @@
 var spawn = Npm.require('child_process').spawn;
 var PassThrough = Npm.require('stream').PassThrough;
+var Fiber = Npm.require('fibers');
+var fs = Npm.require('fs');
 
 Meteor.startup(function () {
 	
@@ -8,10 +10,10 @@ Meteor.startup(function () {
 		console.log('on server, getCurrentTime called');
 		return new Date();
 	  },
- 
-	  runshell: function (name, argArray) {
+ 	  
+	  runshell: function (name, argArray, output_list, whendone) {
 
-		console.log('server, calling : ', name , ' with args ', argArray);
+		console.log('server, calling : ', name , ' with args ', argArray, ' list of output files written to ' +output_list);
 
 		if(name==undefined || name.length<=0) {
 	      throw new Meteor.Error(404, "Please enter your name");
@@ -19,7 +21,7 @@ Meteor.startup(function () {
 
 		//FS.debug = true;
 		var newFile = new FS.File();
-		newFile.name('ls_result.txt');
+		newFile.name('pathmark.txt');
 		newFile.type('text/plain');
 		newFile.size(200); //TODO CFS needs to properly calculate size for streams if not provided; this dummy value makes things work for now
 		newFile.metadata = {
@@ -27,30 +29,52 @@ Meteor.startup(function () {
 			  command: name,
 			  args: argArray
 		};
+		var newError = new FS.File();
+		newError.name('error.txt');
+		newError.type('text/plain');
+		newError.size(200); //TODO CFS needs to properly calculate size for streams if not provided; this dummy value makes things work for now
+		newError.metadata = {
+			  caption: 'Not again!',
+			  command: name,
+			  args: argArray
+		};
 
         // Create a bufferable / paused new stream...
         var pt = new PassThrough();
-        // run the command with the provided arguments
-        spawn(name, argArray).stdout.pipe(pt);
-  
+        var pt2 = new PassThrough();
+		// run the command with the provided arguments
+        var shlurp = spawn(name, argArray);
+		shlurp.stdout.pipe(pt)
+		shlurp.stderr.pipe(pt2);
+		shlurp.on('close', function(code) {
+				console.log('process ended with code ' + code);
+				fs.readFile(output_list, function(err, data) {
+					if (err) {
+						return console.log(err);
+					}
+					console.log('output files '+data);
+				});
+				//var whendone = function() { 
+				//	Results.insert({'name':'test123','return':code});
+				//};
+				Fiber(function() {
+					whendone(code)
+				}).run();  
+		});
+		
+		
         // Set the createReadStream...
         newFile.createReadStream = function() {
             return pt;
         };
-
-		// Create a bufferable / paused new stream...
-		var pt = new PassThrough();
-		// run the command with the provided arguments
-		spawn(name, argArray).stdout.pipe(pt);
-
-		// Set the createReadStream...
-		newFile.createReadStream = function() {
-			  return pt;
-		};
+        newError.createReadStream = function() {
+            return pt2;
+        };
 
 		var fileObj = Blobs.insert(newFile);
+		var fileErr = Blobs.insert(newError);
 
-		return fileObj._id;
+		return {'stdout':fileObj, 'stderr':fileErr};
       }
 	});
   });

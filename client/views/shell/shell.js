@@ -1,4 +1,4 @@
-
+	
 /*****************************************************************************/
 /* Shell: Event Handlers and Helpersss .js*/
 /*****************************************************************************/
@@ -12,7 +12,17 @@ Template.Shell.events({
 			Session.set('serverDataResponse', response);
 			console.log('ls OK: '+response);
 		});
-	}
+	},
+	'click #pa': function(event,template){
+		Meteor.call('pathmark_adapter', function(err,response) {
+			if(err) {
+				Session.set('serverDataResponse', "pathmark Error:" + err.reason);
+				return;
+			}
+			Session.set('PA serverDataResponse', response);
+			console.log('path OK: '+response);
+		});
+	}	
 });
 
 Template.Shell.helpers({

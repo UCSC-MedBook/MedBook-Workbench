@@ -23,13 +23,14 @@ Router.map(function () {
   this.route('sample.groups.index', {path: '/wb/sampleGroups/:study/:name'});
   this.route('clinical.events.index', {path: '/wb/clinical'});
   this.route('shell', {path: '/wb/shell'});
-  this.route('genes', {path: '/wb/gene'});
+  //this.route('genes.index', {path: '/wb/gene'});
+  this.route('genes', {path: '/wb/gene/:name'});
   this.route('drugs', {path: '/wb/drug'});
   this.route('cohort', {path: '/wb/cohort'});
   this.route('pathways', {path: '/wb/pathway'});
   this.route('patient.index', {path: '/wb/patient/'})
   this.route('patient', {path: '/wb/patient/:name'})
   this.route('signature.index', {path: '/wb/signature'});
-  this.route('SignatureForm', {path: '/wb/signatureForm'});
-  this.route('signature.scores.index', {path: '/'});
+  this.route('SignatureForm', {path: '/wb/signatureForm'}); 
+  this.route('signature.scores.index', {path: '/wb/sig.score'});
 });
