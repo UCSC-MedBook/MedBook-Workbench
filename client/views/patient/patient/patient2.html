@@ -1,0 +1,39 @@
+
+<template name="Patient">
+   <h3>Patient View</h3>
+   <h4>Copy Number Alterations</h4>
+
+   Gene	Cytoband	CNA	Cohort		COSMIC<br>
+   RB1	13q14.2	HomoDel	4%	4%	24<br>
+   AR	Xq3	Amp	10%		4<br>
+
+   <h4>Mutations - SNVs</h4>
+   {{mutations}}
+
+   <b>Gene	Protein Change	Type	Copy Number	Cohort	COSMIC</b><br>
+   TP53	C224W	Missense	no	4%	24<br>
+   AR	T587G	Missense	yes	10%	4<br>
+   <h5>Altered Transcripts</h5>
+
+   AR-V7 % relative to AR full length transcript - % greater than 1% were found to be linked Abi/Enza resistance (NEJM paper)<br>
+  
+   <h4>Clinical Groups</h4>
+
+   Phenotype	type				
+   Abi Resistant	Response
+   PSA rising	Diagnosis
+   Docatexol treated	Treatment
+   timeline
+
+   <h4>Patient-specific Pathways</h4>
+
+   <h5>Pathway	GSEA Score	P value	Q value	</h5>
+   GR Glucocorticoid	39
+   IL2	10
+   Docatexol treated	Treatment
+   Patient Specific Network
+
+ 
+  
+</template>
+
