@@ -25,10 +25,11 @@ Meteor.startup(function () {
 			workDir = temp.mkdirSync('pathmarkWork')
 			var phenofile =path.join(workDir, 'pheno.tab')
 			var contrast = Contrast.findOne({'_id':contrastId},{list1:1,'name':1,'studyID':1,_id:0});	
+			var contrastName = contrast['name']
+			var studyID = contrast['studyID']
 			var wstream = fs.createWriteStream(phenofile)
 			wstream.write( "sample\tgroup\n")
-			//_.each(con_list, function(contrast) {
-				console.log('# of samples in each side of' , contrast['name'],': ' , contrast['list1'].length, 'vs',contrast['list2'].length)
+			console.log('# of samples in each side of' , contrast['name'],': ' , contrast['list1'].length, 'vs',contrast['list2'].length)
 				_.each(contrast['list1'], function(item) {
 					wstream.write(item)
 					sampleList[item] = 1
@@ -43,10 +44,10 @@ Meteor.startup(function () {
 					wstream.write(contrast['group2'])
 					wstream.write( '\n')
 				})
-			//})
 			wstream.end()
 			var expfile =path.join(workDir, 'expdata.tab')
-				console.log('sample list length from study', contrast['studyID'], Object.keys(sampleList).length )
+			
+			console.log('sample list length from study', studyID , Object.keys(sampleList).length )
 			var exp_curs = Expression.find({}, sampleList);
 			var fd = fs.openSync(expfile,'w');
 			fs.writeSync(fd,'gene\t')
@@ -79,7 +80,7 @@ Meteor.startup(function () {
 			//var cmd = 'sheet.pl' 
 			//Meteor.call('runshell', cmd, [outfile], function(err,response) {
 			
-			var whendone = function(retcode, workDir) { 
+			var whendone = function(retcode, workDir, contrastName, studyID) { 
 				var idList = [];  
 				console.log('work dir', workDir, 'return code', retcode)
 				var buf = fs.readFileSync(path.join(workDir,'report.list'), {encoding:'utf8'}).split('\n')
@@ -103,7 +104,7 @@ Meteor.startup(function () {
 					}	
 				})
 				console.log('insert list of blobs', idList);
-				var resObj = Results.insert({'name':'pathmark results','return':retcode, 'blobs':idList});
+				var resObj = Results.insert({'name':'pathmark results for '+contrastName,'studyID':studyID,'return':retcode, 'blobs':idList});
 				if (retcode == 0) {
 					temp.cleanup(function(err, stats) {
 						if (err)
@@ -113,7 +114,7 @@ Meteor.startup(function () {
 				}
 			};
 			Meteor.call('runshell', cmd, ['-n 0' ,'-p paradigm' ,'-b 0', '-m sam', '--output-signature=sig.tab',expfile,phenofile,'/data/import/WCDT/pathmark_pathway.sif'], 
-					workDir, path.join(workDir,'report.list'), whendone, function(err,response) {
+					workDir, contrastName, studyID, path.join(workDir,'report.list'), whendone, function(err,response) {
 				if(err) {
 					console.log('serverDataResponse', "pathmark_adapter Error:" + err);
 					return ;

@@ -11,7 +11,7 @@ Meteor.startup(function () {
 		return new Date();
 	  },
  	  
-	  runshell: function (name, argArray, workDir, output_list, whendone) {
+	  runshell: function (name, argArray, workDir, jname, studyID, output_list, whendone) {
 
 		console.log('server, calling : ', name , ' with args ', argArray, ' list of output files written to ' +output_list);
 
@@ -56,11 +56,8 @@ Meteor.startup(function () {
 					}
 					console.log('output files '+data);
 				});
-				//var whendone = function() { 
-				//	Results.insert({'name':'test123','return':code});
-				//};
 				Fiber(function() {
-					whendone(retcode, workDir)
+					whendone(retcode, workDir, jname, studyID)
 				}).run();  
 		});
 		
@@ -75,6 +72,7 @@ Meteor.startup(function () {
 
 		var fileObj = Blobs.insert(newFile);
 		var fileErr = Blobs.insert(newError);
+		console.log('stdout',fileObj._id, 'stderr', fileErr._id)
 
 		return {'stdout':fileObj, 'stderr':fileErr};
       }
