@@ -20,7 +20,7 @@
 		
 	TaskSet:
 		for each task:
-			pull input from gridfs
+			pull input from gridfs or meteor collections or post
 			run adapter
 			if errors, 
 				mail user
@@ -29,8 +29,22 @@
 				generate paramSet
 				run tool
 				check for errors
-				if errors, email user
+				if errors, email user *****
 				transform output to medbook format
+					geneList - list of genes
+					contrast - list of samples for each named set
+					sampleGroups - list of samples for a group
+					expressionMatrix - genes by samples
+					paradigmMatrix - elements by samples
+					CNV_matrix 
+					weightedGeneList - weight per gene
+					clusterResult - cluster# for each sample and gene
+					pathwayList - list of pathways
+					paperResult
+					hypotheis or question
+					signature - method (code), parameters, trainingset, background
+					study
+					
 				store in grid fs
 				store in mongo collection (optional)
 				update resultSet/result object

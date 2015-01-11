@@ -14,7 +14,8 @@
 		        <li><a tabindex="-1" href="#occam">Differential Gene Expression (microarray)</a></li>
 		        <li><a tabindex="1" href="#limma">Differential Gene Expression (RNAseq)</a></li>
 		        <li><a tabindex="2" href="/wb/shell/diffparadigm">Differential Paradigm</a></li>
-				<li><a tabindex="3" href="/wb/shell/dipsc">DIPSC Generate Differenial signatures and correlate to clinical</a></li>
+				<li><a tabindex="3" href="#pathmark">Differentially Activated Sub-networks (PATHMARK)</a></li>
+				<li><a tabindex="4" href="/wb/shell/dipsc">DIPSC Generate Differenial signatures and correlate to clinical</a></li>
 				<li><a tabindex="-1" href="/wb/shell/dipsc">Train Classifier for contrast (supervised)</a></li>
 		        <li class="divider"></li>
 				<li><a tabindex="-1" href="#">Generate Subtypes from Contrast</a></li>
@@ -35,7 +36,9 @@
 			{{> ContrastDetail _id=this._id list="list1"}}</h5>
 			<h5>Group 2: <a href={{pathFor 'sample.groups.index' study=this.studyID name=this.group2}}>{{this.group2}}:</a>
 			{{> ContrastDetail _id=contrast_id list="list2"}}</h5>
+			{{> Results contrast=contrast_id}}
 		{{/with}}	
+		
 		<ul>	
   		{{#each sampleGroups}}
 		<li>{{sample}} </li>

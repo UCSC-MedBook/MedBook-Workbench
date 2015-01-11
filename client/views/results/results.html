@@ -1,5 +1,23 @@
 
 <template name="Results">
-  client/views/results/results.html
+ 	{{#each results}} 
+		<tr class="selectableResult">result<td>{{name}}</td></tr>
+		<div class="row">
+			<div  data-_id="{{_id}}" class="selectableResult">
+				<p>{{_id}}</p>
+			</div>
+			<div class="selectableResult">
+				<p>{{name}}</p>
+			</div>
+			
+		</div>
+	{{/each}}
 </template>
+
+<template name="ResultDetail">
+	{{#with selectedResult}}
+ 		{{>mimeSpecificResult type=this.type}}
+	{{/with}}
+</template>
+
 

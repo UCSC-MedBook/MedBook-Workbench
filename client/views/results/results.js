@@ -3,21 +3,22 @@
 /* Results: Event Handlers and Helpersss .js*/
 /*****************************************************************************/
 Template.Results.events({
-  /*
-   * Example:
-   *  'click .selector': function (e, tmpl) {
-   *
-   *  }
-   */
+	'click .resultTableRow': function( e, tmpl){
+		var r = $(e.target).data("_id");
+		Session.set('selectedResult',r);
+		console.log('switch results:',r);
+	}  
 });
 
 Template.Results.helpers({
-  /*
-   * Example:
-   *  items: function () {
-   *    return Items.find();
-   *  }
-   */
+	mimeSpecificResult: function() {
+		var id = Session.get('selectedResult');
+		return Results.findOne({_id: id});
+	},
+	results: function() {
+		console.log('results helper', Results.find({}));
+		return Results.find({});
+	}
 });
 
 /*****************************************************************************/

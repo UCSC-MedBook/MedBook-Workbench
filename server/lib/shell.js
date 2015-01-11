@@ -11,7 +11,7 @@ Meteor.startup(function () {
 		return new Date();
 	  },
  	  
-	  runshell: function (name, argArray, output_list, whendone) {
+	  runshell: function (name, argArray, workDir, output_list, whendone) {
 
 		console.log('server, calling : ', name , ' with args ', argArray, ' list of output files written to ' +output_list);
 
@@ -21,20 +21,18 @@ Meteor.startup(function () {
 
 		//FS.debug = true;
 		var newFile = new FS.File();
-		newFile.name('pathmark.txt');
+		newFile.name('pathmark log');
 		newFile.type('text/plain');
 		newFile.size(200); //TODO CFS needs to properly calculate size for streams if not provided; this dummy value makes things work for now
 		newFile.metadata = {
-			  caption: 'Not again!',
 			  command: name,
 			  args: argArray
 		};
 		var newError = new FS.File();
-		newError.name('error.txt');
+		newError.name('pathmark errors');
 		newError.type('text/plain');
 		newError.size(200); //TODO CFS needs to properly calculate size for streams if not provided; this dummy value makes things work for now
 		newError.metadata = {
-			  caption: 'Not again!',
 			  command: name,
 			  args: argArray
 		};
@@ -43,11 +41,15 @@ Meteor.startup(function () {
         var pt = new PassThrough();
         var pt2 = new PassThrough();
 		// run the command with the provided arguments
-        var shlurp = spawn(name, argArray);
+		console.log('work dir is ', workDir)
+	    var shlurp = spawn(name, argArray, {cwd: workDir});
 		shlurp.stdout.pipe(pt)
 		shlurp.stderr.pipe(pt2);
-		shlurp.on('close', function(code) {
-				console.log('process ended with code ' + code);
+		shlurp.on('error', function(error) {
+				console.log('command failed '+error)
+		});
+		shlurp.on('close', function(retcode) {
+				console.log('process ended with code ' + retcode);
 				fs.readFile(output_list, function(err, data) {
 					if (err) {
 						return console.log(err);
@@ -58,7 +60,7 @@ Meteor.startup(function () {
 				//	Results.insert({'name':'test123','return':code});
 				//};
 				Fiber(function() {
-					whendone(code)
+					whendone(retcode, workDir)
 				}).run();  
 		});
 		

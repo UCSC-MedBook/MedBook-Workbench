@@ -8,5 +8,7 @@ Meteor.startup(function () {
 	Meteor.subscribe('blobs');
 	Meteor.subscribe('signature_index');
 	Meteor.subscribe('signature_scores_index');
+	Meteor.subscribe('results');
 	Session.set('selectedContrast','')
+	
 });
