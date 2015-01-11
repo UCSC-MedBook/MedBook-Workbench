@@ -1,5 +1,6 @@
 ResultsController = RouteController.extend({
   waitOn: function () {
+	    
   },
 
   data: function () {
