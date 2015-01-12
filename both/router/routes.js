@@ -13,24 +13,29 @@ Router.configure({
 	console.log('BEFORE route: ',this.path);
 	
 });*/
+
+
 Router.map(function () {
-  /*
-    Example:
-      this.route('home', {path: '/'});
-  */
-  this.route('studies.index', {path: '/wb'});
-  this.route('scv', {path: '/wb/scv'});
-  this.route('sample.groups.index', {path: '/wb/sampleGroups/:study/:name'});
-  this.route('clinical.events.index', {path: '/wb/clinical'});
-  this.route('shell', {path: '/wb/shell'});
-  //this.route('genes.index', {path: '/wb/gene'});
-  this.route('genes', {path: '/wb/gene/:name'});
-  this.route('drugs', {path: '/wb/drug'});
-  this.route('cohort', {path: '/wb/cohort'});
-  this.route('pathways', {path: '/wb/pathway'});
-  this.route('patient.index', {path: '/wb/patient/'})
-  this.route('patient', {path: '/wb/patient/:name'})
-  this.route('signature.index', {path: '/wb/signature'});
-  this.route('SignatureForm', {path: '/wb/signatureForm'}); 
-  this.route('signature.scores.index', {path: '/wb/sig.score'});
+ 
+  this.route('/wb', {name: 'studies.index'});
+  this.route('/wb/scv', {name:'scv'});
+  this.route('/wb/scv/:_id',  function () {
+  		var params = this.params; 
+  		var id = params._id; 
+	}, {
+		name:'scv.contrast'
+	});
+  this.route('/wb/sampleGroups/:study/:name', {name:'sample.groups.index'});
+  this.route('/wb/clinical', {name:'clinical.events.index'});
+  this.route('/wb/shell', {name:'shell'});
+  //this.route('/wb/gene', {name:'genes.index'});
+  this.route('/wb/gene/:name', {name:'genes'});
+  this.route('/wb/drug', {name:'drugs'});
+  this.route('/wb/cohort', {name:'cohort'});
+  this.route('/wb/pathway', {name: 'pathways' });
+  this.route('/wb/patient/', {name: 'patient.index' })
+  this.route('/wb/patient/:name', {name: 'patient' })
+  this.route( '/wb/signature', {name: 'signature.index'});
+  this.route( '/wb/signatureForm', {name: 'SignatureForm'}); 
+  this.route( '/wb/sig.score', {name: 'signature.scores.index'});
 });
