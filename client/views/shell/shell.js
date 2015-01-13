@@ -19,7 +19,7 @@ Template.Shell.events({
 		//	'DTB-032':1,'DTB-034':1,'DTB-036':1,'DTB-038':1,'DTB-040':1,'DTB-046':1,'DTB-071':1,'DTB-073':1,
 		//	'DTB-024Pro2':1,'DTB-030':1,'DTB-053':1,'DTB-063':1,'DTB-064':1,'DTB-069:':1,'DTB-073Pro':1, '_id':0
 		//}
-		var contrastID = 'kgyBukTon7evkzz3P'
+		var contrastID = '3NdogPaMZWk42qTq2'
 		
 		Meteor.call('pathmark_adapter', [contrastID], function(err,response) {
 			if(err) {
