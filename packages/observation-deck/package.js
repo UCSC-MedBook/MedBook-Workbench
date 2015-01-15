@@ -12,6 +12,7 @@ Package.onUse(function(api) {
     api.export('buildObservationDeck', 'client');
     api.export('smallCellSigEventObj', 'client');
     api.export('arSigEventObj', 'client');
+    api.export('gene_lists', 'client');
     api.addFiles('observation-deck.js', 'client');
 });
 
