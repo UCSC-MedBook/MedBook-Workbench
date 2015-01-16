@@ -1,4 +1,4 @@
-
+	
 <template name="Scv">
 {{#if selectedStudy}}
 <div id="scv">
@@ -12,7 +12,7 @@
 		    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Analyze Contrast<span class="caret"></span></a>
 		    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 		        <li><a tabindex="-1" href="#occam">Differential Gene Expression (microarray)</a></li>
-		        <li><a tabindex="1" href="#limma">Differential Gene Expression (RNAseq)</a></li>
+		        <li><a tabindex="1" href="/wb/shell/limma/{{selectedContrast}}">Differential Gene Expression (RNAseq)</a></li>
 		        <li><a tabindex="2" href="/wb/shell/diffparadigm">Differential Paradigm</a></li>
 				<li><a tabindex="3" href="/wb/shell/pathmark">Differentially Activated Sub-networks (PATHMARK)</a></li>
 				<li><a tabindex="4" href="/wb/shell/dipsc">DIPSC Generate Differenial signatures and correlate to clinical</a></li>
@@ -32,11 +32,12 @@
 	    </div>
 		<button class="btn" id="createGroup">Create new Contrast from two groups</button>
 		{{#with selectedContrast}}
-			<h5>Group 1: <a href={{pathFor 'sample.groups.index' study=this.studyID name=this.group1}}>{{this.group1}}:</a>
+			<h5>Group 1: <a href={{pathFor 'SampleGroupsIndex' study=this.studyID name=this.group1}}>{{this.group1}}:</a>
 			{{> ContrastDetail _id=this._id list="list1"}}</h5>
-			<h5>Group 2: <a href={{pathFor 'sample.groups.index' study=this.studyID name=this.group2}}>{{this.group2}}:</a>
+			<h5>Group 2: <a href={{pathFor 'SampleGroupsIndex' study=this.studyID name=this.group2}}>{{this.group2}}:</a>
 			{{> ContrastDetail _id=contrast_id list="list2"}}</h5>
 			{{> Results contrast=contrast_id}}
+		   	<iframe style="height:200:width:200;" src="http://localhost:10003/wb/cfs/files/blobs/ZugpSBfqCwbaQgz5f/mds.pdf?token=eyJhdXRoVG9rZW4iOiIifQ%3D%3D&store=blobs"> iframe</iframe>
 		{{/with}}	
 		
 		<ul>	

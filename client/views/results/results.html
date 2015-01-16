@@ -1,23 +1,36 @@
 
 <template name="Results">
- 	{{#each results}} 
-		<tr class="selectableResult">result<td>{{name}}</td></tr>
-		<div class="row">
-			<div  data-_id="{{_id}}" class="selectableResult">
-				<p>{{_id}}</p>
-			</div>
-			<div class="selectableResult">
-				<p>{{name}}</p>
-			</div>
-			
-		</div>
-	{{/each}}
+	<table class="table table-bordered">
+	    <thead>
+	        <tr>
+	            <th>Result Set</th>
+	            <th>files</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+		 	{{#each results}} 
+				<tr class="selectableResult" data-id="{{_id}}" >
+				<div class="row" >{{name}}
+					{{#each blobs}}
+						<a target="_blank" href="{{geturl.url}}">{{geturl.name}}</a>
+					{{/each}}
+					</div>
+				</tr>
+			{{/each}}
+	    </tbody>
+	</table>
+ 
 </template>
 
 <template name="ResultDetail">
+	res def <div id="HOTdiv"  style="overflow: scroll"  >tab</div>
+	
 	{{#with selectedResult}}
  		{{>mimeSpecificResult type=this.type}}
 	{{/with}}
 </template>
 
+<template name="HOTdiv"> are you here?
+
+</template>
 
