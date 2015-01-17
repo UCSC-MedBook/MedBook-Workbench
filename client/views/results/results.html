@@ -10,27 +10,32 @@
 	    <tbody>
 		 	{{#each results}} 
 				<tr class="selectableResult" data-id="{{_id}}" >
-				<div class="row" >{{name}}
+				<div >{{name}}
 					{{#each blobs}}
-						<a target="_blank" href="{{geturl.url}}">{{geturl.name}}</a>
+						{{#if isPDF}}
+						<a target="iframe_target"  onclick="showPDF()" href="{{geturl.url}}">{{geturl.name}}</a>
+						{{else}}
+						<a class="selectableHot" data-id={{geturl.id}} href="#">{{geturl.name}} {{geturl.type}}</a>
+						{{/if}}
 					{{/each}}
 					</div>
 				</tr>
 			{{/each}}
+			<div id="frameset_div" hidden>
+			<FRAMESET rows="100%" >
+				<frame id="iframe_target" name="iframe_target">
+				</frame>
+			</FRAMESET >
+			</div>
+		<div id="HOTdiv" hidden>hello</div>
 	    </tbody>
 	</table>
  
 </template>
 
-<template name="ResultDetail">
-	res def <div id="HOTdiv"  style="overflow: scroll"  >tab</div>
-	
+<template name="ResultDetail">	
 	{{#with selectedResult}}
  		{{>mimeSpecificResult type=this.type}}
 	{{/with}}
-</template>
-
-<template name="HOTdiv"> are you here?
-
 </template>
 

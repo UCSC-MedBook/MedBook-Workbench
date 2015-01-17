@@ -19,9 +19,7 @@ Router.route('/wb/scv',{name: 'Scv'});
 Router.route('/wb/scv/:_id',{name:'ScvContrast'});
 Router.route('/wb/sampleGroups/:study/:name', {name:'SampleGroupsIndex'});
 Router.route('/wb/clinical', {name:'ClinicalEventsIndex'});
-Router.route('/wb/shell/limma/:contrast', {name:'ShellLimma'}, function() {
-	var id = this.params.contrast;
-});
+Router.route('/wb/shell/limma/:contrast', {template:'ShellLimma'}, {controller:'Shell'});
 Router.route('/wb/shell', {name:'Shell'});
 Router.route('/wb/geneSets/', {name: 'GeneSetsIndex'});
 Router.route('/wb/gene', {name:'GenesIndex'});

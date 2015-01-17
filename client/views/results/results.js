@@ -1,3 +1,8 @@
+showPDF = function() {
+		$("#frameset_div").show()
+		$("#HOTdiv").hide()
+}	;	
+
 
 /*****************************************************************************/
 /* Results: Event Handlers and Helpersss .js*/
@@ -7,6 +12,14 @@ Template.Results.events({
 		var r = e.target.dataset["id"]
 		Session.set('selectedResult',r);
 		console.log('select result:', r);
+	} ,
+	'click .selectableHot': function( e, tmpl){
+		var r = e.target.dataset["id"]
+		Session.set('selectedBlob',r);
+		console.log('selected blob:', r);
+		$("#frameset_div").hide()
+		$("#HOTdiv").show()
+		HOTload(r)
 	} ,
 	'mouseenter .selectableResult': function(e, tmpl) {
 		try {
@@ -32,7 +45,12 @@ Template.Results.helpers({
 		return Results.findOne({_id: id});
 	},
 	results: function() {
-		r = Results.find({})
+		var id = Session.get('selectedContrast')
+		console.log('results contrast', id)
+		if (id)
+				r = Results.find({contrast:id})
+			else
+				r = Results.find({})
 		files = r.map(function(x) {return x.blobs} )
 		console.log('bids' , files[0], files[0][0])
 		Session.set('currentBlob', files[0][0])
@@ -42,9 +60,20 @@ Template.Results.helpers({
 	geturl: function() {
 		var id = this.toString().trim()
 		console.log('blob id ', id)
-		var b = Blobs.findOne({_id:id})
-		console.log('blob name', b.name())
-		return {url: b.url(), name: b.name(), size: b.size()}
+		if (id) {
+			var b = Blobs.findOne({_id:id})
+			console.log('blob name', b.name())
+			return {url: b.url(), name: b.name(), size: b.size(), type:b.type(), id:b._id}
+		}
+		return
+	},
+	isPDF: function() {
+		var id = this.toString().trim()
+		if (id) {
+			var b = Blobs.findOne({_id:id})
+			return b.type() == "application/pdf"
+		}
+	return false
 	}
 });
 
@@ -63,6 +92,7 @@ Tracker.autorun(function(c){
 function HOTload(file_id) {
     if (file_id) {
 	    var blob = Blobs.findOne({_id:file_id} );
+		//debugger;
 		var url = blob.url();
 		console.log('blob path', url)
 		$.ajax({url:url})

@@ -8,7 +8,6 @@ ScvController = RouteController.extend({
 	  var g1 = this.params.g1;
 	  var g2 = this.params.g2;
 	  var tool = this.params.hash;
-	  Session.set('selectedContrast', id);
 	  var studyID = Session.get('studyID');	
 	  if (this.params.length > 0) {
 		  console.log('scv: group1: '+g1+' group2: '+g2);
