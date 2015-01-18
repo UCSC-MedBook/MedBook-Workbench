@@ -1,0 +1,21 @@
+
+<template name="ShellLimma"> 
+<div id="job">	
+	<div class="tool">
+		<h3>Tool Parameters</h3>
+	{{#each selectedContrast}}
+	name: {{name}} 	
+	{{/each}}
+		Select top <input class="input-sm" type="text" placeholder="200"> Genes
+		<br><button id="limma">Run limma </button>
+	</div>
+   <h2>Results</h2>
+	{{#each blobs}}
+		<p><a target="_blank" href="{{this.url store='blobs' download=false}}">{{this.name}} ({{this.size}} bytes)</a> {{> FS.DeleteButton class="btn btn-danger btn-xs"}}</p>
+	{{/each}}
+</div>
+
+</template>
+
+
+

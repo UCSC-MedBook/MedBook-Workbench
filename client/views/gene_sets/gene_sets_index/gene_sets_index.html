@@ -1,0 +1,21 @@
+<template name="GeneSetsIndex">
+<table class="table table-bordered">
+
+    <thead>
+        <tr>
+            <th>Name</th>
+			<th>Type</th>
+			<th>Members</th>
+        </tr>
+    </thead>
+    <tbody>
+		{{#each geneSetsIndex}}
+        <tr>
+            <td>{{name}}</td>
+            <td>{{type}}</td>
+			<td>{{members}}</td>
+		</tr>
+		{{/each}}
+    </tbody>
+</table>  
+</template>
