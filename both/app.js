@@ -3,5 +3,5 @@
 /*****************************************************************************/
 App = {};
 
-FS.HTTP.setBaseUrl('/wb/cfs/') ;
+FS.HTTP.setBaseUrl('/cfs/') ;
 hugoGenes = ['ERG', 'AR','FOXP2', 'KLK3'];

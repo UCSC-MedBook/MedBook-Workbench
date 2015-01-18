@@ -104,7 +104,7 @@ function HOTload(file_id) {
 				mat.push(row)
 			})
 			console.log( "Sample of data:", mat[0], mat[1] );
-			var settings = {minSpareRows: 0, colHeaders: true, data: mat};
+			var settings = {minSpareRows: 0, colHeaders: true, height:300, data: mat};
 			$('#HOTdiv').handsontable(settings);
 		}).fail(function(){
 			alter('error');
