@@ -25,8 +25,8 @@ Meteor.startup(function () {
 		debugger;
 		var contrastId = argList[0]
 		var sampleList =  {'_id':0}
-		workDir = '/private/var/tmp/limmaTmp'
-		//workDir = temp.mkdirSync('limmaWork')
+		//workDir = '/private/var/tmp/limmaTmp'
+		workDir = temp.mkdirSync('limmaWork')
 		var phenofile =path.join(workDir, 'pheno.tab')
 		var contrast = Contrast.findOne({'_id':contrastId},{list1:1,'name':1,'studyID':1,_id:0});	
 		var contrastName = contrast['name']
