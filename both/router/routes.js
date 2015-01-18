@@ -13,24 +13,23 @@ Router.configure({
 	console.log('BEFORE route: ',this.path);
 	
 });*/
-Router.map(function () {
-  /*
-    Example:
-      this.route('home', {path: '/'});
-  */
-  this.route('studies.index', {path: '/wb'});
-  this.route('scv', {path: '/wb/scv'});
-  this.route('sample.groups.index', {path: '/wb/sampleGroups/:study/:name'});
-  this.route('clinical.events.index', {path: '/wb/clinical'});
-  this.route('shell', {path: '/wb/shell'});
-  //this.route('genes.index', {path: '/wb/gene'});
-  this.route('genes', {path: '/wb/gene/:name'});
-  this.route('drugs', {path: '/wb/drug'});
-  this.route('cohort', {path: '/wb/cohort'});
-  this.route('pathways', {path: '/wb/pathway'});
-  this.route('patient.index', {path: '/wb/patient/'})
-  this.route('patient', {path: '/wb/patient/:name'})
-  this.route('signature.index', {path: '/wb/signature'});
-  this.route('SignatureForm', {path: '/wb/signatureForm'}); 
-  this.route('signature.scores.index', {path: '/wb/sig.score'});
-});
+
+Router.route('/wb', {name:'StudiesIndex'});
+Router.route('/wb/scv',{name: 'Scv'});
+Router.route('/wb/scv/:_id',{name:'ScvContrast'});
+Router.route('/wb/sampleGroups/:study/:name', {name:'SampleGroupsIndex'});
+Router.route('/wb/clinical', {name:'ClinicalEventsIndex'});
+Router.route('/wb/shell/limma/:contrast', {template:'ShellLimma'}, {controller:'Shell'});
+Router.route('/wb/shell', {name:'Shell'});
+Router.route('/wb/geneSets/', {name: 'GeneSetsIndex'});
+Router.route('/wb/gene', {name:'GenesIndex'});
+Router.route('/wb/gene/:name', {name:'Genes'});
+Router.route('/wb/drug', {name:'Drugs'});
+Router.route('/wb/cohort', {name:'Cohort'});
+Router.route('/wb/pathway', {name:'Pathways'});
+Router.route('/wb/patient/', {name:'PatientIndex'})
+Router.route('/wb/patient/:name', {name:'Patient'})
+Router.route( '/wb/signature', {name:'SignatureIndex'});
+Router.route( '/wb/signatureForm', {name:'SignatureForm'}); 
+Router.route( '/wb/sig.score',{name: 'SignatureScoresIndex'});
+

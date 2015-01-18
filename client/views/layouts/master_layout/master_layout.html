@@ -16,15 +16,16 @@
 		</div>
 
 		<ul class="nav nav-tabs" role="tablist">
-			<li class="{{isActiveRoute regex='studies.index'}}"><a href="{{pathFor 'studies.index'}}">Home</a></li>
-			<li class="{{isActiveRoute regex='cohort'}}"><a href="{{pathFor 'cohort'}}">Cohort</a></li>
-			<li class="{{isActiveRoute regex='patient'}}"><a href="{{pathFor 'patient'}}">Patient</a></li>
-			<li class="{{isActiveRoute regex='scv'}}"><a href="{{pathFor 'scv'}}">Differential Analysis</a></li>
-			<li class="{{isActiveRoute regex='genes'}}"><a href="{{pathFor 'genes'}}">Gene</a></li>
-			<li class="{{isActiveRoute regex='pathways'}}"><a href="{{pathFor 'pathways'}}">Pathways</a></li>
-			<li class="{{isActiveRoute regex='clinical.events.index'}}"><a href="{{pathFor 'clinical.events.index'}}">Clinical</a></li>
-			<li class="{{isActiveRoute regex='shell'}} shell-tab"><a href="{{pathFor 'shell'}}">Tools</a></li>
-			<li class="{{isActiveRoute regex='drugs'}}"><a href="{{pathFor 'drugs'}}">Drugs</a></li>
+			<li class="{{isActiveRoute regex='studies.index'}}"><a href="{{pathFor 'StudiesIndex'}}">Home</a></li>
+			<li class="{{isActiveRoute regex='cohort'}}"><a href="{{pathFor 'Cohort'}}">Cohort</a></li>
+			<li class="{{isActiveRoute regex='patient'}}"><a href="{{pathFor 'Patient'}}">Patient</a></li>
+			<li class="{{isActiveRoute regex='scv'}}"><a href="{{pathFor 'Scv'}}">Differential Analysis</a></li>
+			<li class="{{isActiveRoute regex='genes'}}"><a href="{{pathFor 'Genes'}}">Gene</a></li>
+			<li class="{{isActiveRoute regex='pathways'}}"><a href="{{pathFor 'Pathways'}}">Pathways</a></li>
+			<li class="{{isActiveRoute regex='clinical.events.index'}}"><a href="{{pathFor 'ClinicalEventsIndex'}}">Clinical</a></li>
+			<li class="{{isActiveRoute regex='shell'}} shell-tab"><a href="{{pathFor 'Shell'}}">Tools</a></li>
+			<li class="{{isActiveRoute regex='drugs'}}"><a href="{{pathFor 'Drugs'}}">Drugs</a></li>
+			<li class="{{isActiveRoute regex='gene_sets'}}"><a href="{{pathFor 'GeneSetsIndex'}}">Gene Sets</a></li>
 		</ul>
 		<div class="tab-content">
 			{{> yield}}

@@ -1,4 +1,4 @@
-
+	
 <template name="Scv">
 {{#if selectedStudy}}
 <div id="scv">
@@ -12,9 +12,9 @@
 		    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Analyze Contrast<span class="caret"></span></a>
 		    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 		        <li><a tabindex="-1" href="#occam">Differential Gene Expression (microarray)</a></li>
-		        <li><a tabindex="1" href="#limma">Differential Gene Expression (RNAseq)</a></li>
+		        <li><a tabindex="1" href="/wb/shell/limma/{{selectedContrastId}}">Differential Gene Expression (RNAseq)</a></li>
 		        <li><a tabindex="2" href="/wb/shell/diffparadigm">Differential Paradigm</a></li>
-				<li><a tabindex="3" href="#pathmark">Differentially Activated Sub-networks (PATHMARK)</a></li>
+				<li><a tabindex="3" href="/wb/shell/pathmark">Differentially Activated Sub-networks (PATHMARK)</a></li>
 				<li><a tabindex="4" href="/wb/shell/dipsc">DIPSC Generate Differenial signatures and correlate to clinical</a></li>
 				<li><a tabindex="-1" href="/wb/shell/dipsc">Train Classifier for contrast (supervised)</a></li>
 		        <li class="divider"></li>
@@ -32,11 +32,11 @@
 	    </div>
 		<button class="btn" id="createGroup">Create new Contrast from two groups</button>
 		{{#with selectedContrast}}
-			<h5>Group 1: <a href={{pathFor 'sample.groups.index' study=this.studyID name=this.group1}}>{{this.group1}}:</a>
-			{{> ContrastDetail _id=this._id list="list1"}}</h5>
-			<h5>Group 2: <a href={{pathFor 'sample.groups.index' study=this.studyID name=this.group2}}>{{this.group2}}:</a>
+			<h5>Group 1: <a href={{pathFor 'SampleGroupsIndex' study=this.studyID name=this.group1}}>{{this.group1}}:</a>
+			{{> ContrastDetail _id=contrast_id list="list1"}}</h5>
+			<h5>Group 2: <a href={{pathFor 'SampleGroupsIndex' study=this.studyID name=this.group2}}>{{this.group2}}:</a>
 			{{> ContrastDetail _id=contrast_id list="list2"}}</h5>
-			{{> Results contrast=contrast_id}}
+			{{> Results contrast=selectedContrast}}
 		{{/with}}	
 		
 		<ul>	
@@ -46,9 +46,6 @@
   			
   		{{/each}}
 	</ul>
-		<img src="/shazam.png" height="450" width="400 !important;"/>
-	<b>Best Signature </b>- <a href="/wb/siv/smallCell">Small Cell</a>
-	<img src="/waterfall.png" height="450" width="400 !important;"/>
 
 </div>
 {{/if}}
