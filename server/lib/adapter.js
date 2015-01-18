@@ -13,7 +13,10 @@ Meteor.startup(function () {
 	read_config = function(){
 
        fs.readFile('../../../../../../config.toml', function (err, data) {
-           medbook_config = toml.parse(data);
+		   if (err) {
+		   		console.log('cannot open config.toml', err, 'from', process.cwd(), 'exe in',_dirname)
+		   }
+		   medbook_config = toml.parse(data);
        });
 	}
 	Meteor.methods({
