@@ -19,6 +19,7 @@ Meteor.startup(function () {
 				   		console.log('cannot open config.toml', err, 'from', process.cwd())
 				   }
 		   		   medbook_config = toml.parse(data);
+		   		})
 		   }
 		   medbook_config = toml.parse(data);
        });
