@@ -10,9 +10,11 @@ var temp = Npm.require('temp').track();
 medbook_config = null  // config file for apps and tools
 
 Meteor.startup(function () {
+	medbook_config = process.env["MEDBOOK_CONFIG"]
+	console.log('adapter startup', medbook_config)
 	read_config = function(){
 
-       fs.readFile('../../../../../../config.toml', function (err, data) {
+       fs.readFile(medbook_config, function (err, data) {
 		   if (err) {
 			   fs.readFile('../../../../../config.toml', function (err, data) {
 				   if (err) {
