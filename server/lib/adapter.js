@@ -13,16 +13,13 @@ Meteor.startup(function () {
 	read_config = function(){
 
        fs.readFile('../../../../../../config.toml', function (err, data) {
-		   
            medbook_config = toml.parse(data);
-		   console.log('config',medbook_config)
        });
 	}
 	Meteor.methods({
 	limma_adapter: function (argList) {
 		console.log('limma_adapter')
 		read_config()
-		debugger;
 		var contrastId = argList[0]
 		var sampleList =  {'_id':0}
 		//workDir = '/private/var/tmp/limmaTmp'
@@ -85,7 +82,6 @@ Meteor.startup(function () {
 		var whendone = function(retcode, workDir, contrastId, contrastName, studyID) { 
 			var idList = [];  
 			console.log('when done work dir', workDir, 'return code', retcode)
-			debugger;
 			var buf = fs.readFileSync(path.join(workDir,'report.list'), {encoding:'utf8'}).split('\n')
 			_.each(buf, function(item) {
 				if (item) {
