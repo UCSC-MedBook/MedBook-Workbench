@@ -6,4 +6,4 @@ export PORT=10003
 export LOG_PATH=/data/MedBook
 export MEDBOOK_CONFIG=$PWD/../config.toml
 echo $MEDBOOK_CONFIG
-forever start -a -l /data/MedBook/wb.log --minUptime 1000 --spinSleepTime 1000 wb.js
+forever start -a -l /data/MedBook/wb.log --minUptime 1000 --spinSleepTime 1000 main.js
