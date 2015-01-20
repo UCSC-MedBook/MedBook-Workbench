@@ -3,12 +3,12 @@
 /* Contrast: Event Handlers and Helpersss .js*/
 /*****************************************************************************/
 Template.Contrast.events({
-  /*
-   * Example:
-   *  'click .selector': function (e, tmpl) {
-   *
-   *  }
-   */
+  	'change #contrast': function(event,template){
+	  Session.set('selectedContrast', event.currentTarget.value);
+	  this.currContrast = event.currentTarget.value;
+	  console.log('Session contrastID:', Session.get('selectedContrast'));
+	}, 
+ 
 });
 
 Template.Contrast.helpers({

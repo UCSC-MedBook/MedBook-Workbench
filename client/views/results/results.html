@@ -1,23 +1,41 @@
 
 <template name="Results">
- 	{{#each results}} 
-		<tr class="selectableResult">result<td>{{name}}</td></tr>
-		<div class="row">
-			<div  data-_id="{{_id}}" class="selectableResult">
-				<p>{{_id}}</p>
+	<table class="table table-bordered">
+	    <thead>
+	        <tr>
+	            <th>Result Set</th>
+	            <th>files</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+		 	{{#each results}} 
+				<tr class="selectableResult" data-id="{{_id}}" >
+				<div >{{name}}
+					{{#each blobs}}
+						{{#if isPDF}}
+						<a target="iframe_target"  onclick="showPDF()" href="{{geturl.url}}">{{geturl.name}}</a>
+						{{else}}
+						<a class="selectableHot" data-id={{geturl.id}} href="#">{{geturl.name}} {{geturl.type}}</a>
+						{{/if}}
+					{{/each}}
+					</div>
+				</tr>
+			{{/each}}
+			<div id="frameset_div" hidden>
+			<FRAMESET rows="100%" >
+				<frame id="iframe_target" name="iframe_target">
+				</frame>
+			</FRAMESET >
 			</div>
-			<div class="selectableResult">
-				<p>{{name}}</p>
-			</div>
-			
-		</div>
-	{{/each}}
+		<div id="HOTdiv" hidden></div>
+	    </tbody>
+	</table>
+ 
 </template>
 
-<template name="ResultDetail">
+<template name="ResultDetail">	
 	{{#with selectedResult}}
  		{{>mimeSpecificResult type=this.type}}
 	{{/with}}
 </template>
-
 

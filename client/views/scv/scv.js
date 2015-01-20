@@ -62,6 +62,9 @@ Template.Scv.helpers({
 		var id = Session.get('selectedContrast');
 		console.log('contrast id ',id);
 		return Contrast.findOne({_id: id });
+	},
+	selectedContrastId: function() {
+		return Session.get('selectedContrast');
 	}
 
 });

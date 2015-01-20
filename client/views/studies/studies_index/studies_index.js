@@ -34,9 +34,9 @@ Template.StudiesIndex.events({
 }
 
 Template.StudiesIndex.helpers({
-	studies: function(){
-		return Studies.find({},{sort: {short_name:1}});
-	}
+	//studies: function(){
+	//	return Studies.find({},{sort: {short_name:1}});
+	//}
 });
 
 /*****************************************************************************/
