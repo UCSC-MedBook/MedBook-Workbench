@@ -8,17 +8,20 @@ var temp = Npm.require('temp').track();
 //var mime = Npm.require('mime');
 
 medbook_config = null  // config file for apps and tools
+medbook_config_file = null  // config file for apps and tools
 
 Meteor.startup(function () {
-	medbook_config = process.env["MEDBOOK_CONFIG"]
-	console.log('adapter startup', medbook_config)
+	medbook_config_file = process.env["MEDBOOK_CONFIG"]
+	console.log('adapter startup', medbook_config_file)
 	read_config = function(){
-
-       fs.readFile(medbook_config, function (err, data) {
+	   console.log('reading ',medbook_config_file)
+       fs.readFile(medbook_config_file, function (err, data) {
 		   if (err) {
+			   console.log('error opening config', err)
 			   fs.readFile('../../../../../config.toml', function (err, data) {
 				   if (err) {
 				   		console.log('cannot open config.toml', err, 'from', process.cwd())
+					   return;
 				   }
 		   		   medbook_config = toml.parse(data);
 		   		})
@@ -28,7 +31,7 @@ Meteor.startup(function () {
 	}
 	Meteor.methods({
 	limma_adapter: function (argList) {
-		console.log('limma_adapter')
+		console.log('limma_adapter',argList)
 		read_config()
 		var contrastId = argList[0]
 		var sampleList =  {'_id':0}
