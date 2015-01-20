@@ -1,11 +1,25 @@
-
 <template name="Cohort">
- <div id="cohort"> 
-	 
- 	<div id='Cohort_OD_Div'>
- 		This space reserved for an Observation Deck.
- 	</div>
-	 
- </div>
+	<div id="cohort">
+		<div class="genesets-panel">
+			gene set:
+			{{#with genesets}}
+			<select id="geneset" class="span1-12">
+				<option value="">Select a geneset ...</option>
+				{{#each this}}
+				<option  value="{{id}}" selected={{selected}}>{{this}}</option>
+				{{/each}}
+			</select>
+			{{else}}
+			No genesets yet.
+			{{/with}}
+			<!-- <button class="select_geneset">
+			select
+			</button> -->
+		</div>
+		<div id='Cohort_OD_Div'>
+			This space reserved for an Observation Deck.
+		</div>
+
+	</div>
 </template>
 
