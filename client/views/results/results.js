@@ -28,7 +28,6 @@ Template.Results.events({
 		catch (err) {
 			r = '';
 		}
-		//console.dir(e.target)
 		Session.set('selectedResult',r);
 		console.log('hover',r)
 	},

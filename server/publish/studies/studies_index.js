@@ -7,5 +7,5 @@ Meteor.startup(function () {
   	var cnt = Studies.find().count();
   	console.log('studies count', cnt);
   	return s;
-	});
+		});
 });
