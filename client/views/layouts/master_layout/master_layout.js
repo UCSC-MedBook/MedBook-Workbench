@@ -1,16 +1,16 @@
-
 /*****************************************************************************/
 /* MasterLayout: Event Handlers and Helpersss .js*/
 /*****************************************************************************/
 Template.MasterLayout.events({
-	'change #study': function(event,template){
-		Session.set('studyID', event.currentTarget.value);
-		this.currStudy = event.currentTarget.value;
-		console.log('Session studyID:', Session.get('studyID'));
-	},
-	'click .nuc' : function(){
-		location.reload(true);
-	}
+    'change #study' : function(event, template) {
+        Session.set('studyID', event.currentTarget.value);
+        this.currStudy = event.currentTarget.value;
+        console.log('Session studyID:', Session.get('studyID'));
+    },
+    'click .nuc' : function() {
+        document.cookie = 'od_config={};path=/';
+        location.reload(true);
+    }
 });
 
 Template.MasterLayout.helpers({
@@ -23,19 +23,17 @@ Template.MasterLayout.helpers({
 		else 
 			return false;
 	}
-  
 });
 
 /*****************************************************************************/
 /* MasterLayout: Lifecycle Hooks */
 /*****************************************************************************/
-Template.MasterLayout.created = function () {
+Template.MasterLayout.created = function() {
 };
 
-Template.MasterLayout.rendered = function () {
+Template.MasterLayout.rendered = function() {
 };
 
-Template.MasterLayout.destroyed = function () {
+Template.MasterLayout.destroyed = function() {
 };
-
 

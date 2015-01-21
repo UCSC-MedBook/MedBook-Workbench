@@ -28,7 +28,6 @@ Template.Results.events({
 		catch (err) {
 			r = '';
 		}
-		//console.dir(e.target)
 		Session.set('selectedResult',r);
 		console.log('hover',r)
 	},
@@ -51,7 +50,9 @@ Template.Results.helpers({
 				r = Results.find({contrast:id})
 			else
 				r = Results.find({})
+		console.log('results of Results.find', r)
 		files = r.map(function(x) {return x.blobs} )
+		console.log('b_ids',files)
 		console.log('bids' , files[0], files[0][0])
 		Session.set('currentBlob', files[0][0])
 		//console.log('results fetch', r, files);
