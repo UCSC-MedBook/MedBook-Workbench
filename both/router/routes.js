@@ -1,6 +1,8 @@
 /*****************************************************************************/
 /* Client and Server Routes */
 /*****************************************************************************/
+Meteor.startup(function () {
+	
 Router.configure({
   layoutTemplate: 'MasterLayout',
   loadingTemplate: 'Loading',
@@ -32,4 +34,5 @@ Router.route('/wb/patient/:name', {name:'Patient'})
 Router.route( '/wb/signature', {name:'SignatureIndex'});
 Router.route( '/wb/signatureForm', {name:'SignatureForm'}); 
 Router.route( '/wb/sig.score',{name: 'SignatureScoresIndex'});
-
+console.log('router started')
+});
