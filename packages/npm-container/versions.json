@@ -7,7 +7,11 @@
     [
       "underscore",
       "1.0.1"
-    ]
+    ],
+	[
+		"toml-js",
+		"0.0.8"
+	]
   ],
   "pluginDependencies": [],
   "toolVersion": "meteor-tool@1.0.35",
