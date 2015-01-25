@@ -1,6 +1,5 @@
   var path = Npm.require('path');                                                        // 91
   var fs = Npm.require('fs'); 
-  var toml = Npm.require('toml-js')                                                           // 92
                                                                                          // 93
   Package.describe({                                                                     // 94
     summary: 'Contains all your npm dependencies',                                       // 95
