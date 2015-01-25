@@ -1,9 +1,9 @@
 var fs = Npm.require('fs');
 var path = Npm.require('path');
 var Fiber = Npm.require('fibers');
-var toml = Npm.require('toml-js');
-var mime = Npm.require('mime');
-var temp = Npm.require('temp').track();
+var toml = Meteor.npmRequire('toml-js');
+var mime = Meteor.npmRequire('mime');
+var ntemp = Meteor.npmRequire('temp').track();
 
 //var mime = Npm.require('mime');
 
@@ -36,7 +36,7 @@ Meteor.startup(function () {
 		var contrastId = argList[0]
 		var sampleList =  {'_id':0}
 		//workDir = '/private/var/tmp/limmaTmp'
-		workDir = temp.mkdirSync('limmaWork')
+		workDir = ntemp.mkdirSync('limmaWork')
 		var phenofile =path.join(workDir, 'pheno.tab')
 		var contrast = Contrast.findOne({'_id':contrastId},{list1:1,'name':1,'studyID':1,_id:0});	
 		try {
@@ -179,7 +179,7 @@ Meteor.startup(function () {
 		    read_config()
 			var contrastId = argList[0]
 			var sampleList =  {'_id':0}
-			workDir = temp.mkdirSync('pathmarkWork')
+			workDir = ntemp.mkdirSync('pathmarkWork')
 			var phenofile =path.join(workDir, 'pheno.tab')
 			var contrast = Contrast.findOne({'_id':contrastId},{list1:1,'name':1,'studyID':1,_id:0});	
 			var contrastName = contrast['name']
@@ -263,7 +263,7 @@ Meteor.startup(function () {
 				console.log('insert list of blobs', idList);
 				var resObj = Results.insert({'contrast':contrastId, 'name':'pathmark results for '+contrastName,'studyID':studyID,'return':retcode, 'blobs':idList});
 				if (retcode == 0) {
-					temp.cleanup(function(err, stats) {
+					ntemp.cleanup(function(err, stats) {
 						if (err)
 							console.log('error deleting temp files', err)
     					console.log('deleting temp files');
