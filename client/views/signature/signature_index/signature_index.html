@@ -1,5 +1,22 @@
 
 <template name="SignatureIndex">
-  client/views/signature/signature_index/signature_index.html
+<table class="table table-bordered">
+	<caption>Signatures</caption>
+
+    <thead>
+        <tr>
+            <th>name</th>
+			<th>version</th>
+        </tr>
+    </thead>
+    <tbody>
+		{{#each signature}}
+        <tr>
+            <td>{{name}}</td>
+			<td>{{version}}</td>
+        </tr>
+		{{/each}}
+    </tbody>
+</table>  
 </template>
 

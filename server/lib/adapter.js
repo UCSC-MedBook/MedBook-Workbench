@@ -39,7 +39,13 @@ Meteor.startup(function () {
 		workDir = temp.mkdirSync('limmaWork')
 		var phenofile =path.join(workDir, 'pheno.tab')
 		var contrast = Contrast.findOne({'_id':contrastId},{list1:1,'name':1,'studyID':1,_id:0});	
-		var contrastName = contrast['name']
+		try {
+			var contrastName = contrast['name']
+		}
+		catch(error) {
+			console.log('No contrast found for ', argList, " error is ", error)
+			return -1
+		}
 		var studyID = contrast['studyID']
 		var wstream = fs.createWriteStream(phenofile)
 		wstream.write( "sample\tgroup\n")
@@ -111,7 +117,35 @@ Meteor.startup(function () {
 					var f = new FS.File();
 					f.attachData(item, opts);
 					var blob = Blobs.insert(f);
-					console.log('blob id', blob._id, 'ext' , ext, 'type', opts.type, 'item',item, 'opts', opts, 'size', f.size(), 'name', f.name());
+					console.log('name', f.name(),'blob id', blob._id, 'ext' , ext, 'type', opts.type, 'item',item, 'opts', opts, 'size', f.size());
+					if (f.name() == 'sig.tab') {
+						// Write signature object to MedBook
+						console.log('write signature')
+						var sig_lines = fs.readFileSync(item, {encoding:'utf8'}).split('\n')
+						var count = 0
+						sig = {}
+						_.each(sig_lines, function(sig_line) {
+							var line = sig_line.split('\t')
+							count += 1
+							gene = line[0]
+							fc = line[1]
+							sig[gene] = fc	
+							if (count < 10)
+								console.log(gene,fc)
+						})
+						var sig_version = Signature.find({'contrast':contrastId}, {'version':1, sort: { version: -1 }}).fetch()
+						var version = 0.9
+						try {
+							version = Number(sig_version[0]['version']);
+						}
+						catch(error) {
+							version = 0.9;
+						}	
+						console.log('previous signature version', version, sig_version)
+						version = version + 0.1
+						var sigObj = Signature.insert({'name':contrastName, 'studyID': studyID, 'version':version,'contrast':contrastId, 'signature': sig})
+						console.log('sig result', sigObj)
+					}
 					idList.push(blob._id);
 				}	
 			})
@@ -152,7 +186,7 @@ Meteor.startup(function () {
 			var studyID = contrast['studyID']
 			var wstream = fs.createWriteStream(phenofile)
 			wstream.write( "sample\tgroup\n")
-			console.log('# of samples in each side of' , contrast['name'],': ' , contrast['list1'].length, 'vs',contrast['list2'].length)
+			console.log('# of samples in each side of' , contrastName,': ' , contrast['list1'].length, 'vs',contrast['list2'].length)
 				_.each(contrast['list1'], function(item) {
 					wstream.write(item)
 					sampleList[item] = 1

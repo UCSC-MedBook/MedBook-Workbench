@@ -12,12 +12,11 @@ Template.SignatureIndex.events({
 });
 
 Template.SignatureIndex.helpers({
-  /*
-   * Example:
-   *  items: function () {
-   *    return Items.find();
-   *  }
-   */
+  signature: function() {
+	  var s= Signature.find();
+	  return s;
+  },
+  version: function () { return this.version.toFixed(1); }
 });
 
 /*****************************************************************************/

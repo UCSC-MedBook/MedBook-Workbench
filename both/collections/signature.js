@@ -1,4 +1,6 @@
-//Signature = new Meteor.Collection('signature');
+
+var Collections = {};
+Signature = Collections.Signature = new Mongo.Collection("signature");
 
 /*
  * Add query methods like this:
@@ -16,23 +18,32 @@ Schemas.Signature = new SimpleSchema({
       index: 1,
       unique: false
   },
-  gene: {
-    type: String,
-    index: 1,
-    unique: false
+  studyID: {
+      type: String,
+      index: 1,
+      unique: false 	
+  },
+  contrast: {
+	  type: Contrast,
+	  unique: false,
+	  index: 1
+  },
+  version: {
+      type: Number,
+	  decimal: true,
+      unique: false 	
   },
   weight: {
     type: Number,
     optional: true
   }
 });
+Signature.attachSchema(Schemas.Signature);
 
-var Collections = {};
 
 UI.registerHelper("Collections", Collections);
 
-Signature = Collections.Signature = new Mongo.Collection("signature");
-Signature.attachSchema(Schemas.Signature);
+
 Signature.allow({
   insert: function () {
     return true;
