@@ -18,10 +18,25 @@ Schemas.Signature = new SimpleSchema({
       index: 1,
       unique: false
   },
+  gene: {
+      type: String,
+	  index: 1,
+	  unique: true	  
+  },
+  weight: {
+    type: Number,
+	decimal: true,
+    optional: true
+  },
+  pval: {
+    type: Number,
+	decimal: true,
+    optional: true
+  },
   studyID: {
       type: String,
       index: 1,
-      unique: false 	
+      unique: false, 	
   },
   contrast: {
 	  type: Schemas.Contrast,
@@ -32,10 +47,6 @@ Schemas.Signature = new SimpleSchema({
       type: Number,
 	  decimal: true,
       unique: false 	
-  },
-  weight: {
-    type: Number,
-    optional: true
   }
 });
 Signature.attachSchema(Schemas.Signature);

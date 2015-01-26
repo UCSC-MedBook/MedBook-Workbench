@@ -13,6 +13,7 @@ Template.GeneSetsIndex.events({
 Template.GeneSetsIndex.helpers({
   geneSetsIndex: function() {
 		var g = GeneSets.find({});
+		console.log('genesets' , g)
   		return g;
 	}
 });

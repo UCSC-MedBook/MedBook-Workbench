@@ -118,21 +118,12 @@ Meteor.startup(function () {
 					f.attachData(item, opts);
 					var blob = Blobs.insert(f);
 					console.log('name', f.name(),'blob id', blob._id, 'ext' , ext, 'type', opts.type, 'item',item, 'opts', opts, 'size', f.size());
-					if (f.name() == 'sig.tab') {
+					if (f.name() == 'genes.tab') {
 						// Write signature object to MedBook
-						console.log('write signature')
+						console.log('write gene signature')
 						var sig_lines = fs.readFileSync(item, {encoding:'utf8'}).split('\n')
 						var count = 0
 						sig = {}
-						_.each(sig_lines, function(sig_line) {
-							var line = sig_line.split('\t')
-							count += 1
-							gene = line[0]
-							fc = line[1]
-							sig[gene] = fc	
-							if (count < 10)
-								console.log(gene,fc)
-						})
 						var sig_version = Signature.find({'contrast':contrastId}, {'version':1, sort: { version: -1 }}).fetch()
 						var version = 0.9
 						try {
@@ -143,8 +134,29 @@ Meteor.startup(function () {
 						}	
 						console.log('previous signature version', version, sig_version)
 						version = version + 0.1
-						var sigObj = Signature.insert({'name':contrastName, 'studyID': studyID, 'version':version,'contrast':contrastId, 'signature': sig})
-						console.log('sig result', sigObj)
+						_.each(sig_lines, function(sig_line) {
+							var line = sig_line.split('\t')
+							
+							// logFC AveExpr t P.Value adj.P.Val B
+							gene = line[0]
+							fc = line[1]
+							aveExp = line[2]
+							tStat = line[3]
+							pVal = line[4]
+							adjPval = line[5]
+							Bstat = line[6]
+							sig[gene] = fc	
+							try{
+								var sigObj = Signature.insert({'name':contrastName, 'gene':gene, 'weight':fc, 'pval': adjPval,'studyID': studyID, 'version':version,'contrast':contrastId})
+								count += 1
+								if (count < 10)
+									console.log(gene,fc)
+							}
+							catch (error) {
+								console.log('cannot insert signature for gene', gene, error)
+							}
+						})
+						//console.log('sig result', sigObj)
 					}
 					idList.push(blob._id);
 				}	

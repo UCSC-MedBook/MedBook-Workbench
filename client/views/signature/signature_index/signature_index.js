@@ -13,8 +13,8 @@ Template.SignatureIndex.events({
 
 Template.SignatureIndex.helpers({
   signature: function() {
-	  var s= Signature.find();
-	  return s;
+	  //var s= Signature.find();
+	  return this
   },
   version: function () { return this.version.toFixed(1); }
 });
