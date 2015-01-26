@@ -11,6 +11,8 @@ Template.Cohort.events({
     'change #geneset' : function(event, template) {
         // TODO genesets currentyl hardcoded into observation-deck plugin
         // TODO genesets should be made into a subscription to mongodb
+        document.cookie = 'od_config={};path=/';
+
         var genesetName = event.currentTarget.value;
         Session.set('geneset', genesetName);
         console.log('SESSION geneset:', Session.get('geneset'));
@@ -102,7 +104,7 @@ Template.Cohort.rendered = function() {
             while (divElem.firstChild) {
                 divElem.removeChild(divElem.firstChild);
             }
-            divElem.innerHTML('no clinical data', s);
+            divElem.innerHTML('no data');
         }
 
     });
