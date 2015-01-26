@@ -92,12 +92,13 @@ function HOTload(file_id) {
 	    var blob = Blobs.findOne({_id:file_id} );
 		try {
 			var url = blob.url();
+			var bname = blob.name();
 		}
 		catch (error) {
 			console.log('cannot find url for blob id',file_id)
 			return
 		}
-		console.log('blob path', url)
+		console.log('blob path', bname, ' ',url)
 		$.ajax({url:url})
 		.done( function(data) {
 			var mat = []
@@ -106,8 +107,15 @@ function HOTload(file_id) {
 				var row = l.split('\t')
 				mat.push(row)
 			})
-			console.log( "Sample of data:", mat[0], mat[1] );
-			var settings = {minSpareRows: 0, colHeaders: true, height:300, data: mat};
+			console.log( "Sample of data:", bname, mat[0], mat[1] );
+			var colheaders = true;
+			if (bname=='genes.tab') {
+				colheaders = ['Gene', 'LogFoldChange', 'Expression','T-state','Pval', 'Adj.Pval','B stat']
+			}
+			if (bname=='sig.tab') {
+				colheaders = ['Gene','coeff.Intercept','coeff.contrastB','stdev','stdev.contrastB','sigma','df.residual','Amean','s2.post','t.Intercept','t.contrastB',	'df.total',	'p.val.Intercept','p.value.contrastB','lods.Intercept',	'lods.contrastB','F','F.p.value']	
+			}
+			var settings = {minSpareRows: 0, colHeaders: colheaders , height:300, data: mat};
 			$('#HOTdiv').handsontable(settings);
 		}).fail(function(){
 			alter('error');
