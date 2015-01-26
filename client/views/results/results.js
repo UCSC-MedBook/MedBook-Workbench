@@ -110,7 +110,7 @@ function HOTload(file_id) {
 			console.log( "Sample of data:", bname, mat[0], mat[1] );
 			var colheaders = true;
 			if (bname=='genes.tab') {
-				colheaders = ['Gene', 'LogFoldChange', 'Expression','T-state','Pval', 'Adj.Pval','B stat']
+				colheaders = ['Gene', 'LogFoldChange', 'Expression','T-stat','Pval', 'Adj.Pval','B stat']
 			}
 			if (bname=='sig.tab') {
 				colheaders = ['Gene','coeff.Intercept','coeff.contrastB','stdev','stdev.contrastB','sigma','df.residual','Amean','s2.post','t.Intercept','t.contrastB',	'df.total',	'p.val.Intercept','p.value.contrastB','lods.Intercept',	'lods.contrastB','F','F.p.value']	
