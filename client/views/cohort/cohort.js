@@ -13,6 +13,7 @@ Template.Cohort.events({
         // TODO genesets should be made into a subscription to mongodb
         var genesetName = event.currentTarget.value;
         Session.set('geneset', genesetName);
+        document.cookie = 'od_config={};path=/';
         console.log('SESSION geneset:', Session.get('geneset'));
 
         Session.set('geneList', gene_lists[genesetName]);
@@ -102,7 +103,7 @@ Template.Cohort.rendered = function() {
             while (divElem.firstChild) {
                 divElem.removeChild(divElem.firstChild);
             }
-            divElem.innerHTML('no clinical data', s);
+            divElem.innerHTML('no clinical data');
         }
 
     });
