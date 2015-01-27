@@ -24,7 +24,7 @@ Schemas.Signature = new SimpleSchema({
       unique: false 	
   },
   contrast: {
-	  type: Contrast,
+	  type: Schemas.Contrast,
 	  unique: false,
 	  index: 1
   },

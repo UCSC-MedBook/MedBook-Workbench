@@ -64,10 +64,11 @@ Template.Cohort.events({
         var cookieGenes = getCookieGenes('od_config');
         console.log('cookieGenes', cookieGenes);
 
-        document.cookie = 'od_config={};path=/';
+        // document.cookie = 'od_config={};path=/';
 
         var genesetName = event.currentTarget.value;
         Session.set('geneset', genesetName);
+        document.cookie = 'od_config={};path=/';
         console.log('SESSION geneset:', Session.get('geneset'));
 
         Session.set('geneList', cookieGenes.concat(gene_lists[genesetName]));

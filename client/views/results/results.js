@@ -55,15 +55,12 @@ Template.Results.helpers({
 		console.log('b_ids',files)
 		console.log('bids' , files[0], files[0][0])
 		Session.set('currentBlob', files[0][0])
-		//console.log('results fetch', r, files);
 		return r;
 	},
 	geturl: function() {
 		var id = this.toString().trim()
-		console.log('blob id ', id)
 		if (id) {
 			var b = Blobs.findOne({_id:id})
-			console.log('blob name', b.name())
 			return {url: b.url(), name: b.name(), size: b.size(), type:b.type(), id:b._id}
 		}
 		return
@@ -93,8 +90,13 @@ Tracker.autorun(function(c){
 function HOTload(file_id) {
     if (file_id) {
 	    var blob = Blobs.findOne({_id:file_id} );
-		//debugger;
-		var url = blob.url();
+		try {
+			var url = blob.url();
+		}
+		catch (error) {
+			console.log('cannot find url for blob id',file_id)
+			return
+		}
 		console.log('blob path', url)
 		$.ajax({url:url})
 		.done( function(data) {
