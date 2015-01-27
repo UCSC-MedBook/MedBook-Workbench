@@ -1,53 +1,3 @@
-getCookie = function(name) {
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ')
-        c = c.substring(1, c.length);
-        if (c.indexOf(nameEQ) == 0)
-            return c.substring(nameEQ.length, c.length);
-    }
-    return null;
-};
-
-// cookie {"pivot_sort":{"pivot_event":"CACHD1_mRNA"},"colSort":{"steps":[{
-// "name" : "FGF9_mRNA",
-// "reverse" : false
-// }]
-// },"required events":["BANK1_mRNA"]}
-
-getCookieGenes = function(name) {
-    var eventList = [];
-    var cookieObj = u.parseJson(getCookie(name));
-    if ((cookieObj == null) || ((u.getKeys(cookieObj)).length == 0)) {
-        return [];
-    }
-    if (u.hasOwnProperty(cookieObj, 'pivot_sort')) {
-        eventList.push(cookieObj['pivot_sort']['pivot_event']);
-    }
-    if (u.hasOwnProperty(cookieObj, 'colSort')) {
-        var steps = cookieObj['colSort']['steps'];
-        for (var i = 0; i < steps.length; i++) {
-            var step = steps[i];
-            eventList.push(step['name']);
-        }
-    }
-    if (u.hasOwnProperty(cookieObj, 'required events')) {
-        eventList.concat(cookieObj['required events']);
-    }
-
-    var geneList = [];
-    for (var i = 0; i < eventList.length; i++) {
-        var eventId = eventList[i];
-        if (u.endsWith(eventId, '_mRNA')) {
-            geneList.push(eventId.replace('_mRNA', ''));
-        }
-    }
-
-    return u.eliminateDuplicates(geneList);
-};
-
 /*****************************************************************************/
 /* Cohort: Event Handlers and Helpers .js*/
 /*****************************************************************************/
@@ -61,14 +11,11 @@ Template.Cohort.events({
     'change #geneset' : function(event, template) {
         // TODO genesets currently hardcoded into observation-deck plugin
         // TODO genesets should be made into a subscription to mongodb
-        var cookieGenes = getCookieGenes('od_config');
+        var cookieGenes = getCookieEvents();
         console.log('cookieGenes', cookieGenes);
-
-        // document.cookie = 'od_config={};path=/';
 
         var genesetName = event.currentTarget.value;
         Session.set('geneset', genesetName);
-        document.cookie = 'od_config={};path=/';
         console.log('SESSION geneset:', Session.get('geneset'));
 
         Session.set('geneList', cookieGenes.concat(gene_lists[genesetName]));
