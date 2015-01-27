@@ -10,6 +10,7 @@ Package.onUse(function(api) {
     api.use(['jquery']);
 
     api.export('buildObservationDeck', 'client');
+    api.export('getCookieEvents', 'client');
     api.export('smallCellSigEventObj', 'client');
     api.export('arSigEventObj', 'client');
     api.export('gene_lists', 'client');

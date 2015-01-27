@@ -9,14 +9,16 @@ Template.Cohort.events({
      *  }
      */
     'change #geneset' : function(event, template) {
-        // TODO genesets currentyl hardcoded into observation-deck plugin
+        // TODO genesets currently hardcoded into observation-deck plugin
         // TODO genesets should be made into a subscription to mongodb
+        var cookieGenes = getCookieEvents();
+        console.log('cookieGenes', cookieGenes);
+
         var genesetName = event.currentTarget.value;
         Session.set('geneset', genesetName);
-        document.cookie = 'od_config={};path=/';
         console.log('SESSION geneset:', Session.get('geneset'));
 
-        Session.set('geneList', gene_lists[genesetName]);
+        Session.set('geneList', cookieGenes.concat(gene_lists[genesetName]));
         console.log('SESSION geneList', Session.get('geneList').length, 'genes');
     },
     'click .select_geneset' : function() {
@@ -103,7 +105,7 @@ Template.Cohort.rendered = function() {
             while (divElem.firstChild) {
                 divElem.removeChild(divElem.firstChild);
             }
-            divElem.innerHTML('no clinical data');
+            divElem.innerHTML('no data');
         }
 
     });
