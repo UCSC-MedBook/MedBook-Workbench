@@ -135,7 +135,7 @@ Template.Cohort.rendered = function() {
             while (divElem.firstChild) {
                 divElem.removeChild(divElem.firstChild);
             }
-            divElem.innerHTML('no data');
+            divElem.innerHTML = 'no data';
         }
 
     });
