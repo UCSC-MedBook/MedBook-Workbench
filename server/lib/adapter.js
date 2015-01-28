@@ -89,7 +89,8 @@ Meteor.startup(function () {
 			_.map(sampleList, function(value, key) {
 			
 				if (value == 1) {
-					fs.writeSync(fd,exp[key]+'')
+					geneExp = exp[key]
+					fs.writeSync(fd,geneExp+'')
 					fs.writeSync(fd,'\t')
 				}
 			})
@@ -146,14 +147,16 @@ Meteor.startup(function () {
 							adjPval = line[5]
 							Bstat = line[6]
 							sig[gene] = fc	
-							try{
-								var sigObj = Signature.insert({'name':contrastName, 'gene':gene, 'weight':fc, 'pval': adjPval,'studyID': studyID, 'version':version,'contrast':contrastId})
-								count += 1
-								if (count < 10)
+							if (gene) {
+								try { 
+									var sigObj = Signature.insert({'name':contrastName, 'gene':gene, 'weight':fc, 'pval': adjPval,'studyID': studyID, 'version':version,'contrast':contrastId})
+									count += 1
+									if (count < 10)
 									console.log(gene,fc)
-							}
-							catch (error) {
-								console.log('cannot insert signature for gene', gene, error)
+								}
+								catch (error) {
+									console.log('cannot insert signature for gene', gene, error)
+								}
 							}
 						})
 						//console.log('sig result', sigObj)
@@ -226,6 +229,9 @@ Meteor.startup(function () {
 					fs.writeSync(fd,key)
 					fs.writeSync(fd,'\t')
 				}
+				else {
+					console.log('sample',key, 'not found')
+				}
 			})
 			fs.writeSync(fd,'\n')
 			console.log('exp count' , exp_curs.count())
@@ -235,9 +241,15 @@ Meteor.startup(function () {
 				fs.writeSync(fd,exp['gene'])
 				fs.writeSync(fd,'\t')
 				_.map(sampleList, function(value, key) {
-					
+					geneExp=null
+					if (exp[key]) {
+						geneExp = exp[key]
+					}
+					else {
+						console.log(exp,'gene', key, 'is null')
+					}
 					if (value == 1) {
-						fs.writeSync(fd,exp[key]+'')
+						fs.writeSync(fd,geneExp+'')
 						fs.writeSync(fd,'\t')
 					}
 				})
@@ -272,9 +284,11 @@ Meteor.startup(function () {
 						idList.push(blob._id);
 					}	
 				})
-				console.log('insert list of blobs', idList);
+				blobCount = length(idList)
+				console.log('insert list of blobs', idList, 'count=', blobCount);
 				var resObj = Results.insert({'contrast':contrastId, 'name':'pathmark results for '+contrastName,'studyID':studyID,'return':retcode, 'blobs':idList});
-				if (retcode == 0) {
+				if (retcode == 0 && blobCount > 0) {
+					console.log('no errors, cleaning up working directory.')
 					ntemp.cleanup(function(err, stats) {
 						if (err)
 							console.log('error deleting temp files', err)

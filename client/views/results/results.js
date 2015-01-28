@@ -2,8 +2,7 @@ showPDF = function() {
 		$("#frameset_div").show()
 		$("#HOTdiv").hide()
 }	;	
-
-
+var hot;
 /*****************************************************************************/
 /* Results: Event Handlers and Helpersss .js*/
 /*****************************************************************************/
@@ -21,6 +20,13 @@ Template.Results.events({
 		$("#HOTdiv").show()
 		HOTload(r)
 	} ,
+	'keyup #searchbox': function (e, tmpl) {
+		var search_val = e.target.value
+		console.log ('search ',search_val)
+		var queryResult = hot.search.query("CLVS1");
+		console.log('query result',queryResult);
+		hot.render();
+	},
 	'mouseenter .selectableResult': function(e, tmpl) {
 		try {
 			r = e.target.dataset["id"];
@@ -110,13 +116,17 @@ function HOTload(file_id) {
 			console.log( "Sample of data:", bname, mat[0], mat[1] );
 			var colheaders = true;
 			if (bname=='genes.tab') {
-				colheaders = ['Gene', 'LogFoldChange', 'Expression','T-stat','Pval', 'Adj.Pval','B stat']
+				colheaders = ['Gene', 'Log Fold Change', 'Avg Expression','T stat','Pval', 'FDR','log odds'],
+				cols  = [{},{type: 'numeric', format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00000'},{type: 'numeric',format:'0.00000'},{type: 'numeric',format:'0.00'}]
 			}
 			if (bname=='sig.tab') {
 				colheaders = ['Gene','coeff.Intercept','coeff.contrastB','stdev','stdev.contrastB','sigma','df.residual','Amean','s2.post','t.Intercept','t.contrastB',	'df.total',	'p.val.Intercept','p.value.contrastB','lods.Intercept',	'lods.contrastB','F','F.p.value']	
+				cols  = [{},{type: 'numeric', format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00000'},{type: 'numeric',format:'0.00'}]
 			}
-			var settings = {minSpareRows: 0, colHeaders: colheaders , height:300, data: mat};
+			var settings = {search:true, columns: cols, columnSorting: true, colHeaders: colheaders , height:300, data: mat};
+			var container = $('#HOTdiv')
 			$('#HOTdiv').handsontable(settings);
+			hot = $("#HOTdiv").handsontable('getInstance');
 		}).fail(function(){
 			alter('error');
 		})
