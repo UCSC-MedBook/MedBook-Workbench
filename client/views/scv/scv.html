@@ -2,12 +2,32 @@
 <template name="Scv">
 {{#if selectedStudy}}
 <div id="scv">
-	 <h3>Contrast Two Groups</h3>
-	 	<div id="contrast1" width=200>
-			Contrast {{> Contrast}}
-		</div>
-		
-		<button class="btn" id="showContrast">Show Results for Contrast</button>
+	 <h3>Contrast Two Groups </h3>
+	 
+		<table class="table table-condensed">
+	
+  	    <tbody>
+		        <tr>
+		            <td>
+						
+					 	<div id="contrast1" width=200>
+							Contrast {{> Contrast}}
+						</div>
+						
+					</td>
+					<td>
+						<button class="btn" id="createGroup">Create new Contrast from two groups</button>
+					    <div id="group1" name="group1"> 
+					    	Group1 {{> StudyGroupsIndex}} 
+					    </div>
+					    <div id="group2" name="group2" value="{{_id}}">
+					  	  	Group2 {{> StudyGroupsIndex}} 
+					    </div>
+						
+					</td>
+		        </tr>
+		    </tbody>
+		</table>
 		<div class="btn-group">
 		    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Analyze Contrast<span class="caret"></span></a>
 		    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
@@ -21,16 +41,8 @@
 				<li><a tabindex="-1" href="#">Generate Subtypes from Contrast</a></li>
 				<li><a tabindex="-1" href="#">Pathway Enrichment of Contrast</a></li>
 		    </ul>
-		</div>
-	  
-		<p></p>
-	    <div id="group1" name="group1"> 
-	    	Group1 {{> StudyGroupsIndex}} 
-	    </div>
-	    <div id="group2" name="group2" value="{{_id}}">
-	  	  	Group2 {{> StudyGroupsIndex}} 
-	    </div>
-		<button class="btn" id="createGroup">Create new Contrast from two groups</button>
+		</div>  
+	
 		{{#with selectedContrast}}
 			<h5>Group 1: <a href={{pathFor 'SampleGroupsIndex' study=this.studyID name=this.group1}}>{{this.group1}}:</a>
 			{{> ContrastDetail _id=contrast_id list="list1"}}</h5>
