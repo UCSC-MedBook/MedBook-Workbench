@@ -21,7 +21,8 @@ Template.ClinicalEventsIndex.events({
 Template.ClinicalEventsIndex.helpers({
     clinical_events : function() {
         console.log('Template.ClinicalEventsIndex.helper.clinical_events');
-        var response = ClinicalEvents.find({});
+		var study = Session.get('studyID')
+        var response = ClinicalEvents.find({'study':study});
 
         var docList = response.fetch();
         console.log('docList:', docList.length, '<-- from Template.ClinicalEventsIndex.helper.clinical_events');
@@ -46,8 +47,10 @@ Template.ClinicalEventsIndex.rendered = function() {
     this.autorun(function() {
         // console.log('Deps.autorun');
         var s = ' <-- Deps.autorun in clinical_events_index.js';
+		var study = Session.get('studyID')
+        var response = ClinicalEvents.find({'study':study});
 
-        var response = ClinicalEvents.find({});
+        //var response = ClinicalEvents.find({});
         var docList = response.fetch();
         console.log('docList.length:', docList.length, s);
         //console.log('docList:', JSON.stringify(docList), ' <-- Deps.autorun');
@@ -63,7 +66,7 @@ Template.ClinicalEventsIndex.rendered = function() {
             while (divElem.firstChild) {
                 divElem.removeChild(divElem.firstChild);
             }
-            divElem.innerHTML = 'no clinical data';
+            divElem.innerHTML = 'no clinical data - select a different study';
         }
 
     });

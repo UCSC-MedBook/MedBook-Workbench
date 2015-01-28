@@ -3,6 +3,7 @@ PatientIndexController = RouteController.extend({
 	  var study = Session.get('studyID');
 	  var name = this.params.name;
 	  Meteor.subscribe('mutations_sample', study,name);
+	  
   },
 
   data: function () {

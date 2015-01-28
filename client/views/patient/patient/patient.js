@@ -12,13 +12,11 @@ Template.Patient.events({
 });
 
 Template.Patient.helpers({
-  /*
-   * Example:
-   *  items: function () {
-   *    return Items.find();
-   *  }
-   */
+	  marker: function () { 
+		  return this.marker.toFixed(2); 
+	  }
 });
+	
 
 /*****************************************************************************/
 /* Patient: Lifecycle Hooks */

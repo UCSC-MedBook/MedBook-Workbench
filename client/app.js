@@ -25,6 +25,7 @@ Meteor.startup(function () {
 	Meteor.subscribe('signature_index');
 	Meteor.subscribe('signature_scores_index');
 	Meteor.subscribe('results');
+	Meteor.subscribe('expression2');
 	Meteor.subscribe('gene_sets_index');
 	//Meteor.subscribe('signature_index');
 	Session.set('selectedContrast','')
