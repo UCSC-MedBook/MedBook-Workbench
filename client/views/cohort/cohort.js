@@ -14,12 +14,23 @@ Template.Cohort.events({
         var cookieGenes = getCookieEvents();
         console.log('cookieGenes', cookieGenes);
 
-        var genesetName = event.currentTarget.value;
-        Session.set('geneset', genesetName);
-        console.log('SESSION geneset:', Session.get('geneset'));
+        var sourceElem = event.target || event.srcElement;
+        var elemValue = sourceElem.value;
 
-        Session.set('geneList', cookieGenes.concat(gene_lists[genesetName]));
-        console.log('SESSION geneList', Session.get('geneList').length, 'genes');
+        var genesetName = '';
+        for (var i = 0; i < sourceElem.length; i++) {
+            var option = sourceElem[i];
+            if (option.selected) {
+                genesetName = (option.text);
+                break;
+            }
+        }
+
+        Session.set('geneset', genesetName);
+        console.log('SESSION genesetName:', Session.get('geneset'));
+
+        Session.set('geneList', cookieGenes.concat(elemValue.split(',')));
+        console.log('SESSION geneset members', Session.get('geneList').length, 'genes', Session.get('geneList'));
     },
     'click .select_geneset' : function() {
         console.log('event: click .select_geneset');
@@ -28,13 +39,32 @@ Template.Cohort.events({
 
 Template.Cohort.helpers({
     /*
-     * Example:
-     *  items: function () {
-     *    return Items.find();
-     *  }
-     */
+    * Example:
+    *  items: function () {
+    *    return Items.find();
+    *  }
+    */
+    // genesets : function() {
+    // return u.getKeys(gene_lists);
+    // },
     genesets : function() {
-        return u.getKeys(gene_lists);
+        var genesetsResp = GeneSets.find({}, {
+            reactive : true
+        });
+        var genesetsDocList = genesetsResp.fetch();
+        console.log('genesetsDocList', genesetsDocList);
+
+        var result = [];
+        for (var i = 0; i < genesetsDocList.length; i++) {
+            var doc = genesetsDocList[i];
+            var name = doc['name'];
+            var members = doc['members'];
+            result.push({
+                'name' : name,
+                'members' : members
+            });
+        }
+        return result;
     },
     selected : function() {
         if (Session.get('geneset') == this._id)

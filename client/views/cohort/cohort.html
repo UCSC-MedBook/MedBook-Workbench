@@ -6,7 +6,7 @@
 			<select id="geneset" class="span1-12">
 				<option value="">Select a geneset ...</option>
 				{{#each this}}
-				<option  value="{{id}}" selected={{selected}}>{{this}}</option>
+				<option  value="{{members}}" genesetname='{{name}}' selected={{selected}}>{{name}}</option>
 				{{/each}}
 			</select>
 			{{else}}

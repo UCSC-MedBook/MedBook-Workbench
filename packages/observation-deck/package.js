@@ -13,7 +13,6 @@ Package.onUse(function(api) {
     api.export('getCookieEvents', 'client');
     api.export('smallCellSigEventObj', 'client');
     api.export('arSigEventObj', 'client');
-    api.export('gene_lists', 'client');
     api.export('u', 'client');
     api.addFiles('observation-deck.js', 'client');
 });
