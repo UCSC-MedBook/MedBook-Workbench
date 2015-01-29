@@ -114,8 +114,8 @@ Meteor.startup(function () {
 						opts.type = 'text/network'
 					else if (ext == '.tab')
 						opts.type = 'text/tabular'
-					else if (filename == 'genes.tab')
-						opts.tyoe = ' Top Diff Genes'
+					//else if (filename == 'genes.tab')
+					//	opts.type = ' Top Diff Genes'
 					else 
 						opts.type = mime.lookup(item)
 					
@@ -171,13 +171,13 @@ Meteor.startup(function () {
 			})
 			console.log('insert list of blobs', idList);
 			var resObj = Results.insert({'contrast': contrastId, 'name':'differential results for '+contrastName,'studyID':studyID,'return':retcode, 'blobs':idList});
-			if (retcode == 0) {
-				temp.cleanup(function(err, stats) {
-					if (err)
-						console.log('error deleting temp files', err)
-					console.log('deleting temp files');
-			  	});
-			}
+			//if (retcode == 0) {
+			//	ntemp.cleanup(function(err, stats) {
+		//			if (err)
+		//				console.log('error deleting temp files', err)
+		//			console.log('deleting temp files');
+		//	  	});
+		//	}
 		};
 		//"Rscript">limma_ng.R $input $contrast $top_count $output $top_genes $mds_plot
 	    Meteor.call('runshell', cmd, [expfile,phenofile, '200', 'sig.tab', 'genes.tab', 'mds.pdf'], 
