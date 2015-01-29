@@ -128,7 +128,8 @@ Template.Cohort.rendered = function() {
                     'expression' : {
                         'object' : [smallCellSigEventObj, arSigEventObj]
                     }
-                }
+                },
+                'deleteEvents' : ['Docetaxel']
             });
         } else {
             // remove child elements of divElem
