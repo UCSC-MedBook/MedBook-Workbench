@@ -129,9 +129,9 @@ Meteor.startup(function () {
 						console.log('write gene signature')
 						var sig_lines = fs.readFileSync(item, {encoding:'utf8'}).split('\n')
 						var count = 0
-						sig = {}
 						var sig_version = Signature.find({'contrast':contrastId}, {'version':1, sort: { version: -1 }}).fetch()
 						var version = 0.9
+						var sigDict = {'AR' :{'weight':3.3}}
 						try {
 							version = Number(sig_version[0]['version']);
 						}
@@ -151,20 +151,26 @@ Meteor.startup(function () {
 							pVal = line[4]
 							adjPval = line[5]
 							Bstat = line[6]
-							sig[gene] = fc	
 							if (gene) {
 								try { 
-									var sigObj = Signature.insert({'name':contrastName, 'gene':gene, 'weight':fc, 'pval': adjPval,'studyID': studyID, 'version':version,'contrast':contrastId})
+									sig = {}
+									//sig['name'] = gene
+									sig['weight'] = fc
+									sig['pval'] = pVal
+										sigDict[gene] = sig
 									count += 1
-									if (count < 10)
-									console.log(gene,fc)
+									if (count < 10) {
+										console.log(gene,fc, sig)
+										console.log(gene,fc, s)
+									}
 								}
 								catch (error) {
 									console.log('cannot insert signature for gene', gene, error)
 								}
 							}
 						})
-						//console.log('sig result', sigObj)
+						var sigObj = Signature.insert({'name':contrastName, 'studyID': studyID, 'version':version,'contrast':contrastId, 'signature':  sigDict })
+						console.log('sig result', sigObj)						
 					}
 					idList.push(blob._id);
 				}	
