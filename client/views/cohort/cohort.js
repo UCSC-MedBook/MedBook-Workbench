@@ -39,20 +39,16 @@ Template.Cohort.events({
 
 Template.Cohort.helpers({
     /*
-    * Example:
-    *  items: function () {
-    *    return Items.find();
-    *  }
-    */
-    // genesets : function() {
-    // return u.getKeys(gene_lists);
-    // },
+     * Example:
+     *  items: function () {
+     *    return Items.find();
+     *  }
+     */
     genesets : function() {
         var genesetsResp = GeneSets.find({}, {
             reactive : true
         });
         var genesetsDocList = genesetsResp.fetch();
-        console.log('genesetsDocList', genesetsDocList);
 
         var result = [];
         for (var i = 0; i < genesetsDocList.length; i++) {
@@ -128,7 +124,8 @@ Template.Cohort.rendered = function() {
                     'expression' : {
                         'object' : [smallCellSigEventObj, arSigEventObj]
                     }
-                }
+                },
+                'deleteEvents' : ['Docetaxel']
             });
         } else {
             // remove child elements of divElem
