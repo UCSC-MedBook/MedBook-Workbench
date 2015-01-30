@@ -4,7 +4,9 @@ if (Meteor.isClient) {
 /*****************************************************************************/
 Template.StudiesIndex.events({
 	  	'change #study': function(event,template){
-		  Session.set('studyID', event.currentTarget.value);
+		  var currentRoute = Router.current().url
+		  console.log('router', currentRoute)
+		  Router.go(currentRoute, {'query':{'study':event.currentTarget.value}})
 		  this.currStudy = event.currentTarget.value;
 		  console.log('Session studyID:', Session.get('studyID'));
 		}, 

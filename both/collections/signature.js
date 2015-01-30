@@ -12,6 +12,7 @@ Schemas = {};
 
 UI.registerHelper("Schemas", Schemas);
 
+SimpleSchema.debug = true;
 Schemas.Signature = new SimpleSchema({
   name: {
       type: String,
@@ -35,6 +36,7 @@ Schemas.Signature = new SimpleSchema({
   },
   signature: {
 	  type: Object,
+	  blackbox: true	
   }
 });
 Signature.attachSchema(Schemas.Signature);

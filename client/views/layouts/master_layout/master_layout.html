@@ -32,16 +32,16 @@
 		</table>
 		 
 		<ul class="nav nav-tabs" role="tablist">
-			<li class="{{isActiveRoute regex='studies.index'}}"><a href="{{pathFor 'StudiesIndex'}}">Home</a></li>
-			<li class="{{isActiveRoute regex='cohort'}}"><a href="{{pathFor 'Cohort'}}">Cohort</a></li>
-			<li class="{{isActiveRoute regex='patient'}}"><a href="{{pathFor 'Patient'}}">Patient</a></li>
-			<li class="{{isActiveRoute regex='scv'}}"><a href="{{pathFor 'Scv'}}">Differential Analysis</a></li>
-			<li class="{{isActiveRoute regex='genes'}}"><a href="{{pathFor 'Genes'}}">Gene</a></li>
-			<li class="{{isActiveRoute regex='pathways'}}"><a href="{{pathFor 'Pathways'}}">Pathways</a></li>
-			<li class="{{isActiveRoute regex='clinical.events.index'}}"><a href="{{pathFor 'ClinicalEventsIndex'}}">Clinical</a></li>
-			<li class="{{isActiveRoute regex='shell'}} shell-tab"><a href="{{pathFor 'Shell'}}">Tools</a></li>
-			<li class="{{isActiveRoute regex='drugs'}}"><a href="{{pathFor 'Drugs'}}">Drugs</a></li>
-			<li class="{{isActiveRoute regex='gene_sets'}}"><a href="{{pathFor 'GeneSetsIndex'}}">Gene Sets</a></li>
+			<li class="{{isActiveRoute regex='studies.index'}}"><a href="{{pathFor 'StudiesIndex' query=currentQueryString}}">Home</a></li>
+			<li class="{{isActiveRoute regex='cohort'}}"><a href="{{pathFor 'Cohort' query=currentQueryString}}">Cohort</a></li>
+			<li class="{{isActiveRoute regex='patient'}}"><a href="{{pathFor 'PatientIndex' query=currentQueryString}}">Patient</a></li>
+			<li class="{{isActiveRoute regex='scv'}}"><a href="{{pathFor 'Scv' query=currentQueryString}}">Differential Analysis</a></li>
+			<li class="{{isActiveRoute regex='genes'}}"><a href="{{pathFor 'Genes' query=currentQueryString}}">Gene</a></li>
+			<li class="{{isActiveRoute regex='pathways'}}"><a href="{{pathFor 'Pathways' query=currentQueryString}}">Pathways</a></li>
+			<li class="{{isActiveRoute regex='clinical.events.index'}}"><a href="{{pathFor 'ClinicalEventsIndex' query=currentQueryString}}">Clinical</a></li>
+			<li class="{{isActiveRoute regex='shell'}} shell-tab"><a href="{{pathFor 'Shell' query=currentQueryString}}">Tools</a></li>
+			<li class="{{isActiveRoute regex='drugs'}}"><a href="{{pathFor 'Drugs' query=currentQueryString}}">Drugs</a></li>
+			<li class="{{isActiveRoute regex='gene_sets'}}"><a href="{{pathFor 'GeneSetsIndex' query=currentQueryString}}">Gene Sets</a></li>
 		</ul>
 		<div class="tab-content">
 			{{> yield}}

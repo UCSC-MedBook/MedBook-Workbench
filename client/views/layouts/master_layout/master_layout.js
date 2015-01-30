@@ -3,9 +3,13 @@
 /*****************************************************************************/
 Template.MasterLayout.events({
     'change #study' : function(event, template) {
-        Session.set('studyID', event.currentTarget.value);
         this.currStudy = event.currentTarget.value;
-        console.log('Session studyID:', Session.get('studyID'));
+		var currentRoute = Router.current().route.getName()
+		console.log('router', currentRoute, this.currStudy)
+		Router.go(currentRoute,{}, {query: {'study':this.currStudy}})
+		//{'study':event.currentTarget.value}})
+	
+        //console.log('Session studyID:', Session.get('studyID'));
     },
     'click .nuc' : function() {
         document.cookie = 'od_config={};path=/';
@@ -18,10 +22,17 @@ Template.MasterLayout.helpers({
 		return Studies.find({},{sort: {short_name:1}});		
 	},
 	selected: function(){
-		if (Session.get('studyID') == this._id) 
+		if (Session.get('studyID') == this.id) 
 			return true;
 		else 
 			return false;
+	},
+	currentQueryString: function() {
+		var study = Session.get('studyID')
+		if (study) {
+			return { study: study }
+		}
+		return 
 	}
 });
 
