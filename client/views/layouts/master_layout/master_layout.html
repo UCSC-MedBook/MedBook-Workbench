@@ -1,6 +1,10 @@
 <template name="MasterLayout">
     <div class="container-fluid">
-		 <div class="studies-panel">
+		<table class="table table-bordered">
+		    <tbody>
+		        <tr>
+		            <td>
+						<div class="studies-panel">
 			 Study:
 			{{#with studies}}
 				<select id="study" class="span1-12">
@@ -13,8 +17,20 @@
 				No studies yet.
 			{{/with}}
 			<button class="nuc">Reset</button>
+			
 		</div>
-
+				</td>
+				<td>
+					{{#if currentUser}}
+					User: {{ currentUser }} 
+					{{else}}
+					Not Logged in <button>Login</button>
+					{{/if}}
+				</td>
+		        </tr>
+		    </tbody>
+		</table>
+		 
 		<ul class="nav nav-tabs" role="tablist">
 			<li class="{{isActiveRoute regex='studies.index'}}"><a href="{{pathFor 'StudiesIndex'}}">Home</a></li>
 			<li class="{{isActiveRoute regex='cohort'}}"><a href="{{pathFor 'Cohort'}}">Cohort</a></li>
