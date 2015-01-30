@@ -3,6 +3,9 @@
 /* Patient: Event Handlers and Helpersss .js*/
 /*****************************************************************************/
 Template.Patient.events({
+	test: function (e, tmpl) {
+		 return
+	}
   /*
    * Example:
    *  'click .selector': function (e, tmpl) {

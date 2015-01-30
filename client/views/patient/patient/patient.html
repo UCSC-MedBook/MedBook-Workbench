@@ -1,0 +1,98 @@
+
+<template name="Patient">
+   <h2>Patient View {{sample}}</h2>
+	<table class="table table-condensed narrow" width="400">
+		<caption><h3>Clinical Groups</h3></caption>
+	
+	    <thead>
+	        <tr>
+	            <th>Group</th>
+				<th>Status</th>
+				<th></th>
+	        </tr>
+	    </thead>
+	    <tbody>
+			
+			{{#each clin}}
+	        <tr>
+	            <td>BiopsySite: </td>
+				<td>{{BiopsySite}}</td>
+	        </tr>
+	        <tr>
+	            <td>Enzalutamide: </td>
+				<td>{{Enzalutamide}}</td>
+	        </tr>
+	        <tr>
+	            <td>Abiraterone: </td>
+				<td>{{Abiraterone}}</td>
+	        </tr>
+	        <tr>
+	            <td>SubType: </td>
+				<td>{{AnalysisCall}}</td>
+	        </tr>
+	        <tr>
+	            <td>Small Cell:  </td>
+				<td>{{SmallCell}}</td>
+	        </tr>
+			<tr>
+	            <td>Adeno:    </td>
+				<td>{{Adeno}} </td>
+	        </tr>
+	        <tr>
+	            <td>AR Fish: </td>
+				<td>{{AR_FISH}}</td>
+	        </tr>
+	        <tr>
+	            <td>Location: </td>
+				<td>{{Site}}</td>
+	        </tr>
+			{{/each}}
+	        <tr>
+	            <td>ChromograninA:</td>
+				<td>{{marker}}</td>
+				<td>Cohort mean = 1.8</td>
+	        </tr>
+	    </tbody>
+	</table>
+	
+	
+   <h4>Copy Number Alterations</h4>
+  
+   
+<table class="table table-condensed" width="400">
+	<caption><h4>Mutations called from RNAseq using Radia (experimental)</h4></caption>
+
+    <thead>
+        <tr>
+            <th>Gene</th>
+			<th>AA Change</th>
+			<th>Chrom</th>
+			<th>Mut Accessor Impact</th>
+			<th>FIS</th>
+        </tr>
+    </thead>
+    <tbody>
+   {{#each mutations}}
+   <tr>
+       <td>
+   		<a href="/wb/gene/{{Hugo_Symbol}}" target="_blank">{{Hugo_Symbol}}</a></td><td> {{MA_protein_change}}</td><td>{{Chromosome}}</td>
+		<td><a href="http://{{MA_link_var}}" target="_blank">{{MA_FImpact}}</a></td><td>{{MA_FIS}}</td>
+	</tr>
+   {{/each}}
+</tbody>
+</table>
+
+   <h4>Gene	Protein Change	Type	Copy Number	Cohort	COSMIC</h4>
+
+   <h5>Altered Transcripts</h5>
+
+   <h4>timeline</h4>
+
+   <h4>Patient-specific Pathways</h4>
+
+   <h5>Pathway	GSEA Score	P value	Q value	</h5>
+
+ 
+  
+</template>
+
