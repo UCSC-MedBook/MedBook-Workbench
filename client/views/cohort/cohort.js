@@ -108,8 +108,15 @@ Template.Cohort.rendered = function() {
         // TODO get signature gene:weight vectors + metadata
         var signatureScoresResp = SignatureScores.find({});
         var signatureScoresDoclist = signatureScoresResp.fetch();
+        console.log('signatureScoresDoclist.length:', signatureScoresDoclist.length, s);
 
-        smallCellSigEventObj['data'] = signatureScoresDoclist;
+        // smallCellSigEventObj['data'] = signatureScoresDoclist;
+
+        // TODO signature indexes
+        var sigIdxResp = Signature.find({}, {
+            reactive : true
+        });
+        var sigIdsDocList = sigIdxResp.fetch();
 
         // build observation deck
         if ((clinDocList.length > 0) || (expDocList.length > 0)) {
@@ -122,7 +129,13 @@ Template.Cohort.rendered = function() {
                 },
                 'signature' : {
                     'expression' : {
-                        'object' : [smallCellSigEventObj, arSigEventObj]
+                        // 'object' : [smallCellSigEventObj, arSigEventObj]
+                        'object' : [signatureScoresDoclist]
+                    }
+                },
+                'signature_index' : {
+                    'expression' : {
+                        'object' : sigIdsDocList
                     }
                 },
                 'deleteEvents' : ['Docetaxel']
