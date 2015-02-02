@@ -10,8 +10,8 @@ https://www.eventedmind.com/
 
 * accounts-password             1.0.5  Password support for accounts
 * alanning:roles                1.2.13  Role-based authorization
-* aldeed:autoform               4.2.1 Easily create forms with automatic * insert and update, and automatic reactive validation.
-* aldeed:collection2            2.3.0 Automatic validation of insert and * update operations on the client and server.
+* aldeed:autoform               4.2.1 Easily create forms with automatic insert and update, and automatic reactive validation.
+* aldeed:collection2            2.3.0 Automatic validation of insert and update operations on the client and server.
 * aldeed:tabular                0.2.2 Datatables for large or small datasets in Meteor
 * bootstrap                     1.0.1  Front-end framework from Twitter
 * cfs:filesystem                0.1.1  Filesystem storage adapter for CollectionFS
