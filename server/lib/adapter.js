@@ -161,7 +161,6 @@ Meteor.startup(function () {
 									count += 1
 									if (count < 10) {
 										console.log(gene,fc, sig)
-										console.log(gene,fc, s)
 									}
 								}
 								catch (error) {

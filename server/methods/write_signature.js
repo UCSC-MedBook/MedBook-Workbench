@@ -45,7 +45,6 @@ _.each(sig_lines, function(sig_line) {
 			count += 1
 			if (count < 10) {
 				console.log(gene,fc, sig)
-				console.log(gene,fc, s)
 			}
 		}
 		catch (error) {
