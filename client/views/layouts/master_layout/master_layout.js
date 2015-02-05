@@ -19,10 +19,11 @@ Template.MasterLayout.events({
 
 Template.MasterLayout.helpers({
 	member: function() {
-		var uid = Meteor.userId()
-		console.log('userId', uid)
-		var collaborations = Collaboration.findOne({_id: uid})
-		console.log("collaboartions", collaborations)
+		if (Meteor.user()) {
+			var collaborations = Meteor.user().profile.collaborations;
+			console.log("collabortions", collaborations)
+			return collaborations
+		}	
 	},
 	studies: function() {
 		return Studies.find({},{sort: {short_name:1}});		
