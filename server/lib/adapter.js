@@ -168,7 +168,9 @@ Meteor.startup(function () {
 								}
 							}
 						})
-						var sigObj = Signature.insert({'name':contrastName, 'studyID': studyID, 'version':version,'contrast':contrastId, 'signature':  sigDict })
+						var sigID = new Meteor.Collection.ObjectID();
+						var sigObj = Signature.insert({'_id':sigID, 'name':contrastName, 'studyID': studyID, 
+							'version':version,'contrast':contrastId, 'signature':  sigDict });
 						console.log('sig result', sigObj)						
 					}
 					idList.push(blob._id);

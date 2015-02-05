@@ -18,6 +18,12 @@ Template.MasterLayout.events({
 });
 
 Template.MasterLayout.helpers({
+	member: function() {
+		var uid = Meteor.userId._id
+		console.log('userId', uid)
+		var collaborations = Collaborations.findOne({_id: uid})
+		console.log("collaboartions", collaborations)
+	},
 	studies: function() {
 		return Studies.find({},{sort: {short_name:1}});		
 	},
