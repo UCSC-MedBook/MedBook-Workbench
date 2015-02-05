@@ -19,7 +19,7 @@ Template.MasterLayout.events({
 
 Template.MasterLayout.helpers({
 	member: function() {
-		var uid = Meteor.userId._id
+		var uid = Meteor.userId()
 		console.log('userId', uid)
 		var collaborations = Collaboration.findOne({_id: uid})
 		console.log("collaboartions", collaborations)
