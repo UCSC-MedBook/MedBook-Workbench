@@ -12,8 +12,8 @@ Meteor.startup(function () {
 	  },
  	  
 	  runshell: function (name, argArray, workDir, contrastId, jname, studyID, output_list, whendone) {
-
-		console.log('server, calling : ', name , ' with args ', argArray, ' list of output files written to ' +output_list);
+		var uid = this.userId
+		console.log('server, calling : ', name , ' with args ', argArray, 'user', uid,' list of output files written to ' +output_list);
 
 		if(name==undefined || name.length<=0) {
 	      throw new Meteor.Error(404, "Please enter your name");
@@ -57,7 +57,7 @@ Meteor.startup(function () {
 					console.log('output files '+data);
 				});
 				Fiber(function() {
-					whendone(retcode, workDir, contrastId, jname, studyID)
+					whendone(retcode, workDir, contrastId, jname, studyID, uid)
 				}).run();  
 		});
 		

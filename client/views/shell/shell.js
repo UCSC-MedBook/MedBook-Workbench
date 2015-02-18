@@ -14,6 +14,18 @@ Template.Shell.events({
 			console.log('path OK: '+response);
 		});
 	},
+	'click #upload_exp': function(event,template){
+		var studyID = Session.get('currentStudy')
+		var input_file = '/data/MedBook/scripts/data_expression.tab'
+		Meteor.call('upload_expression', studyID, input_file , function(err,response) {
+			if(err) {
+				Session.set('serverDataResponse', "upload Error:" + err.reason);
+				return;
+			}
+			Session.set('upload expression serverDataResponse', response);
+			console.log('upload exp response: '+response);
+		});
+	},
 	'click #upload_sig': function(event,template){
 		var contrastID = Session.get('selectedContrast')
 		Meteor.call('upload_signature', [contrastID], function(err,response) {

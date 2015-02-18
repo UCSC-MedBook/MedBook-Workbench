@@ -21,8 +21,9 @@ Router.configure({
 }); 
 
 Router.route('/wb', {name:'StudiesIndex'});
-Router.route('/wb/scv',{name: 'Scv'});
+Router.route('/wb/scvs',{name: 'Scv'});
 Router.route('/wb/scv/:_id',{name:'ScvContrast'});
+Router.route('/wb/results/:_id',{name:'Results'});
 Router.route('/wb/sampleGroups/:study/:name', {name:'SampleGroupsIndex'});
 Router.route('/wb/clinical', {name:'ClinicalEventsIndex'});
 Router.route('/wb/shell/limma/:contrast', {template:'ShellLimma'}, {controller:'Shell'});

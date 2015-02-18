@@ -36,11 +36,11 @@ Template.Results.events({
 		}
 		Session.set('selectedResult',r);
 		console.log('hover',r)
-	},
-	'mouseleave .selectableResult': function(e, tmpl) {
-		Session.set('selectedResult',"");
-		console.log('no result row')
 	}
+//	'mouseleave .selectableResult': function(e, tmpl) {
+//		Session.set('selectedResult',"");
+//		console.log('no result row')
+//	}
 });
 
 Template.Results.helpers({
@@ -54,8 +54,14 @@ Template.Results.helpers({
 		console.log('results contrast', id)
 		if (id)
 				r = Results.find({contrast:id})
-			else
-				r = Results.find({})
+			else {
+				var result_id = Session.get('selectedResult')
+				if (result_id) {
+					r = Results.find({'_id':result_id})
+				} else {
+					r = Results.find({})
+				}			
+			}
 		console.log('results of Results.find', r)
 		files = r.map(function(x) {return x.blobs} )
 		console.log('b_ids',files)

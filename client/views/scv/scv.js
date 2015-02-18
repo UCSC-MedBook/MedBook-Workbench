@@ -11,9 +11,17 @@ Template.Scv.events({
 		var sampleList1 = _.pluck(SampleGroups.find({group:g1}).fetch(), 'sample');
 		var sampleList2 = _.pluck(SampleGroups.find({group:g2}).fetch(), 'sample');
 		//var sampleList2 = SampleGroups.find({group:g2},{'sample':1}).fetch();
+		if (Meteor.user()) {		
+			var collabs = Meteor.user().profile.collaborations;
+			// FIX ME - default to first collaboration
+			var collab = collabs[0]
+		}
+		else {
+			collab = []
+		}
 		console.log('contrast: '+contrast_name);
 		console.dir('samples for group '+g1+' :'+sampleList1);
-		Contrast.insert({'name':contrast_name,'studyID':studyID,
+		Contrast.insert({'name':contrast_name,'studyID':studyID,'collaborations': collab,
 			'group1':g1,'group2':g2,'list1':sampleList1,'list2':sampleList2} , function(error, result) {
 				if (error)
 					console.log('insert contrast error: ' , error);

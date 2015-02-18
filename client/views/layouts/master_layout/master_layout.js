@@ -21,7 +21,7 @@ Template.MasterLayout.helpers({
 	member: function() {
 		if (Meteor.user()) {
 			var collaborations = Meteor.user().profile.collaborations;
-			console.log("collabortions", collaborations)
+			console.log("collaborations", collaborations)
 			return collaborations
 		}	
 	},

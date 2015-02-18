@@ -31,6 +31,7 @@ Meteor.startup(function () {
 	}
 	Meteor.methods({
 	limma_adapter: function (argList) {
+		console.log('user', this.userId)
 		console.log('limma_adapter',argList)
 		read_config()
 		var contrastId = argList[0]
@@ -99,9 +100,9 @@ Meteor.startup(function () {
 		fs.closeSync(fd)
 			
 		var cmd = medbook_config.tools.limma.path;
-		var whendone = function(retcode, workDir, contrastId, contrastName, studyID) { 
+		var whendone = function(retcode, workDir, contrastId, contrastName, studyID, uid) { 
 			var idList = [];  
-			console.log('when done work dir', workDir, 'return code', retcode)
+			console.log('whendone work dir', workDir, 'return code', retcode, 'user id', uid)
 			var buf = fs.readFileSync(path.join(workDir,'report.list'), {encoding:'utf8'}).split('\n')
 			_.each(buf, function(item) {
 				if (item) {
@@ -123,7 +124,7 @@ Meteor.startup(function () {
 					f.attachData(item, opts);
 					
 					var blob = Blobs.insert(f);
-					console.log('name', f.name(),'blob id', blob._id, 'ext' , ext, 'type', opts.type, 'item',item, 'opts', opts, 'size', f.size());
+					console.log('name', f.name(),'blob id', blob._id, 'ext' , ext, 'type', opts.type, 'opts', opts, 'size', f.size());
 					if (f.name() == 'genes.tab') {
 						// Write signature object to MedBook
 						console.log('write gene signature')
@@ -138,7 +139,7 @@ Meteor.startup(function () {
 						catch(error) {
 							version = 0.9;
 						}	
-						console.log('previous signature version', version, sig_version)
+						console.log('previous signature version', version)
 						version = version + 0.1
 						_.each(sig_lines, function(sig_line) {
 							var line = sig_line.split('\t')
@@ -159,9 +160,9 @@ Meteor.startup(function () {
 									sig['pval'] = pVal
 										sigDict[gene] = sig
 									count += 1
-									if (count < 10) {
-										console.log(gene,fc, sig)
-									}
+									//if (count < 10) {
+									//	console.log(gene,fc, sig)
+										//}
 								}
 								catch (error) {
 									console.log('cannot insert signature for gene', gene, error)
@@ -171,13 +172,32 @@ Meteor.startup(function () {
 						var sigID = new Meteor.Collection.ObjectID();
 						var sigObj = Signature.insert({'_id':sigID, 'name':contrastName, 'studyID': studyID, 
 							'version':version,'contrast':contrastId, 'signature':  sigDict });
-						console.log('sig result', sigObj)						
+						console.log('signature insert returns', sigObj)						
 					}
 					idList.push(blob._id);
 				}	
 			})
 			console.log('insert list of blobs', idList);
 			var resObj = Results.insert({'contrast': contrastId, 'name':'differential results for '+contrastName,'studyID':studyID,'return':retcode, 'blobs':idList});
+			var post = {
+				title: "Results for contrast: "+contrastName,
+				url: "/wb/results/"+resObj,
+				body: "this is the results of limmma differential analysis run on 2/14/2015",
+				medbookfiles: idList
+			}
+			//var s = JSON.stringify(post)
+			//var uid = this.userId
+			console.log('user is ',uid)
+			if (uid) {
+				var user = Meteor.users.findOne({_id:uid})
+				if (user) {
+					console.log('user.services', user.services)
+					var token = user.services.resume.loginTokens[0].hashedToken
+					console.log('before post',post, token, 'username', user.username)
+					HTTP.post("http://localhost:10001/medbookPost", {data:{post:post, token:token}})
+					console.log('after post')
+				}
+			}
 			//if (retcode == 0) {
 			//	ntemp.cleanup(function(err, stats) {
 		//			if (err)
@@ -300,7 +320,7 @@ Meteor.startup(function () {
 				console.log('insert list of blobs', idList, 'count=', blobCount);
 				var resObj = Results.insert({'contrast':contrastId, 'name':'pathmark results for '+contrastName,'studyID':studyID,'return':retcode, 'blobs':idList});
 				if (retcode == 0 && blobCount > 0) {
-					console.log('no errors, cleaning up working directory.')
+					console.log('no errors, result:', resObj, 'cleaning up working directory.')
 					ntemp.cleanup(function(err, stats) {
 						if (err)
 							console.log('error deleting temp files', err)

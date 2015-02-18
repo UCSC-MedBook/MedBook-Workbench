@@ -11,6 +11,9 @@
 	        type: String,
 	        label: "Study"
 	    },
+		collaborations: {
+			type: [String]
+		},
 		group1: {
 		    type: String,
 		    label: "Group1"

@@ -5,6 +5,7 @@
 	<button id="pa">Run pathmark adapter</button>
 	<button id="limma">Run limma </button>
     <button id="upload_sig">Upload Signature </button>
+    <button id="upload_exp">Upload Expression </button>
    <h2>Results</h2>
 	{{#each blobs}}
 		<p><a target="_blank" href="{{this.url store='blobs' download=false}}">{{this.name}} ({{this.size}} bytes)</a> {{> FS.DeleteButton class="btn btn-danger btn-xs"}}</p>

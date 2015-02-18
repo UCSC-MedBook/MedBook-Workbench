@@ -12,14 +12,23 @@ ScvController = RouteController.extend({
 	  if (this.params.length > 0) {
 		  console.log('scv: group1: '+g1+' group2: '+g2);
 	  }
-	  return {
-		  contrast: function() {
-			  return Contrast.find({_id:id}) 
-		  },
-		  results: function() {
-			  return Results.find({contrast:id}) 
+	  if (id) {
+		  return {
+			  contrast: function() {
+				  return Contrast.find({_id:id}) 
+			  },
+			  results: function() {
+				  return Results.find({contrast:id}) 
+			  }
 		  }
 	  }
+	  else
+	  return {
+	  	contrast: function() {
+	  				  return Contrast.find({}) 
+	  	},
+		results: {}
+		}	  
   },
 
   action: function () {
