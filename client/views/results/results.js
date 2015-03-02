@@ -12,6 +12,18 @@ Template.Results.events({
 		Session.set('selectedResult',r);
 		console.log('select result:', r);
 	} ,
+	'click #post-tel': function( e, tmpl){
+		var r = e.target.dataset["id"]	
+		console.log('post result:', r, this);
+		var today = new Date();
+		HTTP.post('/medbookPost',{data:{post:{title:this.name, body:'posted from workbench on '+today, medbookfiles:this.blobs}}},
+			function (err, response) {
+				if (err) {
+					console.log('error posting result', err)
+				}
+				console.log('post done', response)
+			})
+	} ,
 	'click .selectableHot': function( e, tmpl){
 		var r = e.target.dataset["id"]
 		Session.set('selectedBlob',r);

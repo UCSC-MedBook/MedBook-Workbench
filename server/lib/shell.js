@@ -50,12 +50,14 @@ Meteor.startup(function () {
 		});
 		shlurp.on('close', function(retcode) {
 				console.log('process ended with code ' + retcode);
-				fs.readFile(output_list, function(err, data) {
-					if (err) {
-						return console.log(err);
-					}
-					console.log('output files '+data);
-				});
+				if (output_list) {
+					fs.readFile(output_list, function(err, data) {
+						if (err) {
+							return console.log(err);
+						}
+						console.log('output files '+data);
+					});					
+				}	
 				Fiber(function() {
 					whendone(retcode, workDir, contrastId, jname, studyID, uid)
 				}).run();  
@@ -75,7 +77,12 @@ Meteor.startup(function () {
 		console.log('stdout',fileObj._id, 'stderr', fileErr._id)
 
 		return {'stdout':fileObj, 'stderr':fileErr};
-      }
+      },
+	  write_clinical_oncore: function (data) {
+		  console.log('insert clinical_oncore', data)
+		  var ret = ClinicalOncore.insert(data)
+		  console.log('returns ', ret)
+	  }
 	});
   });
 

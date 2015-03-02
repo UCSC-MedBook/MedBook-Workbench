@@ -14,7 +14,12 @@ Template.MasterLayout.events({
     'click .nuc' : function() {
         document.cookie = 'od_config={};path=/';
         location.reload(true);
-    }
+    },
+	'click .logout' : function() {
+		console.log('logout')
+		Meteor.logout();
+		Meteor.logoutOtherClients;
+	}
 });
 
 Template.MasterLayout.helpers({

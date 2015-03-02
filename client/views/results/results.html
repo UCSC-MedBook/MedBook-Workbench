@@ -10,7 +10,7 @@
 	    <tbody>
 		 	{{#each results}} 
 				<tr class="selectableResult" data-id="{{_id}}" >
-				<div >{{name}}
+				<div >{{name}} <button id="post-tel" class="btn btn-mini btn-primary">Post</button> 
 					{{#each blobs}}
 						{{#if isPDF}}
 						<a target="iframe_target"  onclick="showPDF()" href="{{geturl.url}}">{{geturl.name}}</a>

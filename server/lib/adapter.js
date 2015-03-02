@@ -114,7 +114,7 @@ Meteor.startup(function () {
 					else if (ext == '.sif')
 						opts.type = 'text/network'
 					else if (ext == '.tab')
-						opts.type = 'text/tabular'
+						opts.type = 'text/tab-separated-values'
 					//else if (filename == 'genes.tab')
 					//	opts.type = ' Top Diff Genes'
 					else 

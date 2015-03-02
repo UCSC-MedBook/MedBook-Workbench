@@ -26,6 +26,18 @@ Template.Shell.events({
 			console.log('upload exp response: '+response);
 		});
 	},
+	'click #insert_oncore': function(event, template){
+		Meteor.call('write_clinical_oncore', {
+			'patient':'DTB-073', 'version':1, 
+			ECOG_Weight: [{Segment: 'blue', Weight:30}, {Segment:'white', Weight:88}]
+		}, function(err, resp) {
+			if (err) {
+				console.log('error writing oncore', err)
+				return
+			}
+			console.log('response from write oncore', resp)
+		});
+	},
 	'click #upload_sig': function(event,template){
 		var contrastID = Session.get('selectedContrast')
 		Meteor.call('upload_signature', [contrastID], function(err,response) {

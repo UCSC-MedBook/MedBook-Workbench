@@ -33,3 +33,5 @@ patte:mime-npm
 
 meteorhacks:aggregate
 http
+accounts-ui
+accounts-google

@@ -22,15 +22,15 @@
 				</td>
 				<td>
 					{{#if currentUser}}
-					User: {{ currentUser.username }} Member of: {{member}}
+					User: {{ currentUser.username }} Member of: {{member}} <button class="logout btn">Logout</button>
 					{{else}}
-					Not Logged in <button>Login</button>
+					Not Logged in {{> loginButtons}}
 					{{/if}}
 				</td>
 		        </tr>
 		    </tbody>
 		</table>
-		 
+		{{#if currentUser}} 
 		<ul class="nav nav-tabs" role="tablist">
 			<li class="{{isActiveRoute regex='studies.index'}}"><a href="{{pathFor 'StudiesIndex' query=currentQueryString}}">Home</a></li>
 			<li class="{{isActiveRoute regex='cohort'}}"><a href="{{pathFor 'Cohort' query=currentQueryString}}">Cohort</a></li>
@@ -46,5 +46,6 @@
 		<div class="tab-content">
 			{{> yield}}
 		</div>
+		{{/if}}
     </div>
 </template>
