@@ -12,7 +12,7 @@ medbook_config_file = null  // config file for apps and tools
 
 Meteor.startup(function () {
 	medbook_config_file = process.env["MEDBOOK_CONFIG"]
-	console.log('adapter startup', medbook_config_file)
+	console.log('Reading config from env MEBOOK_CONFIG', medbook_config_file)
 	read_config = function(){
 	   console.log('reading ',medbook_config_file)
        fs.readFile(medbook_config_file, function (err, data) {
@@ -98,6 +98,9 @@ Meteor.startup(function () {
 			fs.writeSync(fd,'\n')
 		})
 		fs.closeSync(fd)
+		fs.exists(expfile, function(data) {
+			console.log('file', expfile, 'exists?', data )
+		})
 			
 		var cmd = medbook_config.tools.limma.path;
 		var whendone = function(retcode, workDir, contrastId, contrastName, studyID, uid) { 
