@@ -3,6 +3,7 @@ GenesController = RouteController.extend({
   },
 
   data: function () {
+	  console.log('genes controller',this)
 	  gene_name = this.params.name;
 	  console.log('gene: ', gene_name);
  
