@@ -138,7 +138,26 @@ Template.Cohort.rendered = function() {
                         'object' : sigIdsDocList
                     }
                 },
-                'deleteEvents' : ['Docetaxel']
+                'deleteEvents' : ['Docetaxel'],
+                "rowTitleCallback" : function(eventId, config) {
+                    var eventObj = config['eventAlbum'].getEvent(eventId);
+                    var datatype = eventObj.metadata['datatype'];
+                    if (datatype === 'expression data') {
+                        // mRNA url: /wb/gene/<gene name>
+                        var gene = eventId.replace('_mRNA', '');
+                        var url = '/wb/gene/' + gene;
+                        window.open(url, "_self");
+                    } else if (datatype === 'clinical data') {
+                        // clinical url: /wb/clinical/<name>
+                        var feature = eventId;
+                        var url = '/wb/clinical/' + feature;
+                        window.open(url, "_self");
+                    }
+                },
+                "columnTitleCallback" : function(sampleId, config) {
+                    var url = '/wb/patient/' + sampleId;
+                    window.open(url, "_self");
+                }
             });
         } else {
             // remove child elements of divElem
