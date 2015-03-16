@@ -15,20 +15,30 @@
 						{{#if isPDF}}
 						<a target="iframe_target"  onclick="showPDF()" href="{{geturl.url}}">{{geturl.name}}</a>
 						{{else}}
-						<a class="selectableHot" data-id={{geturl.id}} href="#">{{geturl.name}} {{geturl.type}}</a>
+							{{#if isSVG}}
+							
+								<a target="svg_iframe"  onclick="showSVG()" href="{{geturl.url}}" >{{geturl.name}}</a>
+							
+							{{else}}
+								<a class="selectableHot" data-id={{geturl.id}} href="#">{{geturl.name}} {{geturl.type}}</a>
+							{{/if}}
 						{{/if}}
 					{{/each}}
 					</div>
 				</tr>
 			{{/each}}
+			<iframe class="svg_plot" name="svg_iframe" hidden>
+				
+			</iframe>
 			<div id="frameset_div" hidden>
 			<FRAMESET rows="100%" >
 				<frame id="iframe_target" name="iframe_target">
 				</frame>
 			</FRAMESET >
+			
 			</div>
-		<textarea id="searchbox" placeholder="Enter Gene"></textarea>
 		<div id="HOTdiv" hidden></div>
+		
 	    </tbody>
 	</table>
  

@@ -30,6 +30,9 @@
 		    type: [String],
 		    label: "List of Samples for Group2"
 		},
+		userId: {
+			type: String
+		}
 	});
 		
 	Contrast.attachSchema(Schemas.Contrast);

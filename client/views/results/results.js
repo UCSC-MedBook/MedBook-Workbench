@@ -1,7 +1,13 @@
 showPDF = function() {
 		$("#frameset_div").show()
 		$("#HOTdiv").hide()
+		$('.svg_plot').hide()
 }	;	
+showSVG = function() {
+	$('.svg_plot').show()
+	$("#HOTdiv").hide()
+	$("#frameset_div").hide()
+}
 var hot;
 /*****************************************************************************/
 /* Results: Event Handlers and Helpersss .js*/
@@ -29,6 +35,7 @@ Template.Results.events({
 		Session.set('selectedBlob',r);
 		console.log('selected blob:', r);
 		$("#frameset_div").hide()
+		$('.svg_plot').hide()
 		$("#HOTdiv").show()
 		HOTload(r)
 	} ,
@@ -85,7 +92,9 @@ Template.Results.helpers({
 		var id = this.toString().trim()
 		if (id) {
 			var b = Blobs.findOne({_id:id})
-			return {url: b.url(), name: b.name(), size: b.size(), type:b.type(), id:b._id}
+			var packet = {url: b.url(), name: b.name(), size: b.size(), type:b.type(), id:b._id}
+			console.log('get url ', packet)
+			return packet
 		}
 		return
 	},
@@ -95,6 +104,14 @@ Template.Results.helpers({
 			var b = Blobs.findOne({_id:id})
 			return b.type() == "application/pdf"
 		}
+	return false
+	},
+	isSVG: function() {
+			var id = this.toString().trim()
+			if (id) {
+				var b = Blobs.findOne({_id:id})
+				return b.type() == "image/svg+xml"
+			}
 	return false
 	}
 });

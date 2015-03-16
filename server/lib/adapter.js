@@ -158,10 +158,10 @@ Meteor.startup(function () {
 			//	}
 			};
 			//"Rscript">limma_ng.R $input $contrast $top_count $output $top_genes $mds_plot
-		    Meteor.call('runshell', cmd, [expfile,phenofile, 'CD46', 'exp.pdf'], 
+		    Meteor.call('runshell', cmd, [expfile,phenofile, 'CD46', 'plot.pdf', 'plot.svg'], 
 				workDir, contrastId, contrastName, studyID, path.join(workDir,'report.list'), whendone, function(err,response) {
 					if(err) {
-						console.log('serverDataResponse', "pathmark_adapter Error:" + err);
+						console.log('serverDataResponse', "boxplot_adapter Error:" + err);
 						return ;
 					}
 			resultObj = response['stderr'];

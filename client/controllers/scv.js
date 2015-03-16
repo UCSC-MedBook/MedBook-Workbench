@@ -7,10 +7,15 @@ ScvController = RouteController.extend({
 	  var id = this.params._id;
 	  var g1 = this.params.g1;
 	  var g2 = this.params.g2;
-	  var tool = this.params.hash;
+	  var query = this.params.query;
+	  console.log('ROUTER query', query)
 	  var studyID = Session.get('studyID');	
 	  if (this.params.length > 0) {
 		  console.log('scv: group1: '+g1+' group2: '+g2);
+	  }
+	  if (query.contrast) {
+		  id = query.contrast
+		  Session.set('selectedContrast', id)
 	  }
 	  if (id) {
 		  return {
@@ -30,7 +35,11 @@ ScvController = RouteController.extend({
 		results: {}
 		}	  
   },
-
+  edit: function() {
+	  console.log('editing mode');
+	  this.state.set('isEditing', true);
+	  this.render('ScvContrast');
+  },
   action: function () {
     this.render();
   }

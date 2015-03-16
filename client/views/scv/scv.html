@@ -10,28 +10,32 @@
 		        <tr>
 		            <td>
 						
-					 	<div id="contrast1" width=200>
-							Contrast {{> Contrast}}
-						</div>
-						
 					</td>
 					<td>
 						<button class="btn" id="createGroup">Create new Contrast from two groups</button>
-					    <div id="group1" name="group1"> 
-					    	Group1 {{> StudyGroupsIndex}} 
-					    </div>
-					    <div id="group2" name="group2" value="{{_id}}">
-					  	  	Group2 {{> StudyGroupsIndex}} 
-					    </div>
+						<div class="hidden">
+					    	<div id="group1" name="group1"> 
+					    		Group1 {{> StudyGroupsIndex}} 
+					    	</div>
+					    	<div id="group2" name="group2" value="{{_id}}">
+					  	  		Group2 {{> StudyGroupsIndex}} 
+					    	</div>
+						</div>
 						
 					</td>
 		        </tr>
 		    </tbody>
 		</table>
 		<div class="btn-group">
-		    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Analyze Contrast<span class="caret"></span></a>
-		    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-		        <li><a tabindex="1" href="/wb/shell/boxplot/{{selectedContrastId}}">Plot gene expression</a></li>
+		    <a class="btn dropdown-toggle" onclick="$('#BoxPlot').hide()"   data-toggle="dropdown" href="#">Analyze Contrast<span class="caret"></span></a>
+			<div hidden id="BoxPlot">
+				Plot Gene Expression:
+				{{> Boxplot}}
+			</div>
+		    <ul class="dropdown-menu" style="z-index:100;" role="menu" aria-labelledby="dLabel">
+				<li><a onclick="$('#BoxPlot').show()" tabindex="1" href="#">Plot gene expression</a>
+			
+				 </li>
 		        <li><a tabindex="2" href="/wb/shell/limma/{{selectedContrastId}}">Differential Gene Expression (RNAseq)</a></li>
 		        <li><a tabindex="3" href="/wb/shell/diffparadigm">Differential Paradigm</a></li>
 				<li><a tabindex="4" href="/wb/shell/pathmark">Differentially Activated Sub-networks (PATHMARK)</a></li>
@@ -42,12 +46,19 @@
 				<li><a tabindex="-1" href="#">Pathway Enrichment of Contrast</a></li>
 		    </ul>
 		</div>  
+	<div hidden id="prompt4gene">
+	
+	 <input  class="gene"  type="string" >  Select a Gene
+	 
+	 <button class="makeBoxPlot">Make Box Plot </button>
+	</div>
 	
 		{{#with selectedContrast}}
-			<h5>Group 1: <a href={{pathFor 'SampleGroupsIndex' study=this.studyID name=this.group1}}>{{this.group1}}:</a>
-			{{> ContrastDetail _id=contrast_id list="list1"}}</h5>
-			<h5>Group 2: <a href={{pathFor 'SampleGroupsIndex' study=this.studyID name=this.group2}}>{{this.group2}}:</a>
-			{{> ContrastDetail _id=contrast_id list="list2"}}</h5>
+				<h5>Group 1: <a href={{pathFor 'SampleGroupsIndex' study=this.studyID name=this.group1}}>{{this.group1}}:</a>
+					{{> ContrastDetail _id=contrast_id list="list1"}}</h5>
+				<h5>Group 2: <a href={{pathFor 'SampleGroupsIndex' study=this.studyID name=this.group2}}>{{this.group2}}:</a>
+					{{> ContrastDetail _id=contrast_id list="list2"}}</h5>
+			
 			{{> Results contrast=selectedContrast}}
 		{{/with}}	
 		

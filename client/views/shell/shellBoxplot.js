@@ -2,7 +2,7 @@
 /*****************************************************************************/
 /* Shell: Event Handlers and Helpersss .js*/
 /*****************************************************************************/
-Template.ShellBoxplot.events({
+Template.Boxplot.events({
 	'click #boxplot': function(event,template){
 		var contrastID = Session.get('selectedContrast')
 		console.log('run boxplot with contrast', contrastID)

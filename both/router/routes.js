@@ -15,14 +15,16 @@ Router.configure({
  Router.onBeforeAction(function() {
 	console.log('onBefore params', this.params)
  	Session.set('studyID', this.params.query.study);
+	console.log('set session studyID', this.params.query.study);
 	this.next()
 	console.log('BEFORE route: ',this.path);
 
 }); 
 
 Router.route('/wb', {name:'StudiesIndex'});
-Router.route('/wb/scvs',{name: 'Scv'});
-Router.route('/wb/scv/:_id',{name:'ScvContrast'});
+Router.route('/wb/scv',{name: 'Scv',controller: 'ScvController'});
+//Router.route('/wb/scv/:_id',{name:'Scv',controller: 'ScvController'});
+Router.route('/wb/scv/edit',{name:'ScvContrastEdit', controller: 'ScvController', action: 'edit'});
 Router.route('/wb/results/:_id',{name:'Results'});
 Router.route('/wb/sampleGroups/:study/:name', {name:'SampleGroupsIndex'});
 Router.route('/wb/clinical', {name:'ClinicalEventsIndex'});

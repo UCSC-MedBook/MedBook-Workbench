@@ -1,6 +1,10 @@
 
 <template name="ShellBoxplot"> 
-<div id="job">	
+	{{> Boxplot}}
+	{{ToolResults}}
+</template>
+
+<template name="Boxplot">
 	<div class="tool">
 		<h3>Tool Parameters</h3>
 	{{#each selectedContrast}}
@@ -9,6 +13,10 @@
 		<h4>Select top <input class="input-sm" type="text" placeholder="CD46"> Gene</h4>
 		<br><button id="boxplot">Run Boxplot </button>
 	</div>
+</template>
+
+<template name="ToolResults"> 
+<div id="job">	
    <h2>Results</h2>
 	{{#each blobs}}
 		<p><a target="_blank" href="{{this.url store='blobs' download=false}}">{{this.name}} ({{this.size}} bytes)</a> {{> FS.DeleteButton class="btn btn-danger btn-xs"}}</p>
