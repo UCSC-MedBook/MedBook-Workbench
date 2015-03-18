@@ -10,7 +10,7 @@
 	{{#each selectedContrast}}
 	name: {{name}} 	
 	{{/each}}
-		<h4>Select top <input class="input-sm" type="text" placeholder="CD46"> Gene</h4>
+		<h4>Select top <input id="gene" class="input-sm" type="text" placeholder="CD46"> Gene</h4>
 		<br><button id="boxplot">Run Boxplot </button>
 	</div>
 </template>
@@ -19,7 +19,7 @@
 <div id="job">	
    <h2>Results</h2>
 	{{#each blobs}}
-		<p><a target="_blank" href="{{this.url store='blobs' download=false}}">{{this.name}} ({{this.size}} bytes)</a> {{> FS.DeleteButton class="btn btn-danger btn-xs"}}</p>
+		<p><a target="_blank" href="{{this.url store='blobs' download=false}}">{{this.name}} ({{this.size}} bytes)</a> </p>
 	{{/each}}
 </div>
 

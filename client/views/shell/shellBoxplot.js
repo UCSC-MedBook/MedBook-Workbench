@@ -5,8 +5,10 @@
 Template.Boxplot.events({
 	'click #boxplot': function(event,template){
 		var contrastID = Session.get('selectedContrast')
-		console.log('run boxplot with contrast', contrastID)
-		Meteor.call('boxplot_adapter', [contrastID], function(err,response) {
+		var gene = template.find('.input-sm').value
+		console.log('run boxplot with contrast', contrastID, 'gene', gene)
+
+		Meteor.call('boxplot_adapter', [contrastID, gene], function(err,response) {
 			if(err) {
 				Session.set('serverDataResponse', "pathmark Error:" + err.reason);
 				return;
@@ -14,6 +16,7 @@ Template.Boxplot.events({
 			Session.set('boxplot serverDataResponse', response);
 			console.log('boxplot response: '+response);
 		});
+		$('#BoxPlot').hide()
 	}	
 });
 

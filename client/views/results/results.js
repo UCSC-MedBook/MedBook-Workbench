@@ -30,6 +30,18 @@ Template.Results.events({
 				console.log('post done', response)
 			})
 	} ,
+	'click #del-result': function( e, tmpl){
+		console.log('del result:', this._id);
+		Results.remove({_id: this._id})
+		//var today = new Date();
+		/*HTTP.post('/medbookPost',{data:{post:{title:this.name, body:'posted from workbench on '+today, medbookfiles:this.blobs}}},
+			function (err, response) {
+				if (err) {
+					console.log('error posting result', err)
+				}
+				console.log('post done', response)
+			})*/
+	} ,
 	'click .selectableHot': function( e, tmpl){
 		var r = e.target.dataset["id"]
 		Session.set('selectedBlob',r);

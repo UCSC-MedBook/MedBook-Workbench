@@ -12,7 +12,7 @@ medbook_config_file = null  // config file for apps and tools
 
 Meteor.startup(function () {
 	medbook_config_file = process.env["MEDBOOK_CONFIG"]
-	console.log('Reading config from env MEBOOK_CONFIG', medbook_config_file)
+	console.log('Reading config from env MEDBOOK_CONFIG', medbook_config_file)
 	read_config = function(){
 	   console.log('reading ',medbook_config_file)
        fs.readFile(medbook_config_file, function (err, data) {
@@ -36,6 +36,7 @@ Meteor.startup(function () {
 			read_config()
 			var contrastId = argList[0]
 			var sampleList =  {'_id':0}
+			var gene = argList[1]
 			workDir = ntemp.mkdirSync('boxplotWork')
 			var phenofile =path.join(workDir, 'pheno.tab')
 			var contrast = Contrast.findOne({'_id':contrastId},{list1:1,'name':1,'studyID':1,_id:0});	
@@ -158,7 +159,7 @@ Meteor.startup(function () {
 			//	}
 			};
 			//"Rscript">limma_ng.R $input $contrast $top_count $output $top_genes $mds_plot
-		    Meteor.call('runshell', cmd, [expfile,phenofile, 'CD46', 'plot.pdf', 'plot.svg'], 
+		    Meteor.call('runshell', cmd, [expfile,phenofile, gene, gene+'.pdf', gene+'.svg'], 
 				workDir, contrastId, contrastName, studyID, path.join(workDir,'report.list'), whendone, function(err,response) {
 					if(err) {
 						console.log('serverDataResponse', "boxplot_adapter Error:" + err);
