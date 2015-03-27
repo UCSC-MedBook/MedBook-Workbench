@@ -52,7 +52,7 @@ Template.ClinicalEventsIndex.rendered = function() {
 
         //var response = ClinicalEvents.find({});
         var docList = response.fetch();
-        console.log('docList.length:', docList.length, s);
+        console.log('for study', study,'clinical events length:', docList.length, s);
         //console.log('docList:', JSON.stringify(docList), ' <-- Deps.autorun');
 
         if (docList.length > 0) {

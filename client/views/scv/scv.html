@@ -46,12 +46,6 @@
 				<li><a tabindex="-1" href="#">Pathway Enrichment of Contrast</a></li>
 		    </ul>
 		</div>  
-	<div hidden id="prompt4gene">
-	
-	 <input  class="gene"  type="string" >  Select a Gene
-	 
-	 <button class="makeBoxPlot">Make Box Plot </button>
-	</div>
 	
 		{{#with selectedContrast}}
 				<h5>Group 1: <a href={{pathFor 'SampleGroupsIndex' study=this.studyID name=this.group1}}>{{this.group1}}:</a>
