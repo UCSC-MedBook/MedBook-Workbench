@@ -19,6 +19,7 @@ Template.Results.events({
 		console.log('select result:', r);
 	} ,
 	'click #post-tel': function( e, tmpl){
+	    var today = new Date();
             document.medbookpost = {title:this.name, body:'posted from workbench on '+today, medbookfiles:this.blobs};
             $.getScript("/postScript");
 	} ,
