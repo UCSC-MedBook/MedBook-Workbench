@@ -10,14 +10,30 @@ Template.Boxplot.events({
 
 		Meteor.call('boxplot_adapter', [contrastID, genes], function(err,response) {
 			if(err) {
-				Session.set('serverDataResponse', "pathmark Error:" + err.reason);
+				Session.set('serverDataResponse', "boxplot Error:" + err.reason);
 				return;
 			}
 			Session.set('boxplot serverDataResponse', response);
 			console.log('boxplot response: '+response);
 		});
 		$('#BoxPlot').hide()
-	}	
+	},
+	'click #violinplot': function(event,template){
+		var contrastID = Session.get('selectedContrast')
+		var genes = Session.get('genelist')
+		console.log('run violinplot with contrast', contrastID, 'genes', genes)
+
+		Meteor.call('violinplot_adapter', [contrastID, genes], function(err,response) {
+			if(err) {
+				Session.set('serverDataResponse', "violin plot Error:" + err.reason);
+				return;
+			}
+			Session.set('violinplot serverDataResponse', response);
+			console.log('violinplot response: '+response);
+		});
+		$('#BoxPlot').hide()
+	},
+		
 });
 
 Template.ShellBoxplot.helpers({
