@@ -1,6 +1,6 @@
-var Schema = {};
+//Schemas = {}
 
-Schema.User = new SimpleSchema({
+Schemas.User = new SimpleSchema({
   _id: {
     type: String,
     optional: true

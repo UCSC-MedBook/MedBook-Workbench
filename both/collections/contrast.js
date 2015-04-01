@@ -1,5 +1,4 @@
-	Contrast = new Meteor.Collection('contrast');
-	var Schemas = {};
+	Contrast = Collections.Contrast = new Meteor.Collection('contrast');
 
 	Schemas.Contrast = new SimpleSchema({
 	    name: {

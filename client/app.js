@@ -26,6 +26,7 @@ Meteor.startup(function () {
 	Meteor.subscribe('signature_scores_index');
 	Meteor.subscribe('results');
 	Meteor.subscribe('expression2');
+	Meteor.subscribe('expression3');
 	Meteor.subscribe('gene_sets_index');
 	Meteor.subscribe('genes');
 	//Meteor.subscribe('signature_index');

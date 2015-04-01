@@ -1,5 +1,3 @@
-
-var Collections = {};
 Signature = Collections.Signature = new Mongo.Collection("signature");
 
 /*
@@ -8,11 +6,10 @@ Signature = Collections.Signature = new Mongo.Collection("signature");
  *    return Signature.find({is_public: true});
  *  }
  */
-Schemas = {};
 
 UI.registerHelper("Schemas", Schemas);
 
-SimpleSchema.debug = true;
+//SimpleSchema.debug = true;
 Schemas.Signature = new SimpleSchema({
   name: {
       type: String,
@@ -45,11 +42,11 @@ Signature.attachSchema(Schemas.Signature);
 UI.registerHelper("Collections", Collections);
 
 
-Signature.allow({
+/*Signature.allow({
   insert: function () {
     return true;
   },
   remove: function () {
     return true;
   }
-});
+});*/

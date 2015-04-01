@@ -10,7 +10,8 @@
 	{{#each selectedContrast}}
 	name: {{name}} 	
 	{{/each}}
-		<h4>Select top <input id="gene" class="input-sm" type="text" placeholder="CD46"> Gene</h4>
+      <h4><input class="genelist" id="genelist" placeholder="Enter HUGO Gene Symbols or Gene Aliases" name="genelist"></h4>
+		<h4>Select<input id="gene" class="input-sm" type="text" placeholder="CD46"> Gene</h4>
 		<br><button id="boxplot">Run Boxplot </button>
 	</div>
 </template>

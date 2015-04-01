@@ -1,3 +1,12 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [required meteor packages](#required-meteor-packages)
+- [required nodejs packages](#required-nodejs-packages)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 > Written with [StackEdit](https://stackedit.io/).
 
 install meteor before installing this package

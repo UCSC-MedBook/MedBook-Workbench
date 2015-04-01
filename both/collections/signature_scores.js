@@ -1,8 +1,5 @@
-
-var Collections = {};
 SignatureScores = Collections.SignatureScores = new Mongo.Collection("signature_scores");
 
-Schemas = {};
 
 UI.registerHelper("Schemas", Schemas);
 

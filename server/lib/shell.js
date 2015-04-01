@@ -3,7 +3,66 @@ var PassThrough = Npm.require('stream').PassThrough;
 var Fiber = Npm.require('fibers');
 var fs = Npm.require('fs');
 
+function tsvJSON(tsv){
+ 
+  var lines=tsv.split("\n");
+ 
+  var result = [];
+ 
+  var headers=lines[0].split("\t");
+ 
+  for(var i=1;i<lines.length;i++){
+ 
+	  var obj = {};
+	  var currentline=lines[i].split("\t");
+ 
+	  for(var j=0;j<headers.length;j++){
+		  obj[headers[j]] = currentline[j];
+	  }
+ 
+	  result.push(obj);
+ 
+  }
+  
+  //return result; //JavaScript object
+  return JSON.stringify(result); //JSON
+}
+
 Meteor.startup(function () {
+	HTTP.methods({
+	   upload : function(chunk) {
+	      var collection = this.query.collection;
+		  try {
+			  var data = chunk.toString();
+		  }
+		  catch(error) {
+		  	  console.log('no data uploaded')
+			  throw new Meteor.Error(406, 'no data uploaded, valid collections: '+ Object.keys(Collections)+'\n try: curl -X POST "https://medbook.ucsc.edu:/wb/upload?collection=ClinicalOncore" -T data.tab\n');
+		  }
+		  try {
+			  var j_string = tsvJSON(data)
+			  var json_arr = JSON.parse(j_string)
+			  var valid_collection = Collections[collection]
+			  if (valid_collection) {
+				  console.log(collection, valid_collection)
+			  }
+			  else {
+				  console.log('invalid collection', collection, 'valid:', Object.keys(Collections))
+				  throw new Meteor.Error(406, "invalid collection valid collections: "+ Object.keys(Collections))+"\n";
+			  }
+			  _.each(json_arr, function(j) {
+				  console.log( 'json',j)
+				  check(j, valid_collection);
+				  var ret = valid_collection.insert(j);
+		      	  console.log("insert done", ret);
+			  })
+		  }
+		  catch(error) {
+		  	  console.log(error)
+			  throw new Meteor.Error(406, error);
+		  }
+	   }
+	});
 	
 	Meteor.methods({
 	  getCurrentTime: function () {

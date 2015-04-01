@@ -1,6 +1,6 @@
 var fs = Npm.require('fs');
 var path = Npm.require('path');
-var Fiber = Npm.require('fibers');
+//var Fiber = Npm.require('fibers');
 var toml = Meteor.npmRequire('toml-js');
 var mime = Meteor.npmRequire('mime');
 var ntemp = Meteor.npmRequire('temp').track();

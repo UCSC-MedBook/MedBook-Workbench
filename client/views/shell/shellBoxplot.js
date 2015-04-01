@@ -34,6 +34,41 @@ Template.ShellBoxplot.helpers({
 			return Contrast.find({_id:contrastID})
 	}
 });
+Template.ShellBoxplot.rendered = function() {
+     //Meteor.subscribe("Expression", "prad_wcdt");
+     // genes = Expression.find({}, { sort: {gene:1 }, fields: {"gene":1 }})
+     var $genelist = $("#genelist");
+	 debugger;
+      $genelist.select2({
+
+          multiple: true,
+          ajax: {
+            url: "/wb/genes",
+            dataType: 'json',
+            delay: 250,
+            data: function (term) {
+              var qp = {
+                q: term
+              };
+              return qp;
+            },
+            results: function (data, page, query) {
+              // parse the results into the format expected by Select2.
+              // since we are using custom formatting functions we do not need to
+              // alter the remote JSON data
+              return {
+                  results: data.items
+              };
+            },
+            cache: true
+          },
+          escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
+          minimumInputLength: 2,
+      });
+     $genelist.keydown(function(f) {
+             alert("key");
+     })
+};
 
 /*****************************************************************************/
 /* Shell: Lifecycle Hooks */
