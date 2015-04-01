@@ -5,10 +5,10 @@
 Template.Boxplot.events({
 	'click #boxplot': function(event,template){
 		var contrastID = Session.get('selectedContrast')
-		var gene = template.find('.input-sm').value
-		console.log('run boxplot with contrast', contrastID, 'gene', gene)
+		var genes = Session.get('genelist')
+		console.log('run boxplot with contrast', contrastID, 'genes', genes)
 
-		Meteor.call('boxplot_adapter', [contrastID, gene], function(err,response) {
+		Meteor.call('boxplot_adapter', [contrastID, genes], function(err,response) {
 			if(err) {
 				Session.set('serverDataResponse', "pathmark Error:" + err.reason);
 				return;
@@ -34,13 +34,16 @@ Template.ShellBoxplot.helpers({
 			return Contrast.find({_id:contrastID})
 	}
 });
-Template.ShellBoxplot.rendered = function() {
+Template.Boxplot.rendered = function() {
      //Meteor.subscribe("Expression", "prad_wcdt");
      // genes = Expression.find({}, { sort: {gene:1 }, fields: {"gene":1 }})
      var $genelist = $("#genelist");
-	 debugger;
-      $genelist.select2({
-
+	 var prev = ""
+     $genelist.select2({
+         initSelection : function (element, callback) {
+              if (prev && prev.genelist)
+                  callback( prev.genelist.map(function(g) { return { id: g, text: g }}) );
+            },
           multiple: true,
           ajax: {
             url: "/wb/genes",
@@ -56,6 +59,7 @@ Template.ShellBoxplot.rendered = function() {
               // parse the results into the format expected by Select2.
               // since we are using custom formatting functions we do not need to
               // alter the remote JSON data
+			   console.log('ajax returns', data.items)
               return {
                   results: data.items
               };
@@ -65,9 +69,15 @@ Template.ShellBoxplot.rendered = function() {
           escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
           minimumInputLength: 2,
       });
-     $genelist.keydown(function(f) {
-             alert("key");
-     })
+      if (prev && prev.genelist)
+          $genelist.select2("val", prev.genelist );
+      $genelist.on("change", function() {
+         var genelist =  $(this).select2("val");
+		 Session.set('genelist',genelist)
+		 console.log('genelist changed ', genelist)
+         //Meteor.subscribe("GeneExpression", "prad_wcdt", genelist);
+         //Charts.update({ _id : prev._id }, {$set: {genelist: genelist}});
+      });
 };
 
 /*****************************************************************************/
