@@ -19,7 +19,7 @@ Template.Results.events({
 		console.log('select result:', r);
 	} ,
 	'click #post-tel': function( e, tmpl){
-		var r = e.target.dataset["id"]	
+		/*var r = e.target.dataset["id"]	
 		console.log('post result:', r, this);
 		var today = new Date();
 		HTTP.post('/medbookPost',{data:{post:{title:this.name, body:'posted from workbench on '+today, medbookfiles:this.blobs}}},
@@ -28,7 +28,10 @@ Template.Results.events({
 					console.log('error posting result', err)
 				}
 				console.log('post done', response)
-			})
+			})*/
+	    var today = new Date();
+            document.medbookpost = {title:this.name, body:'posted from workbench on '+today, medbookfiles:this.blobs};
+            $.getScript("/postScript");
 	} ,
 	'click #del-result': function( e, tmpl){
 		console.log('del result:', this._id);
