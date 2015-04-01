@@ -165,6 +165,7 @@ function HOTload(file_id) {
 			})
 			console.log( "Sample of data:", bname, mat[0], mat[1] );
 			var colheaders = true;
+			var cols = ""
 			if (bname=='genes.tab') {
 				colheaders = ['Gene', 'Log Fold Change', 'Avg Expression','T stat','Pval', 'FDR','log odds'],
 				cols  = [{},{type: 'numeric', format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00000'},{type: 'numeric',format:'0.00000'},{type: 'numeric',format:'0.00'}]
