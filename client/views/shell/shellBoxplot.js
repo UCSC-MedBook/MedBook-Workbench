@@ -33,7 +33,21 @@ Template.Boxplot.events({
 		});
 		$('#BoxPlot').hide()
 	},
-		
+	'click #isoformplot': function(event,template){
+		var contrastID = Session.get('selectedContrast')
+		var genes = Session.get('genelist')
+		console.log('run isoformplot with contrast', contrastID, 'genes', genes)
+
+		Meteor.call('isoformplot_adapter', [contrastID, genes], function(err,response) {
+			if(err) {
+				Session.set('serverDataResponse', "isoform plot Error:" + err.reason);
+				return;
+			}
+			Session.set('isoformplot serverDataResponse', response);
+			console.log('isoformplot response: '+response);
+		});
+		$('#BoxPlot').hide()
+	},		
 });
 
 Template.ShellBoxplot.helpers({
