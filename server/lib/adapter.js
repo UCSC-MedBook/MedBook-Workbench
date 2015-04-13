@@ -323,6 +323,7 @@ Meteor.startup(function () {
 				console.log('# of samples in each side of' , contrast['name'],': ' , contrast['list1'].length, 'vs',contrast['list2'].length)
 				_.each(contrast['list1'], function(item) {
 					wstream.write(item)
+					//var field = 'samples.'+item+'.rsem_quan_log2'
 					sampleList[item] = 1
 					wstream.write('\t')
 					wstream.write(contrast['group1'])
@@ -330,6 +331,7 @@ Meteor.startup(function () {
 				})
 				_.each(contrast['list2'], function(item) {
 					wstream.write(item)
+					//var field = 'samples.'+item+'.rsem_quan_log2'
 					sampleList[item] = 1
 					wstream.write('\t')
 					wstream.write(contrast['group2'])
@@ -340,12 +342,13 @@ Meteor.startup(function () {
 	
 				console.log('sample list length from study', studyID , Object.keys(sampleList).length )
 				console.log('input files', expfile, phenofile)
+				console.log('db.expression_isoform.find({"gene":{$in:', gene,'}},', sampleList, ')')
 				var exp_curs = ExpressionIsoform.find({'gene':{$in:gene}}, sampleList);
 				var fd = fs.openSync(expfile,'w');
-				fs.writeSync(fd,'gene\t')
+				fs.writeSync(fd,'gene\tisoform\t')
 				_.map(sampleList, function(value, key) {
 		
-					if (value == 1) {
+					if (key != '_id') {
 						fs.writeSync(fd,key)
 						fs.writeSync(fd,'\t')
 					}
@@ -355,15 +358,16 @@ Meteor.startup(function () {
 
 				exp_curs.forEach(function(exp) {
 
+					console.log('#iso', exp['samples'])
 					fs.writeSync(fd,exp['gene'])
 					fs.writeSync(fd,'\t')
-					_.map(sampleList, function(value, key) {
-			
-						if (value == 1) {
-							geneExp = exp[key]
-							fs.writeSync(fd,geneExp+'')
-							fs.writeSync(fd,'\t')
-						}
+					fs.writeSync(fd,exp['transcript'])
+					fs.writeSync(fd,'\t')
+					_.map(exp['samples'], function(value, key) {
+						var exp_value =  value['rsem_quan_log2']
+						console.log('key',key, 'value', exp_value)
+						fs.writeSync(fd,exp_value+'')
+						fs.writeSync(fd,'\t')
 					})
 					fs.writeSync(fd,'\n')
 				})

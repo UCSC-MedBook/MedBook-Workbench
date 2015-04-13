@@ -15,7 +15,7 @@ Template.Contrast.helpers({
 	contrast: function(){
 		var study = Session.get('studyID') ;
 		console.log('find contrasts for studyID:'+study);
-		return Contrast.find({},{sort: {name:1}});
+		return Contrast.find({"studyID":study},{sort: {name:1}});
 	},
 });
 

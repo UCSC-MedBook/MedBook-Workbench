@@ -12,7 +12,7 @@ Router.configure({
   routeControllerNameConverter: 'upperCamelCase'
 });
 
- Router.onBeforeAction(function() {
+Router.onBeforeAction(function() {
 	console.log('onBefore params', this.params)
  	Session.set('studyID', this.params.query.study);
 	console.log('set session studyID', this.params.query.study);

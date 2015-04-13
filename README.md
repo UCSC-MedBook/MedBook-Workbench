@@ -1,3 +1,18 @@
+Workbench app for MedBook
+
+
+Four Security rules for MedBook
+
+READ and INSERT ACCESS
+  1. all publications check the current user (mongo built in call) and fetch collaborations for that user.
+  2. All finds inside publish function should include the collaboration filter.
+  3. Code review each collection and corresponding publication.
+
+UPDATE and DELETE ACCESS
+  4. owner only by default
+
+Workbench DEPENDENCIES
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
