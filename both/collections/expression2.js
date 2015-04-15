@@ -1,4 +1,4 @@
-Expression2 = new Mongo.Collection('expression_import');
+Expression2 = new Mongo.Collection('expression2');
 /*
  * Add query methods like this:
  *  Expression2.findPublic = function () {

@@ -99,7 +99,7 @@ Template.Cohort.rendered = function() {
         }
         var geneList = Session.get('geneList');
 
-        var expResp = Expression.find({}, {
+        var expResp = Expression2.find({}, {
             reactive : true
         });
         var expDocList = expResp.fetch();
