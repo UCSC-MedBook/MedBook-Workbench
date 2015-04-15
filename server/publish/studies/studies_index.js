@@ -8,7 +8,7 @@
 			console.log('concat',user_record.profile.collaborations)
 			collaborations = collaborations.concat(user_record.profile.collaborations)
 		}
-		var cnt = Studies.find({collaborations: {$in: collaborations}}).count();
-		console.log ('member of',cnt, 'study based on ',collaborations)
-		return Studies.find({collaborations: {$in: collaborations}});
+		var curs = Studies.find({collaborations: {$in: collaborations}});
+		console.log ('member of',curs.count(), 'study based on ',collaborations)
+		return curs;
 	});

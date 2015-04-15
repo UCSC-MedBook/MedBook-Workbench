@@ -14,7 +14,6 @@ Template.ContrastDetail.events({
 Template.ContrastDetail.helpers({
 	contrast: function(){
 		var study = Session.get('studyID') ;
-		console.log('find contrasts for studyID:'+study);
 		var c =  Contrast.findOne({_id:this._id});
 		if (!c) return;
 		return c[this.list];

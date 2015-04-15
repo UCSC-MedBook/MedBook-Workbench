@@ -33,6 +33,52 @@ Template.Results.events({
             document.medbookpost = {title:this.name, body:'posted from workbench on '+today, medbookfiles:this.blobs};
             $.getScript("/postScript");
 	} ,
+	'click #post-contrast': function( e, tmpl){
+	    var today = new Date();
+		var contrast_id = this.contrast
+		var blob_list = this.blobs;
+		blob_list.forEach(function(blob_id) {
+			var b = Blobs.findOne({_id:blob_id})
+			var url = b.url()
+			var bname = b.original.name
+			console.log('blob',bname, 'url', url)
+			if (bname =='genes.tab') {
+				$.ajax({url:url})
+				.done( function(data) {
+					var mat = []
+					var sig = {}
+				 	var datas = data.split(/[\r\n]+/g);
+					datas.forEach(function(l) {
+						var row = l.split('\t')
+						var gene = row[0]
+						if (row && gene) {
+							sig[gene] = row[1]
+							//console.log('gene',gene, row[1])
+						}
+					})
+	
+					var colheaders = true;
+					var cols = ""
+					if (bname=='genes.tab') {
+						colheaders = ['Gene', 'Log Fold Change', 'Avg Expression','T stat','Pval', 'FDR','log odds'],
+						cols  = [{},{type: 'numeric', format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00000'},{type: 'numeric',format:'0.00000'},{type: 'numeric',format:'0.00'}]
+						console.log('Contrast.update({_id:)', contrast_id, '$set:signature{', sig)
+						var ret = Contrast.update({_id:contrast_id}, {$set:{'signature':sig}} )
+						console.log('response', ret)
+					}
+					if (bname=='sig.tab') {
+						colheaders = ['Gene','coeff.Intercept','coeff.contrastB','stdev','stdev.contrastB','sigma','df.residual','Amean','s2.post','t.Intercept','t.contrastB',	'df.total',	'p.val.Intercept','p.value.contrastB','lods.Intercept',	'lods.contrastB','F','F.p.value']	
+						cols  = [{},{type: 'numeric', format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00000'},{type: 'numeric',format:'0.00'}]
+					}
+				
+				}).fail(function(err){
+					console.log('error fetching blob', err)
+				})
+			}
+		})
+		
+	} ,
+	
 	'click #del-result': function( e, tmpl){
 		console.log('del result:', this._id);
 		Results.remove({_id: this._id})
@@ -98,9 +144,14 @@ Template.Results.helpers({
 			}
 		console.log('results of Results.find', r)
 		files = r.map(function(x) {return x.blobs} )
-		console.log('b_ids',files)
-		console.log('bids' , files[0], files[0][0])
-		Session.set('currentBlob', files[0][0])
+		if (files) {
+			console.log('files',files)
+			console.log('files[0]' , files[0])
+			if (files[0]) {
+				console.log('files[0][0]', files[0][0])
+				Session.set('currentBlob', files[0][0])			
+			}
+		}
 		return r;
 	},
 	geturl: function() {
@@ -108,11 +159,15 @@ Template.Results.helpers({
 		if (id) {
 			var b = Blobs.findOne({_id:id})
 			var packet = {url: b.url(), name: b.name(), size: b.size(), type:b.type(), id:b._id}
-			console.log('get url ', packet)
+			//console.log('get url ', packet)
 			return packet
 		}
 		return
 	},
+	isDiffContrast: function() {
+		var type = this.type
+		return type == 'diff_expression'
+		},
 	isPDF: function() {
 		var id = this.toString().trim()
 		if (id) {

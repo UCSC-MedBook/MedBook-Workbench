@@ -131,7 +131,7 @@ Meteor.startup(function () {
 					}	
 				})
 				console.log('insert list of blobs', idList);
-				var resObj = Results.insert({'contrast': contrastId, 'name':'boxplot for '+contrastName,'studyID':studyID,'return':retcode, 'blobs':idList});
+				var resObj = Results.insert({'contrast': contrastId,'type': 'boxplot', 'name':'boxplot for '+contrastName,'studyID':studyID,'return':retcode, 'blobs':idList});
 			};
 		    Meteor.call('runshell', cmd, [expfile,phenofile, gene, gene.join('_')+'.pdf', gene.join('_')+'.svg'], 
 				workDir, contrastId, contrastName, studyID, path.join(workDir,'report.list'), whendone, function(err,response) {
@@ -257,7 +257,7 @@ Meteor.startup(function () {
 						}	
 					})
 					console.log('insert list of blobs', idList);
-					var resObj = Results.insert({'contrast': contrastId, 'name':'violinplot for '+contrastName,'studyID':studyID,'return':retcode, 'blobs':idList});
+					var resObj = Results.insert({'contrast': contrastId,'type': 'vioplinplot', 'name':'violinplot for '+contrastName,'studyID':studyID,'return':retcode, 'blobs':idList});
 					/*var post = {
 						title: "Results for contrast: "+contrastName,
 						url: "/wb/results/"+resObj,
@@ -412,7 +412,7 @@ Meteor.startup(function () {
 						}	
 					})
 					console.log('insert list of blobs', idList);
-					var resObj = Results.insert({'contrast': contrastId, 'name':'violinplot for '+contrastName,'studyID':studyID,'return':retcode, 'blobs':idList});				};  /* end of whendone */
+					var resObj = Results.insert({'contrast': contrastId, 'type':'isoform_violin_plot', 'name':'violinplot for '+contrastName,'studyID':studyID,'return':retcode, 'blobs':idList});				};  /* end of whendone */
 				
 		 		Meteor.call('runshell', cmd, [expfile,phenofile, gene, gene.join('_')+'.pdf', gene.join('_')+'.svg' ], 
 					workDir, contrastId, contrastName, studyID, path.join(workDir,'report.list'), whendone, function(err,response) {
@@ -580,16 +580,14 @@ Meteor.startup(function () {
 					idList.push(blob._id);
 				}	
 			})  /* each item in report.list */
- 			console.log('insert list of blobs', idList);
-			var resObj = Results.insert({'contrast': contrastId, 'name':'differential results for '+contrastName,'studyID':studyID,'return':retcode, 'blobs':idList});
+			var resObj = Results.insert({'contrast': contrastId,'type':'diff_expression', 'name':'differential results for '+contrastName,'studyID':studyID,'return':retcode, 'blobs':idList});
+			/* remove auto post
 			var post = {
 				title: "Results for contrast: "+contrastName,
 				url: "/wb/results/"+resObj,
 				body: "this is the results of limmma differential analysis run on 2/14/2015",
 				medbookfiles: idList
 			}
-			//var s = JSON.stringify(post)
-			//var uid = this.userId
 			console.log('user is ',uid)
 			if (uid) {
 				var user = Meteor.users.findOne({_id:uid})
@@ -600,7 +598,7 @@ Meteor.startup(function () {
 					HTTP.post("http://localhost:10001/medbookPost", {data:{post:post, token:token}})
 					console.log('after post')
 				}
-			}
+			}*/
 			//if (retcode == 0) {
 			//	ntemp.cleanup(function(err, stats) {
 		//			if (err)
@@ -721,7 +719,7 @@ Meteor.startup(function () {
 				})
 				blobCount = length(idList)
 				console.log('insert list of blobs', idList, 'count=', blobCount);
-				var resObj = Results.insert({'contrast':contrastId, 'name':'pathmark results for '+contrastName,'studyID':studyID,'return':retcode, 'blobs':idList});
+				var resObj = Results.insert({'contrast':contrastId, 'type':'pathmark', 'name':'pathmark results for '+contrastName,'studyID':studyID,'return':retcode, 'blobs':idList});
 				if (retcode == 0 && blobCount > 0) {
 					console.log('no errors, result:', resObj, 'cleaning up working directory.')
 					ntemp.cleanup(function(err, stats) {

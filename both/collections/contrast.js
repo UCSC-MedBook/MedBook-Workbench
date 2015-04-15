@@ -31,6 +31,11 @@
 		},
 		userId: {
 			type: String
+		},
+		signature: {
+			type: Object,
+			blackbox: true,
+			optional: true
 		}
 	});
 		

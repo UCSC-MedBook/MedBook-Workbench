@@ -10,7 +10,12 @@
 	    <tbody>
 		 	{{#each results}} 
 				<tr class="selectableResult" data-id="{{_id}}" >
-				<div >{{name}} <button id="post-tel" class="btn btn-mini btn-primary">Post</button> 
+				<div > 
+					{{name}}
+					{{#if isDiffContrast}}
+						<button id="post-contrast" class="btn btn-mini btn-primary">Save Signature</button> 
+					{{/if}}
+				     <button id="post-tel" class="btn btn-mini btn-primary">Share	</button> 
 					{{#each blobs}}
 						{{#if isPDF}}
 						<a target="iframe_target"  onclick="showPDF()" href="{{geturl.url}}">{{geturl.name}}</a>
