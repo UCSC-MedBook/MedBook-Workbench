@@ -57,7 +57,8 @@ Template.Cohort.helpers({
             var members = doc['members'];
             result.push({
                 'name' : name,
-                'members' : members
+                'members' : members,
+                'size' : members.length
             });
         }
         return result;
