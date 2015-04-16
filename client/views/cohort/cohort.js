@@ -9,8 +9,8 @@ Template.Cohort.events({
      *  }
      */
     'change #geneset' : function(event, template) {
-        // TODO genesets currently hardcoded into observation-deck plugin
-        // TODO genesets should be made into a subscription to mongodb
+        // The cookie stores genes required by obs-deck in case they might be missing from the geneset.
+        // For example, if user has done sample sorting based on a gene expression, that gene expression data must be present.
         var cookieGenes = getCookieEvents();
         console.log('cookieGenes', cookieGenes);
 
@@ -93,11 +93,11 @@ Template.Cohort.rendered = function() {
 
         // get expression data
 
-            // if ( typeof Session.get('geneset') === 'undefined') {
-            // // default to artemSmallCellSig50
-            // Session.set('geneset', 'artemSmallCellSig50');
-            // Session.set('geneList', ['PEG10', 'KCNJ6', 'FGF9', 'CNKSR3', 'ANK2', 'ST8SIA4', 'RUNX1T1', 'GPRIN2', 'KIT', 'GABRB3', 'IPCEF1', 'GRIN3A', 'CACHD1', 'GYG2', 'ADM', 'F2RL1', 'TMPRSS2', 'TEAD2', 'DHODH', 'FXYD3', 'SERTAD1', 'NQO1', 'DHCR24', 'BANK1', 'INO80C', 'SLC30A4', 'F5', 'HK2', 'PPARG', 'CXCL2', 'FGFRL1', 'NNMT', 'PFKFB4', 'PRR5', 'SPINK1', 'OPHN1', 'KLRB1', 'ERP27', 'SELL', 'IRAK2', 'APOH', 'HSH2D', 'REEP6', 'KLK3', 'MAFK', 'ATP2C2', 'AGR2', 'ANG', 'CEACAM1']);
-            // }
+        // if ( typeof Session.get('geneset') === 'undefined') {
+        // // default to artemSmallCellSig50
+        // Session.set('geneset', 'artemSmallCellSig50');
+        // Session.set('geneList', ['PEG10', 'KCNJ6', 'FGF9', 'CNKSR3', 'ANK2', 'ST8SIA4', 'RUNX1T1', 'GPRIN2', 'KIT', 'GABRB3', 'IPCEF1', 'GRIN3A', 'CACHD1', 'GYG2', 'ADM', 'F2RL1', 'TMPRSS2', 'TEAD2', 'DHODH', 'FXYD3', 'SERTAD1', 'NQO1', 'DHCR24', 'BANK1', 'INO80C', 'SLC30A4', 'F5', 'HK2', 'PPARG', 'CXCL2', 'FGFRL1', 'NNMT', 'PFKFB4', 'PRR5', 'SPINK1', 'OPHN1', 'KLRB1', 'ERP27', 'SELL', 'IRAK2', 'APOH', 'HSH2D', 'REEP6', 'KLK3', 'MAFK', 'ATP2C2', 'AGR2', 'ANG', 'CEACAM1']);
+        // }
 
         var geneList = Session.get('geneList');
 
