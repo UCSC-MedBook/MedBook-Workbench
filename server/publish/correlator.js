@@ -16,17 +16,16 @@ Meteor.publish('correlator', function(Study_ID, contrast, topN) {
     var nameCurs = Signature.find({'contrast':contrast},{'name':1}).fetch()
     var nameList = []
     nameCurs.forEach(function(sig) {
-        console.log('found sig for contrast', contrast, sig)
+        console.log('found sig for contrast', contrast, sig.name)
         nameList.push(sig.name)
     })
-    // console.log("find exp for this list: ",geneList);
+    console.log("find corr for this list: ",nameList);
     var findResult = Correlator.find({
         'name_1' : {
             $in : nameList
-        },
-        'Study_ID' : Study_ID
+        }
     });
     var count = findResult.count();
-    console.log('correlator count', count, '<-- publish correlator in study', Study_ID, 'contrast');
+    console.log('correlator count', count, '<-- publish correlator contrast', contrast);
     return findResult;
 });
