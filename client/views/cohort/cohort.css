@@ -1,3 +1,43 @@
-/*****************************************************************************/
-/* Cohort: Style */
-/*****************************************************************************/
+/**
+ * This is css for observation-deck.
+ */
+html {
+	font-family:Verdana;
+}
+*.unselectable {
+	-moz-user-select:-moz-none;
+	-khtml-user-select:none;
+	-webkit-user-select:none;
+	/*
+	 Introduced in IE 10.
+	 See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+	 */
+	-ms-user-select:none;
+	user-select:none;
+}
+.cell {
+	cursor:pointer
+}
+rect.bordered {
+	stroke:#E6E6E6;
+	stroke-width:2px;
+}
+text.mono {
+	font-size:9pt;
+	font-family:Consolas,courier;
+	fill:#aaa;
+}
+text.axis {
+	cursor:pointer;
+	fill:#000;
+}
+.bold {
+	font-weight:bold;
+}
+.italic {
+	font-style:italic;
+}
+.pivotEvent {
+	font-weight:bold;
+	font-style:italic;
+}
