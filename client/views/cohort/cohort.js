@@ -107,7 +107,7 @@ Template.Cohort.rendered = function() {
         });
         var expDocList = expResp.fetch();
         console.log('expDocList.length:', expDocList.length, s);
-
+        
         // TODO get signature gene:weight vectors + metadata
         var signatureScoresResp = SignatureScores.find({});
         var signatureScoresDoclist = signatureScoresResp.fetch();
@@ -119,6 +119,12 @@ Template.Cohort.rendered = function() {
         });
         var sigIdsDocList = sigIdxResp.fetch();
         console.log('sigIdsDocList.length:', sigIdsDocList.length, s);
+
+        var corrResp = Correlator.find({}, {
+            reactive : true
+        });
+        var corrDocList = corrResp.fetch();
+        console.log('corrDocList.length:', corrDocList.length, s);
 
         // build observation deck
         if ((clinDocList.length > 0) || (expDocList.length > 0)) {

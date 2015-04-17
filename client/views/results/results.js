@@ -42,7 +42,7 @@ Template.Results.events({
 			var url = b.url()
 			var bname = b.original.name
 			console.log('blob',bname, 'url', url)
-			if (bname =='genes.tab') {
+			if (bname =='sig.tab') {
 				$.ajax({url:url})
 				.done( function(data) {
 					var mat = []
@@ -52,7 +52,7 @@ Template.Results.events({
 						var row = l.split('\t')
 						var gene = row[0]
 						if (row && gene) {
-							sig[gene] = row[1]
+							sig[gene] = row[2]
 							//console.log('gene',gene, row[1])
 						}
 					})
@@ -63,10 +63,10 @@ Template.Results.events({
 						colheaders = ['Gene', 'Log Fold Change', 'Avg Expression','T stat','Pval', 'FDR','log odds'],
 						cols  = [{},{type: 'numeric', format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00000'},{type: 'numeric',format:'0.00000'},{type: 'numeric',format:'0.00'}]
 						console.log('Contrast.update({_id:)', contrast_id, '$set:signature{', sig)
-						var ret = Contrast.update({_id:contrast_id}, {$set:{'signature':sig}} )
 						console.log('response', ret)
 					}
 					if (bname=='sig.tab') {
+						var ret = Signature.update({_id:contrast_id}, {$set:{'signature':sig}} )
 						colheaders = ['Gene','coeff.Intercept','coeff.contrastB','stdev','stdev.contrastB','sigma','df.residual','Amean','s2.post','t.Intercept','t.contrastB',	'df.total',	'p.val.Intercept','p.value.contrastB','lods.Intercept',	'lods.contrastB','F','F.p.value']	
 						cols  = [{},{type: 'numeric', format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00000'},{type: 'numeric',format:'0.00'}]
 					}
