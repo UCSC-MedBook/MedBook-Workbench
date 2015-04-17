@@ -31,6 +31,10 @@ Template.Cohort.events({
 
         Session.set('geneList', cookieGenes.concat(elemValue.split(',')));
         console.log('SESSION geneset members', Session.get('geneList').length, 'genes', Session.get('geneList'));
+
+        // TODO throw away pivot settings
+        Session.set('pivotSettings', null);
+        console.log('SESSION pivotSettings', Session.get('pivotSettings'));
     },
     'click .select_geneset' : function() {
         console.log('event: click .select_geneset');
@@ -80,10 +84,24 @@ Template.Cohort.created = function() {
 Template.Cohort.rendered = function() {
     var divElem = document.getElementById("Cohort_OD_Div");
 
-    // TODO Deps.autorun is triggered when reactive data source has changed
+    // Deps.autorun is triggered when reactive data source has changed
     Deps.autorun(function() {
         var s = ' <-- Deps.autorun in cohort.js';
         // console.log('Deps.autorun');
+
+        // TODO getting default signature for a contrast
+        var contrastId = Session.get('selectedContrast');
+        console.log('contrastId', contrastId, s);
+        if (contrastId) {
+            var contResp = Contrast.findOne({
+                "_id" : contrastId
+            });
+            console.log('contResp', contResp, s);
+
+            // TODO get the default sig.
+        } else {
+            console.log('NO CONTRAST ID', s);
+        }
 
         // pivoting with correlator
         var corrResp = Correlator.find({}, {
@@ -123,6 +141,9 @@ Template.Cohort.rendered = function() {
 
         } else {
             console.log('NO PIVOTSETTINGS FROM SESSION', pivotSettings, s);
+
+            // when this is empty, no pivot data is sent to obs-deck
+            corrDocList = [];
         }
 
         // get clinical data
