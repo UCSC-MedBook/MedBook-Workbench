@@ -113,26 +113,22 @@ Template.Cohort.rendered = function() {
         var signatureScoresDoclist = signatureScoresResp.fetch();
         console.log('signatureScoresDoclist.length:', signatureScoresDoclist.length, s);
 
-        // smallCellSigEventObj['data'] = signatureScoresDoclist;
-
         // TODO signature indexes
         var sigIdxResp = Signature.find({}, {
             reactive : true
         });
         var sigIdsDocList = sigIdxResp.fetch();
+        console.log('sigIdsDocList.length:', sigIdsDocList.length, s);
 
         // build observation deck
         if ((clinDocList.length > 0) || (expDocList.length > 0)) {
             buildObservationDeck(divElem, {
                 'mongoData' : {
-                    // 'clinical' : 'aaa',
                     'clinical' : clinDocList,
-                    // 'expression' : 'bbb'
                     'expression' : expDocList
                 },
                 'signature' : {
                     'expression' : {
-                        // 'object' : [smallCellSigEventObj, arSigEventObj]
                         'object' : [signatureScoresDoclist]
                     }
                 },
