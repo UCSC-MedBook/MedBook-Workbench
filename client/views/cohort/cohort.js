@@ -85,6 +85,46 @@ Template.Cohort.rendered = function() {
         var s = ' <-- Deps.autorun in cohort.js';
         // console.log('Deps.autorun');
 
+        // pivoting with correlator
+        var corrResp = Correlator.find({}, {
+            reactive : true
+        });
+        var corrDocList = corrResp.fetch();
+        console.log('corrDocList.length:', corrDocList.length, s);
+
+        var pivotSettings = Session.get('pivotSettings');
+        if (pivotSettings) {
+            console.log('pivotSettings', pivotSettings, s);
+            var pName = pivotSettings['name'];
+            var pDatatype = pivotSettings['datatype'];
+            var pVersion = pivotSettings['version'];
+
+            var filteredDocList = [];
+            var geneList = [];
+            for (var i = 0; i < corrDocList.length; i++) {
+                var doc = corrDocList[i];
+                if (i == 0) {
+                    console.log('doc', doc, s);
+                }
+                if ((doc['name_1'] === pName) && (doc['datatype_1'] === pDatatype) && ("" + doc['version_1'] === "" + pVersion)) {
+                    // matched pivot event
+                    filteredDocList.push(doc);
+                    if (doc['datatype_2'] === 'expression') {
+                        // matched event is a gene
+                        geneList.push(doc['name_2']);
+                    }
+                }
+            }
+            console.log('filteredDocList', filteredDocList, s);
+            console.log('geneList', geneList, s);
+
+            Session.set('geneset', 'from pivotSettings');
+            Session.set('geneList', geneList);
+
+        } else {
+            console.log('NO PIVOTSETTINGS FROM SESSION', pivotSettings, s);
+        }
+
         // get clinical data
         var clinResp = ClinicalEvents.find({}, {
             reactive : true
@@ -119,42 +159,6 @@ Template.Cohort.rendered = function() {
         });
         var sigIdsDocList = sigIdxResp.fetch();
         console.log('sigIdsDocList.length:', sigIdsDocList.length, s);
-
-        var corrResp = Correlator.find({}, {
-            reactive : true
-        });
-        var corrDocList = corrResp.fetch();
-        console.log('corrDocList.length:', corrDocList.length, s);
-
-        var pivotSettings = Session.get('pivotSettings');
-        if (pivotSettings) {
-            console.log('pivotSettings', pivotSettings, s);
-            var pName = pivotSettings['name'];
-            var pDatatype = pivotSettings['datatype'];
-            var pVersion = pivotSettings['version'];
-
-            var filteredDocList = [];
-            var geneList = [];
-            for (var i = 0; i < corrDocList.length; i++) {
-                var doc = corrDocList[i];
-                if (i == 0) {
-                    console.log('doc', doc, s);
-                }
-                if ((doc['name_1'] === pName) && (doc['datatype_1'] === pDatatype) && ("" + doc['version_1'] === "" + pVersion)) {
-                    // matched pivot event
-                    filteredDocList.push(doc);
-                    if (doc['datatype_2'] === 'expression') {
-                        // matched event is a gene
-                        geneList.push(doc['name_2']);
-                    }
-                }
-            }
-            console.log('filteredDocList', filteredDocList, s);
-            console.log('geneList', geneList, s);
-
-        } else {
-            console.log('NO PIVOTSETTINGS FROM SESSION', pivotSettings, s);
-        }
 
         // build observation deck
         if ((clinDocList.length > 0) || (expDocList.length > 0)) {
