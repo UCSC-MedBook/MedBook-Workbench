@@ -33,7 +33,7 @@ Template.Cohort.events({
         console.log('SESSION geneset members', Session.get('geneList').length, 'genes', Session.get('geneList'));
 
         // TODO throw away pivot settings
-        Session.set('pivotSettings', null);
+        delete Session.keys['pivotSettings'];
         console.log('SESSION pivotSettings', Session.get('pivotSettings'));
     },
     'click .select_geneset' : function() {
@@ -161,7 +161,9 @@ Template.Cohort.rendered = function() {
         // Session.set('geneList', ['PEG10', 'KCNJ6', 'FGF9', 'CNKSR3', 'ANK2', 'ST8SIA4', 'RUNX1T1', 'GPRIN2', 'KIT', 'GABRB3', 'IPCEF1', 'GRIN3A', 'CACHD1', 'GYG2', 'ADM', 'F2RL1', 'TMPRSS2', 'TEAD2', 'DHODH', 'FXYD3', 'SERTAD1', 'NQO1', 'DHCR24', 'BANK1', 'INO80C', 'SLC30A4', 'F5', 'HK2', 'PPARG', 'CXCL2', 'FGFRL1', 'NNMT', 'PFKFB4', 'PRR5', 'SPINK1', 'OPHN1', 'KLRB1', 'ERP27', 'SELL', 'IRAK2', 'APOH', 'HSH2D', 'REEP6', 'KLK3', 'MAFK', 'ATP2C2', 'AGR2', 'ANG', 'CEACAM1']);
         // }
 
+        var geneSet = Session.get('geneset');
         var geneList = Session.get('geneList');
+        console.log('geneSet', geneSet, 'geneList', geneList, s);
 
         var expResp = Expression2.find({}, {
             reactive : true
@@ -201,7 +203,6 @@ Template.Cohort.rendered = function() {
                         'object' : sigIdsDocList
                     }
                 },
-                'deleteEvents' : ['Docetaxel'],
                 "rowTitleCallback" : function(eventId, config) {
                     var eventObj = config['eventAlbum'].getEvent(eventId);
                     var datatype = eventObj.metadata['datatype'];
