@@ -119,6 +119,7 @@ Template.Cohort.rendered = function() {
 
             var filteredDocList = [];
             var geneList = [];
+            var signatureNames = [pName + "_v" + pVersion];
             for (var i = 0; i < corrDocList.length; i++) {
                 var doc = corrDocList[i];
                 if (i == 0) {
@@ -131,13 +132,20 @@ Template.Cohort.rendered = function() {
                         // matched event is a gene
                         geneList.push(doc['name_2']);
                     }
+
+                    if (doc['datatype_2'] === 'signature') {
+                        // matched event is a signature
+                        signatureNames.push(doc['name_2'] + "_v" + doc['version_2']);
+                    }
                 }
             }
             console.log('filteredDocList', filteredDocList, s);
             console.log('geneList', geneList, s);
+            console.log('signatureNames', signatureNames, s);
 
             Session.set('geneset', 'from pivotSettings');
             Session.set('geneList', geneList);
+            Session.set('signatureNames', signatureNames);
 
         } else {
             console.log('NO PIVOTSETTINGS FROM SESSION', pivotSettings, s);
