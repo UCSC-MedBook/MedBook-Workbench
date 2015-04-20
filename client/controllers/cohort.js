@@ -18,6 +18,9 @@ CohortController = RouteController.extend({
 
         Meteor.subscribe('signature_scores_index', sigNames);
         console.log('signature_scores_index subscription', 'sigNames:', sigNames, s);
+
+        Meteor.subscribe('signature_index', studyID);
+        console.log('signature_index subscription', 'studyId:', studyID, s);
     },
 
     data : function() {
