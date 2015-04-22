@@ -21,7 +21,11 @@ Template.Cohort.events({
         for (var i = 0; i < sourceElem.length; i++) {
             var option = sourceElem[i];
             if (option.selected) {
+                // option element text also contains set size
                 genesetName = (option.text);
+                var fields = genesetName.split(" (");
+                fields.pop();
+                genesetName = fields.join();
                 break;
             }
         }
@@ -68,11 +72,14 @@ Template.Cohort.helpers({
         return result;
     },
     selected : function() {
-        if (Session.get('geneset') == this._id)
+        var geneSetObj = this;
+        var sessionGeneSet = Session.get('geneset');
+        if (sessionGeneSet === geneSetObj.name) {
             return true;
-        else
+        } else {
             return false;
-    }
+        }
+    },
 });
 
 /*****************************************************************************/
