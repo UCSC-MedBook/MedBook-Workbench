@@ -32,11 +32,20 @@
 		userId: {
 			type: String
 		},
-		signature: {
+		default_signature_id: {
 			type: Object,
 			blackbox: true,
+			optional: true,
+		},
+		default_signature_name: {
+			type: String,
 			optional: true
-		}
+		},
+		default_signature_version: {
+		    type: Number,
+		  	decimal: true,
+		    unique: false 	
+		}	
 	});
 		
 	Contrast.attachSchema(Schemas.Contrast);
