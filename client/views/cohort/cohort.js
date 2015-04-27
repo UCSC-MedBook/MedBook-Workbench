@@ -159,6 +159,8 @@ Template.Cohort.rendered = function() {
 
             // when this is empty, no pivot data is sent to obs-deck
             corrDocList = [];
+
+            Session.set('signatureNames', ['MAP3K8_kinase_viper_v4']);
         }
 
         // get clinical data
