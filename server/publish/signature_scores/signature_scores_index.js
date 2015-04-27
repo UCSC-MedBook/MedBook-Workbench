@@ -14,7 +14,7 @@
 Meteor.publish('signature_scores_index', function(sigNames) {
     var s = '<--- publish signature_scores_index in server/publish/signature_scores/signature_scores_index.js';
 
-    console.log('sigNames:', sigNames.join(), s);
+    // console.log('sigNames:', sigNames, s);
 
     var findResult;
     if (!sigNames) {

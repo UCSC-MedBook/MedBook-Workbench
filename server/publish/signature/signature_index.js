@@ -5,12 +5,13 @@
 Meteor.publish('signature_index', function(study, sigNames) {
     var s = '<--- publish signature_index in server/publish/signature/signature_index.js';
 
-    console.log('sigNames:', sigNames.join(), s);
+    // console.log('sigNames:', sigNames.join(), s);
 
     var findResult;
     if (sigNames) {
         var sanitizedSigNames = [];
         for (var i = 0, length = sigNames.length; i < length; i++) {
+            // signature names in this mongo collection do not have version number suffixed
             var sigName = sigNames[i];
             var fields = sigName.split('_v');
             fields.pop();
@@ -32,7 +33,7 @@ Meteor.publish('signature_index', function(study, sigNames) {
         });
     }
 
-    console.log('signature_index count:', findResult.count(), 'study:', study, 'sigNames:', sigNames.join(), s);
+    console.log('signature_index count:', findResult.count(), 'study:', study, s);
 
     return findResult;
 });
