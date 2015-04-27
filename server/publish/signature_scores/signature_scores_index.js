@@ -14,14 +14,18 @@
 Meteor.publish('signature_scores_index', function(sigNames) {
     var s = '<--- publish signature_scores_index in server/publish/signature_scores/signature_scores_index.js';
 
-    console.log('sigNames:', sigNames, s);
+    console.log('sigNames:', sigNames.join(), s);
 
     var findResult;
     if (!sigNames) {
         // TODO This limit is enforced to prevent the client from churning on large results.
         // TODO There must be a better way to avoid this problem, such as using a default signature name.
-        var limit = 3000;
-        findResult = SignatureScores.find({}, {
+        var limit = 0;
+        findResult = SignatureScores.find({
+            'name' : {
+                $in : []
+            }
+        }, {
             'limit' : limit
         });
         console.log('NO SIGNATURE NAMES WERE SPECIFIED, limiting to ' + limit + ' results', s);
