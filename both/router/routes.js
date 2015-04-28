@@ -32,7 +32,7 @@ Router.route('/wb/shell/limma/:contrast', {template:'ShellLimma'}, {controller:'
 Router.route('/wb/shell/boxplot/:contrast', {template:'ShellBoxplot'}, {controller:'Shell'});
 Router.route('/wb/shell', {name:'Shell'});
 Router.route('/wb/geneSets/', {name: 'GeneSetsIndex'});
-Router.route('/wb/genes', {name:'GenesIndex'});
+//Router.route('/wb/genes', {name:'GenesIndex'});
 Router.route('/wb/gene/:name', {name:'Genes'});
 Router.route('/wb/drug', {name:'Drugs'});
 Router.route('/wb/cohort', {name:'Cohort'});
