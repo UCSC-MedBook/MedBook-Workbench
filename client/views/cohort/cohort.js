@@ -21,7 +21,11 @@ Template.Cohort.events({
         for (var i = 0; i < sourceElem.length; i++) {
             var option = sourceElem[i];
             if (option.selected) {
+                // option element text also contains set size
                 genesetName = (option.text);
+                var fields = genesetName.split(" (");
+                fields.pop();
+                genesetName = fields.join();
                 break;
             }
         }
@@ -68,11 +72,14 @@ Template.Cohort.helpers({
         return result;
     },
     selected : function() {
-        if (Session.get('geneset') == this._id)
+        var geneSetObj = this;
+        var sessionGeneSet = Session.get('geneset');
+        if (sessionGeneSet === geneSetObj.name) {
             return true;
-        else
+        } else {
             return false;
-    }
+        }
+    },
 });
 
 /*****************************************************************************/
@@ -152,6 +159,8 @@ Template.Cohort.rendered = function() {
 
             // when this is empty, no pivot data is sent to obs-deck
             corrDocList = [];
+
+            Session.set('signatureNames', ['MAP3K8_kinase_viper_v4']);
         }
 
         // get clinical data
@@ -194,6 +203,8 @@ Template.Cohort.rendered = function() {
         // build observation deck
         if ((clinDocList.length > 0) || (expDocList.length > 0)) {
             od_config = buildObservationDeck(divElem, {
+                // gene query service -> http://localhost:3000/genes?q=MAPK
+                "geneQueryUrl" : "/genes?q=",
                 'pivotScores' : {
                     'object' : corrDocList
                 },

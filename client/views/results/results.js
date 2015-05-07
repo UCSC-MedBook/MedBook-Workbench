@@ -15,8 +15,10 @@ var hot;
 Template.Results.events({
 	'click .selectableResult': function( e, tmpl){
 		var r = e.target.dataset["id"]
-		Session.set('selectedResult',r);
-		console.log('select result:', r);
+		if (r) {
+			Session.set('selectedResult',r);
+			console.log('select result:', r);
+		}
 	} ,
 	'click #post-tel': function( e, tmpl){
 		/*var r = e.target.dataset["id"]	
@@ -36,6 +38,7 @@ Template.Results.events({
 	'click #post-contrast': function( e, tmpl){
 	    var today = new Date();
 		var contrast_id = this.contrast
+		Meteor.subscribe('signature_contrast', contrast_id);
 		var blob_list = this.blobs;
 		blob_list.forEach(function(blob_id) {
 			var b = Blobs.findOne({_id:blob_id})
@@ -47,26 +50,21 @@ Template.Results.events({
 				.done( function(data) {
 					var mat = []
 					var sig = {}
-				 	var datas = data.split(/[\r\n]+/g);
-					datas.forEach(function(l) {
-						var row = l.split('\t')
-						var gene = row[0]
-						if (row && gene) {
-							sig[gene] = row[2]
-							//console.log('gene',gene, row[1])
-						}
-					})
 	
 					var colheaders = true;
 					var cols = ""
-					if (bname=='genes.tab') {
-						colheaders = ['Gene', 'Log Fold Change', 'Avg Expression','T stat','Pval', 'FDR','log odds'],
-						cols  = [{},{type: 'numeric', format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00000'},{type: 'numeric',format:'0.00000'},{type: 'numeric',format:'0.00'}]
-						console.log('Contrast.update({_id:)', contrast_id, '$set:signature{', sig)
-						console.log('response', ret)
-					}
 					if (bname=='sig.tab') {
-						var ret = Signature.update({_id:contrast_id}, {$set:{'signature':sig}} )
+					 	var datas = data.split(/[\r\n]+/g);
+						datas.forEach(function(l) {
+							var row = l.split('\t')
+							var gene = row[0]
+							if (row && gene) {
+								sig[gene] = row[2]
+								//console.log('gene',gene, row[1])
+							}
+						})
+						var ret = Signature.insert({_id:contrast_id}, {$set:{'signature':sig}} )
+						console.log('insert sig with contrast', contrast_id, 'returns ', ret)
 						colheaders = ['Gene','coeff.Intercept','coeff.contrastB','stdev','stdev.contrastB','sigma','df.residual','Amean','s2.post','t.Intercept','t.contrastB',	'df.total',	'p.val.Intercept','p.value.contrastB','lods.Intercept',	'lods.contrastB','F','F.p.value']	
 						cols  = [{},{type: 'numeric', format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00000'},{type: 'numeric',format:'0.00'}]
 					}

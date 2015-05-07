@@ -13,14 +13,17 @@ CohortController = RouteController.extend({
         Meteor.subscribe('expression2', geneList, studyID);
         console.log('expression2 subscription', 'studyId:', studyID, 'geneList:', geneList, s);
 
-        Meteor.subscribe('correlator', studyID, contrastID, correlatorLimit);
-        console.log('correlator subscription', 'studyID:', studyID, 'contrast:', contrastID, 'correlatorLimit:', correlatorLimit, s);
+        // Meteor.subscribe('correlator', studyID, contrastID, correlatorLimit);
+        // console.log('correlator subscription', 'studyID:', studyID, 'contrast:', contrastID, 'correlatorLimit:', correlatorLimit, s);
+
+        Meteor.subscribe('correlator', sigNames, correlatorLimit);
+        console.log('correlator subscription', 'sigNames:', sigNames, 'correlatorLimit:', correlatorLimit, s);
 
         Meteor.subscribe('signature_scores_index', sigNames);
         console.log('signature_scores_index subscription', 'sigNames:', sigNames, s);
 
-        Meteor.subscribe('signature_index', studyID);
-        console.log('signature_index subscription', 'studyId:', studyID, s);
+        Meteor.subscribe('signature_index', studyID, sigNames);
+        console.log('signature_index subscription', 'studyId:', studyID, 'sigNames:', sigNames, s);
     },
 
     data : function() {

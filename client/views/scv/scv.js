@@ -74,6 +74,13 @@ Template.Scv.helpers({
 		console.log('contrast id ',id);
 		return Contrast.findOne({_id: id });
 	},
+	name: function() {
+		var id = Session.get('selectedContrast');
+		var c =  Contrast.findOne({_id: id });
+		if (c)
+			return c.name
+		return
+	},
 	selectedContrastId: function() {
 		return Session.get('selectedContrast');
 	}
