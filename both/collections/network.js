@@ -10,7 +10,7 @@ Schemas.NetworkElement = new SimpleSchema({
 		label: "Type",
 	},
 	members: [NetworkElement],
-	}
+	});
 
 Schemas.Interaction = new SimpleSchema({
 	source: {
@@ -29,7 +29,7 @@ Schemas.Interaction = new SimpleSchema({
 		type: Number,
 		label: "Strength",
 		optional: true
-	}
+	});
 
 Schemas.Network = new SimpleSchema({
     name: {
@@ -50,6 +50,7 @@ Schemas.Network = new SimpleSchema({
 	}
 	elements: [Schemas.NetworkElement],
 	interaction: [Schema.Interaction]
-}
+});
+Network.attachSchema(Schemas.Network);
 		
 	
