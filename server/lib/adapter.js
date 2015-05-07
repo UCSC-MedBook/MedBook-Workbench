@@ -36,6 +36,7 @@ Meteor.startup(function () {
 			read_config()
 			var contrastId = argList[0]
 			var sampleList =  {'_id':0}
+			var sampleList2 =  {'_id':0}
 			var gene = argList[1]
 			workDir = ntemp.mkdirSync('boxplotWork')
 			var phenofile =path.join(workDir, 'pheno.tab')
@@ -53,14 +54,16 @@ Meteor.startup(function () {
 			console.log('# of samples in each side of' , contrast['name'],': ' , contrast['list1'].length, 'vs',contrast['list2'].length)
 			_.each(contrast['list1'], function(item) {
 				wstream.write(item)
-				sampleList[item] = 1
+				sampleList['samples.'+item] = 1
+				sampleList2[item] = 1
 				wstream.write('\t')
 				wstream.write(contrast['group1'])
 				wstream.write( '\n')
 			})
 			_.each(contrast['list2'], function(item) {
 				wstream.write(item)
-				sampleList[item] = 1
+				sampleList['samples.'+item] = 1
+				sampleList2[item] = 1
 				wstream.write('\t')
 				wstream.write(contrast['group2'])
 				wstream.write( '\n')
@@ -69,13 +72,11 @@ Meteor.startup(function () {
 			var expfile =path.join(workDir, 'expdata.tab')
 	
 			console.log('sample list length from study', studyID , Object.keys(sampleList).length )
-			console.log('input files', expfile, phenofile)
-			var exp_curs = Expression.find({'gene':{$in:gene}}, sampleList);
+			var exp_curs = Expression2.find({'gene':{$in:gene}, 'Study_ID':studyID}, sampleList);
 			//var exp_curs = Expression.find({}, sampleList);
 			var fd = fs.openSync(expfile,'w');
 			fs.writeSync(fd,'gene\t')
-			_.map(sampleList, function(value, key) {
-		
+			_.map(sampleList2, function(value, key) {
 				if (value == 1) {
 					fs.writeSync(fd,key)
 					fs.writeSync(fd,'\t')
@@ -85,13 +86,15 @@ Meteor.startup(function () {
 			console.log('exp count' , exp_curs.count())
 
 			exp_curs.forEach(function(exp) {
-
+				console.log('exp',exp)
 				fs.writeSync(fd,exp['gene'])
 				fs.writeSync(fd,'\t')
-				_.map(sampleList, function(value, key) {
+				var expr = exp['samples']
+				var scaling = 'rsem_quan_log2'
+				_.map(sampleList2, function(value, key) {
 			
 					if (value == 1) {
-						geneExp = exp[key]
+						geneExp = expr[key][scaling]
 						fs.writeSync(fd,geneExp+'')
 						fs.writeSync(fd,'\t')
 					}
@@ -154,6 +157,7 @@ Meteor.startup(function () {
 				read_config()
 				var contrastId = argList[0]
 				var sampleList =  {'_id':0}
+				var sampleList2 =  {'_id':0}
 				var gene = argList[1]
 				workDir = ntemp.mkdirSync('boxplotWork')
 				var phenofile =path.join(workDir, 'pheno.tab')
@@ -171,14 +175,16 @@ Meteor.startup(function () {
 				console.log('# of samples in each side of' , contrast['name'],': ' , contrast['list1'].length, 'vs',contrast['list2'].length)
 				_.each(contrast['list1'], function(item) {
 					wstream.write(item)
-					sampleList[item] = 1
+					sampleList['samples.'+item] = 1
+					sampleList2[item] = 1
 					wstream.write('\t')
 					wstream.write(contrast['group1'])
 					wstream.write( '\n')
 				})
 				_.each(contrast['list2'], function(item) {
 					wstream.write(item)
-					sampleList[item] = 1
+					sampleList['samples.'+item] = 1
+					sampleList2[item] = 1
 					wstream.write('\t')
 					wstream.write(contrast['group2'])
 					wstream.write( '\n')
@@ -188,11 +194,12 @@ Meteor.startup(function () {
 	
 				console.log('sample list length from study', studyID , Object.keys(sampleList).length )
 				console.log('input files', expfile, phenofile)
-				var exp_curs = Expression.find({'gene':{$in:gene}}, sampleList);
+				console.log('genelist ',gene)
+				var exp_curs = Expression2.find({'gene':{$in:gene}, 'Study_ID':studyID}, sampleList);
 				//var exp_curs = Expression.find({}, sampleList);
 				var fd = fs.openSync(expfile,'w');
 				fs.writeSync(fd,'gene\t')
-				_.map(sampleList, function(value, key) {
+				_.map(sampleList2, function(value, key) {
 		
 					if (value == 1) {
 						fs.writeSync(fd,key)
@@ -206,10 +213,12 @@ Meteor.startup(function () {
 
 					fs.writeSync(fd,exp['gene'])
 					fs.writeSync(fd,'\t')
+					var expr = exp['samples']
+					var scaling = 'rsem_quan_log2'
 					_.map(sampleList, function(value, key) {
 			
 						if (value == 1) {
-							geneExp = exp[key]
+							geneExp = expr[key][scaling]
 							fs.writeSync(fd,geneExp+'')
 							fs.writeSync(fd,'\t')
 						}

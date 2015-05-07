@@ -18,6 +18,9 @@ Meteor.publish('expression2', function(geneList, Study_ID) {
         },
         'Study_ID' : Study_ID
     });
-    console.log('expression count:', findResult.count(), "Study_ID:", Study_ID, s);
+    console.log('expression count:', findResult.count(), "Study_ID:", Study_ID, s, 'geneList', geneList);
+	if (findResult.count() == 0) {
+		return
+	}
     return findResult;
 });

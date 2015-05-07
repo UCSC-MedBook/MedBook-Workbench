@@ -1,21 +1,9 @@
 /*****************************************************************************/
 /* Client App Namespace  */
 /*****************************************************************************/
-
-_.extend(App, {
-});
-
-App.helpers = {
-    selectedStudy : function() {
-        return Session.get('studyID');
-    }
-};
-
-_.each(App.helpers, function(helper, key) {
-    Handlebars.registerHelper(key, helper);
-});
 Meteor.startup(function() {
-    console.log('app.js startup begin');
+    console.log('client/app.js startup begin');
+    Meteor.subscribe('studies_index');
     Meteor.subscribe('study_groups_index');
     Meteor.subscribe('clinical_events_index');
     Meteor.subscribe('contrast');
@@ -29,5 +17,18 @@ Meteor.startup(function() {
 
     //Meteor.subscribe('signature_index');
     Session.set('selectedContrast', '');
-    console.log('app.js startup complete');
+    console.log('/client/app.js startup complete');
+});
+
+_.extend(App, {
+});
+
+App.helpers = {
+    selectedStudy : function() {
+        return Session.get('studyID');
+    }
+};
+
+_.each(App.helpers, function(helper, key) {
+    Handlebars.registerHelper(key, helper);
 });

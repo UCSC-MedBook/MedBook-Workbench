@@ -233,8 +233,8 @@ function HOTload(file_id) {
 			var container = $('#HOTdiv')
 			$('#HOTdiv').handsontable(settings);
 			hot = $("#HOTdiv").handsontable('getInstance');
-		}).fail(function(){
-			alter('error');
+		}).fail(function(err){
+			alert('error',err);
 		})
     }
   

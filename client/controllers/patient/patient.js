@@ -4,7 +4,7 @@ PatientController = RouteController.extend({
 	  var name = this.params.name;
 	  Meteor.subscribe('mutations_sample', study,name);
 	  Meteor.subscribe('clinical_events_index');
-	  Meteor.subscribe('expression', ['CHGA'])
+	  Meteor.subscribe('expression', ['CHGA'], study)
   },
 
   data: function () {
