@@ -29,7 +29,8 @@ Schemas.Interaction = new SimpleSchema({
 		type: Number,
 		label: "Strength",
 		optional: true
-	});
+	}
+});
 
 Schemas.Network = new SimpleSchema({
     name: {
@@ -47,10 +48,10 @@ Schemas.Network = new SimpleSchema({
 		type: String,
 		label: "Source URL:",
 		optional: true
-	}
+	},
 	elements: [Schemas.NetworkElement],
 	interaction: [Schema.Interaction]
-});
+ });
 Network.attachSchema(Schemas.Network);
 		
 	
