@@ -97,7 +97,7 @@ Template.Cohort.rendered = function() {
         // console.log('Deps.autorun');
 
         // TODO get paging config from Session
-        var pagingConfig = Session.get("subscriptionPaging");
+        var pagingConfig = Session.get("subscriptionPaging") || {};
         console.log("pagingConfig", pagingConfig, s);
 
         // TODO getting default signature for a contrast
@@ -176,21 +176,23 @@ Template.Cohort.rendered = function() {
 
         // get expression data
 
-        // if ( typeof Session.get('geneset') === 'undefined') {
-        // // default to artemSmallCellSig50
-        // Session.set('geneset', 'artemSmallCellSig50');
-        // Session.set('geneList', ['PEG10', 'KCNJ6', 'FGF9', 'CNKSR3', 'ANK2', 'ST8SIA4', 'RUNX1T1', 'GPRIN2', 'KIT', 'GABRB3', 'IPCEF1', 'GRIN3A', 'CACHD1', 'GYG2', 'ADM', 'F2RL1', 'TMPRSS2', 'TEAD2', 'DHODH', 'FXYD3', 'SERTAD1', 'NQO1', 'DHCR24', 'BANK1', 'INO80C', 'SLC30A4', 'F5', 'HK2', 'PPARG', 'CXCL2', 'FGFRL1', 'NNMT', 'PFKFB4', 'PRR5', 'SPINK1', 'OPHN1', 'KLRB1', 'ERP27', 'SELL', 'IRAK2', 'APOH', 'HSH2D', 'REEP6', 'KLK3', 'MAFK', 'ATP2C2', 'AGR2', 'ANG', 'CEACAM1']);
-        // }
-
         var geneSet = Session.get('geneset');
         var geneList = Session.get('geneList');
         console.log('geneSet', geneSet, 'geneList', geneList, s);
 
-        // var expResp = Expression2.find({}, {
-            // reactive : true
-        // });
+        var exp_paging;
+        if ("expression data" in pagingConfig) {
+            exp_paging = pagingConfig["expression data"];
+        } else {
+            exp_paging = {
+                "head" : 0,
+                "tail" : 0
+            };
+        }
 
         var expResp = Expression2.find({}, {
+            skip : 3 * exp_paging["head"],
+            limit : 3,
             reactive : true
         });
         var expDocList = expResp.fetch();

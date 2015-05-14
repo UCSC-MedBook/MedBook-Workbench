@@ -26,33 +26,33 @@ Meteor.publish('expression2', function(geneList, Study_ID) {
 });
 
 // TODO paged expression subscription
-Meteor.publish('expression2_paged', function(geneList, Study_ID, pageNum) {
-    var s = "<--- publish expression2_paged in server/publish/expression2.js";
-    console.log("pageNum", pageNum, s);
-    var docsPerPage = 3;
-    if (!geneList) {
-        var geneList = [];
-    }
-    if (!Study_ID) {
-        var Study_ID = "";
-    }
-
-    var selector = {
-        'gene' : {
-            $in : geneList
-        },
-        'Study_ID' : Study_ID
-    };
-
-    var options = {
-        'skip' : (pageNum * docsPerPage),
-        'limit' : docsPerPage
-    };
-
-    var findResult = Expression2.find(selector, options);
-    console.log('expression2_paged', 'count:', findResult.count(), "selector", selector, "options", options, s);
-    if (findResult.count() == 0) {
-        return;
-    }
-    return findResult;
-});
+// Meteor.publish('expression2_paged', function(geneList, Study_ID, pageNum) {
+// var s = "<--- publish expression2_paged in server/publish/expression2.js";
+// console.log("pageNum", pageNum, s);
+// var docsPerPage = 3;
+// if (!geneList) {
+// var geneList = [];
+// }
+// if (!Study_ID) {
+// var Study_ID = "";
+// }
+//
+// var selector = {
+// 'gene' : {
+// $in : geneList
+// },
+// 'Study_ID' : Study_ID
+// };
+//
+// var options = {
+// 'skip' : (pageNum * docsPerPage),
+// 'limit' : docsPerPage
+// };
+//
+// var findResult = Expression2.find(selector, options);
+// console.log('expression2_paged', 'count:', findResult.count(), "selector", selector, "options", options, s);
+// if (findResult.count() == 0) {
+// return;
+// }
+// return findResult;
+// });
