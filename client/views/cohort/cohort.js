@@ -91,6 +91,40 @@ Template.Cohort.created = function() {
 Template.Cohort.rendered = function() {
     var divElem = document.getElementById("Cohort_OD_Div");
 
+    var getExpressionDocList = function(pagingConfig) {
+        var pagingSessionKey = "subscriptionPaging";
+        var configKey = "expression data";
+        var pageSize = 5;
+        var pagingObj;
+        if ( configKey in pagingConfig) {
+            pagingObj = pagingConfig[configKey];
+        } else {
+            pagingObj = {
+                "head" : 0,
+                "tail" : 0
+            };
+        }
+
+        var totalCount = Expression2.find({}, {
+            reactive : false
+        }).count();
+
+        if ((pageSize * pagingObj["head"]) >= totalCount) {
+            console.log('attempting to pass last page of documents - going back to last page');
+            pagingObj["head"] = Math.floor(totalCount / pageSize);
+            Session.set(pagingSessionKey, pagingConfig);
+        }
+
+        var resp = Expression2.find({}, {
+            skip : (pageSize * pagingObj["head"]),
+            limit : pageSize,
+            reactive : true
+        });
+        var docList = resp.fetch();
+
+        return docList;
+    };
+
     // Deps.autorun is triggered when reactive data source has changed
     Deps.autorun(function() {
         var s = ' <-- Deps.autorun in cohort.js';
@@ -176,26 +210,11 @@ Template.Cohort.rendered = function() {
 
         // get expression data
 
-        var geneSet = Session.get('geneset');
-        var geneList = Session.get('geneList');
-        console.log('geneSet', geneSet, 'geneList', geneList, s);
+        // var geneSet = Session.get('geneset');
+        // var geneList = Session.get('geneList');
+        // console.log('geneSet', geneSet, 'geneList', geneList, s);
 
-        var exp_paging;
-        if ("expression data" in pagingConfig) {
-            exp_paging = pagingConfig["expression data"];
-        } else {
-            exp_paging = {
-                "head" : 0,
-                "tail" : 0
-            };
-        }
-
-        var expResp = Expression2.find({}, {
-            skip : 3 * exp_paging["head"],
-            limit : 3,
-            reactive : true
-        });
-        var expDocList = expResp.fetch();
+        var expDocList = getExpressionDocList(pagingConfig);
         console.log('expDocList.length:', expDocList.length, s);
 
         // TODO get signature gene:weight vectors + metadata
