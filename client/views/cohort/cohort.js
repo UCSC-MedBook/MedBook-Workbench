@@ -96,6 +96,10 @@ Template.Cohort.rendered = function() {
         var s = ' <-- Deps.autorun in cohort.js';
         // console.log('Deps.autorun');
 
+        // TODO get paging config from Session
+        var pagingConfig = Session.get("subscriptionPaging");
+        console.log("pagingConfig", pagingConfig, s);
+
         // TODO getting default signature for a contrast
         var contrastId = Session.get('selectedContrast');
         console.log('contrastId', contrastId, s);
@@ -181,6 +185,10 @@ Template.Cohort.rendered = function() {
         var geneSet = Session.get('geneset');
         var geneList = Session.get('geneList');
         console.log('geneSet', geneSet, 'geneList', geneList, s);
+
+        // var expResp = Expression2.find({}, {
+            // reactive : true
+        // });
 
         var expResp = Expression2.find({}, {
             reactive : true
