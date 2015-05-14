@@ -14,23 +14,6 @@ CohortController = RouteController.extend({
         Meteor.subscribe('expression2', geneList, studyID);
         console.log('expression2 subscription', 'studyId:', studyID, 'geneList:', geneList, s);
 
-
-        // var exp_paging;
-        // if ("expression data" in pagingConfig) {
-        // exp_paging = pagingConfig["expression data"]["head"];
-        // } else {
-        // exp_paging = {
-        // "head" : 0,
-        // "tail" : 0
-        // };
-        // }
-        // Meteor.subscribe('expression2_paged', geneList, studyID, exp_paging["head"]);
-        // console.log('expression2_paged subscription', 'studyId:', studyID, 'geneList:', geneList, "exp_paging", exp_paging, s);
-
-
-        // Meteor.subscribe('correlator', studyID, contrastID, correlatorLimit);
-        // console.log('correlator subscription', 'studyID:', studyID, 'contrast:', contrastID, 'correlatorLimit:', correlatorLimit, s);
-
         Meteor.subscribe('correlator', sigNames, correlatorLimit);
         console.log('correlator subscription', 'sigNames:', sigNames, 'correlatorLimit:', correlatorLimit, s);
 
