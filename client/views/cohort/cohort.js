@@ -117,9 +117,13 @@ Template.Cohort.rendered = function() {
             reactive : false
         }).count();
 
-        if ((pageSize * pagingObj["head"]) >= totalCount) {
+        var totalNumPages = Math.ceil(totalCount / pageSize);
+        console.log("totalNumPages", totalNumPages);
+
+        // be careful of off-by-one bugs
+        if (pagingObj["head"] > totalNumPages - 1) {
             console.log('attempting to pass last page of documents - going back to last page');
-            pagingObj["head"] = Math.floor(totalCount / pageSize);
+            pagingObj["head"] = totalNumPages - 1;
             Session.set(pagingSessionKey, pagingConfig);
         }
 
@@ -158,6 +162,9 @@ Template.Cohort.rendered = function() {
 
         // pivoting with correlator
         var corrResp = Correlator.find({}, {
+            // sort : {
+            // score : -1
+            // },
             reactive : true
         });
         var corrDocList = corrResp.fetch();
@@ -170,7 +177,6 @@ Template.Cohort.rendered = function() {
             var pDatatype = pivotSettings['datatype'];
             var pVersion = pivotSettings['version'];
 
-            var filteredDocList = [];
             var geneList = [];
             var signatureNames = [pName + "_v" + pVersion];
             for (var i = 0; i < corrDocList.length; i++) {
@@ -180,19 +186,24 @@ Template.Cohort.rendered = function() {
                 }
                 if ((doc['name_1'] === pName) && (doc['datatype_1'] === pDatatype) && ("" + doc['version_1'] === "" + pVersion)) {
                     // matched pivot event
-                    filteredDocList.push(doc);
-                    if (doc['datatype_2'] === 'expression') {
+
+                    if (u.endsWith(doc['name_2'], "_tf_viper")) {
+                        // matched event is a signature
+                        var name = doc['name_2'].replace("_tf_viper", "");
+                        name = "tf_viper_" + name;
+                        signatureNames.push(name + "_v" + "4");
+                    } else if (doc['datatype_2'] === 'signature') {
+                        // matched event is a signature
+                        signatureNames.push(doc['name_2'] + "_v" + doc['version_2']);
+                    } else if (doc['datatype_2'] === 'expression') {
                         // matched event is a gene
                         geneList.push(doc['name_2']);
                     }
-
-                    if (doc['datatype_2'] === 'signature') {
-                        // matched event is a signature
-                        signatureNames.push(doc['name_2'] + "_v" + doc['version_2']);
-                    }
                 }
             }
-            console.log('filteredDocList', filteredDocList, s);
+
+            // TODO paging
+
             console.log('geneList', geneList, s);
             console.log('signatureNames', signatureNames, s);
 
