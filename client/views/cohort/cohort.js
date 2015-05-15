@@ -141,25 +141,112 @@ Template.Cohort.rendered = function() {
         return getPagedCollectionDocList(Expression2, "expression data");
     };
 
-    var applyPagingToSignatureNames = function(signatureNames) {
-        console.log("starting with signatures", signatureNames);
+    var applyPagingToGeneList = function(scoredGeness) {
+        return;
+    };
 
-        // TODO setup data structure
-        var pagedSignatures = {
-            "expression signature" : [],
-            "kinase target activity" : [],
-            "tf target activity" : []
-        };
+    var applyPagingToSignatureNames = function(scoredSigs) {
+        var pagingSessionKey = "subscriptionPaging";
+        var pageSize = 5;
+        var pagingConfig = Session.get(pagingSessionKey) || {};
+        var sortedSigs = scoredSigs.sort(u.sort_by("score"));
+        var signatureDatatypes = ["expression signature", "kinase target activity", "tf target activity"];
+        var result = [];
 
-        // TODO populate data structure by name parsing
+        // setup data structure
+        var pagedSignatures = {};
+        var pagedSignatures_anti = {};
 
-        // TODO get page settings from session
+        for (var i = 0, length = signatureDatatypes.length; i < length; i++) {
+            var datatype = signatureDatatypes[i];
+            pagedSignatures[datatype] = [];
+            pagedSignatures_anti[datatype] = [];
+        }
 
-        // TODO apply settings via array.slice
+        // populate data structure by name parsing
+        for (var i = 0, length = scoredSigs.length; i < length; i++) {
+            var sigObj = scoredSigs[i];
+            var name = sigObj["name"];
+            var score = sigObj["score"];
 
-        // TODO cat arrays for return
+            // remove version number from name
+            fields = name.split("_v");
+            fields.pop();
+            var rootName = fields.join("_v");
 
-        return signatureNames;
+            var datatype;
+            if ((u.endsWith(rootName, "_tf_viper")) || (u.beginsWith(rootName, "tf_viper_"))) {
+                datatype = "tf target activity";
+            } else if (u.endsWith(rootName, "_kinase_viper")) {
+                datatype = "kinase target activity";
+            } else {
+                datatype = "expression signature";
+            }
+
+            if (score < 0) {
+                // add to front
+                pagedSignatures_anti[datatype].unshift(name);
+            } else {
+                // add to back
+                pagedSignatures[datatype].push(name);
+            }
+
+            // console.log("name", name, "score", score, "datatype", datatype);
+        }
+        // console.log("pagedSignatures", pagedSignatures);
+        // console.log("pagedSignatures_anti", pagedSignatures_anti);
+
+        // get page settings from session
+        for (var datatype in pagedSignatures) {
+            var configKey = datatype;
+            var pagingObj;
+            if ( configKey in pagingConfig) {
+                pagingObj = pagingConfig[configKey];
+            } else {
+                pagingObj = {
+                    "head" : 0,
+                    "tail" : 0
+                };
+            }
+            // apply settings via array.slice
+            // pos
+            var length = pagedSignatures[datatype].length;
+            var totalPages = Math.ceil(length / pageSize);
+
+            // beware of off-by-one errors
+            if (pagingObj["head"] > totalPages - 1) {
+                console.log('attempting to pass last page of documents - going back to last page');
+                pagingObj["head"] = totalPages - 1;
+                Session.set(pagingSessionKey, pagingConfig);
+            }
+
+            var skip = (pageSize * pagingObj["head"]);
+            pagedSignatures[datatype] = pagedSignatures[datatype].slice(skip, (skip + pageSize));
+
+            // anti
+            var length_anti = pagedSignatures_anti[datatype].length;
+            var totalPages_anti = Math.ceil(length_anti / pageSize);
+
+            // beware of off-by-one errors
+            if (pagingObj["tail"] > totalPages_anti - 1) {
+                console.log('attempting to pass last page of documents - going back to last page');
+                pagingObj["tail"] = totalPages_anti - 1;
+                Session.set(pagingSessionKey, pagingConfig);
+            }
+
+            var skip_anti = (pageSize * pagingObj["tail"]);
+            pagedSignatures_anti[datatype] = pagedSignatures_anti[datatype].slice(skip_anti, (skip_anti + pageSize));
+
+            // cat arrays for return
+            result = result.concat(pagedSignatures[datatype], pagedSignatures_anti[datatype]);
+
+            console.log('pages', totalPages, totalPages_anti, datatype);
+        }
+
+        // console.log('pagedSignatures', pagedSignatures);
+        // console.log('pagedSignatures_anti', pagedSignatures_anti);
+
+        return result;
     };
 
     // Deps.autorun is triggered when reactive data source has changed
@@ -200,6 +287,12 @@ Template.Cohort.rendered = function() {
 
             var geneList = [];
             var signatureNames = [pName + "_v" + pVersion];
+
+            var scoredGenes = [];
+            var scoredSigs = [{
+                "name" : pName + "_v" + pVersion,
+                "score" : 1
+            }];
             for (var i = 0; i < corrDocList.length; i++) {
                 var doc = corrDocList[i];
                 if (i == 0) {
@@ -208,23 +301,51 @@ Template.Cohort.rendered = function() {
                 if ((doc['name_1'] === pName) && (doc['datatype_1'] === pDatatype) && ("" + doc['version_1'] === "" + pVersion)) {
                     // matched pivot event
 
-                    if (u.endsWith(doc['name_2'], "_tf_viper")) {
+                    var name2 = doc["name_2"];
+                    var datatype2 = doc["datatype_2"];
+                    var version2 = doc["version_2"];
+                    var score = doc["score"];
+
+                    if (u.endsWith(name2, "_tf_viper")) {
                         // matched event is a signature
-                        var name = doc['name_2'].replace("_tf_viper", "");
+                        var name = name2.replace("_tf_viper", "");
                         name = "tf_viper_" + name;
-                        signatureNames.push(name + "_v" + "4");
-                    } else if (doc['datatype_2'] === 'signature') {
+                        name = name + "_v" + "4";
+                        signatureNames.push(name);
+
+                        var eventScoreObj = {
+                            "name" : name,
+                            "score" : score
+                        };
+                        scoredSigs.push(eventScoreObj);
+                    } else if (datatype2 === 'signature') {
                         // matched event is a signature
-                        signatureNames.push(doc['name_2'] + "_v" + doc['version_2']);
-                    } else if (doc['datatype_2'] === 'expression') {
+                        var name = name2 + "_v" + version2;
+                        signatureNames.push(name);
+
+                        var eventScoreObj = {
+                            "name" : name,
+                            "score" : score
+                        };
+                        scoredSigs.push(eventScoreObj);
+                    } else if (datatype2 === 'expression') {
                         // matched event is a gene
-                        geneList.push(doc['name_2']);
+                        var name = name2;
+                        geneList.push(name);
+
+                        var eventScoreObj = {
+                            "name" : name,
+                            "score" : score
+                        };
+                        scoredGenes.push(eventScoreObj);
                     }
                 }
             }
 
             // TODO paging of ["kinase target activity","tf target activity","expression signature"]
-            signatureNames = applyPagingToSignatureNames(signatureNames);
+            signatureNames = applyPagingToSignatureNames(scoredSigs);
+
+            var pagedGeneNames = applyPagingToGeneList(scoredGenes);
 
             console.log('geneList', geneList, s);
             console.log('signatureNames', signatureNames, s);
