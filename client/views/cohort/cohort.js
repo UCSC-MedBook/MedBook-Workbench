@@ -91,10 +91,18 @@ Template.Cohort.created = function() {
 Template.Cohort.rendered = function() {
     var divElem = document.getElementById("Cohort_OD_Div");
 
-    var getExpressionDocList = function(pagingConfig) {
+    /**
+     * Uses information in Session object to get the correct page of mongo documents from the specified collection.
+     * This one only works when each obs-deck feature corresponds to just one document in the collection.
+     * @param {Object} collectionObj as defined in /both/collections/*.js
+     * @param {Object} datatypeName as defined in obs-deck plugin
+     */
+    var getPagedCollectionDocList = function(collectionObj, datatypeName) {
         var pagingSessionKey = "subscriptionPaging";
-        var configKey = "expression data";
         var pageSize = 5;
+
+        var pagingConfig = Session.get(pagingSessionKey) || {};
+        var configKey = datatypeName;
         var pagingObj;
         if ( configKey in pagingConfig) {
             pagingObj = pagingConfig[configKey];
@@ -105,7 +113,7 @@ Template.Cohort.rendered = function() {
             };
         }
 
-        var totalCount = Expression2.find({}, {
+        var totalCount = collectionObj.find({}, {
             reactive : false
         }).count();
 
@@ -115,7 +123,7 @@ Template.Cohort.rendered = function() {
             Session.set(pagingSessionKey, pagingConfig);
         }
 
-        var resp = Expression2.find({}, {
+        var resp = collectionObj.find({}, {
             skip : (pageSize * pagingObj["head"]),
             limit : pageSize,
             reactive : true
@@ -125,14 +133,14 @@ Template.Cohort.rendered = function() {
         return docList;
     };
 
+    var getExpressionDocList = function() {
+        return getPagedCollectionDocList(Expression2, "expression data");
+    };
+
     // Deps.autorun is triggered when reactive data source has changed
     Deps.autorun(function() {
         var s = ' <-- Deps.autorun in cohort.js';
         // console.log('Deps.autorun');
-
-        // TODO get paging config from Session
-        var pagingConfig = Session.get("subscriptionPaging") || {};
-        console.log("pagingConfig", pagingConfig, s);
 
         // TODO getting default signature for a contrast
         var contrastId = Session.get('selectedContrast');
@@ -214,7 +222,7 @@ Template.Cohort.rendered = function() {
         // var geneList = Session.get('geneList');
         // console.log('geneSet', geneSet, 'geneList', geneList, s);
 
-        var expDocList = getExpressionDocList(pagingConfig);
+        var expDocList = getExpressionDocList();
         console.log('expDocList.length:', expDocList.length, s);
 
         // TODO get signature gene:weight vectors + metadata
