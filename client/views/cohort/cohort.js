@@ -141,6 +141,27 @@ Template.Cohort.rendered = function() {
         return getPagedCollectionDocList(Expression2, "expression data");
     };
 
+    var applyPagingToSignatureNames = function(signatureNames) {
+        console.log("starting with signatures", signatureNames);
+
+        // TODO setup data structure
+        var pagedSignatures = {
+            "expression signature" : [],
+            "kinase target activity" : [],
+            "tf target activity" : []
+        };
+
+        // TODO populate data structure by name parsing
+
+        // TODO get page settings from session
+
+        // TODO apply settings via array.slice
+
+        // TODO cat arrays for return
+
+        return signatureNames;
+    };
+
     // Deps.autorun is triggered when reactive data source has changed
     Deps.autorun(function() {
         var s = ' <-- Deps.autorun in cohort.js';
@@ -202,7 +223,8 @@ Template.Cohort.rendered = function() {
                 }
             }
 
-            // TODO paging
+            // TODO paging of ["kinase target activity","tf target activity","expression signature"]
+            signatureNames = applyPagingToSignatureNames(signatureNames);
 
             console.log('geneList', geneList, s);
             console.log('signatureNames', signatureNames, s);
