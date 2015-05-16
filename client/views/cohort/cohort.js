@@ -141,12 +141,87 @@ Template.Cohort.rendered = function() {
         return getPagedCollectionDocList(Expression2, "expression data");
     };
 
-    var applyPagingToGeneList = function(scoredGeness) {
-        return;
+    var applyPagingToGeneList = function(scoredGenes) {
+        // console.log("scoredGenes", scoredGenes);
+        var pagingSessionKey = "subscriptionPaging";
+        var pageSize = 5;
+        var pagingConfig = Session.get(pagingSessionKey) || {};
+        var sortedGenes = scoredGenes.sort(u.sort_by("score"));
+        var result = [];
+
+        // setup data structures
+        var pagedGenes = [];
+        var pagedGenes_anti = [];
+
+        for (var i = 0, length = scoredGenes.length; i < length; i++) {
+            var geneObj = scoredGenes[i];
+            var name = geneObj["name"];
+            var score = geneObj["score"];
+
+            if (score < 0) {
+                pagedGenes_anti.unshift(name);
+            } else {
+                pagedGenes.push(name);
+            }
+        }
+
+        // get page settings
+        var configKey = "expression data";
+        var pagingObj;
+        if ( configKey in pagingConfig) {
+            pagingObj = pagingConfig[configKey];
+        } else {
+            pagingObj = {
+                "head" : 0,
+                "tail" : 0
+            };
+        }
+
+        // apply settings via array.slice
+        // pos
+        var length = pagedGenes.length;
+        var totalPages = Math.ceil(length / pageSize);
+
+        // beware of off-by-one errors
+        if (pagingObj["head"] > totalPages - 1) {
+            console.log('attempting to pass last page of documents - going back to last page of head', configKey);
+            pagingObj["head"] = totalPages - 1;
+            if (pagingObj["head"] < 0) {
+                pagingObj["head"] = 0;
+            }
+            Session.set(pagingSessionKey, pagingConfig);
+        }
+
+        var skip = (pageSize * pagingObj["head"]);
+        pagedGenes = pagedGenes.slice(skip, (skip + pageSize));
+
+        // anti
+        var length_anti = pagedGenes_anti.length;
+        var totalPages_anti = Math.ceil(length_anti / pageSize);
+
+        // beware of off-by-one errors
+        if (pagingObj["tail"] > totalPages_anti - 1) {
+            console.log('attempting to pass last page of documents - going back to last page of tail', configKey);
+            pagingObj["tail"] = totalPages_anti - 1;
+            if (pagingObj["tail"] < 0) {
+                pagingObj["tail"] = 0;
+            }
+            Session.set(pagingSessionKey, pagingConfig);
+        }
+
+        var skip_anti = (pageSize * pagingObj["tail"]);
+        pagedGenes_anti = pagedGenes_anti.slice(skip_anti, (skip_anti + pageSize));
+
+        // cat arrays for return
+        result = result.concat(pagedGenes, pagedGenes_anti);
+
+        console.log('pages', totalPages, totalPages_anti, configKey);
+
+        return result;
     };
 
     var applyPagingToSignatureNames = function(scoredSigs) {
-        console.log("scoredSigs", scoredSigs);
+        // console.log("scoredSigs", scoredSigs);
         var pagingSessionKey = "subscriptionPaging";
         var pageSize = 5;
         var pagingConfig = Session.get(pagingSessionKey) || {};
@@ -216,6 +291,9 @@ Template.Cohort.rendered = function() {
             if (pagingObj["head"] > totalPages - 1) {
                 console.log('attempting to pass last page of documents - going back to last page of head', datatype);
                 pagingObj["head"] = totalPages - 1;
+                if (pagingObj["head"] < 0) {
+                    pagingObj["head"] = 0;
+                }
                 Session.set(pagingSessionKey, pagingConfig);
             }
 
@@ -230,6 +308,9 @@ Template.Cohort.rendered = function() {
             if (pagingObj["tail"] > totalPages_anti - 1) {
                 console.log('attempting to pass last page of documents - going back to last page of tail', datatype);
                 pagingObj["tail"] = totalPages_anti - 1;
+                if (pagingObj["tail"] < 0) {
+                    pagingObj["tail"] = 0;
+                }
                 Session.set(pagingSessionKey, pagingConfig);
             }
 
@@ -239,7 +320,7 @@ Template.Cohort.rendered = function() {
             // cat arrays for return
             result = result.concat(pagedSignatures[datatype], pagedSignatures_anti[datatype]);
 
-            console.log('pages', totalPages, totalPages_anti, datatype);
+            // console.log('pages', totalPages, totalPages_anti, datatype);
         }
 
         // console.log('pagedSignatures', pagedSignatures);
@@ -346,7 +427,7 @@ Template.Cohort.rendered = function() {
             // TODO paging of ["kinase target activity","tf target activity","expression signature"]
             signatureNames = applyPagingToSignatureNames(scoredSigs);
 
-            var pagedGeneNames = applyPagingToGeneList(scoredGenes);
+            geneList = applyPagingToGeneList(scoredGenes);
 
             console.log('geneList', geneList, s);
             console.log('signatureNames', signatureNames, s);
@@ -372,20 +453,20 @@ Template.Cohort.rendered = function() {
         console.log('clinDocList.length:', clinDocList.length, s);
 
         // get expression data
-
-        // var geneSet = Session.get('geneset');
-        // var geneList = Session.get('geneList');
-        // console.log('geneSet', geneSet, 'geneList', geneList, s);
-
-        var expDocList = getExpressionDocList();
+        var expResp = Expression2.find({}, {
+            reactive : true
+        });
+        var expDocList = expResp.fetch();
         console.log('expDocList.length:', expDocList.length, s);
 
-        // TODO get signature gene:weight vectors + metadata
-        var signatureScoresResp = SignatureScores.find({});
+        // get signature gene:weight vectors + metadata
+        var signatureScoresResp = SignatureScores.find({}, {
+            reactive : true
+        });
         var signatureScoresDoclist = signatureScoresResp.fetch();
         console.log('signatureScoresDoclist.length:', signatureScoresDoclist.length, s);
 
-        // TODO signature indexes
+        // signature indexes
         var sigIdxResp = Signature.find({}, {
             reactive : true
         });
