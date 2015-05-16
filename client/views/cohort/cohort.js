@@ -146,6 +146,7 @@ Template.Cohort.rendered = function() {
     };
 
     var applyPagingToSignatureNames = function(scoredSigs) {
+        console.log("scoredSigs", scoredSigs);
         var pagingSessionKey = "subscriptionPaging";
         var pageSize = 5;
         var pagingConfig = Session.get(pagingSessionKey) || {};
@@ -193,8 +194,6 @@ Template.Cohort.rendered = function() {
 
             // console.log("name", name, "score", score, "datatype", datatype);
         }
-        // console.log("pagedSignatures", pagedSignatures);
-        // console.log("pagedSignatures_anti", pagedSignatures_anti);
 
         // get page settings from session
         for (var datatype in pagedSignatures) {
@@ -215,7 +214,7 @@ Template.Cohort.rendered = function() {
 
             // beware of off-by-one errors
             if (pagingObj["head"] > totalPages - 1) {
-                console.log('attempting to pass last page of documents - going back to last page');
+                console.log('attempting to pass last page of documents - going back to last page of head', datatype);
                 pagingObj["head"] = totalPages - 1;
                 Session.set(pagingSessionKey, pagingConfig);
             }
@@ -229,7 +228,7 @@ Template.Cohort.rendered = function() {
 
             // beware of off-by-one errors
             if (pagingObj["tail"] > totalPages_anti - 1) {
-                console.log('attempting to pass last page of documents - going back to last page');
+                console.log('attempting to pass last page of documents - going back to last page of tail', datatype);
                 pagingObj["tail"] = totalPages_anti - 1;
                 Session.set(pagingSessionKey, pagingConfig);
             }
@@ -295,9 +294,6 @@ Template.Cohort.rendered = function() {
             }];
             for (var i = 0; i < corrDocList.length; i++) {
                 var doc = corrDocList[i];
-                if (i == 0) {
-                    console.log('doc', doc, s);
-                }
                 if ((doc['name_1'] === pName) && (doc['datatype_1'] === pDatatype) && ("" + doc['version_1'] === "" + pVersion)) {
                     // matched pivot event
 
@@ -306,19 +302,12 @@ Template.Cohort.rendered = function() {
                     var version2 = doc["version_2"];
                     var score = doc["score"];
 
+                    // TODO hack for mismatched version numbers between mongo collections
                     if (u.endsWith(name2, "_tf_viper")) {
-                        // matched event is a signature
-                        var name = name2.replace("_tf_viper", "");
-                        name = "tf_viper_" + name;
-                        name = name + "_v" + "4";
-                        signatureNames.push(name);
+                        version2 = "4";
+                    }
 
-                        var eventScoreObj = {
-                            "name" : name,
-                            "score" : score
-                        };
-                        scoredSigs.push(eventScoreObj);
-                    } else if (datatype2 === 'signature') {
+                    if (datatype2 === 'signature') {
                         // matched event is a signature
                         var name = name2 + "_v" + version2;
                         signatureNames.push(name);
@@ -328,6 +317,18 @@ Template.Cohort.rendered = function() {
                             "score" : score
                         };
                         scoredSigs.push(eventScoreObj);
+                        // } else if (u.endsWith(name2, "_tf_viper")) {
+                        // // matched event is a signature
+                        // var name = name2.replace("_tf_viper", "");
+                        // name = "tf_viper_" + name;
+                        // name = name + "_v" + "4";
+                        // signatureNames.push(name);
+                        //
+                        // var eventScoreObj = {
+                        // "name" : name,
+                        // "score" : score
+                        // };
+                        // scoredSigs.push(eventScoreObj);
                     } else if (datatype2 === 'expression') {
                         // matched event is a gene
                         var name = name2;
