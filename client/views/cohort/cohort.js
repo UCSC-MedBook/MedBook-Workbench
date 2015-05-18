@@ -358,6 +358,8 @@ Template.Cohort.rendered = function() {
         var corrDocList = corrResp.fetch();
         console.log('corrDocList.length:', corrDocList.length, s);
 
+        var geneList = [];
+        var signatureNames = Session.get("signatureNames") || [];
         var pivotSettings = Session.get('pivotSettings');
         if (pivotSettings) {
             console.log('pivotSettings', pivotSettings, s);
@@ -365,8 +367,8 @@ Template.Cohort.rendered = function() {
             var pDatatype = pivotSettings['datatype'];
             var pVersion = pivotSettings['version'];
 
-            var geneList = [];
-            var signatureNames = [pName + "_v" + pVersion];
+            geneList = [];
+            signatureNames = [pName + "_v" + pVersion];
 
             var scoredGenes = [];
             var scoredSigs = [{
@@ -460,7 +462,8 @@ Template.Cohort.rendered = function() {
         console.log('expDocList.length:', expDocList.length, s);
 
         // get signature gene:weight vectors + metadata
-        var signatureScoresResp = SignatureScores.find({}, {
+        var signatureScoresResp = SignatureScores.find({
+        }, {
             reactive : true
         });
         var signatureScoresDoclist = signatureScoresResp.fetch();
