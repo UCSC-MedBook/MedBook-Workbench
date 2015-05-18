@@ -320,7 +320,7 @@ Template.Cohort.rendered = function() {
             // cat arrays for return
             result = result.concat(pagedSignatures[datatype], pagedSignatures_anti[datatype]);
 
-            // console.log('pages', totalPages, totalPages_anti, datatype);
+            console.log('pages', totalPages, totalPages_anti, datatype);
         }
 
         // console.log('pagedSignatures', pagedSignatures);
