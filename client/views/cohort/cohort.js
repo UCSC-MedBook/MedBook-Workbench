@@ -511,6 +511,11 @@ Template.Cohort.rendered = function() {
                         var feature = eventId;
                         var url = '/wb/clinical/' + feature;
                         window.open(url, "_self");
+                    } else if (datatype === "kinase target activity" || datatype === "tf target activity" || datatype === "expression signature") {
+                        // signature url: /wb/signature/<sigName>
+                        var sigName = eventId;
+                        var url = "/wb/signature/" + sigName;
+                        window.open(url, "_self");
                     }
                 },
                 "columnTitleCallback" : function(sampleId, config) {
