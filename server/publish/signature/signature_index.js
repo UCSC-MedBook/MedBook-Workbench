@@ -17,7 +17,7 @@ Meteor.publish('signature_index', function(study, sigNames) {
             fields.pop();
             sanitizedSigNames.push(fields.join('_v'));
         }
-        console.log('sanitizedSigNames:', sanitizedSigNames.join(), s);
+        // console.log('sanitizedSigNames:', sanitizedSigNames.join(), s);
         findResult = Signature.find({
             'studyID' : study,
             'name' : {
@@ -25,7 +25,7 @@ Meteor.publish('signature_index', function(study, sigNames) {
             }
         });
     } else {
-        console.log('NO SIGNATURE NAMES WERE SPECIFIED', s);
+        // console.log('NO SIGNATURE NAMES WERE SPECIFIED', s);
         findResult = Signature.find({
             'studyID' : {
                 $in : []
