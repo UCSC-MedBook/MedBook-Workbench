@@ -91,56 +91,6 @@ Template.Cohort.created = function() {
 Template.Cohort.rendered = function() {
     var divElem = document.getElementById("Cohort_OD_Div");
 
-    /**
-     * Uses information in Session object to get the correct page of mongo documents from the specified collection.
-     * This one only works when each obs-deck feature corresponds to just one document in the collection.
-     * @param {Object} collectionObj as defined in /both/collections/*.js
-     * @param {Object} datatypeName as defined in obs-deck plugin
-     */
-    var getPagedCollectionDocList = function(collectionObj, datatypeName) {
-        var pagingSessionKey = "subscriptionPaging";
-        var pageSize = 5;
-
-        var pagingConfig = Session.get(pagingSessionKey) || {};
-        var configKey = datatypeName;
-        var pagingObj;
-        if ( configKey in pagingConfig) {
-            pagingObj = pagingConfig[configKey];
-        } else {
-            pagingObj = {
-                "head" : 0,
-                "tail" : 0
-            };
-        }
-
-        var totalCount = collectionObj.find({}, {
-            reactive : false
-        }).count();
-
-        var totalNumPages = Math.ceil(totalCount / pageSize);
-        console.log("totalNumPages", totalNumPages);
-
-        // be careful of off-by-one bugs
-        if (pagingObj["head"] > totalNumPages - 1) {
-            console.log('attempting to pass last page of documents - going back to last page');
-            pagingObj["head"] = totalNumPages - 1;
-            Session.set(pagingSessionKey, pagingConfig);
-        }
-
-        var resp = collectionObj.find({}, {
-            skip : (pageSize * pagingObj["head"]),
-            limit : pageSize,
-            reactive : true
-        });
-        var docList = resp.fetch();
-
-        return docList;
-    };
-
-    var getExpressionDocList = function() {
-        return getPagedCollectionDocList(Expression2, "expression data");
-    };
-
     var applyPagingToGeneList = function(scoredGenes) {
         // console.log("scoredGenes", scoredGenes);
         var pagingSessionKey = "subscriptionPaging";
@@ -444,7 +394,7 @@ Template.Cohort.rendered = function() {
             // when this is empty, no pivot data is sent to obs-deck
             corrDocList = [];
 
-            Session.set('signatureNames', ['MAP3K8_kinase_viper_v4','AURKB_kinase_viper_v4']);
+            Session.set('signatureNames', ['MAP3K8_kinase_viper_v4', 'AURKB_kinase_viper_v4']);
         }
 
         // get clinical data
