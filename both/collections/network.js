@@ -1,5 +1,16 @@
 Network = Collections.Network = new Meteor.Collection('network');
 
+Schemas.XYPosition = new SimpleSchema({
+    x : {
+        type : Number,
+        label : "X"
+    },
+    y : {
+        type : Number,
+        label : "Y"
+    }
+});
+
 Schemas.NetworkElement = new SimpleSchema({
     name : {
         type : String,
@@ -9,8 +20,17 @@ Schemas.NetworkElement = new SimpleSchema({
         type : String,
         label : "Type",
     },
-    // TODO exception thrown at startup
-    // members: [NetworkElement],
+    position : {
+        type : Schemas.XYPosition,
+        label : "Position",
+        optional : true
+    },
+    members : {
+        type : [Object],
+    },
+    "members.$" : {
+        type : Schemas.NetworkElement
+    }
 });
 
 Schemas.Interaction = new SimpleSchema({
@@ -26,9 +46,9 @@ Schemas.Interaction = new SimpleSchema({
         type : String,
         label : "Type",
     },
-    strength : {
+    score : {
         type : Number,
-        label : "Strength",
+        label : "Score",
         optional : true
     }
 });
@@ -50,9 +70,17 @@ Schemas.Network = new SimpleSchema({
         label : "Source URL:",
         optional : true
     },
-    // TODO exception thrown at startup
-    // elements: [Schemas.NetworkElement],
-    // interaction: [Schemas.Interaction]
+    elements : {
+        type : [Object]
+    },
+    "elements.$" : {
+        type : Schemas.NetworkElement
+    },
+    interactions : {
+        type : [Object]
+    },
+    "interactions.$" : {
+        type : Schemas.Interaction
+    }
 });
-Network.attachSchema(Schemas.Network);
-
+Network.attachSchema(Schemas.Interaction);
