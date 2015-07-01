@@ -83,4 +83,6 @@ Schemas.Network = new SimpleSchema({
         type : Schemas.Interaction
     }
 });
+
+// TODO which schemas need to be attached?
 Network.attachSchema(Schemas.Interaction);
