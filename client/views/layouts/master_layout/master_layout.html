@@ -1,13 +1,17 @@
 <template name="MasterLayout">
     <div class="container-fluid">
-		<table class="table table-bordered">
+		<!-- <table class="table table-bordered"> -->
+		<table  width="100%">
 		    <tbody>
 		        <tr>
 		            <td>
-						<div class="studies-panel">
-			 Study:
+		            	<div style="float:left">
+						MedBook Workbench
+					    </div>
+						<div class="studies-panel" style="float:left">
+			 <!-- Study: -->
 			{{#with studies}}
-				<select id="study" class="span1-12">
+				<select id="study" class="span1-12" title="study">
 					<option value="">Select a Study ...</option>
 					{{#each this}}
 					<option  value="{{id}}" selected={{selected}}>{{short_name}}</option>
@@ -16,27 +20,25 @@
 			{{else}}
 				No studies yet.
 			{{/with}}
-			<button class="nuc">Reset</button>
-			
 		</div>
-				</td>
-				<td>
-					
-				 	<div id="contrast1" width=200>
-						Contrast {{> Contrast}}
-					</div>
-				</td>
-				<td>
+
+	 	<div id="contrast1" style="float:left" width=200 title="contrast">
+			<!-- Contrast --> {{> Contrast}}
+		</div>
+
+		<div style="float:left">
+			<button class="nuc" title="reset session">Reset</button>
+		</div>
 					{{#if currentUser}}
-					User: {{ currentUser.username }} Member of: {{member}} <button class="logout btn">Logout</button>
+					<!-- User: {{ currentUser.username }} Member of: {{member}} --> <button class="logout btn" style="float:right" title="User {{ currentUser.username }} is a member of {{member}}.">Logout</button>
 					{{else}}
-					Not Logged in {{> loginButtons}}
+					{{> loginButtons}}
 					{{/if}}
 				</td>
 		        </tr>
 		    </tbody>
 		</table>
-		{{#if currentUser}} 
+		{{#if currentUser}}
 		<ul class="nav nav-tabs" role="tablist">
 			<li class="{{isActiveRoute regex='studies.index'}}"><a href="{{pathFor 'StudiesIndex' query=currentQueryString}}">Home</a></li>
 			<li class="{{isActiveRoute regex='cohort'}}"><a href="{{pathFor 'Cohort' query=currentQueryString}}">Cohort</a></li>
