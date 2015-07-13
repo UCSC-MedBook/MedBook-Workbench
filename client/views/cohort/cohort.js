@@ -431,6 +431,7 @@ Template.Cohort.rendered = function() {
             od_config = buildObservationDeck(divElem, {
                 // gene query service -> http://localhost:3000/genes?q=MAPK
                 "geneQueryUrl" : "/genes?q=",
+                "sigQueryUrl" : "/signatures?q=",
                 'pivotScores' : {
                     'object' : corrDocList
                 },
