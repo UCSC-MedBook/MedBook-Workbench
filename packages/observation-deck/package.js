@@ -9,8 +9,7 @@ Package.onUse(function(api) {
     api.versionsFrom('0.9.0');
     api.use(['jquery']);
 
-    api.export('buildObservationDeck', 'client');
-    api.export('getCookieEvents', 'client');
+    api.export('observation_deck', 'client');
     api.export('u', 'client');
     api.addFiles('observation-deck.js', 'client');
 });

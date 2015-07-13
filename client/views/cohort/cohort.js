@@ -428,7 +428,7 @@ Template.Cohort.rendered = function() {
 
         // build observation deck
         if ((clinDocList.length > 0) || (expDocList.length > 0)) {
-            od_config = buildObservationDeck(divElem, {
+            od_config = observation_deck.buildObservationDeck(divElem, {
                 // gene query service -> http://localhost:3000/genes?q=MAPK
                 "geneQueryUrl" : "/genes?q=",
                 "sigQueryUrl" : "/signatures?q=",
