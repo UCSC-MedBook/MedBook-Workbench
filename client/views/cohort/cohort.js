@@ -11,7 +11,7 @@ Template.Cohort.events({
     'change #geneset' : function(event, template) {
         // The cookie stores genes required by obs-deck in case they might be missing from the geneset.
         // For example, if user has done sample sorting based on a gene expression, that gene expression data must be present.
-        var cookieGenes = getCookieEvents();
+        var cookieGenes = observation_deck.getCookieEvents();
         console.log('cookieGenes', cookieGenes);
 
         var sourceElem = event.target || event.srcElement;
