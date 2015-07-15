@@ -11,6 +11,11 @@ Template.Cohort.events({
     'change #geneset' : function(event, template) {
         // The cookie stores genes required by obs-deck in case they might be missing from the geneset.
         // For example, if user has done sample sorting based on a gene expression, that gene expression data must be present.
+
+        // TODO first, throw away pivot settings
+        delete Session.keys['pivotSettings'];
+        console.log('SESSION pivotSettings', Session.get('pivotSettings'));
+
         var cookieGenes = observation_deck.getCookieEvents();
         console.log('cookieGenes', cookieGenes);
 
@@ -35,10 +40,6 @@ Template.Cohort.events({
 
         Session.set('geneList', cookieGenes.concat(elemValue.split(',')));
         console.log('SESSION geneset members', Session.get('geneList').length, 'genes', Session.get('geneList'));
-
-        // TODO throw away pivot settings
-        delete Session.keys['pivotSettings'];
-        console.log('SESSION pivotSettings', Session.get('pivotSettings'));
     },
     'click .select_geneset' : function() {
         console.log('event: click .select_geneset');
