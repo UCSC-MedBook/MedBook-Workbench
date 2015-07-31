@@ -164,7 +164,9 @@ Template.Cohort.rendered = function() {
         pagedGenes_anti = pagedGenes_anti.slice(skip_anti, (skip_anti + pageSize));
 
         // cat arrays for return
-        result = result.concat(pagedGenes, pagedGenes_anti);
+        var cookieGenes = observation_deck.getCookieEvents();
+        console.log("cookieGenes", cookieGenes);
+        result = result.concat(pagedGenes, pagedGenes_anti, cookieGenes);
 
         console.log('pages', totalPages, totalPages_anti, configKey);
 
@@ -411,6 +413,13 @@ Template.Cohort.rendered = function() {
         });
         var expDocList = expResp.fetch();
         console.log('expDocList.length:', expDocList.length, s);
+
+        // TODO get mutation data
+        var mutResp = Mutations.find({}, {
+            "reactive" : true
+        });
+        var mutDocList = mutResp.fetch();
+        console.log('mutDocList.length:', mutDocList.length, s);
 
         // get signature gene:weight vectors + metadata
         var signatureScoresResp = SignatureScores.find({

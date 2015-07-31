@@ -14,6 +14,9 @@ CohortController = RouteController.extend({
         Meteor.subscribe('expression2', geneList, studyID);
         console.log('expression2 subscription', 'studyId:', studyID, 'geneList:', geneList, s);
 
+        Meteor.subscribe('mutations_cohort', studyID, geneList);
+        console.log('mutations_cohort subscription', 'studyId:', studyID, 'geneList:', geneList, s);
+
         Meteor.subscribe('correlator', sigNames, correlatorLimit);
         console.log('correlator subscription', 'sigNames:', sigNames, 'correlatorLimit:', correlatorLimit, s);
 
