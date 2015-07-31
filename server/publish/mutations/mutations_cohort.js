@@ -3,6 +3,8 @@
 Meteor.publish('mutations_cohort', function(studyId, geneList) {
     var s = "<--- publish mutations_cohort in server/publish/mutations/mutations_cohort.js";
 
+    geneList = (geneList == null) ? [] : geneList;
+
     var queryParams = {
         "MA_FImpact" : {
             "$in" : ["medium", "high"]
