@@ -447,7 +447,8 @@ Template.Cohort.rendered = function() {
                 },
                 'mongoData' : {
                     'clinical' : clinDocList,
-                    'expression' : expDocList
+                    'expression' : expDocList,
+                    'mutation' : mutDocList
                 },
                 'signature' : {
                     'expression' : {

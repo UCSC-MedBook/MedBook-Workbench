@@ -5,11 +5,11 @@ Meteor.publish('mutations_cohort', function(studyId, geneList) {
 
     var queryParams = {
         "MA_FImpact" : {
-            $in : ["medium", "high"]
+            "$in" : ["medium", "high"]
         },
         "Study_ID" : studyId,
         "Hugo_Symbol" : {
-            $in : geneList
+            "$in" : geneList
         }
     };
 
