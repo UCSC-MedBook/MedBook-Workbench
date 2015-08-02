@@ -43,6 +43,9 @@ Template.Cohort.events({
     },
     'click .select_geneset' : function() {
         console.log('event: click .select_geneset');
+    },
+    'click .run-deps-autorun-hack': function () {
+      depsAutorunFunctionHack();
     }
 });
 
@@ -282,8 +285,8 @@ Template.Cohort.rendered = function() {
         return result;
     };
 
-    // Deps.autorun is triggered when reactive data source has changed
-    Deps.autorun(function() {
+    // oh my god what are we doing
+    depsAutorunFunctionHack = function() {
         var s = ' <-- Deps.autorun in cohort.js';
         // console.log('Deps.autorun');
 
@@ -500,9 +503,8 @@ Template.Cohort.rendered = function() {
             divElem.innerHTML = 'no data';
         }
 
-    });
+    };
 };
 
 Template.Cohort.destroyed = function() {
 };
-
