@@ -14,7 +14,7 @@ Meteor.publish('signature_index', function(study, sigNames) {
             // signature names in this mongo collection do not have version number suffixed
             var sigName = sigNames[i];
             var fields = sigName.split('_v');
-            fields.pop();
+            var sigVersion = fields.pop();
             sanitizedSigNames.push(fields.join('_v'));
         }
         // console.log('sanitizedSigNames:', sanitizedSigNames.join(), s);
@@ -33,7 +33,9 @@ Meteor.publish('signature_index', function(study, sigNames) {
         });
     }
 
-    console.log('signature_index for ',sigNames, 'count:', findResult.count(), 'study:', study, s);
+    console.log("QQQQ", "findResult", findResult.fetch(), s);
+
+    console.log('signature_index for ', sigNames, 'count:', findResult.count(), 'study:', study, s);
 
     return findResult;
 });
