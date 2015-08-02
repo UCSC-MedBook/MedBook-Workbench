@@ -93,7 +93,10 @@ Template.Cohort.created = function() {
 };
 
 Template.Cohort.rendered = function() {
+
     var divElem = document.getElementById("Cohort_OD_Div");
+
+    console.log("divElem: ", divElem);
 
     var applyPagingToGeneList = function(scoredGenes) {
         // console.log("scoredGenes", scoredGenes);
@@ -405,11 +408,10 @@ Template.Cohort.rendered = function() {
         }
 
         // get clinical data
-        var clinResp = ClinicalEvents.find({}, {
+        var clinicalEventsCursor = ClinicalEvents.find({}, {
             reactive : true
         });
-        var clinDocList = clinResp.fetch();
-        console.log('clinDocList.length:', clinDocList.length, s);
+        var clinicalEvents = clinicalEventsCursor.fetch();
 
         // get expression data
         var expResp = Expression2.find({}, {
@@ -440,8 +442,12 @@ Template.Cohort.rendered = function() {
         var sigIdsDocList = sigIdxResp.fetch();
         console.log('sigIdsDocList.length:', sigIdsDocList.length, s);
 
+        console.log("expDocList.length: ", expDocList.length);
+        console.log("clinicalEvents.length: ", clinicalEvents.length);
+
         // build observation deck
-        if ((clinDocList.length > 0) || (expDocList.length > 0)) {
+        if ((clinicalEvents.length > 0) || (expDocList.length > 0)) {
+            console.log("about to call buildObservationDeck");
             od_config = observation_deck.buildObservationDeck(divElem, {
                 // gene query service -> http://localhost:3000/genes?q=MAPK
                 "geneQueryUrl" : "/genes?q=",
@@ -450,7 +456,7 @@ Template.Cohort.rendered = function() {
                     'object' : corrDocList
                 },
                 'mongoData' : {
-                    'clinical' : clinDocList,
+                    'clinical' : clinicalEvents,
                     'expression' : expDocList,
                     'mutation' : mutDocList
                 },
@@ -504,6 +510,8 @@ Template.Cohort.rendered = function() {
         }
 
     };
+
+    depsAutorunFunctionHack();
 };
 
 Template.Cohort.destroyed = function() {
