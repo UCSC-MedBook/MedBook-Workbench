@@ -33,7 +33,7 @@ Meteor.publish('signature_index', function(study, sigNames) {
         });
     }
 
-    console.log('signature_index count:', findResult.count(), 'study:', study, s);
+    console.log('signature_index for ',sigNames, 'count:', findResult.count(), 'study:', study, s);
 
     return findResult;
 });

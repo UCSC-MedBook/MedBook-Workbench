@@ -14,6 +14,6 @@ Meteor.publish('signature_scores_index', function(sigNames) {
             $in : sigNames
         }
     });
-    console.log('SignatureScores count', findResult.count(), s);
+    console.log('SignatureScores for ',sigNames,', count', findResult.count(), s);
     return findResult;
 });

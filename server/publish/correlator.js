@@ -57,6 +57,6 @@ Meteor.publish('correlator', function(sigNames, topN) {
             $in : nameList
         }
     });
-    console.log('correlator count:', findResult.count(), 'nameList', nameList.join(), s);
+    console.log('correlator ',sigNames, 'count:', findResult.count(), 'nameList', nameList.join(), s);
     return findResult;
 });
