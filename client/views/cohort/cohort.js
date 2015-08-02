@@ -511,7 +511,12 @@ Template.Cohort.rendered = function() {
 
     };
 
-    depsAutorunFunctionHack();
+    Deps.autorun(function () {
+      Session.get("pivotSettings");
+      Session.get("geneList");
+      depsAutorunFunctionHack();
+    })
+
 };
 
 Template.Cohort.destroyed = function() {
