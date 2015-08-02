@@ -312,7 +312,7 @@ Template.Cohort.rendered = function() {
         console.log('corrDocList.length:', corrDocList.length, s);
 
         var geneList = [];
-        var signatureNames = Session.get("signatureNames") || [];
+        // var signatureNames = Session.get("signatureNames") || [];
         var pivotSettings = Session.get('pivotSettings');
         if (pivotSettings) {
             console.log('pivotSettings', pivotSettings, s);
@@ -321,7 +321,7 @@ Template.Cohort.rendered = function() {
             var pVersion = pivotSettings['version'];
 
             geneList = [];
-            signatureNames = [pName + "_v" + pVersion];
+            var signatureNames = [pName + "_v" + pVersion];
 
             var scoredGenes = [];
             var scoredSigs = [{
@@ -339,9 +339,9 @@ Template.Cohort.rendered = function() {
                     var score = doc["score"];
 
                     // TODO hack for mismatched version numbers between mongo collections
-                    if (u.endsWith(name2, "_tf_viper")) {
-                        version2 = "4";
-                    }
+                    // if (u.endsWith(name2, "_tf_viper")) {
+                        // version2 = "4";
+                    // }
 
                     if (datatype2 === 'signature') {
                         // matched event is a signature
@@ -397,7 +397,8 @@ Template.Cohort.rendered = function() {
             // when this is empty, no pivot data is sent to obs-deck
             corrDocList = [];
 
-            Session.set('signatureNames', ['MAP3K8_kinase_viper_v4', 'AURKB_kinase_viper_v4']);
+            // Session.set('signatureNames', ['MAP3K8_kinase_viper_v4', 'AURKB_kinase_viper_v4']);
+            Session.set('signatureNames', ['MAP3K8_kinase_viper_v5', 'AURKB_kinase_viper_v5']);
         }
 
         // get clinical data
