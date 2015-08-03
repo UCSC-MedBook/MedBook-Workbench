@@ -2006,6 +2006,6694 @@ commonClinicalEventsDocList = [{
     "Trichotomy" : "Small Cell"
 }];
 
+// TODO settings template
+// enzObsDeckSettings = jQuery.extend({}, commonObsDeckSettings);
+// enzObsDeckSettings["desc"] = "enzObsDeckSettings";
+// enzObsDeckSettings["pivotScores"] = {
+// "object" : pivotScoresDocList
+//
+// };
+// enzObsDeckSettings["mongoData"] = {
+// 'expression' : exprDocList,
+// 'mutation' : [],
+// 'clinical' : commonClinicalEventsDocList
+// };
+// enzObsDeckSettings["signature"] = {
+// 'expression' : {
+// 'object' : []
+// }
+// };
+
+// TODO biopsySite settings
+biopsySiteObsDeckSettings = jQuery.extend({}, commonObsDeckSettings);
+biopsySiteObsDeckSettings["desc"] = "biopsySiteObsDeckSettings";
+biopsySiteObsDeckSettings["pivotScores"] = {
+    "object" : [{
+        "name_2" : "iac-adeno-50",
+        "name_1" : "biopsy_site",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "3.44844822627"
+    }, {
+        "name_2" : "iac-adeno-20k",
+        "name_1" : "biopsy_site",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "3.21152704966"
+    }, {
+        "name_2" : "FOXA2_tf_viper",
+        "name_1" : "biopsy_site",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "2.79017840536"
+    }, {
+        "name_2" : "MAPK9_kinase_viper",
+        "name_1" : "biopsy_site",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "2.74747088709"
+    }, {
+        "name_2" : "GATA1_tf_viper",
+        "name_1" : "biopsy_site",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "2.71385787989"
+    }, {
+        "name_2" : "HOXA10_tf_viper",
+        "name_1" : "biopsy_site",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "2.43859382854"
+    }, {
+        "name_2" : "smc-iac-50",
+        "name_1" : "biopsy_site",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "2.1179933641"
+    }, {
+        "name_2" : "smc50",
+        "name_1" : "biopsy_site",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "2.1179933641"
+    }, {
+        "name_2" : "RUNX2_tf_viper",
+        "name_1" : "biopsy_site",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "2.03665888199"
+    }, {
+        "name_2" : "NEUROG3_tf_viper",
+        "name_1" : "biopsy_site",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "2.02070378914"
+    }, {
+        "name_2" : "FOXN1_tf_viper",
+        "name_1" : "biopsy_site",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "1.93386659507"
+    }, {
+        "name_2" : "CHUK_kinase_viper",
+        "name_1" : "biopsy_site",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "1.91716337567"
+    }, {
+        "name_2" : "HOXD13_tf_viper",
+        "name_1" : "biopsy_site",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "1.9035684216"
+    }, {
+        "name_2" : "RFX5_tf_viper",
+        "name_1" : "biopsy_site",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "1.84812188296"
+    }, {
+        "name_2" : "RARB_tf_viper",
+        "name_1" : "biopsy_site",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "1.797659721"
+    }, {
+        "name_2" : "smc20k",
+        "name_1" : "biopsy_site",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "1.79278577338"
+    }, {
+        "name_2" : "smc-iac-20k",
+        "name_1" : "biopsy_site",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "1.79278577338"
+    }, {
+        "name_2" : "FOXO3_tf_viper",
+        "name_1" : "biopsy_site",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "1.76938622747"
+    }, {
+        "name_2" : "SP1_tf_viper",
+        "name_1" : "biopsy_site",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "1.72700825777"
+    }, {
+        "name_2" : "GATA4_tf_viper",
+        "name_1" : "biopsy_site",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "1.65286283136"
+    }, {
+        "name_2" : "POU3F2_tf_viper",
+        "name_1" : "biopsy_site",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "1.64567395295"
+    }, {
+        "name_2" : "EPAS1_tf_viper",
+        "name_1" : "biopsy_site",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "1.63375560475"
+    }, {
+        "name_2" : "adeno50",
+        "name_1" : "biopsy_site",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "1.5670662278"
+    }, {
+        "name_2" : "CDK1_kinase_viper",
+        "name_1" : "biopsy_site",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "1.48888163697"
+    }, {
+        "name_2" : "PRKAA2_kinase_viper",
+        "name_1" : "biopsy_site",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "1.44423859363"
+    }, {
+        "name_2" : "POU2F2_tf_viper",
+        "name_1" : "biopsy_site",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "1.44339420073"
+    }, {
+        "name_2" : "NR2C2_tf_viper",
+        "name_1" : "biopsy_site",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "1.42222692668"
+    }, {
+        "name_2" : "CDK4_kinase_viper",
+        "name_1" : "biopsy_site",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "1.38034186345"
+    }, {
+        "name_2" : "NFE2_tf_viper",
+        "name_1" : "biopsy_site",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "1.33574229649"
+    }, {
+        "name_2" : "NTRK2",
+        "name_1" : "biopsy_site",
+        "datatype_2" : "expression",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "8.07974733482"
+    }, {
+        "name_2" : "KCNK2",
+        "name_1" : "biopsy_site",
+        "datatype_2" : "expression",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "8.00437284209"
+    }, {
+        "name_2" : "NBLA00301",
+        "name_1" : "biopsy_site",
+        "datatype_2" : "expression",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "7.72032774947"
+    }, {
+        "name_2" : "VIT",
+        "name_1" : "biopsy_site",
+        "datatype_2" : "expression",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "7.54946733251"
+    }, {
+        "name_2" : "COL11A2",
+        "name_1" : "biopsy_site",
+        "datatype_2" : "expression",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "6.87800889137"
+    }]
+};
+biopsySiteObsDeckSettings["mongoData"] = {
+    'expression' : [{
+        "Study_ID" : "prad_wcdt",
+        "gene" : "NTRK2",
+        "samples" : {
+            "DTB-067Pro" : {
+                "rsem_quan_log2" : 7.35447508158873
+            },
+            "DTB-073Pro" : {
+                "rsem_quan_log2" : 7.41625960919862
+            },
+            "DTB-080Pro" : {
+                "rsem_quan_log2" : 5.9975882336766
+            },
+            "DTB-132" : {
+                "rsem_quan_log2" : 7.41765592374677
+            },
+            "DTB-097Pro" : {
+                "rsem_quan_log2" : 6.86076544393391
+            },
+            "DTB-055Pro2" : {
+                "rsem_quan_log2" : 8.57281730453833
+            },
+            "DTB-024Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-131" : {
+                "rsem_quan_log2" : 9.4749154017355
+            },
+            "DTB-124" : {
+                "rsem_quan_log2" : 8.63238928336521
+            },
+            "DTB-060" : {
+                "rsem_quan_log2" : 3.22238726884496
+            },
+            "DTB-061" : {
+                "rsem_quan_log2" : 4.33848146536253
+            },
+            "DTB-004" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-005" : {
+                "rsem_quan_log2" : 10.0987731166807
+            },
+            "DTB-002" : {
+                "rsem_quan_log2" : 4.50710324923925
+            },
+            "DTB-003" : {
+                "rsem_quan_log2" : 7.86700747518402
+            },
+            "DTB-001" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-069" : {
+                "rsem_quan_log2" : 8.00179717698239
+            },
+            "DTB-040" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-046" : {
+                "rsem_quan_log2" : 5.6724253419715
+            },
+            "DTB-008" : {
+                "rsem_quan_log2" : 12.6227407111901
+            },
+            "DTB-009" : {
+                "rsem_quan_log2" : 9.19593834642001
+            },
+            "DTB-121" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-120" : {
+                "rsem_quan_log2" : 5.70100558751309
+            },
+            "DTB-020" : {
+                "rsem_quan_log2" : 3.98330374929422
+            },
+            "DTB-102" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-022" : {
+                "rsem_quan_log2" : 10.9306783573285
+            },
+            "DTB-023" : {
+                "rsem_quan_log2" : 8.79627944302976
+            },
+            "DTB-089Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-080Pro-R2" : {
+                "rsem_quan_log2" : 8.45118349426292
+            },
+            "DTB-089" : {
+                "rsem_quan_log2" : 8.77125208206867
+            },
+            "LNCAP-batch3" : {
+                "rsem_quan_log2" : 4.96822902289892
+            },
+            "DTB-024Pro2" : {
+                "rsem_quan_log2" : 5.87719945611397
+            },
+            "LNCAP-batch1" : {
+                "rsem_quan_log2" : 4.04894236130886
+            },
+            "DTB-085" : {
+                "rsem_quan_log2" : 7.48841378281714
+            },
+            "LNCAP-batch7" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-083" : {
+                "rsem_quan_log2" : 10.2024577605088
+            },
+            "DTB-080" : {
+                "rsem_quan_log2" : 9.03655251069111
+            },
+            "LNCAP-batch4" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-063" : {
+                "rsem_quan_log2" : 10.4818427118678
+            },
+            "LNCAP-batch6" : {
+                "rsem_quan_log2" : 1.77951188100706
+            },
+            "DTB-063Pro" : {
+                "rsem_quan_log2" : 9.38882604447298
+            },
+            "DTB-069Dup" : {
+                "rsem_quan_log2" : 7.23125670753932
+            },
+            "DTB-111Pro" : {
+                "rsem_quan_log2" : 7.42958332745985
+            },
+            "DTB-073" : {
+                "rsem_quan_log2" : 10.9971405191756
+            },
+            "DTB-010Pro" : {
+                "rsem_quan_log2" : 5.07839208197407
+            },
+            "DTB-071" : {
+                "rsem_quan_log2" : 7.89386029630232
+            },
+            "DTB-080Pro-R3" : {
+                "rsem_quan_log2" : 7.62732448698809
+            },
+            "DTB-059" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-156" : {
+                "rsem_quan_log2" : 9.07299622043069
+            },
+            "LNCAP-batch2" : {
+                "rsem_quan_log2" : 1.51712448580564
+            },
+            "DTB-053" : {
+                "rsem_quan_log2" : 9.0615961194337
+            },
+            "DTB-018" : {
+                "rsem_quan_log2" : 7.94120082034327
+            },
+            "DTB-118" : {
+                "rsem_quan_log2" : 7.58996343138072
+            },
+            "DTB-038" : {
+                "rsem_quan_log2" : 8.99278768771931
+            },
+            "DTB-011" : {
+                "rsem_quan_log2" : 10.8406452115733
+            },
+            "DTB-036" : {
+                "rsem_quan_log2" : 6.48840253502973
+            },
+            "DTB-035" : {
+                "rsem_quan_log2" : 8.7192330767722
+            },
+            "DTB-034" : {
+                "rsem_quan_log2" : 7.48557012346718
+            },
+            "DTB-110" : {
+                "rsem_quan_log2" : 7.22698530334653
+            },
+            "DTB-032" : {
+                "rsem_quan_log2" : 10.8245610299703
+            },
+            "DTB-031" : {
+                "rsem_quan_log2" : 10.3717153421066
+            },
+            "DTB-030" : {
+                "rsem_quan_log2" : 5.72738138477201
+            },
+            "DTB-049" : {
+                "rsem_quan_log2" : 8.40788550489983
+            },
+            "DTB-095" : {
+                "rsem_quan_log2" : 11.112592825709
+            },
+            "LNCAP-batch5" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-097" : {
+                "rsem_quan_log2" : 9.94146817209294
+            },
+            "DTB-064" : {
+                "rsem_quan_log2" : 8.77946854403445
+            },
+            "DTB-018Pro" : {
+                "rsem_quan_log2" : 7.37623480849774
+            },
+            "DTB-065" : {
+                "rsem_quan_log2" : 8.5910188581994
+            }
+        }
+    }, {
+        "Study_ID" : "prad_wcdt",
+        "gene" : "KCNK2",
+        "samples" : {
+            "DTB-067Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-073Pro" : {
+                "rsem_quan_log2" : 4.31236748535643
+            },
+            "DTB-080Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-132" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-097Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-055Pro2" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-024Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-131" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-124" : {
+                "rsem_quan_log2" : 4.44845829822676
+            },
+            "DTB-060" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-061" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-004" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-005" : {
+                "rsem_quan_log2" : 7.33458257669597
+            },
+            "DTB-002" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-003" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-001" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-069" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-040" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-046" : {
+                "rsem_quan_log2" : 6.97727992349992
+            },
+            "DTB-008" : {
+                "rsem_quan_log2" : 10.0807738331356
+            },
+            "DTB-009" : {
+                "rsem_quan_log2" : 7.14481320952372
+            },
+            "DTB-121" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-120" : {
+                "rsem_quan_log2" : 2.13796249006763
+            },
+            "DTB-020" : {
+                "rsem_quan_log2" : 4.93695824062846
+            },
+            "DTB-102" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-022" : {
+                "rsem_quan_log2" : 6.09770980997358
+            },
+            "DTB-023" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-089Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-080Pro-R2" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-089" : {
+                "rsem_quan_log2" : 2.53366301282309
+            },
+            "LNCAP-batch3" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-024Pro2" : {
+                "rsem_quan_log2" : 0
+            },
+            "LNCAP-batch1" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-085" : {
+                "rsem_quan_log2" : 0
+            },
+            "LNCAP-batch7" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-083" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-080" : {
+                "rsem_quan_log2" : 0
+            },
+            "LNCAP-batch4" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-063" : {
+                "rsem_quan_log2" : 0
+            },
+            "LNCAP-batch6" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-063Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-069Dup" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-111Pro" : {
+                "rsem_quan_log2" : 1.98371417198763
+            },
+            "DTB-073" : {
+                "rsem_quan_log2" : 6.09770980997358
+            },
+            "DTB-010Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-071" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-080Pro-R3" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-059" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-156" : {
+                "rsem_quan_log2" : 4.40811401041341
+            },
+            "LNCAP-batch2" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-053" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-018" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-118" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-038" : {
+                "rsem_quan_log2" : 5.07907938556817
+            },
+            "DTB-011" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-036" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-035" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-034" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-110" : {
+                "rsem_quan_log2" : 2.797511088685
+            },
+            "DTB-032" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-031" : {
+                "rsem_quan_log2" : 7.14817250374406
+            },
+            "DTB-030" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-049" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-095" : {
+                "rsem_quan_log2" : 0
+            },
+            "LNCAP-batch5" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-097" : {
+                "rsem_quan_log2" : 7.12397962084238
+            },
+            "DTB-064" : {
+                "rsem_quan_log2" : 6.12857179911031
+            },
+            "DTB-018Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-065" : {
+                "rsem_quan_log2" : 0
+            }
+        }
+    }, {
+        "Study_ID" : "prad_wcdt",
+        "gene" : "NBLA00301",
+        "samples" : {
+            "DTB-067Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-073Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-080Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-132" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-097Pro" : {
+                "rsem_quan_log2" : 4.8205517168684
+            },
+            "DTB-055Pro2" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-024Pro" : {
+                "rsem_quan_log2" : 6.24792751344359
+            },
+            "DTB-131" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-124" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-060" : {
+                "rsem_quan_log2" : 3.22238726884496
+            },
+            "DTB-061" : {
+                "rsem_quan_log2" : 7.97154355395077
+            },
+            "DTB-004" : {
+                "rsem_quan_log2" : 6.73149825353514
+            },
+            "DTB-005" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-002" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-003" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-001" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-069" : {
+                "rsem_quan_log2" : 4.47745715083959
+            },
+            "DTB-040" : {
+                "rsem_quan_log2" : 4.11490835050441
+            },
+            "DTB-046" : {
+                "rsem_quan_log2" : 4.70043971814109
+            },
+            "DTB-008" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-009" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-121" : {
+                "rsem_quan_log2" : 7.1446164397551
+            },
+            "DTB-120" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-020" : {
+                "rsem_quan_log2" : 5.58246869203283
+            },
+            "DTB-102" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-022" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-023" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-089Pro" : {
+                "rsem_quan_log2" : 7.46058858948133
+            },
+            "DTB-080Pro-R2" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-089" : {
+                "rsem_quan_log2" : 0
+            },
+            "LNCAP-batch3" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-024Pro2" : {
+                "rsem_quan_log2" : 4.53743275006849
+            },
+            "LNCAP-batch1" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-085" : {
+                "rsem_quan_log2" : 0
+            },
+            "LNCAP-batch7" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-083" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-080" : {
+                "rsem_quan_log2" : 0
+            },
+            "LNCAP-batch4" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-063" : {
+                "rsem_quan_log2" : 0
+            },
+            "LNCAP-batch6" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-063Pro" : {
+                "rsem_quan_log2" : 3.6804593921817
+            },
+            "DTB-069Dup" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-111Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-073" : {
+                "rsem_quan_log2" : 2.83491342970104
+            },
+            "DTB-010Pro" : {
+                "rsem_quan_log2" : 6.05688261382229
+            },
+            "DTB-071" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-080Pro-R3" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-059" : {
+                "rsem_quan_log2" : 6.05947209380256
+            },
+            "DTB-156" : {
+                "rsem_quan_log2" : 0
+            },
+            "LNCAP-batch2" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-053" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-018" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-118" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-038" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-011" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-036" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-035" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-034" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-110" : {
+                "rsem_quan_log2" : 4.6328207549549
+            },
+            "DTB-032" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-031" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-030" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-049" : {
+                "rsem_quan_log2" : 5.82723217542696
+            },
+            "DTB-095" : {
+                "rsem_quan_log2" : 0
+            },
+            "LNCAP-batch5" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-097" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-064" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-018Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-065" : {
+                "rsem_quan_log2" : 0
+            }
+        }
+    }, {
+        "Study_ID" : "prad_wcdt",
+        "gene" : "VIT",
+        "samples" : {
+            "DTB-067Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-073Pro" : {
+                "rsem_quan_log2" : 5.59005702878512
+            },
+            "DTB-080Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-132" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-097Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-055Pro2" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-024Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-131" : {
+                "rsem_quan_log2" : 3.3784283884465
+            },
+            "DTB-124" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-060" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-061" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-004" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-005" : {
+                "rsem_quan_log2" : 6.82817457464944
+            },
+            "DTB-002" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-003" : {
+                "rsem_quan_log2" : 4.32234641579562
+            },
+            "DTB-001" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-069" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-040" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-046" : {
+                "rsem_quan_log2" : 6.24792751344359
+            },
+            "DTB-008" : {
+                "rsem_quan_log2" : 7.8314719328477
+            },
+            "DTB-009" : {
+                "rsem_quan_log2" : 3.0046452051332
+            },
+            "DTB-121" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-120" : {
+                "rsem_quan_log2" : 8.38514324605303
+            },
+            "DTB-020" : {
+                "rsem_quan_log2" : 1.79464459986288
+            },
+            "DTB-102" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-022" : {
+                "rsem_quan_log2" : 4.27834909333534
+            },
+            "DTB-023" : {
+                "rsem_quan_log2" : 1.54606718045021
+            },
+            "DTB-089Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-080Pro-R2" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-089" : {
+                "rsem_quan_log2" : 6.59706032950051
+            },
+            "LNCAP-batch3" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-024Pro2" : {
+                "rsem_quan_log2" : 0
+            },
+            "LNCAP-batch1" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-085" : {
+                "rsem_quan_log2" : 0
+            },
+            "LNCAP-batch7" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-083" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-080" : {
+                "rsem_quan_log2" : 0
+            },
+            "LNCAP-batch4" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-063" : {
+                "rsem_quan_log2" : 2.10443730944613
+            },
+            "LNCAP-batch6" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-063Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-069Dup" : {
+                "rsem_quan_log2" : 3.08111802447477
+            },
+            "DTB-111Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-073" : {
+                "rsem_quan_log2" : 7.48312327866534
+            },
+            "DTB-010Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-071" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-080Pro-R3" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-059" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-156" : {
+                "rsem_quan_log2" : 4.59224173821336
+            },
+            "LNCAP-batch2" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-053" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-018" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-118" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-038" : {
+                "rsem_quan_log2" : 5.07907938556817
+            },
+            "DTB-011" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-036" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-035" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-034" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-110" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-032" : {
+                "rsem_quan_log2" : 6.97727992349992
+            },
+            "DTB-031" : {
+                "rsem_quan_log2" : 4.46772291710875
+            },
+            "DTB-030" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-049" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-095" : {
+                "rsem_quan_log2" : 0
+            },
+            "LNCAP-batch5" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-097" : {
+                "rsem_quan_log2" : 6.06657359626612
+            },
+            "DTB-064" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-018Pro" : {
+                "rsem_quan_log2" : 2.91706888771089
+            },
+            "DTB-065" : {
+                "rsem_quan_log2" : 0
+            }
+        }
+    }],
+    'mutation' : [],
+    'clinical' : commonClinicalEventsDocList
+};
+biopsySiteObsDeckSettings["signature"] = {
+    'expression' : {
+        'object' : [[{
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b40d"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : 0.1407187492222,
+            "id" : "DTB-001"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b40e"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : 1.35435725309766,
+            "id" : "DTB-002"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b40f"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : -0.018106662751816,
+            "id" : "DTB-003"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b410"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : -1.63887361476459,
+            "id" : "DTB-004"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b411"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : -3.48783076533126,
+            "id" : "DTB-005"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b412"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : -1.63037917905528,
+            "id" : "DTB-009"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b413"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : 0.463353551170792,
+            "id" : "DTB-010Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b414"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : 0.984526694106421,
+            "id" : "DTB-011"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b415"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : -0.0220315182446679,
+            "id" : "DTB-018"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b416"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : -0.721855041461271,
+            "id" : "DTB-020"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b417"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : -2.26727697004771,
+            "id" : "DTB-022"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b418"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : -2.64196232486424,
+            "id" : "DTB-023"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b419"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : -1.35429010810675,
+            "id" : "DTB-024Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b41a"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : -1.80617960152415,
+            "id" : "DTB-024Pro2"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b41b"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : 1.18117801760846,
+            "id" : "DTB-030"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b41c"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : -2.02225172525206,
+            "id" : "DTB-031"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b41d"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : 0.00846297296037002,
+            "id" : "DTB-032"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b41e"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : 1.80373764249297,
+            "id" : "DTB-034"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b41f"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : -2.5095091813596,
+            "id" : "DTB-035"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b420"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : 0.0715023317160419,
+            "id" : "DTB-036"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b421"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : -2.37299210140199,
+            "id" : "DTB-038"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b422"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : 1.78460531155728,
+            "id" : "DTB-040"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b423"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : -3.39254539204551,
+            "id" : "DTB-046"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b424"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : 0.20284026339752,
+            "id" : "DTB-049"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b425"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : -2.75040905693879,
+            "id" : "DTB-053"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b426"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : -0.219508536523147,
+            "id" : "DTB-055Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b427"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : -0.387208399578554,
+            "id" : "DTB-059"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b428"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : -0.190224525870949,
+            "id" : "DTB-060"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b429"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : 1.67709247081821,
+            "id" : "DTB-061"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b42a"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : -2.10530410790302,
+            "id" : "DTB-063"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b42b"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : -3.00097571076011,
+            "id" : "DTB-064"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b42c"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : 1.66323378440514,
+            "id" : "DTB-065"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b42d"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : 1.73964956163966,
+            "id" : "DTB-067Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b42e"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : 0.864704887819843,
+            "id" : "DTB-069"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b42f"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : 1.59169981707847,
+            "id" : "DTB-071"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b430"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : -1.92133423161018,
+            "id" : "DTB-073"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b431"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : -1.27198883290523,
+            "id" : "DTB-073Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b432"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : 1.18517458208536,
+            "id" : "DTB-080"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b433"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : -0.861673008264372,
+            "id" : "DTB-080Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b434"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : -1.27269111819293,
+            "id" : "DTB-080Pro-R2"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b435"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : -0.967445234482434,
+            "id" : "DTB-080Pro-R3"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b436"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : 0.00630869544732093,
+            "id" : "DTB-083"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b437"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : 1.77410323390397,
+            "id" : "DTB-085"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b438"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : -2.69244603782826,
+            "id" : "DTB-089"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b439"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : -2.26318535445119,
+            "id" : "DTB-089Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b43a"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : -2.4358408536925,
+            "id" : "DTB-095"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b43b"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : 1.3922263139201,
+            "id" : "DTB-102"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b43c"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : -0.902919005005916,
+            "id" : "DTB-110"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b43d"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : -2.32247374245617,
+            "id" : "DTB-118"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b43e"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : -1.30075455966419,
+            "id" : "DTB-121"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b43f"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : -3.05149593276352,
+            "id" : "DTB-124"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b440"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : -2.29640364849514,
+            "id" : "DTB-132"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b441"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : -2.85991154699136,
+            "id" : "DTB-008"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b442"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : -0.557548503641897,
+            "id" : "DTB-018Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b443"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : -2.14740912577877,
+            "id" : "DTB-063Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b444"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : 0.549752423130392,
+            "id" : "DTB-069Dup"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b445"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : -2.19164189558132,
+            "id" : "DTB-097"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b446"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : 0.0711249924940391,
+            "id" : "DTB-097Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b447"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : 0.0401849194634626,
+            "id" : "DTB-111Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b448"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : -1.92111641098074,
+            "id" : "DTB-120"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b449"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : -1.53280695111904,
+            "id" : "DTB-131"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b44a"
+            },
+            "name" : "iac-adeno-50_v5",
+            "val" : -0.701804273510724,
+            "id" : "DTB-156"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3cf"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.690426628379057,
+            "id" : "DTB-001"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3d0"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.51994890045272,
+            "id" : "DTB-002"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3d1"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.7273746717933,
+            "id" : "DTB-003"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3d2"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.632000852683282,
+            "id" : "DTB-004"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3d3"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.794885128312926,
+            "id" : "DTB-005"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3d4"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.755555319581735,
+            "id" : "DTB-009"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3d5"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.609913658533954,
+            "id" : "DTB-010Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3d6"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.717635149541309,
+            "id" : "DTB-011"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3d7"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.753629873351112,
+            "id" : "DTB-018"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3d8"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.723829307201015,
+            "id" : "DTB-020"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3d9"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.791656527860167,
+            "id" : "DTB-022"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3da"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.775621932191946,
+            "id" : "DTB-023"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3db"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.704401448870184,
+            "id" : "DTB-024Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3dc"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.749100608617199,
+            "id" : "DTB-024Pro2"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3dd"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.722813808885578,
+            "id" : "DTB-030"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3de"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.721286114970331,
+            "id" : "DTB-031"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3df"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.734243314893757,
+            "id" : "DTB-032"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3e0"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.611736085794703,
+            "id" : "DTB-034"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3e1"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.657732561035205,
+            "id" : "DTB-035"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3e2"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.691051171597509,
+            "id" : "DTB-036"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3e3"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.731098432701699,
+            "id" : "DTB-038"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3e4"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.742446390534157,
+            "id" : "DTB-040"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3e5"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.759850282956259,
+            "id" : "DTB-046"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3e6"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.719184498595275,
+            "id" : "DTB-049"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3e7"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.75069006242221,
+            "id" : "DTB-053"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3e8"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.694326006697439,
+            "id" : "DTB-055Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3e9"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.663972855084795,
+            "id" : "DTB-059"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3ea"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.652098223562976,
+            "id" : "DTB-060"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3eb"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.652643587456835,
+            "id" : "DTB-061"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3ec"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.757391091897687,
+            "id" : "DTB-063"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3ed"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.791548788703609,
+            "id" : "DTB-064"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3ee"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.564372845033744,
+            "id" : "DTB-065"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3ef"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.568356454935558,
+            "id" : "DTB-067Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3f0"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.685175425346564,
+            "id" : "DTB-069"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3f1"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.662443020372302,
+            "id" : "DTB-071"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3f2"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.745935665158919,
+            "id" : "DTB-073"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3f3"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.690119150204525,
+            "id" : "DTB-073Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3f4"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.671025985665631,
+            "id" : "DTB-080"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3f5"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.697216144309385,
+            "id" : "DTB-080Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3f6"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.645863092134454,
+            "id" : "DTB-080Pro-R2"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3f7"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.616679662228591,
+            "id" : "DTB-080Pro-R3"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3f8"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.676938608427572,
+            "id" : "DTB-083"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3f9"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.559733988745783,
+            "id" : "DTB-085"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3fa"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.74059796424357,
+            "id" : "DTB-089"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3fb"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.707161576610591,
+            "id" : "DTB-089Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3fc"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.730633456191135,
+            "id" : "DTB-095"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3fd"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.449433704117765,
+            "id" : "DTB-102"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3fe"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.71933431296457,
+            "id" : "DTB-110"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b3ff"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.721672660398338,
+            "id" : "DTB-118"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b400"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.627945948614362,
+            "id" : "DTB-121"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b401"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.723800968093646,
+            "id" : "DTB-124"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b402"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.689812484649067,
+            "id" : "DTB-132"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b403"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.785824705258279,
+            "id" : "DTB-008"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b404"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.746790436867767,
+            "id" : "DTB-018Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b405"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.796860520091107,
+            "id" : "DTB-063Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b406"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.731398922298601,
+            "id" : "DTB-069Dup"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b407"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.811524204515134,
+            "id" : "DTB-097"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b408"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.750594528965961,
+            "id" : "DTB-097Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b409"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.732566168734573,
+            "id" : "DTB-111Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b40a"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.779718482143386,
+            "id" : "DTB-120"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b40b"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.75399936234432,
+            "id" : "DTB-131"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b40c"
+            },
+            "name" : "iac-adeno-20k_v5",
+            "val" : -0.773640840490629,
+            "id" : "DTB-156"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a751086fa"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : 0.627506526521104,
+            "id" : "DTB-001"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a751086fb"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : -1.29241186147577,
+            "id" : "DTB-002"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a751086fc"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : 3.05010975787322,
+            "id" : "DTB-003"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a751086fd"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : -0.201859952794613,
+            "id" : "DTB-004"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a751086fe"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : 0.67649505988489,
+            "id" : "DTB-005"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a751086ff"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : -2.49788073146179,
+            "id" : "DTB-009"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108700"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : 4.72411094737838,
+            "id" : "DTB-010Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108701"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : -2.00754092219229,
+            "id" : "DTB-011"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108702"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : -2.18335115334973,
+            "id" : "DTB-018"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108703"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : 2.16300048109437,
+            "id" : "DTB-020"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108704"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : -1.25149156378324,
+            "id" : "DTB-022"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108705"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : -2.4593581045456,
+            "id" : "DTB-023"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108706"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : 3.76886900442258,
+            "id" : "DTB-024Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108707"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : 4.16387109454354,
+            "id" : "DTB-024Pro2"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108708"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : 1.92837041288535,
+            "id" : "DTB-030"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108709"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : -2.08499762758356,
+            "id" : "DTB-031"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510870a"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : 1.61260917275556,
+            "id" : "DTB-032"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510870b"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : -0.301717577593077,
+            "id" : "DTB-034"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510870c"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : -0.607659459936097,
+            "id" : "DTB-035"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510870d"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : 2.84253264220063,
+            "id" : "DTB-036"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510870e"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : -0.342854638551609,
+            "id" : "DTB-038"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510870f"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : 2.56240395326073,
+            "id" : "DTB-040"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108710"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : -0.900650489106092,
+            "id" : "DTB-046"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108711"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : 7.99904299719888,
+            "id" : "DTB-049"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108712"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : 0.785996540149206,
+            "id" : "DTB-053"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108713"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : -1.88940620516913,
+            "id" : "DTB-055Pro2"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108714"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : 6.50315324322641,
+            "id" : "DTB-059"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108715"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : -0.909969318878333,
+            "id" : "DTB-060"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108716"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : 5.36653746256734,
+            "id" : "DTB-061"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108717"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : 2.62257931207117,
+            "id" : "DTB-063"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108718"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : 2.11543047444638,
+            "id" : "DTB-064"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108719"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : -0.341896046308545,
+            "id" : "DTB-065"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510871a"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : 1.88748659844663,
+            "id" : "DTB-067Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510871b"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : -1.81580047557429,
+            "id" : "DTB-069"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510871c"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : -2.90139555199379,
+            "id" : "DTB-071"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510871d"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : -1.34670683863066,
+            "id" : "DTB-073"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510871e"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : -1.47117573265108,
+            "id" : "DTB-073Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510871f"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : -1.75087727311139,
+            "id" : "DTB-080"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108720"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : -1.56282051645608,
+            "id" : "DTB-080Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108721"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : -1.34167400071688,
+            "id" : "DTB-080Pro-R2"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108722"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : -1.3723175356706,
+            "id" : "DTB-080Pro-R3"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108723"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : -2.76267169847856,
+            "id" : "DTB-083"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108724"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : -1.4980465013527,
+            "id" : "DTB-085"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108725"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : -2.05025089790571,
+            "id" : "DTB-089"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108726"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : 0.836089745192258,
+            "id" : "DTB-089Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108727"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : 0.83446408495325,
+            "id" : "DTB-095"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108728"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : -0.681794921543048,
+            "id" : "DTB-102"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108729"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : 3.72903079026946,
+            "id" : "DTB-110"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510872a"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : -2.74575776098458,
+            "id" : "DTB-118"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510872b"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : -1.27060135314127,
+            "id" : "DTB-121"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510872c"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : -3.23094922776233,
+            "id" : "DTB-124"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510872d"
+            },
+            "name" : "FOXA2_tf_viper_v5",
+            "val" : -2.73101593991082,
+            "id" : "DTB-132"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070d6"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : -0.285077265326363,
+            "id" : "DTB-001"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070d7"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : 0.406751842636898,
+            "id" : "DTB-002"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070d8"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : -0.241235749073704,
+            "id" : "DTB-003"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070d9"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : -0.150119142936905,
+            "id" : "DTB-004"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070da"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : -0.504687950585939,
+            "id" : "DTB-005"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070db"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : 0.165725328814586,
+            "id" : "DTB-009"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070dc"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : 0.0714482807500108,
+            "id" : "DTB-010Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070dd"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : -0.43991070194299,
+            "id" : "DTB-011"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070de"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : -0.68366668769617,
+            "id" : "DTB-018"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070df"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : -0.46139811176941,
+            "id" : "DTB-020"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070e0"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : -0.2604013920788,
+            "id" : "DTB-022"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070e1"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : 0.179959491673743,
+            "id" : "DTB-023"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070e2"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : -0.602648432283848,
+            "id" : "DTB-024Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070e3"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : -0.751160865366125,
+            "id" : "DTB-024Pro2"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070e4"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : -0.132791823531958,
+            "id" : "DTB-030"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070e5"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : 0.911017053420251,
+            "id" : "DTB-031"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070e6"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : -0.264736111027964,
+            "id" : "DTB-032"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070e7"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : -0.284295829608929,
+            "id" : "DTB-034"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070e8"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : 0.161318237281351,
+            "id" : "DTB-035"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070e9"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : -0.373179128928439,
+            "id" : "DTB-036"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070ea"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : 0.167918285831339,
+            "id" : "DTB-038"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070eb"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : -1.33658754742105,
+            "id" : "DTB-040"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070ec"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : -0.398869913842728,
+            "id" : "DTB-046"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070ed"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : -0.557887476111521,
+            "id" : "DTB-049"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070ee"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : 0.0329436780072321,
+            "id" : "DTB-053"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070ef"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : 0.140365556112618,
+            "id" : "DTB-055Pro2"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070f0"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : -0.19802337958807,
+            "id" : "DTB-059"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070f1"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : 0.12369066663632,
+            "id" : "DTB-060"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070f2"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : -1.29599345710747,
+            "id" : "DTB-061"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070f3"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : -0.0611442751385268,
+            "id" : "DTB-063"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070f4"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : -0.0218781133016201,
+            "id" : "DTB-064"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070f5"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : 0.11564788449333,
+            "id" : "DTB-065"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070f6"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : -0.57179931290346,
+            "id" : "DTB-067Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070f7"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : 0.418977148104749,
+            "id" : "DTB-069"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070f8"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : 0.608279245121773,
+            "id" : "DTB-071"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070f9"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : 0.0196866172966781,
+            "id" : "DTB-073"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070fa"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : 0.115116886052979,
+            "id" : "DTB-073Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070fb"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : -0.217798137582242,
+            "id" : "DTB-080"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070fc"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : 0.691252323482346,
+            "id" : "DTB-080Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070fd"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : 0.538581881311624,
+            "id" : "DTB-080Pro-R2"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070fe"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : 0.178176229233948,
+            "id" : "DTB-080Pro-R3"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a751070ff"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : 0.164265779775839,
+            "id" : "DTB-083"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a75107100"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : 0.573096802850707,
+            "id" : "DTB-085"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a75107101"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : 0.113443996063245,
+            "id" : "DTB-089"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a75107102"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : -0.676284086625505,
+            "id" : "DTB-089Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a75107103"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : 0.522014510903568,
+            "id" : "DTB-095"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a75107104"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : 0.0940313458059785,
+            "id" : "DTB-102"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a75107105"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : 0.255790082925193,
+            "id" : "DTB-110"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a75107106"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : 0.275521819394309,
+            "id" : "DTB-118"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a75107107"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : 0.0999553701808411,
+            "id" : "DTB-121"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a75107108"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : 0.233996084673608,
+            "id" : "DTB-124"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cb008e9861a75107109"
+            },
+            "name" : "MAPK9_kinase_viper_v5",
+            "val" : 0.222927800079279,
+            "id" : "DTB-132"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108936"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : 2.66894916820364,
+            "id" : "DTB-001"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108937"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : -0.777663046093752,
+            "id" : "DTB-002"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108938"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : -1.21596356124667,
+            "id" : "DTB-003"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108939"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : -1.03706694065542,
+            "id" : "DTB-004"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510893a"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : 2.43207861991132,
+            "id" : "DTB-005"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510893b"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : 2.93719998547084,
+            "id" : "DTB-009"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510893c"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : -1.37707926833816,
+            "id" : "DTB-010Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510893d"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : 0.440781357788394,
+            "id" : "DTB-011"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510893e"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : 1.93760117347903,
+            "id" : "DTB-018"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510893f"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : 0.611740765861618,
+            "id" : "DTB-020"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108940"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : 0.842304076283034,
+            "id" : "DTB-022"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108941"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : -0.13233925369654,
+            "id" : "DTB-023"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108942"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : 0.167643905138766,
+            "id" : "DTB-024Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108943"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : 1.15410774413702,
+            "id" : "DTB-024Pro2"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108944"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : 2.05019179060459,
+            "id" : "DTB-030"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108945"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : -1.84113632220626,
+            "id" : "DTB-031"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108946"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : 1.64172889422245,
+            "id" : "DTB-032"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108947"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : 2.50195729568731,
+            "id" : "DTB-034"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108948"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : -2.39237024598923,
+            "id" : "DTB-035"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108949"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : 0.0251295506312401,
+            "id" : "DTB-036"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510894a"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : -1.311594267433,
+            "id" : "DTB-038"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510894b"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : 0.122332953359284,
+            "id" : "DTB-040"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510894c"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : 1.58129409879258,
+            "id" : "DTB-046"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510894d"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : -0.190990083396905,
+            "id" : "DTB-049"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510894e"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : 0.791638063438065,
+            "id" : "DTB-053"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510894f"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : -2.41920076253845,
+            "id" : "DTB-055Pro2"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108950"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : 1.29849054098921,
+            "id" : "DTB-059"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108951"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : -0.663923207071717,
+            "id" : "DTB-060"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108952"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : 1.32980650772618,
+            "id" : "DTB-061"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108953"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : -1.05421781869417,
+            "id" : "DTB-063"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108954"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : 5.37393605638163,
+            "id" : "DTB-064"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108955"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : -3.69796516961522,
+            "id" : "DTB-065"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108956"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : -1.73426041095246,
+            "id" : "DTB-067Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108957"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : -0.707532647022323,
+            "id" : "DTB-069"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108958"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : -1.25775360974257,
+            "id" : "DTB-071"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108959"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : 4.26614960844914,
+            "id" : "DTB-073"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510895a"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : 1.95186042688175,
+            "id" : "DTB-073Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510895b"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : -0.571300645534655,
+            "id" : "DTB-080"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510895c"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : -1.47442727797026,
+            "id" : "DTB-080Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510895d"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : -1.23133537535932,
+            "id" : "DTB-080Pro-R2"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510895e"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : -1.17266975569253,
+            "id" : "DTB-080Pro-R3"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510895f"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : -2.11928910093516,
+            "id" : "DTB-083"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108960"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : -2.40174192076956,
+            "id" : "DTB-085"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108961"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : -0.671674865275798,
+            "id" : "DTB-089"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108962"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : -2.49038829383466,
+            "id" : "DTB-089Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108963"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : -1.75982307177273,
+            "id" : "DTB-095"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108964"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : -1.98392357613783,
+            "id" : "DTB-102"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108965"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : -2.2151048612683,
+            "id" : "DTB-110"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108966"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : 4.51744802040074,
+            "id" : "DTB-118"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108967"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : -2.12027146698717,
+            "id" : "DTB-121"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108968"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : -0.900186748381912,
+            "id" : "DTB-124"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108969"
+            },
+            "name" : "GATA1_tf_viper_v5",
+            "val" : -2.60408622407498,
+            "id" : "DTB-132"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108dae"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : -1.11068197532227,
+            "id" : "DTB-001"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108daf"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : -0.674109811410933,
+            "id" : "DTB-002"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108db0"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : 0.260184198756897,
+            "id" : "DTB-003"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108db1"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : 0.0978698926475078,
+            "id" : "DTB-004"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108db2"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : 1.16310034840412,
+            "id" : "DTB-005"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108db3"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : 2.1121594982652,
+            "id" : "DTB-009"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108db4"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : -0.64976414278111,
+            "id" : "DTB-010Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108db5"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : 0.59860865187043,
+            "id" : "DTB-011"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108db6"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : 0.914552050863947,
+            "id" : "DTB-018"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108db7"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : -0.652714052107365,
+            "id" : "DTB-020"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108db8"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : 0.736741766678796,
+            "id" : "DTB-022"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108db9"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : -0.543502282436506,
+            "id" : "DTB-023"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108dba"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : -1.81540951246244,
+            "id" : "DTB-024Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108dbb"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : -0.696815745059591,
+            "id" : "DTB-024Pro2"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108dbc"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : 0.870185300503981,
+            "id" : "DTB-030"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108dbd"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : -0.95179739234914,
+            "id" : "DTB-031"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108dbe"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : 2.40536593839727,
+            "id" : "DTB-032"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108dbf"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : 0.397697962026839,
+            "id" : "DTB-034"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108dc0"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : -0.281362850831694,
+            "id" : "DTB-035"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108dc1"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : 0.194972760524495,
+            "id" : "DTB-036"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108dc2"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : 0.427606281530739,
+            "id" : "DTB-038"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108dc3"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : 1.24928680952399,
+            "id" : "DTB-040"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108dc4"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : 0.500054302727862,
+            "id" : "DTB-046"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108dc5"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : -0.321584758875545,
+            "id" : "DTB-049"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108dc6"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : 0.579651200009136,
+            "id" : "DTB-053"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108dc7"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : 0.768410546723767,
+            "id" : "DTB-055Pro2"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108dc8"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : -0.123728337285046,
+            "id" : "DTB-059"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108dc9"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : -0.828484663650371,
+            "id" : "DTB-060"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108dca"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : -3.58082677272456,
+            "id" : "DTB-061"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108dcb"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : 0.774606753567722,
+            "id" : "DTB-063"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108dcc"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : 1.41831975709702,
+            "id" : "DTB-064"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108dcd"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : 0.126188695567485,
+            "id" : "DTB-065"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108dce"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : 0.377395694333439,
+            "id" : "DTB-067Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108dcf"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : 0.394539577623252,
+            "id" : "DTB-069"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108dd0"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : 0.0339612416482922,
+            "id" : "DTB-071"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108dd1"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : 1.05665817972214,
+            "id" : "DTB-073"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108dd2"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : -0.542944576305243,
+            "id" : "DTB-073Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108dd3"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : 0.763660524174724,
+            "id" : "DTB-080"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108dd4"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : -0.0989076592034961,
+            "id" : "DTB-080Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108dd5"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : 0.772294775323886,
+            "id" : "DTB-080Pro-R2"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108dd6"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : 0.468731851247479,
+            "id" : "DTB-080Pro-R3"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108dd7"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : 0.271289324022358,
+            "id" : "DTB-083"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108dd8"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : -0.438169003818723,
+            "id" : "DTB-085"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108dd9"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : 1.58216698177683,
+            "id" : "DTB-089"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108dda"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : -0.182060954481399,
+            "id" : "DTB-089Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108ddb"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : 0.635883074454952,
+            "id" : "DTB-095"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108ddc"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : -0.278176991863491,
+            "id" : "DTB-102"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108ddd"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : 0.151732812036998,
+            "id" : "DTB-110"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108dde"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : 0.0527656566676703,
+            "id" : "DTB-118"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108ddf"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : -0.524266728527134,
+            "id" : "DTB-121"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108de0"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : 0.554345987707433,
+            "id" : "DTB-124"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a75108de1"
+            },
+            "name" : "HOXA10_tf_viper_v5",
+            "val" : -0.165854871200822,
+            "id" : "DTB-132"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b581"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -1.77476195504183,
+            "id" : "DTB-001"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b582"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -3.12059561946797,
+            "id" : "DTB-002"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b583"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : 0.483091754918803,
+            "id" : "DTB-003"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b584"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -3.25935290304604,
+            "id" : "DTB-004"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b585"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : 0.127978668189963,
+            "id" : "DTB-005"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b586"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -0.850583440908302,
+            "id" : "DTB-009"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b587"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -1.81644855876333,
+            "id" : "DTB-010Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b588"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -1.84016450535153,
+            "id" : "DTB-011"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b589"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -2.39651966712656,
+            "id" : "DTB-018"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b58a"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -1.69591291839566,
+            "id" : "DTB-020"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b58b"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -0.682772703031197,
+            "id" : "DTB-022"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b58c"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -1.17829921950438,
+            "id" : "DTB-023"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b58d"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -1.38657916505768,
+            "id" : "DTB-024Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b58e"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -1.6298739446086,
+            "id" : "DTB-024Pro2"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b58f"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -1.98308656022806,
+            "id" : "DTB-030"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b590"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -2.04359607101542,
+            "id" : "DTB-031"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b591"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : 2.17760356218511,
+            "id" : "DTB-032"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b592"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -2.76395935579642,
+            "id" : "DTB-034"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b593"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -3.02351176120775,
+            "id" : "DTB-035"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b594"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : 2.37901604829069,
+            "id" : "DTB-036"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b595"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -1.01764274120782,
+            "id" : "DTB-038"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b596"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : 0.754030836207197,
+            "id" : "DTB-040"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b597"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -1.19760979634047,
+            "id" : "DTB-046"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b598"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -0.839509885258316,
+            "id" : "DTB-049"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b599"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : 0.0319372919830725,
+            "id" : "DTB-053"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b59a"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -2.31627586361343,
+            "id" : "DTB-055Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b59b"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -2.15943248253639,
+            "id" : "DTB-059"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b59c"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -2.33573978530536,
+            "id" : "DTB-060"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b59d"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -2.2736713754568,
+            "id" : "DTB-061"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b59e"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -1.40387112279098,
+            "id" : "DTB-063"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b59f"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -0.669054010754051,
+            "id" : "DTB-064"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b5a0"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -2.64034147172586,
+            "id" : "DTB-065"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b5a1"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -3.39809466709831,
+            "id" : "DTB-067Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b5a2"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -0.21775443582537,
+            "id" : "DTB-069"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b5a3"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -2.57187710199401,
+            "id" : "DTB-071"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b5a4"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -0.183173025964869,
+            "id" : "DTB-073"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b5a5"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -0.677569719434617,
+            "id" : "DTB-073Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b5a6"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -2.81142719668769,
+            "id" : "DTB-080"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b5a7"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -1.47769900813989,
+            "id" : "DTB-080Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b5a8"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -1.72493463338207,
+            "id" : "DTB-080Pro-R2"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b5a9"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -1.93672990467045,
+            "id" : "DTB-080Pro-R3"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b5aa"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -1.99202174334449,
+            "id" : "DTB-083"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b5ab"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -2.67898417825539,
+            "id" : "DTB-085"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b5ac"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -1.88277451321261,
+            "id" : "DTB-089"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b5ad"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -2.71615922532279,
+            "id" : "DTB-089Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b5ae"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -2.21757520399124,
+            "id" : "DTB-095"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b5af"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -3.05482213831174,
+            "id" : "DTB-102"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b5b0"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : 2.10892090282973,
+            "id" : "DTB-110"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b5b1"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -2.70202008143014,
+            "id" : "DTB-118"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b5b2"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -3.19082947517417,
+            "id" : "DTB-121"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b5b3"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -2.05902769279136,
+            "id" : "DTB-124"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b5b4"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -2.57181972970841,
+            "id" : "DTB-132"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b5b5"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : 1.68832034945832,
+            "id" : "DTB-008"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b5b6"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -2.5260906036841,
+            "id" : "DTB-018Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b5b7"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -0.834844722627347,
+            "id" : "DTB-063Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b5b8"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : 1.42321187348166,
+            "id" : "DTB-069Dup"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b5b9"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : 0.470847540532888,
+            "id" : "DTB-097"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b5ba"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -0.894637680026023,
+            "id" : "DTB-097Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b5bb"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -1.23179029864995,
+            "id" : "DTB-111Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b5bc"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -0.00490940164866949,
+            "id" : "DTB-120"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b5bd"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : -1.19787336222768,
+            "id" : "DTB-131"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b5be"
+            },
+            "name" : "smc-iac-50_v5",
+            "val" : 1.7839235312555,
+            "id" : "DTB-156"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b489"
+            },
+            "name" : "smc50_v5",
+            "val" : -1.77476195504183,
+            "id" : "DTB-001"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b48a"
+            },
+            "name" : "smc50_v5",
+            "val" : -3.12059561946797,
+            "id" : "DTB-002"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b48b"
+            },
+            "name" : "smc50_v5",
+            "val" : 0.483091754918803,
+            "id" : "DTB-003"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b48c"
+            },
+            "name" : "smc50_v5",
+            "val" : -3.25935290304604,
+            "id" : "DTB-004"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b48d"
+            },
+            "name" : "smc50_v5",
+            "val" : 0.127978668189963,
+            "id" : "DTB-005"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b48e"
+            },
+            "name" : "smc50_v5",
+            "val" : -0.850583440908302,
+            "id" : "DTB-009"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b48f"
+            },
+            "name" : "smc50_v5",
+            "val" : -1.81644855876333,
+            "id" : "DTB-010Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b490"
+            },
+            "name" : "smc50_v5",
+            "val" : -1.84016450535153,
+            "id" : "DTB-011"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b491"
+            },
+            "name" : "smc50_v5",
+            "val" : -2.39651966712656,
+            "id" : "DTB-018"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b492"
+            },
+            "name" : "smc50_v5",
+            "val" : -1.69591291839566,
+            "id" : "DTB-020"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b493"
+            },
+            "name" : "smc50_v5",
+            "val" : -0.682772703031197,
+            "id" : "DTB-022"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b494"
+            },
+            "name" : "smc50_v5",
+            "val" : -1.17829921950438,
+            "id" : "DTB-023"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b495"
+            },
+            "name" : "smc50_v5",
+            "val" : -1.38657916505768,
+            "id" : "DTB-024Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b496"
+            },
+            "name" : "smc50_v5",
+            "val" : -1.6298739446086,
+            "id" : "DTB-024Pro2"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b497"
+            },
+            "name" : "smc50_v5",
+            "val" : -1.98308656022806,
+            "id" : "DTB-030"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b498"
+            },
+            "name" : "smc50_v5",
+            "val" : -2.04359607101542,
+            "id" : "DTB-031"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b499"
+            },
+            "name" : "smc50_v5",
+            "val" : 2.17760356218511,
+            "id" : "DTB-032"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b49a"
+            },
+            "name" : "smc50_v5",
+            "val" : -2.76395935579642,
+            "id" : "DTB-034"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b49b"
+            },
+            "name" : "smc50_v5",
+            "val" : -3.02351176120775,
+            "id" : "DTB-035"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b49c"
+            },
+            "name" : "smc50_v5",
+            "val" : 2.37901604829069,
+            "id" : "DTB-036"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b49d"
+            },
+            "name" : "smc50_v5",
+            "val" : -1.01764274120782,
+            "id" : "DTB-038"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b49e"
+            },
+            "name" : "smc50_v5",
+            "val" : 0.754030836207197,
+            "id" : "DTB-040"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b49f"
+            },
+            "name" : "smc50_v5",
+            "val" : -1.19760979634047,
+            "id" : "DTB-046"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b4a0"
+            },
+            "name" : "smc50_v5",
+            "val" : -0.839509885258316,
+            "id" : "DTB-049"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b4a1"
+            },
+            "name" : "smc50_v5",
+            "val" : 0.0319372919830725,
+            "id" : "DTB-053"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b4a2"
+            },
+            "name" : "smc50_v5",
+            "val" : -2.31627586361343,
+            "id" : "DTB-055Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b4a3"
+            },
+            "name" : "smc50_v5",
+            "val" : -2.15943248253639,
+            "id" : "DTB-059"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b4a4"
+            },
+            "name" : "smc50_v5",
+            "val" : -2.33573978530536,
+            "id" : "DTB-060"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b4a5"
+            },
+            "name" : "smc50_v5",
+            "val" : -2.2736713754568,
+            "id" : "DTB-061"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b4a6"
+            },
+            "name" : "smc50_v5",
+            "val" : -1.40387112279098,
+            "id" : "DTB-063"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b4a7"
+            },
+            "name" : "smc50_v5",
+            "val" : -0.669054010754051,
+            "id" : "DTB-064"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b4a8"
+            },
+            "name" : "smc50_v5",
+            "val" : -2.64034147172586,
+            "id" : "DTB-065"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b4a9"
+            },
+            "name" : "smc50_v5",
+            "val" : -3.39809466709831,
+            "id" : "DTB-067Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b4aa"
+            },
+            "name" : "smc50_v5",
+            "val" : -0.21775443582537,
+            "id" : "DTB-069"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b4ab"
+            },
+            "name" : "smc50_v5",
+            "val" : -2.57187710199401,
+            "id" : "DTB-071"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b4ac"
+            },
+            "name" : "smc50_v5",
+            "val" : -0.183173025964869,
+            "id" : "DTB-073"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b4ad"
+            },
+            "name" : "smc50_v5",
+            "val" : -0.677569719434617,
+            "id" : "DTB-073Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b4ae"
+            },
+            "name" : "smc50_v5",
+            "val" : -2.81142719668769,
+            "id" : "DTB-080"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b4af"
+            },
+            "name" : "smc50_v5",
+            "val" : -1.47769900813989,
+            "id" : "DTB-080Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b4b0"
+            },
+            "name" : "smc50_v5",
+            "val" : -1.72493463338207,
+            "id" : "DTB-080Pro-R2"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b4b1"
+            },
+            "name" : "smc50_v5",
+            "val" : -1.93672990467045,
+            "id" : "DTB-080Pro-R3"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b4b2"
+            },
+            "name" : "smc50_v5",
+            "val" : -1.99202174334449,
+            "id" : "DTB-083"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b4b3"
+            },
+            "name" : "smc50_v5",
+            "val" : -2.67898417825539,
+            "id" : "DTB-085"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b4b4"
+            },
+            "name" : "smc50_v5",
+            "val" : -1.88277451321261,
+            "id" : "DTB-089"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b4b5"
+            },
+            "name" : "smc50_v5",
+            "val" : -2.71615922532279,
+            "id" : "DTB-089Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b4b6"
+            },
+            "name" : "smc50_v5",
+            "val" : -2.21757520399124,
+            "id" : "DTB-095"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b4b7"
+            },
+            "name" : "smc50_v5",
+            "val" : -3.05482213831174,
+            "id" : "DTB-102"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b4b8"
+            },
+            "name" : "smc50_v5",
+            "val" : 2.10892090282973,
+            "id" : "DTB-110"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b4b9"
+            },
+            "name" : "smc50_v5",
+            "val" : -2.70202008143014,
+            "id" : "DTB-118"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b4ba"
+            },
+            "name" : "smc50_v5",
+            "val" : -3.19082947517417,
+            "id" : "DTB-121"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b4bb"
+            },
+            "name" : "smc50_v5",
+            "val" : -2.05902769279136,
+            "id" : "DTB-124"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b4bc"
+            },
+            "name" : "smc50_v5",
+            "val" : -2.57181972970841,
+            "id" : "DTB-132"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b4bd"
+            },
+            "name" : "smc50_v5",
+            "val" : 1.68832034945832,
+            "id" : "DTB-008"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b4be"
+            },
+            "name" : "smc50_v5",
+            "val" : -2.5260906036841,
+            "id" : "DTB-018Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b4bf"
+            },
+            "name" : "smc50_v5",
+            "val" : -0.834844722627347,
+            "id" : "DTB-063Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b4c0"
+            },
+            "name" : "smc50_v5",
+            "val" : 1.42321187348166,
+            "id" : "DTB-069Dup"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b4c1"
+            },
+            "name" : "smc50_v5",
+            "val" : 0.470847540532888,
+            "id" : "DTB-097"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b4c2"
+            },
+            "name" : "smc50_v5",
+            "val" : -0.894637680026023,
+            "id" : "DTB-097Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b4c3"
+            },
+            "name" : "smc50_v5",
+            "val" : -1.23179029864995,
+            "id" : "DTB-111Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b4c4"
+            },
+            "name" : "smc50_v5",
+            "val" : -0.00490940164866949,
+            "id" : "DTB-120"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b4c5"
+            },
+            "name" : "smc50_v5",
+            "val" : -1.19787336222768,
+            "id" : "DTB-131"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3e6f08e9861a7510b4c6"
+            },
+            "name" : "smc50_v5",
+            "val" : 1.7839235312555,
+            "id" : "DTB-156"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3d2"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : -2.1758487888189,
+            "id" : "DTB-001"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3d3"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : -1.11405535735032,
+            "id" : "DTB-002"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3d4"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : -3.32500532938632,
+            "id" : "DTB-003"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3d5"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : 0.0752093597585835,
+            "id" : "DTB-004"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3d6"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : 4.06369773538695,
+            "id" : "DTB-005"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3d7"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : -0.211070791925601,
+            "id" : "DTB-009"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3d8"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : 0.256982883454858,
+            "id" : "DTB-010Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3d9"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : -0.850428089737972,
+            "id" : "DTB-011"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3da"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : 1.35241732742423,
+            "id" : "DTB-018"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3db"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : -1.62390313052046,
+            "id" : "DTB-020"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3dc"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : 3.27896973806322,
+            "id" : "DTB-022"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3dd"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : -1.77993699243676,
+            "id" : "DTB-023"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3de"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : 2.32918053259525,
+            "id" : "DTB-024Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3df"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : 0.817934136985614,
+            "id" : "DTB-024Pro2"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3e0"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : 0.148868744851656,
+            "id" : "DTB-030"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3e1"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : 2.33976451401856,
+            "id" : "DTB-031"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3e2"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : -1.62584789941461,
+            "id" : "DTB-032"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3e3"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : -1.39039639367722,
+            "id" : "DTB-034"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3e4"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : 0.110908032935528,
+            "id" : "DTB-035"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3e5"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : -3.29451266733923,
+            "id" : "DTB-036"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3e6"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : 0.9468617027752,
+            "id" : "DTB-038"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3e7"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : -2.77996102813457,
+            "id" : "DTB-040"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3e8"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : 0.916810588963567,
+            "id" : "DTB-046"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3e9"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : -1.34203272906197,
+            "id" : "DTB-049"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3ea"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : -1.85246872760006,
+            "id" : "DTB-053"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3eb"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : -1.42339605131053,
+            "id" : "DTB-055Pro2"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3ec"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : -1.03380833049824,
+            "id" : "DTB-059"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3ed"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : -1.48385449611043,
+            "id" : "DTB-060"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3ee"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : 1.67124378853115,
+            "id" : "DTB-061"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3ef"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : -2.13529128208096,
+            "id" : "DTB-063"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3f0"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : 0.851035147144857,
+            "id" : "DTB-064"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3f1"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : 0.93479641940184,
+            "id" : "DTB-065"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3f2"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : -1.33270083042881,
+            "id" : "DTB-067Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3f3"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : -2.12096443148214,
+            "id" : "DTB-069"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3f4"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : -1.60577616928705,
+            "id" : "DTB-071"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3f5"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : 4.9856534459266,
+            "id" : "DTB-073"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3f6"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : 2.18292540801403,
+            "id" : "DTB-073Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3f7"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : -2.07801645414351,
+            "id" : "DTB-080"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3f8"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : 2.0274791810762,
+            "id" : "DTB-080Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3f9"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : 2.19087706351319,
+            "id" : "DTB-080Pro-R2"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3fa"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : 2.0395388192239,
+            "id" : "DTB-080Pro-R3"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3fb"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : -0.105197976707042,
+            "id" : "DTB-083"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3fc"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : -0.0156350530303285,
+            "id" : "DTB-085"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3fd"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : 0.258870230662108,
+            "id" : "DTB-089"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3fe"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : 0.677615140997563,
+            "id" : "DTB-089Pro"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a3ff"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : 0.634898501953575,
+            "id" : "DTB-095"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a400"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : -0.390797405651047,
+            "id" : "DTB-102"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a401"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : -2.28715890596061,
+            "id" : "DTB-110"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a402"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : -1.66190316216797,
+            "id" : "DTB-118"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a403"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : 0.459141365707884,
+            "id" : "DTB-121"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a404"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : 1.2445443697104,
+            "id" : "DTB-124"
+        }, {
+            "_id" : {
+                "$oid" : "55bc3cd108e9861a7510a405"
+            },
+            "name" : "RUNX2_tf_viper_v5",
+            "val" : 0.353127761105555,
+            "id" : "DTB-132"
+        }]]
+    }
+};
+
+// TODO trichotomy settings
+triObsDeckSettings = jQuery.extend({}, commonObsDeckSettings);
+triObsDeckSettings["desc"] = "triObsDeckSettings";
+triObsDeckSettings["pivotScores"] = {
+    "object" : [{
+        "name_2" : "iac-adeno-50",
+        "name_1" : "Trichotomy",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "14.5377802719"
+    }, {
+        "name_2" : "adeno50",
+        "name_1" : "Trichotomy",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "13.0526787838"
+    }, {
+        "name_2" : "adeno20k",
+        "name_1" : "Trichotomy",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "9.87501308487"
+    }, {
+        "name_2" : "smc-adeno-50",
+        "name_1" : "Trichotomy",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "9.81531334463"
+    }, {
+        "name_2" : "smc-iac-50",
+        "name_1" : "Trichotomy",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "7.16652706916"
+    }, {
+        "name_2" : "smc50",
+        "name_1" : "Trichotomy",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "7.16652706916"
+    }, {
+        "name_2" : "iac-adeno-20k",
+        "name_1" : "Trichotomy",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "5.42150493835"
+    }, {
+        "name_2" : "ASCL1_tf_viper",
+        "name_1" : "Trichotomy",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "4.5249956534"
+    }, {
+        "name_2" : "smc-adeno-20k",
+        "name_1" : "Trichotomy",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "4.26191567108"
+    }, {
+        "name_2" : "smc20k",
+        "name_1" : "Trichotomy",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "3.58700845572"
+    }, {
+        "name_2" : "smc-iac-20k",
+        "name_1" : "Trichotomy",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "3.58700845572"
+    }, {
+        "name_2" : "POU3F2_tf_viper",
+        "name_1" : "Trichotomy",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "3.2717539074"
+    }, {
+        "name_2" : "SNAI2_tf_viper",
+        "name_1" : "Trichotomy",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "2.83957423759"
+    }, {
+        "name_2" : "RUNX2_tf_viper",
+        "name_1" : "Trichotomy",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "2.39045875146"
+    }, {
+        "name_2" : "SUZ12_tf_viper",
+        "name_1" : "Trichotomy",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "2.29876833454"
+    }, {
+        "name_2" : "REST_tf_viper",
+        "name_1" : "Trichotomy",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "2.15346117879"
+    }, {
+        "name_2" : "WT1_tf_viper",
+        "name_1" : "Trichotomy",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "1.97997087566"
+    }, {
+        "name_2" : "PDX1_tf_viper",
+        "name_1" : "Trichotomy",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "1.89516074777"
+    }, {
+        "name_2" : "DLX5_tf_viper",
+        "name_1" : "Trichotomy",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "1.85844411039"
+    }, {
+        "name_2" : "STAT5B_tf_viper",
+        "name_1" : "Trichotomy",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "1.66344775907"
+    }, {
+        "name_2" : "TCF12_tf_viper",
+        "name_1" : "Trichotomy",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "1.65287668869"
+    }, {
+        "name_2" : "FOXC2_tf_viper",
+        "name_1" : "Trichotomy",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "1.63677234857"
+    }, {
+        "name_2" : "PAX8_tf_viper",
+        "name_1" : "Trichotomy",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "1.57603974245"
+    }, {
+        "name_2" : "CDX2_tf_viper",
+        "name_1" : "Trichotomy",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "1.50416673241"
+    }, {
+        "name_2" : "NEUROD1_tf_viper",
+        "name_1" : "Trichotomy",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "1.49688520593"
+    }, {
+        "name_2" : "HBP1_tf_viper",
+        "name_1" : "Trichotomy",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "1.3537470483"
+    }, {
+        "name_2" : "GLI2_tf_viper",
+        "name_1" : "Trichotomy",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "1.33962195903"
+    }, {
+        "name_2" : "RAD21_tf_viper",
+        "name_1" : "Trichotomy",
+        "datatype_2" : "signature",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "1.334838782"
+    }, {
+        "name_2" : "ARL11",
+        "name_1" : "Trichotomy",
+        "datatype_2" : "expression",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "5.77284601637"
+    }, {
+        "name_2" : "C6orf195",
+        "name_1" : "Trichotomy",
+        "datatype_2" : "expression",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "5.34552143189"
+    }, {
+        "name_2" : "HP",
+        "name_1" : "Trichotomy",
+        "datatype_2" : "expression",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "5.25781803132"
+    }, {
+        "name_2" : "GFAP",
+        "name_1" : "Trichotomy",
+        "datatype_2" : "expression",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "5.03381178556"
+    }, {
+        "name_2" : "ENKUR",
+        "name_1" : "Trichotomy",
+        "datatype_2" : "expression",
+        "datatype_1" : "clinical",
+        "version_1" : "1",
+        "version_2" : "5",
+        "score" : "4.73063232783"
+    }]
+};
+triObsDeckSettings["mongoData"] = {
+    'expression' : [{
+        "Study_ID" : "prad_wcdt",
+        "gene" : "ARL11",
+        "samples" : {
+            "DTB-067Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-073Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-080Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-132" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-097Pro" : {
+                "rsem_quan_log2" : 3.27393356926689
+            },
+            "DTB-055Pro2" : {
+                "rsem_quan_log2" : 3.85235846694904
+            },
+            "DTB-024Pro" : {
+                "rsem_quan_log2" : 2.58496250072116
+            },
+            "DTB-131" : {
+                "rsem_quan_log2" : 4.16341822250073
+            },
+            "DTB-124" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-060" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-061" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-004" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-005" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-002" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-003" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-001" : {
+                "rsem_quan_log2" : 5.53774645066065
+            },
+            "DTB-069" : {
+                "rsem_quan_log2" : 4.47745715083959
+            },
+            "DTB-040" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-046" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-008" : {
+                "rsem_quan_log2" : 6.37446919339681
+            },
+            "DTB-009" : {
+                "rsem_quan_log2" : 3.9118353649106
+            },
+            "DTB-121" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-120" : {
+                "rsem_quan_log2" : 6.86599673579113
+            },
+            "DTB-020" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-102" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-022" : {
+                "rsem_quan_log2" : 4.67468097115014
+            },
+            "DTB-023" : {
+                "rsem_quan_log2" : 1.54606718045021
+            },
+            "DTB-089Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-080Pro-R2" : {
+                "rsem_quan_log2" : 7.34050708096905
+            },
+            "DTB-089" : {
+                "rsem_quan_log2" : 0
+            },
+            "LNCAP-batch3" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-024Pro2" : {
+                "rsem_quan_log2" : 4.53743275006849
+            },
+            "LNCAP-batch1" : {
+                "rsem_quan_log2" : 1.35343621786178
+            },
+            "DTB-085" : {
+                "rsem_quan_log2" : 0
+            },
+            "LNCAP-batch7" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-083" : {
+                "rsem_quan_log2" : 2.47131754424631
+            },
+            "DTB-080" : {
+                "rsem_quan_log2" : 2.98123161291209
+            },
+            "LNCAP-batch4" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-063" : {
+                "rsem_quan_log2" : 2.10443730944613
+            },
+            "LNCAP-batch6" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-063Pro" : {
+                "rsem_quan_log2" : 4.43876524354826
+            },
+            "DTB-069Dup" : {
+                "rsem_quan_log2" : 3.36854487466153
+            },
+            "DTB-111Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-073" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-010Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-071" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-080Pro-R3" : {
+                "rsem_quan_log2" : 5.29467220716008
+            },
+            "DTB-059" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-156" : {
+                "rsem_quan_log2" : 5.37373172237873
+            },
+            "LNCAP-batch2" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-053" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-018" : {
+                "rsem_quan_log2" : 5.31491400097879
+            },
+            "DTB-118" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-038" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-011" : {
+                "rsem_quan_log2" : 5.09307418191462
+            },
+            "DTB-036" : {
+                "rsem_quan_log2" : 6.82208639922165
+            },
+            "DTB-035" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-034" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-110" : {
+                "rsem_quan_log2" : 3.9892298543215
+            },
+            "DTB-032" : {
+                "rsem_quan_log2" : 6.30606168942834
+            },
+            "DTB-031" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-030" : {
+                "rsem_quan_log2" : 4.19587512505077
+            },
+            "DTB-049" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-095" : {
+                "rsem_quan_log2" : 3.06227716635985
+            },
+            "LNCAP-batch5" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-097" : {
+                "rsem_quan_log2" : 6.06657359626612
+            },
+            "DTB-064" : {
+                "rsem_quan_log2" : 5.65137034086078
+            },
+            "DTB-018Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-065" : {
+                "rsem_quan_log2" : 0
+            }
+        }
+    }, {
+        "Study_ID" : "prad_wcdt",
+        "gene" : "C6orf195",
+        "samples" : {
+            "DTB-067Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-073Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-080Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-132" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-097Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-055Pro2" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-024Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-131" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-124" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-060" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-061" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-004" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-005" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-002" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-003" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-001" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-069" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-040" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-046" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-008" : {
+                "rsem_quan_log2" : 5.72553940499601
+            },
+            "DTB-009" : {
+                "rsem_quan_log2" : 2.50685579031528
+            },
+            "DTB-121" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-120" : {
+                "rsem_quan_log2" : 3.86842996487329
+            },
+            "DTB-020" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-102" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-022" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-023" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-089Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-080Pro-R2" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-089" : {
+                "rsem_quan_log2" : 0
+            },
+            "LNCAP-batch3" : {
+                "rsem_quan_log2" : 4.96822902289892
+            },
+            "DTB-024Pro2" : {
+                "rsem_quan_log2" : 0
+            },
+            "LNCAP-batch1" : {
+                "rsem_quan_log2" : 2.03927879535137
+            },
+            "DTB-085" : {
+                "rsem_quan_log2" : 0
+            },
+            "LNCAP-batch7" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-083" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-080" : {
+                "rsem_quan_log2" : 0
+            },
+            "LNCAP-batch4" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-063" : {
+                "rsem_quan_log2" : 0
+            },
+            "LNCAP-batch6" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-063Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-069Dup" : {
+                "rsem_quan_log2" : 2.72181010491404
+            },
+            "DTB-111Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-073" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-010Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-071" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-080Pro-R3" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-059" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-156" : {
+                "rsem_quan_log2" : 4.90215560311843
+            },
+            "LNCAP-batch2" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-053" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-018" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-118" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-038" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-011" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-036" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-035" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-034" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-110" : {
+                "rsem_quan_log2" : 3.68983587744717
+            },
+            "DTB-032" : {
+                "rsem_quan_log2" : 5.79928162152192
+            },
+            "DTB-031" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-030" : {
+                "rsem_quan_log2" : 1.79709600825491
+            },
+            "DTB-049" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-095" : {
+                "rsem_quan_log2" : 0
+            },
+            "LNCAP-batch5" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-097" : {
+                "rsem_quan_log2" : 1.3842156242818
+            },
+            "DTB-064" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-018Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-065" : {
+                "rsem_quan_log2" : 0
+            }
+        }
+    }, {
+        "Study_ID" : "prad_wcdt",
+        "gene" : "HP",
+        "samples" : {
+            "DTB-067Pro" : {
+                "rsem_quan_log2" : 5.43191374242862
+            },
+            "DTB-073Pro" : {
+                "rsem_quan_log2" : 3.38322043336566
+            },
+            "DTB-080Pro" : {
+                "rsem_quan_log2" : 6.9862539141556
+            },
+            "DTB-132" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-097Pro" : {
+                "rsem_quan_log2" : 15.9272310062662
+            },
+            "DTB-055Pro2" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-024Pro" : {
+                "rsem_quan_log2" : 9.78299820892041
+            },
+            "DTB-131" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-124" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-060" : {
+                "rsem_quan_log2" : 4.14296067590559
+            },
+            "DTB-061" : {
+                "rsem_quan_log2" : 9.93924009705288
+            },
+            "DTB-004" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-005" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-002" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-003" : {
+                "rsem_quan_log2" : 4.42410244762503
+            },
+            "DTB-001" : {
+                "rsem_quan_log2" : 4.26166620258579
+            },
+            "DTB-069" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-040" : {
+                "rsem_quan_log2" : 5.52035938462784
+            },
+            "DTB-046" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-008" : {
+                "rsem_quan_log2" : 7.22660967675656
+            },
+            "DTB-009" : {
+                "rsem_quan_log2" : 2.07327183642452
+            },
+            "DTB-121" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-120" : {
+                "rsem_quan_log2" : 2.13796249006763
+            },
+            "DTB-020" : {
+                "rsem_quan_log2" : 6.02685095106256
+            },
+            "DTB-102" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-022" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-023" : {
+                "rsem_quan_log2" : 1.54606718045021
+            },
+            "DTB-089Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-080Pro-R2" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-089" : {
+                "rsem_quan_log2" : 0
+            },
+            "LNCAP-batch3" : {
+                "rsem_quan_log2" : 5.40990681952926
+            },
+            "DTB-024Pro2" : {
+                "rsem_quan_log2" : 5.98235933376575
+            },
+            "LNCAP-batch1" : {
+                "rsem_quan_log2" : 1.41364823661203
+            },
+            "DTB-085" : {
+                "rsem_quan_log2" : 0
+            },
+            "LNCAP-batch7" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-083" : {
+                "rsem_quan_log2" : 3.33498294798696
+            },
+            "DTB-080" : {
+                "rsem_quan_log2" : 2.98123161291209
+            },
+            "LNCAP-batch4" : {
+                "rsem_quan_log2" : 4.1891445533126
+            },
+            "DTB-063" : {
+                "rsem_quan_log2" : 0
+            },
+            "LNCAP-batch6" : {
+                "rsem_quan_log2" : 4.51713708702796
+            },
+            "DTB-063Pro" : {
+                "rsem_quan_log2" : 2.44174904700924
+            },
+            "DTB-069Dup" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-111Pro" : {
+                "rsem_quan_log2" : 2.78872746673981
+            },
+            "DTB-073" : {
+                "rsem_quan_log2" : 3.73008559370039
+            },
+            "DTB-010Pro" : {
+                "rsem_quan_log2" : 12.9511085205411
+            },
+            "DTB-071" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-080Pro-R3" : {
+                "rsem_quan_log2" : 8.04053686242539
+            },
+            "DTB-059" : {
+                "rsem_quan_log2" : 15.1041721675742
+            },
+            "DTB-156" : {
+                "rsem_quan_log2" : 2.96731619026928
+            },
+            "LNCAP-batch2" : {
+                "rsem_quan_log2" : 1.55419589398473
+            },
+            "DTB-053" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-018" : {
+                "rsem_quan_log2" : 4.39231742277876
+            },
+            "DTB-118" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-038" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-011" : {
+                "rsem_quan_log2" : 1.32538641465977
+            },
+            "DTB-036" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-035" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-034" : {
+                "rsem_quan_log2" : 4.3786503372619
+            },
+            "DTB-110" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-032" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-031" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-030" : {
+                "rsem_quan_log2" : 3.98654746144563
+            },
+            "DTB-049" : {
+                "rsem_quan_log2" : 14.3248330230282
+            },
+            "DTB-095" : {
+                "rsem_quan_log2" : 3.38014759931603
+            },
+            "LNCAP-batch5" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-097" : {
+                "rsem_quan_log2" : 6.80525891616305
+            },
+            "DTB-064" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-018Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-065" : {
+                "rsem_quan_log2" : 0
+            }
+        }
+    }, {
+        "Study_ID" : "prad_wcdt",
+        "gene" : "GFAP",
+        "samples" : {
+            "DTB-067Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-073Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-080Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-132" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-097Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-055Pro2" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-024Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-131" : {
+                "rsem_quan_log2" : 3.61815641493478
+            },
+            "DTB-124" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-060" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-061" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-004" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-005" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-002" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-003" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-001" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-069" : {
+                "rsem_quan_log2" : 4.47745715083959
+            },
+            "DTB-040" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-046" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-008" : {
+                "rsem_quan_log2" : 4.12046806799683
+            },
+            "DTB-009" : {
+                "rsem_quan_log2" : 1.7406685641404
+            },
+            "DTB-121" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-120" : {
+                "rsem_quan_log2" : 4.17046991664692
+            },
+            "DTB-020" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-102" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-022" : {
+                "rsem_quan_log2" : 2.83491342970104
+            },
+            "DTB-023" : {
+                "rsem_quan_log2" : 2.27515607854601
+            },
+            "DTB-089Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-080Pro-R2" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-089" : {
+                "rsem_quan_log2" : 0
+            },
+            "LNCAP-batch3" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-024Pro2" : {
+                "rsem_quan_log2" : 0
+            },
+            "LNCAP-batch1" : {
+                "rsem_quan_log2" : 1.35343621786178
+            },
+            "DTB-085" : {
+                "rsem_quan_log2" : 0
+            },
+            "LNCAP-batch7" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-083" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-080" : {
+                "rsem_quan_log2" : 0
+            },
+            "LNCAP-batch4" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-063" : {
+                "rsem_quan_log2" : 0
+            },
+            "LNCAP-batch6" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-063Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-069Dup" : {
+                "rsem_quan_log2" : 2.24223664146474
+            },
+            "DTB-111Pro" : {
+                "rsem_quan_log2" : 1.98371417198763
+            },
+            "DTB-073" : {
+                "rsem_quan_log2" : 2.83491342970104
+            },
+            "DTB-010Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-071" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-080Pro-R3" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-059" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-156" : {
+                "rsem_quan_log2" : 1.95984432785696
+            },
+            "LNCAP-batch2" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-053" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-018" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-118" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-038" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-011" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-036" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-035" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-034" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-110" : {
+                "rsem_quan_log2" : 5.4150386263839
+            },
+            "DTB-032" : {
+                "rsem_quan_log2" : 5.32418054661874
+            },
+            "DTB-031" : {
+                "rsem_quan_log2" : 5.17836806595407
+            },
+            "DTB-030" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-049" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-095" : {
+                "rsem_quan_log2" : 0
+            },
+            "LNCAP-batch5" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-097" : {
+                "rsem_quan_log2" : 3.95352599957396
+            },
+            "DTB-064" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-018Pro" : {
+                "rsem_quan_log2" : 0
+            },
+            "DTB-065" : {
+                "rsem_quan_log2" : 0
+            }
+        }
+    }],
+    'mutation' : [],
+    'clinical' : commonClinicalEventsDocList
+};
+triObsDeckSettings["signature"] = {
+    'expression' : {
+        'object' : [{
+            "Study_ID" : "prad_wcdt",
+            "gene" : "ARL11",
+            "samples" : {
+                "DTB-067Pro" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-073Pro" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-080Pro" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-132" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-097Pro" : {
+                    "rsem_quan_log2" : 3.27393356926689
+                },
+                "DTB-055Pro2" : {
+                    "rsem_quan_log2" : 3.85235846694904
+                },
+                "DTB-024Pro" : {
+                    "rsem_quan_log2" : 2.58496250072116
+                },
+                "DTB-131" : {
+                    "rsem_quan_log2" : 4.16341822250073
+                },
+                "DTB-124" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-060" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-061" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-004" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-005" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-002" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-003" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-001" : {
+                    "rsem_quan_log2" : 5.53774645066065
+                },
+                "DTB-069" : {
+                    "rsem_quan_log2" : 4.47745715083959
+                },
+                "DTB-040" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-046" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-008" : {
+                    "rsem_quan_log2" : 6.37446919339681
+                },
+                "DTB-009" : {
+                    "rsem_quan_log2" : 3.9118353649106
+                },
+                "DTB-121" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-120" : {
+                    "rsem_quan_log2" : 6.86599673579113
+                },
+                "DTB-020" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-102" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-022" : {
+                    "rsem_quan_log2" : 4.67468097115014
+                },
+                "DTB-023" : {
+                    "rsem_quan_log2" : 1.54606718045021
+                },
+                "DTB-089Pro" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-080Pro-R2" : {
+                    "rsem_quan_log2" : 7.34050708096905
+                },
+                "DTB-089" : {
+                    "rsem_quan_log2" : 0
+                },
+                "LNCAP-batch3" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-024Pro2" : {
+                    "rsem_quan_log2" : 4.53743275006849
+                },
+                "LNCAP-batch1" : {
+                    "rsem_quan_log2" : 1.35343621786178
+                },
+                "DTB-085" : {
+                    "rsem_quan_log2" : 0
+                },
+                "LNCAP-batch7" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-083" : {
+                    "rsem_quan_log2" : 2.47131754424631
+                },
+                "DTB-080" : {
+                    "rsem_quan_log2" : 2.98123161291209
+                },
+                "LNCAP-batch4" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-063" : {
+                    "rsem_quan_log2" : 2.10443730944613
+                },
+                "LNCAP-batch6" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-063Pro" : {
+                    "rsem_quan_log2" : 4.43876524354826
+                },
+                "DTB-069Dup" : {
+                    "rsem_quan_log2" : 3.36854487466153
+                },
+                "DTB-111Pro" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-073" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-010Pro" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-071" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-080Pro-R3" : {
+                    "rsem_quan_log2" : 5.29467220716008
+                },
+                "DTB-059" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-156" : {
+                    "rsem_quan_log2" : 5.37373172237873
+                },
+                "LNCAP-batch2" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-053" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-018" : {
+                    "rsem_quan_log2" : 5.31491400097879
+                },
+                "DTB-118" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-038" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-011" : {
+                    "rsem_quan_log2" : 5.09307418191462
+                },
+                "DTB-036" : {
+                    "rsem_quan_log2" : 6.82208639922165
+                },
+                "DTB-035" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-034" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-110" : {
+                    "rsem_quan_log2" : 3.9892298543215
+                },
+                "DTB-032" : {
+                    "rsem_quan_log2" : 6.30606168942834
+                },
+                "DTB-031" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-030" : {
+                    "rsem_quan_log2" : 4.19587512505077
+                },
+                "DTB-049" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-095" : {
+                    "rsem_quan_log2" : 3.06227716635985
+                },
+                "LNCAP-batch5" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-097" : {
+                    "rsem_quan_log2" : 6.06657359626612
+                },
+                "DTB-064" : {
+                    "rsem_quan_log2" : 5.65137034086078
+                },
+                "DTB-018Pro" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-065" : {
+                    "rsem_quan_log2" : 0
+                }
+            }
+        }, {
+            "Study_ID" : "prad_wcdt",
+            "gene" : "C6orf195",
+            "samples" : {
+                "DTB-067Pro" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-073Pro" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-080Pro" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-132" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-097Pro" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-055Pro2" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-024Pro" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-131" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-124" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-060" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-061" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-004" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-005" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-002" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-003" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-001" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-069" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-040" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-046" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-008" : {
+                    "rsem_quan_log2" : 5.72553940499601
+                },
+                "DTB-009" : {
+                    "rsem_quan_log2" : 2.50685579031528
+                },
+                "DTB-121" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-120" : {
+                    "rsem_quan_log2" : 3.86842996487329
+                },
+                "DTB-020" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-102" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-022" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-023" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-089Pro" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-080Pro-R2" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-089" : {
+                    "rsem_quan_log2" : 0
+                },
+                "LNCAP-batch3" : {
+                    "rsem_quan_log2" : 4.96822902289892
+                },
+                "DTB-024Pro2" : {
+                    "rsem_quan_log2" : 0
+                },
+                "LNCAP-batch1" : {
+                    "rsem_quan_log2" : 2.03927879535137
+                },
+                "DTB-085" : {
+                    "rsem_quan_log2" : 0
+                },
+                "LNCAP-batch7" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-083" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-080" : {
+                    "rsem_quan_log2" : 0
+                },
+                "LNCAP-batch4" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-063" : {
+                    "rsem_quan_log2" : 0
+                },
+                "LNCAP-batch6" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-063Pro" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-069Dup" : {
+                    "rsem_quan_log2" : 2.72181010491404
+                },
+                "DTB-111Pro" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-073" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-010Pro" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-071" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-080Pro-R3" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-059" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-156" : {
+                    "rsem_quan_log2" : 4.90215560311843
+                },
+                "LNCAP-batch2" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-053" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-018" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-118" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-038" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-011" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-036" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-035" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-034" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-110" : {
+                    "rsem_quan_log2" : 3.68983587744717
+                },
+                "DTB-032" : {
+                    "rsem_quan_log2" : 5.79928162152192
+                },
+                "DTB-031" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-030" : {
+                    "rsem_quan_log2" : 1.79709600825491
+                },
+                "DTB-049" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-095" : {
+                    "rsem_quan_log2" : 0
+                },
+                "LNCAP-batch5" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-097" : {
+                    "rsem_quan_log2" : 1.3842156242818
+                },
+                "DTB-064" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-018Pro" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-065" : {
+                    "rsem_quan_log2" : 0
+                }
+            }
+        }, {
+            "Study_ID" : "prad_wcdt",
+            "gene" : "HP",
+            "samples" : {
+                "DTB-067Pro" : {
+                    "rsem_quan_log2" : 5.43191374242862
+                },
+                "DTB-073Pro" : {
+                    "rsem_quan_log2" : 3.38322043336566
+                },
+                "DTB-080Pro" : {
+                    "rsem_quan_log2" : 6.9862539141556
+                },
+                "DTB-132" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-097Pro" : {
+                    "rsem_quan_log2" : 15.9272310062662
+                },
+                "DTB-055Pro2" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-024Pro" : {
+                    "rsem_quan_log2" : 9.78299820892041
+                },
+                "DTB-131" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-124" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-060" : {
+                    "rsem_quan_log2" : 4.14296067590559
+                },
+                "DTB-061" : {
+                    "rsem_quan_log2" : 9.93924009705288
+                },
+                "DTB-004" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-005" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-002" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-003" : {
+                    "rsem_quan_log2" : 4.42410244762503
+                },
+                "DTB-001" : {
+                    "rsem_quan_log2" : 4.26166620258579
+                },
+                "DTB-069" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-040" : {
+                    "rsem_quan_log2" : 5.52035938462784
+                },
+                "DTB-046" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-008" : {
+                    "rsem_quan_log2" : 7.22660967675656
+                },
+                "DTB-009" : {
+                    "rsem_quan_log2" : 2.07327183642452
+                },
+                "DTB-121" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-120" : {
+                    "rsem_quan_log2" : 2.13796249006763
+                },
+                "DTB-020" : {
+                    "rsem_quan_log2" : 6.02685095106256
+                },
+                "DTB-102" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-022" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-023" : {
+                    "rsem_quan_log2" : 1.54606718045021
+                },
+                "DTB-089Pro" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-080Pro-R2" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-089" : {
+                    "rsem_quan_log2" : 0
+                },
+                "LNCAP-batch3" : {
+                    "rsem_quan_log2" : 5.40990681952926
+                },
+                "DTB-024Pro2" : {
+                    "rsem_quan_log2" : 5.98235933376575
+                },
+                "LNCAP-batch1" : {
+                    "rsem_quan_log2" : 1.41364823661203
+                },
+                "DTB-085" : {
+                    "rsem_quan_log2" : 0
+                },
+                "LNCAP-batch7" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-083" : {
+                    "rsem_quan_log2" : 3.33498294798696
+                },
+                "DTB-080" : {
+                    "rsem_quan_log2" : 2.98123161291209
+                },
+                "LNCAP-batch4" : {
+                    "rsem_quan_log2" : 4.1891445533126
+                },
+                "DTB-063" : {
+                    "rsem_quan_log2" : 0
+                },
+                "LNCAP-batch6" : {
+                    "rsem_quan_log2" : 4.51713708702796
+                },
+                "DTB-063Pro" : {
+                    "rsem_quan_log2" : 2.44174904700924
+                },
+                "DTB-069Dup" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-111Pro" : {
+                    "rsem_quan_log2" : 2.78872746673981
+                },
+                "DTB-073" : {
+                    "rsem_quan_log2" : 3.73008559370039
+                },
+                "DTB-010Pro" : {
+                    "rsem_quan_log2" : 12.9511085205411
+                },
+                "DTB-071" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-080Pro-R3" : {
+                    "rsem_quan_log2" : 8.04053686242539
+                },
+                "DTB-059" : {
+                    "rsem_quan_log2" : 15.1041721675742
+                },
+                "DTB-156" : {
+                    "rsem_quan_log2" : 2.96731619026928
+                },
+                "LNCAP-batch2" : {
+                    "rsem_quan_log2" : 1.55419589398473
+                },
+                "DTB-053" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-018" : {
+                    "rsem_quan_log2" : 4.39231742277876
+                },
+                "DTB-118" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-038" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-011" : {
+                    "rsem_quan_log2" : 1.32538641465977
+                },
+                "DTB-036" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-035" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-034" : {
+                    "rsem_quan_log2" : 4.3786503372619
+                },
+                "DTB-110" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-032" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-031" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-030" : {
+                    "rsem_quan_log2" : 3.98654746144563
+                },
+                "DTB-049" : {
+                    "rsem_quan_log2" : 14.3248330230282
+                },
+                "DTB-095" : {
+                    "rsem_quan_log2" : 3.38014759931603
+                },
+                "LNCAP-batch5" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-097" : {
+                    "rsem_quan_log2" : 6.80525891616305
+                },
+                "DTB-064" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-018Pro" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-065" : {
+                    "rsem_quan_log2" : 0
+                }
+            }
+        }, {
+            "Study_ID" : "prad_wcdt",
+            "gene" : "GFAP",
+            "samples" : {
+                "DTB-067Pro" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-073Pro" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-080Pro" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-132" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-097Pro" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-055Pro2" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-024Pro" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-131" : {
+                    "rsem_quan_log2" : 3.61815641493478
+                },
+                "DTB-124" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-060" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-061" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-004" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-005" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-002" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-003" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-001" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-069" : {
+                    "rsem_quan_log2" : 4.47745715083959
+                },
+                "DTB-040" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-046" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-008" : {
+                    "rsem_quan_log2" : 4.12046806799683
+                },
+                "DTB-009" : {
+                    "rsem_quan_log2" : 1.7406685641404
+                },
+                "DTB-121" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-120" : {
+                    "rsem_quan_log2" : 4.17046991664692
+                },
+                "DTB-020" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-102" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-022" : {
+                    "rsem_quan_log2" : 2.83491342970104
+                },
+                "DTB-023" : {
+                    "rsem_quan_log2" : 2.27515607854601
+                },
+                "DTB-089Pro" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-080Pro-R2" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-089" : {
+                    "rsem_quan_log2" : 0
+                },
+                "LNCAP-batch3" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-024Pro2" : {
+                    "rsem_quan_log2" : 0
+                },
+                "LNCAP-batch1" : {
+                    "rsem_quan_log2" : 1.35343621786178
+                },
+                "DTB-085" : {
+                    "rsem_quan_log2" : 0
+                },
+                "LNCAP-batch7" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-083" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-080" : {
+                    "rsem_quan_log2" : 0
+                },
+                "LNCAP-batch4" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-063" : {
+                    "rsem_quan_log2" : 0
+                },
+                "LNCAP-batch6" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-063Pro" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-069Dup" : {
+                    "rsem_quan_log2" : 2.24223664146474
+                },
+                "DTB-111Pro" : {
+                    "rsem_quan_log2" : 1.98371417198763
+                },
+                "DTB-073" : {
+                    "rsem_quan_log2" : 2.83491342970104
+                },
+                "DTB-010Pro" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-071" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-080Pro-R3" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-059" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-156" : {
+                    "rsem_quan_log2" : 1.95984432785696
+                },
+                "LNCAP-batch2" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-053" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-018" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-118" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-038" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-011" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-036" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-035" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-034" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-110" : {
+                    "rsem_quan_log2" : 5.4150386263839
+                },
+                "DTB-032" : {
+                    "rsem_quan_log2" : 5.32418054661874
+                },
+                "DTB-031" : {
+                    "rsem_quan_log2" : 5.17836806595407
+                },
+                "DTB-030" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-049" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-095" : {
+                    "rsem_quan_log2" : 0
+                },
+                "LNCAP-batch5" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-097" : {
+                    "rsem_quan_log2" : 3.95352599957396
+                },
+                "DTB-064" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-018Pro" : {
+                    "rsem_quan_log2" : 0
+                },
+                "DTB-065" : {
+                    "rsem_quan_log2" : 0
+                }
+            }
+        }]
+    }
+};
+
 // TODO enzalutamide settings
 // enzObsDeckSettings = commonObsDeckSettings;
 enzObsDeckSettings = jQuery.extend({}, commonObsDeckSettings);
@@ -20990,9 +27678,6 @@ Template.Cohort.rendered = function() {
             // default to enzalutamide settings
             console.log("pivotSettings undefined, using Enzalutamide settings");
             obsDeckSettings = jQuery.extend({}, enzObsDeckSettings)
-        } else if (pivotSettings["name"] === "Enzalutamide") {
-            console.log("use Enza settings");
-            obsDeckSettings = jQuery.extend({}, enzObsDeckSettings)
         } else if (pivotSettings["name"] === "Adeno") {
             console.log("use Adeno settings");
             obsDeckSettings = jQuery.extend({}, adenoObsDeckSettings)
@@ -21002,6 +27687,15 @@ Template.Cohort.rendered = function() {
         } else if (pivotSettings["name"] === "Enzalutamide") {
             console.log("use Enzalutamide settings");
             obsDeckSettings = jQuery.extend({}, enzObsDeckSettings)
+        } else if (pivotSettings["name"] === "Abiraterone") {
+            console.log("use Enzalutamide settings");
+            obsDeckSettings = jQuery.extend({}, abiObsDeckSettings)
+        } else if (pivotSettings["name"] === "Trichotomy") {
+            console.log("use Trichotomy settings");
+            obsDeckSettings = jQuery.extend({}, triObsDeckSettings)
+        } else if (pivotSettings["name"] === "biopsy_site") {
+            console.log("use biopsy_site settings");
+            obsDeckSettings = jQuery.extend({}, biopsySiteObsDeckSettings)
         } else {
             // default to enzalutamide settings
             console.log("use default Enzalutamide settings");
