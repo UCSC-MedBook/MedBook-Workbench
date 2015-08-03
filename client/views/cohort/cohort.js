@@ -20962,13 +20962,33 @@ Template.Cohort.rendered = function() {
 
     Deps.autorun(function() {
         console.log("Deps.autorun in Template.Cohort.rendered");
-        var hardPivot = Session.get("hardPivot");
+        var pivotSettings = Session.get("pivotSettings");
+        console.log(pivotSettings);
 
+        // obsDeckSettings can be one of the following:
         // enzObsDeckSettings
         // abiObsDeckSettings
         // smcObsDeckSettings
         // adenoObsDeckSettings
-        od_config = observation_deck.buildObservationDeck(divElem, adenoObsDeckSettings);
+
+        var obsDeckSettings;
+        if ( typeof pivotSettings === "undefined") {
+            // default to enzalutamide settings
+            obsDeckSettings = enzObsDeckSettings;
+        } else if (pivotSettings["name"] === "Enzalutamide") {
+            obsDeckSettings = enzObsDeckSettings;
+        } else if (pivotSettings["name"] === "Adeno") {
+            obsDeckSettings = adenoObsDeckSettings;
+        } else if (pivotSettings["name"] === "Small_Cell") {
+            obsDeckSettings = smcObsDeckSettings;
+        } else if (pivotSettings["name"] === "Enzalutamide") {
+            obsDeckSettings = enzObsDeckSettings;
+        } else {
+            // default to enzalutamide settings
+            obsDeckSettings = enzObsDeckSettings
+        }
+
+        od_config = observation_deck.buildObservationDeck(divElem, obsDeckSettings);
     });
 };
 
