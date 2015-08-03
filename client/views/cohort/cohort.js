@@ -27651,6 +27651,23 @@ Template.Cohort.rendered_to_be_fixed = function() {
 Template.Cohort.destroyed = function() {
 };
 
+var blacklistSignatureScores = function(blacklist, sigExpObj) {
+    var newSigExpObj = [];
+    for (var i = 0, length = sigExpObj.length; i < length; i++) {
+        var innerArray = sigExpObj[i];
+        var newInnerArray = [];
+        newSigExpObj.push(newInnerArray);
+        for (var j = 0, lengthj = innerArray.length; j < lengthj; j++) {
+            var dataObj = innerArray[j];
+            var name = dataObj["name"];
+            if (!u.isObjInArray(blacklist, name)) {
+                newInnerArray.push(dataObj);
+            }
+        }
+    }
+    return newSigExpObj;
+};
+
 Template.Cohort.rendered = function() {
     console.log("Template.Cohort.rendered");
 
@@ -27664,7 +27681,7 @@ Template.Cohort.rendered = function() {
         }
 
         var pivotSettings = Session.get("pivotSettings");
-        console.log(pivotSettings);
+        console.log("pivotSettings", pivotSettings);
 
         // obsDeckSettings can be one of the following:
         // enzObsDeckSettings
@@ -27701,6 +27718,13 @@ Template.Cohort.rendered = function() {
             console.log("use default Enzalutamide settings");
             obsDeckSettings = jQuery.extend({}, enzObsDeckSettings)
         }
+
+        // remove blacklisted signature scores
+        var blackListSigNames = ["smc-adeno-20k_v5", "smc20k_v5", "smc-iac-20k_v5"];
+        var oldSigExpObj = obsDeckSettings["signature"]["expression"]["object"];
+        var newSigExpObj = blacklistSignatureScores(blackListSigNames, oldSigExpObj);
+
+        obsDeckSettings["signature"]["expression"]["object"] = newSigExpObj;
 
         od_config = observation_deck.buildObservationDeck(divElem, obsDeckSettings);
     });
