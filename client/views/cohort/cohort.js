@@ -2007,7 +2007,9 @@ commonClinicalEventsDocList = [{
 }];
 
 // TODO enzalutamide settings
-enzObsDeckSettings = commonObsDeckSettings;
+// enzObsDeckSettings = commonObsDeckSettings;
+enzObsDeckSettings = jQuery.extend({}, commonObsDeckSettings);
+enzObsDeckSettings["desc"] = "enzObsDeckSettings";
 enzObsDeckSettings["pivotScores"] = {
     "object" : [{
         "name_2" : "SKI_tf_viper",
@@ -6341,7 +6343,9 @@ enzObsDeckSettings["signature"] = {
 
 // TODO abiraterone settings
 
-abiObsDeckSettings = commonObsDeckSettings;
+// abiObsDeckSettings = commonObsDeckSettings;
+abiObsDeckSettings = jQuery.extend({}, commonObsDeckSettings);
+abiObsDeckSettings["desc"] = "abiObsDeckSettings";
 abiObsDeckSettings["pivotScores"] = {
     "object" : [{
         "name_2" : "ATF1_tf_viper",
@@ -10596,8 +10600,10 @@ abiObsDeckSettings["signature"] = {
 
 // TODO small cell settings
 
-smcObsDeckSettings = commonObsDeckSettings;
-abiObsDeckSettings["pivotScores"] = {
+// smcObsDeckSettings = commonObsDeckSettings;
+smcObsDeckSettings = jQuery.extend({}, commonObsDeckSettings);
+smcObsDeckSettings["desc"] = "smcObsDeckSettings";
+smcObsDeckSettings["pivotScores"] = {
     "object" : [{
         "name_2" : "smc-adeno-50",
         "name_1" : "Small_Cell",
@@ -11958,7 +11964,7 @@ smcObsDeckSettings["mongoData"] = {
     }],
     'mutation' : []
 };
-abiObsDeckSettings["signature"] = {
+smcObsDeckSettings["signature"] = {
     'expression' : {
         'object' : [[{
             "_id" : {
@@ -15732,8 +15738,10 @@ abiObsDeckSettings["signature"] = {
 
 // TODO adeno settings
 
-adenoObsDeckSettings = commonObsDeckSettings;
-abiObsDeckSettings["pivotScores"] = {
+// adenoObsDeckSettings = commonObsDeckSettings;
+adenoObsDeckSettings = jQuery.extend({}, commonObsDeckSettings);
+adenoObsDeckSettings["desc"] = "adenoObsDeckSettings";
+adenoObsDeckSettings["pivotScores"] = {
     "object" : [{
         "name_2" : "adeno50",
         "name_1" : "Adeno",
@@ -16033,7 +16041,7 @@ abiObsDeckSettings["pivotScores"] = {
     }]
 
 };
-abiObsDeckSettings["mongoData"] = {
+adenoObsDeckSettings["mongoData"] = {
     'clinical' : commonClinicalEventsDocList,
     'expression' : [{
         "Study_ID" : "prad_wcdt",
@@ -16886,7 +16894,7 @@ abiObsDeckSettings["mongoData"] = {
     }],
     'mutation' : []
 };
-abiObsDeckSettings["signature"] = {
+adenoObsDeckSettings["signature"] = {
     'expression' : {
         'object' : [[{
             "_id" : {
@@ -20962,6 +20970,11 @@ Template.Cohort.rendered = function() {
 
     Deps.autorun(function() {
         console.log("Deps.autorun in Template.Cohort.rendered");
+
+        while (divElem.firstChild) {
+            divElem.removeChild(divElem.firstChild);
+        }
+
         var pivotSettings = Session.get("pivotSettings");
         console.log(pivotSettings);
 
@@ -20972,20 +20985,27 @@ Template.Cohort.rendered = function() {
         // adenoObsDeckSettings
 
         var obsDeckSettings;
+
         if ( typeof pivotSettings === "undefined") {
             // default to enzalutamide settings
-            obsDeckSettings = enzObsDeckSettings;
+            console.log("pivotSettings undefined, using Enzalutamide settings");
+            obsDeckSettings = jQuery.extend({}, enzObsDeckSettings)
         } else if (pivotSettings["name"] === "Enzalutamide") {
-            obsDeckSettings = enzObsDeckSettings;
+            console.log("use Enza settings");
+            obsDeckSettings = jQuery.extend({}, enzObsDeckSettings)
         } else if (pivotSettings["name"] === "Adeno") {
-            obsDeckSettings = adenoObsDeckSettings;
+            console.log("use Adeno settings");
+            obsDeckSettings = jQuery.extend({}, adenoObsDeckSettings)
         } else if (pivotSettings["name"] === "Small_Cell") {
-            obsDeckSettings = smcObsDeckSettings;
+            console.log("use Small_Cell settings");
+            obsDeckSettings = jQuery.extend({}, smcObsDeckSettings)
         } else if (pivotSettings["name"] === "Enzalutamide") {
-            obsDeckSettings = enzObsDeckSettings;
+            console.log("use Enzalutamide settings");
+            obsDeckSettings = jQuery.extend({}, enzObsDeckSettings)
         } else {
             // default to enzalutamide settings
-            obsDeckSettings = enzObsDeckSettings
+            console.log("use default Enzalutamide settings");
+            obsDeckSettings = jQuery.extend({}, enzObsDeckSettings)
         }
 
         od_config = observation_deck.buildObservationDeck(divElem, obsDeckSettings);
