@@ -1,42 +1,6 @@
 /*****************************************************************************/
-/* Expression Publish Functions
+/* Correlator Publish Functions
  /*****************************************************************************/
-
-/*
- Meteor.publish('correlator', function(Study_ID, contrast, topN) {
- var s = "<--- publish correlator in server/publish/correlator.js";
- // if (!geneList) {
- // // var geneList = ['PEG10', 'KCNJ6', 'FGF9', 'CNKSR3', 'ANK2', 'ST8SIA4', 'RUNX1T1', 'GPRIN2', 'KIT', 'GABRB3', 'IPCEF1', 'GRIN3A', 'CACHD1', 'GYG2', 'ADM', 'F2RL1', 'TMPRSS2', 'TEAD2', 'DHODH', 'FXYD3', 'SERTAD1', 'NQO1', 'DHCR24', 'BANK1', 'INO80C', 'SLC30A4', 'F5', 'HK2', 'PPARG', 'CXCL2', 'FGFRL1', 'NNMT', 'PFKFB4', 'PRR5', 'SPINK1', 'OPHN1', 'KLRB1', 'ERP27', 'SELL', 'IRAK2', 'APOH', 'HSH2D', 'REEP6', 'KLK3', 'MAFK', 'ATP2C2', 'AGR2', 'ACOT9', 'ANG', 'CEACAM1'];
- // var geneList = [];
- // }
- if (!contrast) {
- var constrast = "";
- }
-
- // if (!Study_ID) {
- // var Study_ID = "";
- // }
-
- var nameCurs = Signature.find({
- 'contrast' : contrast
- }, {
- 'name' : 1
- }).fetch();
- var nameList = [];
- nameCurs.forEach(function(sig) {
- // console.log('found sig for contrast', contrast, sig.name);
- nameList.push(sig.name);
- });
- // console.log("find corr for this list: ", nameList);
- var findResult = Correlator.find({
- 'name_1' : {
- $in : nameList
- }
- });
- console.log('correlator count:', findResult.count(), 'contrast:', contrast, s);
- return findResult;
- });
- */
 
 Meteor.publish('correlator', function(sigNames, topN) {
     var s = "<--- publish correlator in server/publish/correlator.js";
@@ -57,6 +21,118 @@ Meteor.publish('correlator', function(sigNames, topN) {
             $in : nameList
         }
     });
-    console.log('correlator ',sigNames, 'count:', findResult.count(), 'nameList', nameList.join(), s);
+    console.log('correlator ', sigNames, 'count:', findResult.count(), 'nameList', nameList.join(), s);
     return findResult;
+});
+
+/**
+ * Separate correlator event_2's by datatype. Return an object keyed on datatype.
+ * @param {Object} correlatorCursor
+ */
+var separateCorrelatorScoresByDatatype = function(correlatorCursor) {
+    var eventsByType = {};
+    var correlatorDocs = correlatorCursor.fetch();
+    for (var i = 0, length = correlatorDocs.length; i < length; i++) {
+        var doc = correlatorDocs[i];
+        var name = doc["name_2"];
+        var datatype = doc["datatype_2"];
+        var version = doc["version_2"];
+        var score = doc["score"];
+        if (!eventsByType.hasOwnProperty(datatype)) {
+            eventsByType[datatype] = [];
+        }
+        eventsByType[datatype].push({
+            "name" : name,
+            "version" : version
+        });
+    };
+    return eventsByType;
+};
+
+/**
+ * correlatorResults publication
+ */
+Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVersion, Study_ID) {
+    var s = "<--- publish correlatorResults in server/publish/correlator.js";
+    var cursors = [];
+
+    // clinical events
+    var clinicalEventsCursor = ClinicalEvents.find({
+        "study" : Study_ID
+    });
+    cursors.push(clinicalEventsCursor);
+
+    // get correlator scores from Mongo collection
+    var correlatorCursor = Correlator.find({
+        "name_1" : pivotName,
+        "datatype_1" : pivotDatatype,
+        "version_1" : pivotVersion
+    });
+    cursors.push(correlatorCursor);
+
+    // separate correlator scores by datatype
+    var eventsByType = separateCorrelatorScoresByDatatype(correlatorCursor);
+
+    // inject some genes for testing
+    // eventsByType["expression"] = [{
+    // "name" : "PLK1"
+    // }, {
+    // "name" : "TP53"
+    // }];
+
+    // inject some signatures for testing
+    // eventsByType["signature"] = [{
+    // "name" : "MAP3K8_kinase_viper",
+    // "version" : 4
+    // }, {
+    // "name" : "AURKB_kinase_viper",
+    // "version" : 4
+    // }];
+
+    console.log("eventsByType", eventsByType, s);
+
+    // get expression values from Mongo collection
+    if (eventsByType.hasOwnProperty("expression")) {
+        var corrExpEvents = eventsByType["expression"];
+        var geneList = _.pluck(corrExpEvents, "name");
+        console.log("geneList", geneList, s);
+        var expression2Cursor = Expression2.find({
+            'gene' : {
+                "$in" : geneList
+            },
+            'Study_ID' : Study_ID
+        });
+        cursors.push(expression2Cursor);
+
+        var mutationsCursor = Mutations.find({
+            "MA_FImpact" : {
+                "$in" : ["medium", "high"]
+            },
+            "Study_ID" : Study_ID,
+            "Hugo_Symbol" : {
+                "$in" : geneList
+            }
+        });
+        cursors.push(mutationsCursor);
+    }
+
+    // get signature scores from Mongo collection
+    if (eventsByType.hasOwnProperty("signature")) {
+        var corrSigEvents = eventsByType["signature"];
+        var sigNames = _.map(corrSigEvents, function(element) {
+            var name = element["name"];
+            var version = element["version"];
+            return name + "_v" + version;
+        });
+        var signatureScoresCursor = SignatureScores.find({
+            'name' : {
+                "$in" : sigNames
+            }
+        });
+        cursors.push(signatureScoresCursor);
+    }
+
+    console.log("cursors", cursors, cursors.length, s);
+
+    return cursors;
 });
