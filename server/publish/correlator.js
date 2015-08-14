@@ -32,11 +32,27 @@ Meteor.publish('correlator', function(sigNames, topN) {
 var separateCorrelatorScoresByDatatype = function(correlatorCursor) {
     var eventsByType = {};
     var correlatorDocs = correlatorCursor.fetch();
+
+    if (correlatorDocs.length == 0) {
+        return eventsByType;
+    }
+
+    // add pivot event
+    var doc = correlatorDocs[0];
+    var name = doc["name_1"];
+    var datatype = doc["datatype_1"];
+    var version = doc["version_1"];
+    eventsByType[datatype] = [{
+        "name" : name,
+        "version" : version
+    }];
+
+    // add correlated events
     for (var i = 0, length = correlatorDocs.length; i < length; i++) {
-        var doc = correlatorDocs[i];
-        var name = doc["name_2"];
-        var datatype = doc["datatype_2"];
-        var version = doc["version_2"];
+        doc = correlatorDocs[i];
+        name = doc["name_2"];
+        datatype = doc["datatype_2"];
+        version = doc["version_2"];
         var score = doc["score"];
         if (!eventsByType.hasOwnProperty(datatype)) {
             eventsByType[datatype] = [];
@@ -57,9 +73,9 @@ var getCorrelatorCursor = function(pivotName, pivotDatatype, pivotVersion, limit
     var correlatorCursor = Correlator.find({
         "name_1" : pivotName,
         "datatype_1" : pivotDatatype,
-        "version_1" : pivotVersion,
-        // "datatype_2" : "signature"
-        // "datatype_2" : "expression"
+        "version_1" : pivotVersion
+        // ,"datatype_2" : "signature"
+        // ,"datatype_2" : "expression"
     }, {
         "sort" : ["score", "desc"],
         "limit" : limit,
@@ -74,7 +90,7 @@ var getCorrelatorCursor = function(pivotName, pivotDatatype, pivotVersion, limit
  */
 Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVersion, Study_ID) {
     var s = "<--- publish correlatorResults in server/publish/correlator.js";
-    var correlatorLimit = 99;
+    var correlatorLimit = 20;
     var cursors = [];
 
     // clinical events
@@ -83,7 +99,13 @@ Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVers
     });
     cursors.push(clinicalEventsCursor);
 
+    console.log("arguments", pivotName, pivotDatatype, pivotVersion, Study_ID, s);
+
     // get correlator scores from Mongo collection
+    if (pivotDatatype !== "clinical") {
+        // unexpected versioning
+        pivotVersion = 5;
+    }
     var correlatorCursor = getCorrelatorCursor(pivotName, pivotDatatype, pivotVersion, correlatorLimit);
     cursors.push(correlatorCursor);
 
@@ -114,7 +136,7 @@ Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVers
     if (eventsByType.hasOwnProperty("expression")) {
         var corrExpEvents = eventsByType["expression"];
         var geneList = _.pluck(corrExpEvents, "name");
-        console.log("geneList", geneList, s);
+        console.log("geneList", geneList.length, s);
         var expression2Cursor = Expression2.find({
             'gene' : {
                 "$in" : geneList
@@ -143,15 +165,24 @@ Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVers
             var version = element["version"];
             return name + "_v" + version;
         });
+
+        console.log("sigNames", sigNames.length, s);
         var signatureScoresCursor = SignatureScores.find({
             'name' : {
                 "$in" : sigNames
             }
         });
         cursors.push(signatureScoresCursor);
+    } else {
+        var signatureScoresCursor = SignatureScores.find({
+            'name' : {
+                "$in" : ["MAP3K8_kinase_viper_v5", "AURKB_kinase_viper_v5"]
+            }
+        });
+        cursors.push(signatureScoresCursor);
     }
 
-    console.log("cursors", cursors, cursors.length, s);
+    console.log("cursors", cursors.length, pivotName, s);
 
     return cursors;
 });

@@ -33,20 +33,23 @@ CohortController = RouteController.extend({
         var geneList = Session.get("geneList");
         var sigNames = Session.get("signatureNames");
         var pivotSettings = Session.get("pivotSettings");
+        var pagingConfig = Session.get("subscriptionPaging") || {};
 
         var pName = null;
         var pDatatype = null;
         var pVersion = null;
 
-        if (pivotSettings) {
+        console.log("pivotSettings", pivotSettings, s);
+
+        if (pivotSettings != null) {
             pName = pivotSettings['name'];
             pDatatype = pivotSettings['datatype'];
             pVersion = pivotSettings['version'];
         }
 
         // publish in /server/publish/correlator.js
-        // Meteor.subscribe("correlatorResults", pName, pDatatype, pVersion, studyID);
-        Meteor.subscribe("correlatorResults", "MAP3K8_kinase_viper", "signature", 5, studyID);
+        Meteor.subscribe("correlatorResults", pName, pDatatype, pVersion, studyID);
+        // Meteor.subscribe("correlatorResults", "MAP3K8_kinase_viper", "signature", 5, studyID);
 
         // TODO need to add data for manually-selected genes and signatures
     },

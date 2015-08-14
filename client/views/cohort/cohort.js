@@ -288,18 +288,18 @@ Template.Cohort.rendered = function() {
         // console.log('Deps.autorun');
 
         // TODO getting default signature for a contrast
-        var contrastId = Session.get('selectedContrast');
-        console.log('contrastId', contrastId, s);
-        if (contrastId) {
-            var contResp = Contrast.findOne({
-                "_id" : contrastId
-            });
-            console.log('contResp', contResp, s);
-
-            // TODO get the default sig.
-        } else {
-            console.log('NO CONTRAST ID', s);
-        }
+        // var contrastId = Session.get('selectedContrast');
+        // console.log('contrastId', contrastId, s);
+        // if (contrastId) {
+        // var contResp = Contrast.findOne({
+        // "_id" : contrastId
+        // });
+        // console.log('contResp', contResp, s);
+        //
+        // // TODO get the default sig.
+        // } else {
+        // console.log('NO CONTRAST ID', s);
+        // }
 
         // pivoting with correlator
         var corrResp = Correlator.find({}, {
@@ -310,95 +310,95 @@ Template.Cohort.rendered = function() {
         });
         var corrDocList = corrResp.fetch();
         console.log('corrDocList.length:', corrDocList.length, s);
-
-        var geneList = [];
-        var signatureNames = Session.get("signatureNames") || [];
-        var pivotSettings = Session.get('pivotSettings');
-        if (pivotSettings) {
-            console.log('pivotSettings', pivotSettings, s);
-            var pName = pivotSettings['name'];
-            var pDatatype = pivotSettings['datatype'];
-            var pVersion = pivotSettings['version'];
-
-            geneList = [];
-            signatureNames = [pName + "_v" + pVersion];
-
-            var scoredGenes = [];
-            var scoredSigs = [{
-                "name" : pName + "_v" + pVersion,
-                "score" : 1
-            }];
-            for (var i = 0; i < corrDocList.length; i++) {
-                var doc = corrDocList[i];
-                if ((doc['name_1'] === pName) && (doc['datatype_1'] === pDatatype) && ("" + doc['version_1'] === "" + pVersion)) {
-                    // matched pivot event
-
-                    var name2 = doc["name_2"];
-                    var datatype2 = doc["datatype_2"];
-                    var version2 = doc["version_2"];
-                    var score = doc["score"];
-
-                    // TODO hack for mismatched version numbers between mongo collections
-                    if (u.endsWith(name2, "_tf_viper")) {
-                        version2 = "4";
-                    }
-
-                    if (datatype2 === 'signature') {
-                        // matched event is a signature
-                        var name = name2 + "_v" + version2;
-                        signatureNames.push(name);
-
-                        var eventScoreObj = {
-                            "name" : name,
-                            "score" : score
-                        };
-                        scoredSigs.push(eventScoreObj);
-                        // } else if (u.endsWith(name2, "_tf_viper")) {
-                        // // matched event is a signature
-                        // var name = name2.replace("_tf_viper", "");
-                        // name = "tf_viper_" + name;
-                        // name = name + "_v" + "4";
-                        // signatureNames.push(name);
-                        //
-                        // var eventScoreObj = {
-                        // "name" : name,
-                        // "score" : score
-                        // };
-                        // scoredSigs.push(eventScoreObj);
-                    } else if (datatype2 === 'expression') {
-                        // matched event is a gene
-                        var name = name2;
-                        geneList.push(name);
-
-                        var eventScoreObj = {
-                            "name" : name,
-                            "score" : score
-                        };
-                        scoredGenes.push(eventScoreObj);
-                    }
-                }
-            }
-
-            // TODO paging of ["kinase target activity","tf target activity","expression signature"]
-            signatureNames = applyPagingToSignatureNames(scoredSigs);
-
-            geneList = applyPagingToGeneList(scoredGenes);
-
-            console.log('geneList', geneList, s);
-            console.log('signatureNames', signatureNames, s);
-
-            Session.set('geneset', 'from pivotSettings');
-            Session.set('geneList', geneList);
-            Session.set('signatureNames', signatureNames);
-
-        } else {
-            console.log('NO PIVOTSETTINGS FROM SESSION', pivotSettings, s);
-
-            // when this is empty, no pivot data is sent to obs-deck
-            corrDocList = [];
-
-            Session.set('signatureNames', ['MAP3K8_kinase_viper_v4', 'AURKB_kinase_viper_v4']);
-        }
+        //
+        // var geneList = [];
+        // var signatureNames = Session.get("signatureNames") || [];
+        // var pivotSettings = Session.get('pivotSettings');
+        // if (pivotSettings) {
+        // console.log('pivotSettings', pivotSettings, s);
+        // var pName = pivotSettings['name'];
+        // var pDatatype = pivotSettings['datatype'];
+        // var pVersion = pivotSettings['version'];
+        //
+        // geneList = [];
+        // signatureNames = [pName + "_v" + pVersion];
+        //
+        // var scoredGenes = [];
+        // var scoredSigs = [{
+        // "name" : pName + "_v" + pVersion,
+        // "score" : 1
+        // }];
+        // for (var i = 0; i < corrDocList.length; i++) {
+        // var doc = corrDocList[i];
+        // if ((doc['name_1'] === pName) && (doc['datatype_1'] === pDatatype) && ("" + doc['version_1'] === "" + pVersion)) {
+        // // matched pivot event
+        //
+        // var name2 = doc["name_2"];
+        // var datatype2 = doc["datatype_2"];
+        // var version2 = doc["version_2"];
+        // var score = doc["score"];
+        //
+        // // TODO hack for mismatched version numbers between mongo collections
+        // if (u.endsWith(name2, "_tf_viper")) {
+        // version2 = "4";
+        // }
+        //
+        // if (datatype2 === 'signature') {
+        // // matched event is a signature
+        // var name = name2 + "_v" + version2;
+        // signatureNames.push(name);
+        //
+        // var eventScoreObj = {
+        // "name" : name,
+        // "score" : score
+        // };
+        // scoredSigs.push(eventScoreObj);
+        // // } else if (u.endsWith(name2, "_tf_viper")) {
+        // // // matched event is a signature
+        // // var name = name2.replace("_tf_viper", "");
+        // // name = "tf_viper_" + name;
+        // // name = name + "_v" + "4";
+        // // signatureNames.push(name);
+        // //
+        // // var eventScoreObj = {
+        // // "name" : name,
+        // // "score" : score
+        // // };
+        // // scoredSigs.push(eventScoreObj);
+        // } else if (datatype2 === 'expression') {
+        // // matched event is a gene
+        // var name = name2;
+        // geneList.push(name);
+        //
+        // var eventScoreObj = {
+        // "name" : name,
+        // "score" : score
+        // };
+        // scoredGenes.push(eventScoreObj);
+        // }
+        // }
+        // }
+        //
+        // // TODO paging of ["kinase target activity","tf target activity","expression signature"]
+        // signatureNames = applyPagingToSignatureNames(scoredSigs);
+        //
+        // geneList = applyPagingToGeneList(scoredGenes);
+        //
+        // console.log('geneList', geneList, s);
+        // console.log('signatureNames', signatureNames, s);
+        //
+        // Session.set('geneset', 'from pivotSettings');
+        // Session.set('geneList', geneList);
+        // Session.set('signatureNames', signatureNames);
+        //
+        // } else {
+        // console.log('NO PIVOTSETTINGS FROM SESSION', pivotSettings, s);
+        //
+        // // when this is empty, no pivot data is sent to obs-deck
+        // corrDocList = [];
+        //
+        // Session.set('signatureNames', ['MAP3K8_kinase_viper_v4', 'AURKB_kinase_viper_v4']);
+        // }
 
         // get clinical data
         var clinResp = ClinicalEvents.find({}, {
@@ -414,7 +414,6 @@ Template.Cohort.rendered = function() {
         var expDocList = expResp.fetch();
         console.log('expDocList.length:', expDocList.length, s);
 
-        // TODO get mutation data
         var mutResp = Mutations.find({}, {
             "reactive" : true
         });
