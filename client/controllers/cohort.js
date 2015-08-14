@@ -45,7 +45,8 @@ CohortController = RouteController.extend({
         }
 
         // publish in /server/publish/correlator.js
-        Meteor.subscribe("correlatorResults", pName, pDatatype, pVersion, studyID);
+        // Meteor.subscribe("correlatorResults", pName, pDatatype, pVersion, studyID);
+        Meteor.subscribe("correlatorResults", "MAP3K8_kinase_viper", "signature", 5, studyID);
 
         // TODO need to add data for manually-selected genes and signatures
     },

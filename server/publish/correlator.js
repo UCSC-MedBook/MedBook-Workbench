@@ -50,10 +50,31 @@ var separateCorrelatorScoresByDatatype = function(correlatorCursor) {
 };
 
 /**
+ * Get top/bottom correlator scores
+ */
+var getCorrelatorCursor = function(pivotName, pivotDatatype, pivotVersion, limit) {
+    // get correlator scores from Mongo collection
+    var correlatorCursor = Correlator.find({
+        "name_1" : pivotName,
+        "datatype_1" : pivotDatatype,
+        "version_1" : pivotVersion,
+        // "datatype_2" : "signature"
+        // "datatype_2" : "expression"
+    }, {
+        "sort" : ["score", "desc"],
+        "limit" : limit,
+        "skip" : 0
+    });
+
+    return correlatorCursor;
+};
+
+/**
  * correlatorResults publication
  */
 Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVersion, Study_ID) {
     var s = "<--- publish correlatorResults in server/publish/correlator.js";
+    var correlatorLimit = 99;
     var cursors = [];
 
     // clinical events
@@ -63,12 +84,10 @@ Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVers
     cursors.push(clinicalEventsCursor);
 
     // get correlator scores from Mongo collection
-    var correlatorCursor = Correlator.find({
-        "name_1" : pivotName,
-        "datatype_1" : pivotDatatype,
-        "version_1" : pivotVersion
-    });
+    var correlatorCursor = getCorrelatorCursor(pivotName, pivotDatatype, pivotVersion, correlatorLimit);
     cursors.push(correlatorCursor);
+
+    console.log("correlatorCursor", correlatorCursor.length, s);
 
     // separate correlator scores by datatype
     var eventsByType = separateCorrelatorScoresByDatatype(correlatorCursor);
@@ -83,10 +102,10 @@ Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVers
     // inject some signatures for testing
     // eventsByType["signature"] = [{
     // "name" : "MAP3K8_kinase_viper",
-    // "version" : 4
+    // "version" : 5
     // }, {
     // "name" : "AURKB_kinase_viper",
-    // "version" : 4
+    // "version" : 5
     // }];
 
     console.log("eventsByType", eventsByType, s);
