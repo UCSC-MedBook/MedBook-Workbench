@@ -66,31 +66,56 @@ var separateCorrelatorScoresByDatatype = function(correlatorCursor) {
 };
 
 /**
+ * Query correlator collection by mongo "_id" field.
+ */
+var queryCorrelatorByMongoId = function(idList) {
+    var cursor = Correlator.find({
+        "_id" : {
+            "$in" : idList
+        }
+    });
+    return cursor;
+};
+
+/**
  * Get top/bottom correlator scores
  */
-var getCorrelatorCursor = function(pivotName, pivotDatatype, pivotVersion, limit) {
+var getCorrelatorCursor_forExpr = function(pivotName, pivotDatatype, pivotVersion, ascOrDesc, limit, skip) {
     // get correlator scores from Mongo collection
-    var correlatorCursor = Correlator.find({
+
+    var direction = (ascOrDesc === "asc") ? 1 : -1;
+    var datatype_2 = "expression";
+
+    var cursor = Correlator.find({
         "name_1" : pivotName,
         "datatype_1" : pivotDatatype,
-        "version_1" : pivotVersion
-        // ,"datatype_2" : "signature"
-        // ,"datatype_2" : "expression"
+        "version_1" : pivotVersion,
+        "datatype_2" : datatype_2
     }, {
-        "sort" : ["score", "desc"],
+        "fields" : {
+            "_id" : 1
+        },
+        "sort" : {
+            "score" : direction
+        },
         "limit" : limit,
-        "skip" : 0
+        "skip" : skip
     });
 
-    return correlatorCursor;
+    var docs = cursor.fetch();
+    var ids = _.pluck(docs, "_id");
+
+    var cursor2 = queryCorrelatorByMongoId(ids);
+
+    return cursor2;
 };
 
 /**
  * correlatorResults publication
  */
-Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVersion, Study_ID) {
+Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVersion, Study_ID, pagingConfig) {
     var s = "<--- publish correlatorResults in server/publish/correlator.js";
-    var correlatorLimit = 20;
+    var correlatorLimit = 5;
     var cursors = [];
 
     // clinical events
@@ -99,14 +124,15 @@ Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVers
     });
     cursors.push(clinicalEventsCursor);
 
-    console.log("arguments", pivotName, pivotDatatype, pivotVersion, Study_ID, s);
+    console.log("arguments", pivotName, pivotDatatype, pivotVersion, Study_ID, pagingConfig, s);
 
     // get correlator scores from Mongo collection
     if (pivotDatatype !== "clinical") {
         // unexpected versioning
         pivotVersion = 5;
     }
-    var correlatorCursor = getCorrelatorCursor(pivotName, pivotDatatype, pivotVersion, correlatorLimit);
+    var correlatorCursor = getCorrelatorCursor_forExpr(pivotName, pivotDatatype, pivotVersion, "desc", correlatorLimit, 0);
+
     cursors.push(correlatorCursor);
 
     console.log("correlatorCursor", correlatorCursor.length, s);
