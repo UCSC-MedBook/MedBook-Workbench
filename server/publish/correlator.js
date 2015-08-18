@@ -68,7 +68,7 @@ var separateCorrelatorScoresByDatatype = function(correlatorCursor) {
 /**
  * Query correlator collection by mongo "_id" field.
  */
-var queryCorrelatorByMongoId = function(idList) {
+var getCorrelatorCursorByMongoId = function(idList) {
     var cursor = Correlator.find({
         "_id" : {
             "$in" : idList
@@ -80,7 +80,7 @@ var queryCorrelatorByMongoId = function(idList) {
 /**
  * Get top/bottom correlator scores
  */
-var getCorrelatorCursor_forExpr = function(pivotName, pivotDatatype, pivotVersion, ascOrDesc, limit, skip) {
+var getCorrelatorIds_forExpr = function(pivotName, pivotDatatype, pivotVersion, ascOrDesc, limit, skip) {
     // get correlator scores from Mongo collection
 
     var direction = (ascOrDesc === "asc") ? 1 : -1;
@@ -105,9 +105,7 @@ var getCorrelatorCursor_forExpr = function(pivotName, pivotDatatype, pivotVersio
     var docs = cursor.fetch();
     var ids = _.pluck(docs, "_id");
 
-    var cursor2 = queryCorrelatorByMongoId(ids);
-
-    return cursor2;
+    return ids;
 };
 
 /**
@@ -132,14 +130,21 @@ Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVers
         pivotVersion = 5;
     }
 
-    // TODO compute skip number
-    var skipCount = 0;
+    // compute skipCount
+    var skipCount = {
+        "head" : 0,
+        "tail" : 0
+    };
     if (pagingConfig.hasOwnProperty("expression data")) {
         var expressionPaging = pagingConfig["expression data"];
-        skipCount = pageSize * expressionPaging["head"];
+        skipCount["head"] = pageSize * expressionPaging["head"];
+        skipCount["tail"] = pageSize * expressionPaging["tail"];
     }
 
-    var correlatorCursor = getCorrelatorCursor_forExpr(pivotName, pivotDatatype, pivotVersion, "desc", pageSize, skipCount);
+    var ids_top = getCorrelatorIds_forExpr(pivotName, pivotDatatype, pivotVersion, "desc", pageSize, skipCount["head"]);
+    var ids_bottom = getCorrelatorIds_forExpr(pivotName, pivotDatatype, pivotVersion, "asc", pageSize, skipCount["tail"]);
+
+    var correlatorCursor = getCorrelatorCursorByMongoId(ids_top.concat(ids_bottom));
 
     cursors.push(correlatorCursor);
 
