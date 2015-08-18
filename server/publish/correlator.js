@@ -115,7 +115,7 @@ var getCorrelatorCursor_forExpr = function(pivotName, pivotDatatype, pivotVersio
  */
 Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVersion, Study_ID, pagingConfig) {
     var s = "<--- publish correlatorResults in server/publish/correlator.js";
-    var correlatorLimit = 5;
+    var pageSize = 5;
     var cursors = [];
 
     // clinical events
@@ -131,7 +131,15 @@ Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVers
         // unexpected versioning
         pivotVersion = 5;
     }
-    var correlatorCursor = getCorrelatorCursor_forExpr(pivotName, pivotDatatype, pivotVersion, "desc", correlatorLimit, 0);
+
+    // TODO compute skip number
+    var skipCount = 0;
+    if (pagingConfig.hasOwnProperty("expression data")) {
+        var expressionPaging = pagingConfig["expression data"];
+        skipCount = pageSize * expressionPaging["head"];
+    }
+
+    var correlatorCursor = getCorrelatorCursor_forExpr(pivotName, pivotDatatype, pivotVersion, "desc", pageSize, skipCount);
 
     cursors.push(correlatorCursor);
 
