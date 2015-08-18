@@ -1,29 +1,29 @@
 /*****************************************************************************/
 /* Correlator Publish Functions
- /*****************************************************************************/
+/*****************************************************************************/
 
-Meteor.publish('correlator', function(sigNames, topN) {
-    var s = "<--- publish correlator in server/publish/correlator.js";
-
-    var nameList = [];
-    if (sigNames) {
-        for (var i = 0, length = sigNames.length; i < length; i++) {
-            var sigName = sigNames[i];
-            var fields = sigName.split('_v');
-            fields.pop();
-            var rootName = fields.join('_v');
-            nameList.push(rootName);
-        }
-    }
-
-    var findResult = Correlator.find({
-        'name_1' : {
-            $in : nameList
-        }
-    });
-    console.log('correlator ', sigNames, 'count:', findResult.count(), 'nameList', nameList.join(), s);
-    return findResult;
-});
+// Meteor.publish('correlator', function(sigNames, topN) {
+// var s = "<--- publish correlator in server/publish/correlator.js";
+//
+// var nameList = [];
+// if (sigNames) {
+// for (var i = 0, length = sigNames.length; i < length; i++) {
+// var sigName = sigNames[i];
+// var fields = sigName.split('_v');
+// fields.pop();
+// var rootName = fields.join('_v');
+// nameList.push(rootName);
+// }
+// }
+//
+// var findResult = Correlator.find({
+// 'name_1' : {
+// $in : nameList
+// }
+// });
+// console.log('correlator ', sigNames, 'count:', findResult.count(), 'nameList', nameList.join(), s);
+// return findResult;
+// });
 
 /**
  * Separate correlator event_2's by datatype. Return an object keyed on datatype.
@@ -48,8 +48,8 @@ var separateCorrelatorScoresByDatatype = function(correlatorCursor) {
     }];
 
     // add correlated events
-    for (var i = 0, length = correlatorDocs.length; i < length; i++) {
-        doc = correlatorDocs[i];
+    _.each(correlatorDocs, function(element, index, list) {
+        var doc = element;
         name = doc["name_2"];
         datatype = doc["datatype_2"];
         version = doc["version_2"];
@@ -61,7 +61,8 @@ var separateCorrelatorScoresByDatatype = function(correlatorCursor) {
             "name" : name,
             "version" : version
         });
-    };
+    });
+
     return eventsByType;
 };
 
@@ -78,20 +79,20 @@ var getCorrelatorCursorByMongoId = function(idList) {
 };
 
 /**
- * Get top/bottom correlator scores
+ * Get top/bottom correlator scores from Mongo collection
  */
 var getCorrelatorIds_forDatatype = function(pivotName, pivotDatatype, pivotVersion, datatype_2, ascOrDesc, limit, skip) {
-    // get correlator scores from Mongo collection
-
     var direction = (ascOrDesc === "asc") ? 1 : -1;
     // var datatype_2 = "expression";
 
-    var cursor = Correlator.find({
+    var selector = {
         "name_1" : pivotName,
         "datatype_1" : pivotDatatype,
         "version_1" : pivotVersion,
         "datatype_2" : datatype_2
-    }, {
+    };
+
+    var options = {
         "fields" : {
             "_id" : 1
         },
@@ -100,7 +101,40 @@ var getCorrelatorIds_forDatatype = function(pivotName, pivotDatatype, pivotVersi
         },
         "limit" : limit,
         "skip" : skip
-    });
+    };
+
+    var cursor = Correlator.find(selector, options);
+
+    var docs = cursor.fetch();
+    var ids = _.pluck(docs, "_id");
+
+    return ids;
+};
+
+var getCorrelatorIds_forExpr = function(pivotName, pivotDatatype, pivotVersion, ascOrDesc, limit, skip) {
+    var ids = getCorrelatorIds_forDatatype(pivotName, pivotDatatype, pivotVersion, "expression", ascOrDesc, limit, skip);
+    return ids;
+};
+
+var getCorrelatorIds_forSign = function(pivotName, pivotDatatype, pivotVersion) {
+    var selector = {
+        "name_1" : pivotName,
+        "datatype_1" : pivotDatatype,
+        "version_1" : pivotVersion,
+        "datatype_2" : "signature"
+    };
+
+    var options = {
+        "fields" : {
+            "_id" : 1,
+            "name_2" : 1
+        },
+        "sort" : {
+            "score" : -1
+        }
+    };
+
+    var cursor = Correlator.find(selector, options);
 
     var docs = cursor.fetch();
     var ids = _.pluck(docs, "_id");
@@ -130,34 +164,43 @@ Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVers
         pivotVersion = 5;
     }
 
-    // TODO expression correlator _ids
-    var skipCount = {
-        "head" : 0,
-        "tail" : 0
-    };
-    if (pagingConfig.hasOwnProperty("expression data")) {
-        var expressionPaging = pagingConfig["expression data"];
-        skipCount["head"] = pageSize * expressionPaging["head"];
-        skipCount["tail"] = pageSize * expressionPaging["tail"];
-    }
+    // possible datatypes from pagingConfig parameter
+    var datatypes = ["expression data", "kinase target activity", "tf target activity", "expression signature"];
+
+    var skipCount = {};
+    _.each(datatypes, function(element, index, list) {
+        var datatype = element;
+        skipCount[datatype] = {
+            "head" : 0,
+            "tail" : 0
+        };
+    });
+
+    _.each(_.keys(skipCount), function(element, index, list) {
+        var datatype = element;
+        if (pagingConfig.hasOwnProperty(datatype)) {
+            var datatypePaging = pagingConfig[datatype];
+            skipCount[datatype]["head"] = pageSize * datatypePaging["head"];
+            skipCount[datatype]["tail"] = pageSize * datatypePaging["tail"];
+        }
+    });
 
     var correlatorIds = [];
-    var expr_ids_top = getCorrelatorIds_forDatatype(pivotName, pivotDatatype, pivotVersion, "expression", "desc", pageSize, skipCount["head"]);
-    var expr_ids_bottom = getCorrelatorIds_forDatatype(pivotName, pivotDatatype, pivotVersion, "expression", "asc", pageSize, skipCount["tail"]);
+
+    // expression correlator _ids
+    var expr_ids_top = getCorrelatorIds_forExpr(pivotName, pivotDatatype, pivotVersion, "desc", pageSize, skipCount["expression data"]["head"]);
+    var expr_ids_bottom = getCorrelatorIds_forExpr(pivotName, pivotDatatype, pivotVersion, "asc", pageSize, skipCount["expression data"]["tail"]);
 
     correlatorIds = correlatorIds.concat(expr_ids_top, expr_ids_bottom);
 
     // TODO signature correlator _ids
-    var sig_ids_top = getCorrelatorIds_forDatatype(pivotName, pivotDatatype, pivotVersion, "signature", "desc", pageSize, 0);
-    var sig_ids_bottom = getCorrelatorIds_forDatatype(pivotName, pivotDatatype, pivotVersion, "signature", "asc", pageSize, 0);
+    var sig_ids = getCorrelatorIds_forSign(pivotName, pivotDatatype, pivotVersion);
 
-    correlatorIds = correlatorIds.concat(sig_ids_top, sig_ids_bottom);
+    correlatorIds = correlatorIds.concat(sig_ids);
 
     // get correlator scores
     var correlatorCursor = getCorrelatorCursorByMongoId(correlatorIds);
-
     cursors.push(correlatorCursor);
-
     console.log("correlatorCursor", correlatorCursor.fetch().length, s);
 
     // separate correlator scores by datatype
