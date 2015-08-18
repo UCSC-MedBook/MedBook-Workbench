@@ -80,11 +80,11 @@ var getCorrelatorCursorByMongoId = function(idList) {
 /**
  * Get top/bottom correlator scores
  */
-var getCorrelatorIds_forExpr = function(pivotName, pivotDatatype, pivotVersion, ascOrDesc, limit, skip) {
+var getCorrelatorIds_forDatatype = function(pivotName, pivotDatatype, pivotVersion, datatype_2, ascOrDesc, limit, skip) {
     // get correlator scores from Mongo collection
 
     var direction = (ascOrDesc === "asc") ? 1 : -1;
-    var datatype_2 = "expression";
+    // var datatype_2 = "expression";
 
     var cursor = Correlator.find({
         "name_1" : pivotName,
@@ -130,7 +130,7 @@ Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVers
         pivotVersion = 5;
     }
 
-    // compute skipCount
+    // TODO expression correlator _ids
     var skipCount = {
         "head" : 0,
         "tail" : 0
@@ -141,35 +141,29 @@ Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVers
         skipCount["tail"] = pageSize * expressionPaging["tail"];
     }
 
-    var ids_top = getCorrelatorIds_forExpr(pivotName, pivotDatatype, pivotVersion, "desc", pageSize, skipCount["head"]);
-    var ids_bottom = getCorrelatorIds_forExpr(pivotName, pivotDatatype, pivotVersion, "asc", pageSize, skipCount["tail"]);
+    var correlatorIds = [];
+    var expr_ids_top = getCorrelatorIds_forDatatype(pivotName, pivotDatatype, pivotVersion, "expression", "desc", pageSize, skipCount["head"]);
+    var expr_ids_bottom = getCorrelatorIds_forDatatype(pivotName, pivotDatatype, pivotVersion, "expression", "asc", pageSize, skipCount["tail"]);
 
-    var correlatorCursor = getCorrelatorCursorByMongoId(ids_top.concat(ids_bottom));
+    correlatorIds = correlatorIds.concat(expr_ids_top, expr_ids_bottom);
+
+    // TODO signature correlator _ids
+    var sig_ids_top = getCorrelatorIds_forDatatype(pivotName, pivotDatatype, pivotVersion, "signature", "desc", pageSize, 0);
+    var sig_ids_bottom = getCorrelatorIds_forDatatype(pivotName, pivotDatatype, pivotVersion, "signature", "asc", pageSize, 0);
+
+    correlatorIds = correlatorIds.concat(sig_ids_top, sig_ids_bottom);
+
+    // get correlator scores
+    var correlatorCursor = getCorrelatorCursorByMongoId(correlatorIds);
 
     cursors.push(correlatorCursor);
 
-    console.log("correlatorCursor", correlatorCursor.length, s);
+    console.log("correlatorCursor", correlatorCursor.fetch().length, s);
 
     // separate correlator scores by datatype
     var eventsByType = separateCorrelatorScoresByDatatype(correlatorCursor);
 
-    // inject some genes for testing
-    // eventsByType["expression"] = [{
-    // "name" : "PLK1"
-    // }, {
-    // "name" : "TP53"
-    // }];
-
-    // inject some signatures for testing
-    // eventsByType["signature"] = [{
-    // "name" : "MAP3K8_kinase_viper",
-    // "version" : 5
-    // }, {
-    // "name" : "AURKB_kinase_viper",
-    // "version" : 5
-    // }];
-
-    console.log("eventsByType", eventsByType, s);
+    // console.log("eventsByType", eventsByType, s);
 
     // get expression values from Mongo collection
     if (eventsByType.hasOwnProperty("expression")) {
