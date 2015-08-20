@@ -116,7 +116,23 @@ var getCorrelatorIds_forExpr = function(pivotName, pivotDatatype, pivotVersion, 
     return ids;
 };
 
-var getCorrelatorIds_forSign = function(pivotName, pivotDatatype, pivotVersion) {
+/**
+ * Get the correlator signature type based on regex on signature name.
+ */
+var getCorrelatorSigType = function(sigName) {
+    var type = "expression signature";
+
+    if (sigName.match(/_kinase_viper$/)) {
+        type = "kinase target activity";
+    } else if (sigName.match(/_tf_viper$/)) {
+        type = "tf target activity";
+    }
+
+    return type;
+};
+
+var getCorrelatorIds_forSign = function(pivotName, pivotDatatype, pivotVersion, pagingSettings) {
+    var s = "<--- getCorrelatorIds_forSign in server/publish/correlator.js";
     var selector = {
         "name_1" : pivotName,
         "datatype_1" : pivotDatatype,
@@ -136,8 +152,38 @@ var getCorrelatorIds_forSign = function(pivotName, pivotDatatype, pivotVersion) 
 
     var cursor = Correlator.find(selector, options);
 
+    // separate _id's by datatype
     var docs = cursor.fetch();
-    var ids = _.pluck(docs, "_id");
+
+    var groupedIds = {};
+    _.each(docs, function(element, index, list) {
+        var doc = element;
+        var name_2 = doc["name_2"];
+        var id = doc["_id"];
+
+        var datatype = getCorrelatorSigType(name_2);
+        if (!groupedIds.hasOwnProperty(datatype)) {
+            groupedIds[datatype] = [];
+        }
+
+        groupedIds[datatype].push(id);
+    });
+
+    // trim down id list based on pagingSettings
+    var ids = [];
+    _.each(_.keys(groupedIds), function(element, index, list) {
+        var group = element;
+
+        var skipCounts = (pagingSettings.hasOwnProperty(group)) ? pagingSettings[group] : {
+            "head" : 0,
+            "tail" : 0
+        };
+
+        var headIds = groupedIds[group].slice(skipCounts["head"], skipCounts["head"] + 5);
+        var tailIds = groupedIds[group].slice((-1 - skipCounts["tail"]) - 5, (-1 - skipCounts["tail"]));
+
+        ids = ids.concat(headIds, tailIds);
+    });
 
     return ids;
 };
@@ -194,7 +240,7 @@ Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVers
     correlatorIds = correlatorIds.concat(expr_ids_top, expr_ids_bottom);
 
     // TODO signature correlator _ids
-    var sig_ids = getCorrelatorIds_forSign(pivotName, pivotDatatype, pivotVersion);
+    var sig_ids = getCorrelatorIds_forSign(pivotName, pivotDatatype, pivotVersion, skipCount);
 
     correlatorIds = correlatorIds.concat(sig_ids);
 
@@ -205,8 +251,6 @@ Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVers
 
     // separate correlator scores by datatype
     var eventsByType = separateCorrelatorScoresByDatatype(correlatorCursor);
-
-    // console.log("eventsByType", eventsByType, s);
 
     // get expression values from Mongo collection
     if (eventsByType.hasOwnProperty("expression")) {
