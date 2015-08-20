@@ -13,8 +13,7 @@ Template.Cohort.events({
         // For example, if user has done sample sorting based on a gene expression, that gene expression data must be present.
 
         // TODO first, throw away pivot settings
-        delete Session.keys['pivotSettings'];
-        console.log('SESSION pivotSettings', Session.get('pivotSettings'));
+        // delete Session.keys['pivotSettings'];
 
         var cookieGenes = observation_deck.getCookieEvents();
         console.log('cookieGenes', cookieGenes);

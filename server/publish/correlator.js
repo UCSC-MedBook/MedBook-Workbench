@@ -133,6 +133,8 @@ var getCorrelatorSigType = function(sigName) {
 
 var getCorrelatorIds_forSign = function(pivotName, pivotDatatype, pivotVersion, pagingSettings) {
     var s = "<--- getCorrelatorIds_forSign in server/publish/correlator.js";
+    var pageSize = 5;
+
     var selector = {
         "name_1" : pivotName,
         "datatype_1" : pivotDatatype,
@@ -179,8 +181,8 @@ var getCorrelatorIds_forSign = function(pivotName, pivotDatatype, pivotVersion, 
             "tail" : 0
         };
 
-        var headIds = groupedIds[group].slice(skipCounts["head"], skipCounts["head"] + 5);
-        var tailIds = groupedIds[group].slice((-1 - skipCounts["tail"]) - 5, (-1 - skipCounts["tail"]));
+        var headIds = groupedIds[group].slice(skipCounts["head"], skipCounts["head"] + pageSize);
+        var tailIds = groupedIds[group].slice((-1 - skipCounts["tail"]) - pageSize, (-1 - skipCounts["tail"]));
 
         ids = ids.concat(headIds, tailIds);
     });
@@ -190,11 +192,17 @@ var getCorrelatorIds_forSign = function(pivotName, pivotDatatype, pivotVersion, 
 
 /**
  * correlatorResults publication
+ *
+ * parameter "geneList" is for specifying a geneList manually selected, ie. not via correlator.
  */
-Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVersion, Study_ID, pagingConfig) {
+Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVersion, Study_ID, pagingConfig, nonCorrGeneList) {
     var s = "<--- publish correlatorResults in server/publish/correlator.js";
     var pageSize = 5;
     var cursors = [];
+
+    if (nonCorrGeneList == null) {
+        nonCorrGeneList = [];
+    }
 
     // clinical events
     var clinicalEventsCursor = ClinicalEvents.find({
@@ -239,7 +247,7 @@ Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVers
 
     correlatorIds = correlatorIds.concat(expr_ids_top, expr_ids_bottom);
 
-    // TODO signature correlator _ids
+    // signature correlator _ids
     var sig_ids = getCorrelatorIds_forSign(pivotName, pivotDatatype, pivotVersion, skipCount);
 
     correlatorIds = correlatorIds.concat(sig_ids);
@@ -253,9 +261,11 @@ Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVers
     var eventsByType = separateCorrelatorScoresByDatatype(correlatorCursor);
 
     // get expression values from Mongo collection
-    if (eventsByType.hasOwnProperty("expression")) {
+    if (eventsByType.hasOwnProperty("expression") || nonCorrGeneList.length != 0) {
         var corrExpEvents = eventsByType["expression"];
         var geneList = _.pluck(corrExpEvents, "name");
+        console.log("geneList", geneList.length, s);
+        geneList = geneList.concat(nonCorrGeneList);
         console.log("geneList", geneList.length, s);
         var expression2Cursor = Expression2.find({
             'gene' : {
@@ -264,6 +274,8 @@ Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVers
             'Study_ID' : Study_ID
         });
         cursors.push(expression2Cursor);
+
+        console.log("expression2Cursor", expression2Cursor.fetch().length, s);
 
         var mutationsCursor = Mutations.find({
             "MA_FImpact" : {
