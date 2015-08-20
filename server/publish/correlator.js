@@ -266,7 +266,7 @@ Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVers
         var geneList = _.pluck(corrExpEvents, "name");
         console.log("geneList", geneList.length, s);
         geneList = geneList.concat(nonCorrGeneList);
-        console.log("geneList", geneList.length, s);
+        console.log("geneList", geneList.length, "after adding nonCorrGeneList", s);
         var expression2Cursor = Expression2.find({
             'gene' : {
                 "$in" : geneList
