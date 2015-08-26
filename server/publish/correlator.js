@@ -251,6 +251,7 @@ Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVers
     var sig_ids = getCorrelatorIds_forSign(pivotName, pivotDatatype, pivotVersion, skipCount);
 
     correlatorIds = correlatorIds.concat(sig_ids);
+    console.log("correlatorIds", correlatorIds.length, s);
 
     // get correlator scores
     var correlatorCursor = getCorrelatorCursorByMongoId(correlatorIds);

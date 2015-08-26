@@ -40,10 +40,13 @@ text.axis {
 .italic {
 	font-style:italic;
 }
-.pivotEvent {
+.underline {
+	text-decoration:underline;
+}
+/*.pivotEvent {
 	font-weight:bold;
 	font-style:italic;
-}
+}*/
 /*typeahead scrollable results*/
 .tt-dropdown-menu {
 	height:124px;

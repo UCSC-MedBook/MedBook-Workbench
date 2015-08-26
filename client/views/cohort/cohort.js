@@ -102,12 +102,17 @@ Template.Cohort.rendered = function() {
         var signatureScoresDoclist = SignatureScores.find().fetch();
         var sigIdsDocList = Signature.find().fetch();
 
+        // okay to access Session variable here w.r.t churning?
+        var sessionGeneList = Session.get("geneList");
+
         // build observation deck
         if ((clinDocList.length > 0) || (expDocList.length > 0)) {
             od_config = observation_deck.buildObservationDeck(divElem, {
                 // gene query service -> http://localhost:3000/genes?q=MAPK
                 "geneQueryUrl" : "/genes?q=",
                 "sigQueryUrl" : "/signatures?q=",
+                // geneList selected from geneSet UI control
+                "geneSetControl" : sessionGeneList,
                 'pivotScores' : {
                     'object' : corrDocList
                 },
