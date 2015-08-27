@@ -279,11 +279,7 @@ Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVers
         console.log("expression2Cursor", expression2Cursor.fetch().length, s);
 
         var mutationsCursor = Mutations.find({
-            "MA_FImpact" : {
-                "$in" : ["medium", "high"]
-            },
-            "Study_ID" : Study_ID,
-            "Hugo_Symbol" : {
+            "gene_label" : {
                 "$in" : geneList
             }
         });
