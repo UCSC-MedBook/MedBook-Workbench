@@ -29,6 +29,7 @@ Router.route('/wb/results/:_id',{name:'Results'});
 Router.route('/wb/sampleGroups/:study/:name', {name:'SampleGroupsIndex'});
 Router.route('/wb/clinical', {name:'ClinicalEventsIndex'});
 Router.route('/wb/shell/limma/:contrast', {template:'ShellLimma'}, {controller:'Shell'});
+Router.route('/wb/shell/gsea/:signature', {template:'ShellGsea'}, {controller:'Shell'});
 Router.route('/wb/shell/boxplot/:contrast', {template:'ShellBoxplot'}, {controller:'Shell'});
 Router.route('/wb/shell', {name:'Shell'});
 Router.route('/wb/geneSets/', {name: 'GeneSetsIndex'});
