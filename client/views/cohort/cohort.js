@@ -42,6 +42,23 @@ Template.Cohort.events({
     },
     'click .select_geneset' : function() {
         console.log('event: click .select_geneset');
+    },
+    // temporary genelist entry control
+    "change .genelist" : function(event, template) {
+        var genelist = $(template.find("input[class='genelist']"));
+        var valObj = genelist.select2("val");
+        var valueString = valObj[0]["value"];
+        var stringList = valueString.toUpperCase().trim().split(/[,\s]+/);
+        stringList = _.uniq(stringList);
+        var oldSessionGeneList = Session.get('geneList');
+        if (_.isUndefined(oldSessionGeneList)) {
+            oldSessionGeneList = [];
+        }
+        // console.log("oldSessionGeneList", oldSessionGeneList);
+        var newSessionGeneList = _.uniq(oldSessionGeneList.concat(stringList));
+        // console.log("newSessionGeneList", newSessionGeneList);
+
+        Session.set("geneList", newSessionGeneList);
     }
 });
 
