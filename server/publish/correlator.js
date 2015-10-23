@@ -185,7 +185,7 @@ var getCorrelatorIds_forSign = function(pivotName, pivotDatatype, pivotVersion, 
         var start = skipCounts["head"];
         var end = start + pageSize;
         var headIds = groupedIds[group].slice(start, end);
-        idsForThisGroup = ids.concat(headIds);
+        idsForThisGroup = (headIds);
 
         // take anti-correlated events from the bottom of the list
         // clinical events are scored via ANOVA, so there is no implied direction
@@ -196,13 +196,13 @@ var getCorrelatorIds_forSign = function(pivotName, pivotDatatype, pivotVersion, 
             var tailIds = groupedIds[group].slice(start, end);
             tailIds.reverse();
 
-            idsForThisGroup = ids.concat(tailIds);
+            idsForThisGroup = idsForThisGroup.concat(tailIds);
         } else {
             // don't return an empty list of headIds
             if (idsForThisGroup.length < pageSize) {
                 var start = groupedIds[group].length - pageSize;
                 var headIds = groupedIds[group].slice(start);
-                idsForThisGroup = ids.concat(headIds);
+                idsForThisGroup = (headIds);
             }
         }
 
@@ -265,9 +265,12 @@ Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVers
 
     // expression correlator _ids
     var expr_ids_top = getCorrelatorIds_forExpr(pivotName, pivotDatatype, pivotVersion, "desc", pageSize, skipCount["expression data"]["head"]);
-    var expr_ids_bottom = getCorrelatorIds_forExpr(pivotName, pivotDatatype, pivotVersion, "asc", pageSize, skipCount["expression data"]["tail"]);
+    correlatorIds = correlatorIds.concat(expr_ids_top);
 
-    correlatorIds = correlatorIds.concat(expr_ids_top, expr_ids_bottom);
+    if (pivotDatatype !== "clinical") {
+        var expr_ids_bottom = getCorrelatorIds_forExpr(pivotName, pivotDatatype, pivotVersion, "asc", pageSize, skipCount["expression data"]["tail"]);
+        correlatorIds = correlatorIds.concat(expr_ids_bottom);
+    }
 
     // signature correlator _ids
     var sig_ids = getCorrelatorIds_forSign(pivotName, pivotDatatype, pivotVersion, skipCount);
