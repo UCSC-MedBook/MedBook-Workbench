@@ -175,16 +175,38 @@ var getCorrelatorIds_forSign = function(pivotName, pivotDatatype, pivotVersion, 
     var ids = [];
     _.each(_.keys(groupedIds), function(element, index, list) {
         var group = element;
+        var idsForThisGroup = [];
 
         var skipCounts = (pagingSettings.hasOwnProperty(group)) ? pagingSettings[group] : {
             "head" : 0,
             "tail" : 0
         };
 
-        var headIds = groupedIds[group].slice(skipCounts["head"], skipCounts["head"] + pageSize);
-        var tailIds = groupedIds[group].slice((-1 - skipCounts["tail"]) - pageSize, (-1 - skipCounts["tail"]));
+        var start = skipCounts["head"];
+        var end = start + pageSize;
+        var headIds = groupedIds[group].slice(start, end);
+        idsForThisGroup = ids.concat(headIds);
 
-        ids = ids.concat(headIds, tailIds);
+        // take anti-correlated events from the bottom of the list
+        // clinical events are scored via ANOVA, so there is no implied direction
+        if (pivotDatatype !== "clinical") {
+            groupedIds[group].reverse();
+            start = skipCounts["tail"];
+            end = start + pageSize;
+            var tailIds = groupedIds[group].slice(start, end);
+            tailIds.reverse();
+
+            idsForThisGroup = ids.concat(tailIds);
+        } else {
+            // don't return an empty list of headIds
+            if (idsForThisGroup.length < pageSize) {
+                var start = groupedIds[group].length - pageSize;
+                var headIds = groupedIds[group].slice(start);
+                idsForThisGroup = ids.concat(headIds);
+            }
+        }
+
+        ids = ids.concat(idsForThisGroup);
     });
 
     return ids;
