@@ -1,13 +1,18 @@
 
-<template name="ShellGsea"> 
-<div id="job">	
+
+<template name="ShellLimma">
+<div id="job">
 	<div class="tool">
 		<h3>Tool Parameters</h3>
 	{{#each selectedContrast}}
-	name: {{name}} 	
+	name: {{name}}
 	{{/each}}
-		<h4>Select top <input class="input-sm" type="text" placeholder="200"> Genes</h4>
-		<br><button id="gsea">Run GSEA </button>
+		<h4>
+			Select top <input class="input-sm" type="text" placeholder="200"> Genes
+		</h4>
+		<br>
+		<button id="limma">Run limma </button>
+		<button id="addRunLimmaJob">Add limma job</button>
 	</div>
    <h2>Results</h2>
 	{{#each blobs}}
@@ -16,6 +21,3 @@
 </div>
 
 </template>
-
-
-

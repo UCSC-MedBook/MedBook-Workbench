@@ -1,4 +1,3 @@
-	
 /*****************************************************************************/
 /* Shell: Event Handlers and Helpersss .js*/
 /*****************************************************************************/
@@ -14,8 +13,8 @@ Template.ShellLimma.events({
 		});
 	},
 	'click #limma': function(event,template){
-		var contrastID = Session.get('selectedContrast')
-		console.log('run limma with contrast', contrastID)
+		var contrastID = Session.get('selectedContrast');
+		console.log('run limma with contrast', contrastID);
 		Meteor.call('limma_adapter', [contrastID], function(err,response) {
 			if(err) {
 				Session.set('serverDataResponse', "pathmark Error:" + err.reason);
@@ -24,10 +23,10 @@ Template.ShellLimma.events({
 			Session.set('limma serverDataResponse', response);
 			console.log('limma response: '+response);
 		});
-	},	
+	},
 	'click #pa': function(event,template){
-		var contrastID = '3NdogPaMZWk42qTq2'
-		
+		var contrastID = '3NdogPaMZWk42qTq2';
+
 		Meteor.call('pathmark_adapter', [contrastID], function(err,response) {
 			if(err) {
 				Session.set('serverDataResponse', "pathmark Error:" + err.reason);
@@ -36,7 +35,20 @@ Template.ShellLimma.events({
 			Session.set('PA serverDataResponse', response);
 			console.log('path OK: '+response);
 		});
-	}	
+	},
+	'click #addRunLimmaJob': function (event, template) {
+		var top_gene_count = template.$("input[type=text]").val();
+
+		Jobs.insert({
+			// TODO: don't insert on the client
+			user_id: Meteor.userId(),
+			name: "RunLimma",
+			args: {
+				contrast_id: Session.get('selectedContrast'),
+				top_gene_count: top_gene_count,
+			},
+		});
+	},
 });
 
 Template.ShellLimma.helpers({
@@ -50,7 +62,7 @@ Template.ShellLimma.helpers({
 	},
 	selectedContrast: function(){
 			var contrastID = Session.get('selectedContrast');
-			return Contrast.find({_id:contrastID})
+			return Contrast.find({_id:contrastID});
 	}
 });
 
@@ -65,5 +77,3 @@ Template.ShellLimma.rendered = function () {
 
 Template.ShellLimma.destroyed = function () {
 };
-
-
