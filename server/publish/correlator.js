@@ -126,6 +126,8 @@ var getCorrelatorSigType = function(sigName) {
         type = "kinase target activity";
     } else if (sigName.match(/_tf_viper$/)) {
         type = "tf target activity";
+    } else if (sigName.match(/_mvl_drug_sensitivity$/)) {
+        type = "mvl drug sensitivity";
     }
 
     return type;
@@ -199,7 +201,7 @@ var getCorrelatorIds_forSign = function(pivotName, pivotDatatype, pivotVersion, 
             idsForThisGroup = idsForThisGroup.concat(tailIds);
         } else {
             // don't return an empty list of headIds
-            if (idsForThisGroup.length < pageSize) {
+            if (idsForThisGroup.length > pageSize) {
                 var start = groupedIds[group].length - pageSize;
                 var headIds = groupedIds[group].slice(start);
                 idsForThisGroup = (headIds);
