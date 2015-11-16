@@ -201,8 +201,10 @@ var getCorrelatorIds_forSign = function(pivotName, pivotDatatype, pivotVersion, 
             idsForThisGroup = idsForThisGroup.concat(tailIds);
         } else {
             // don't return an empty list of headIds
-            if (idsForThisGroup.length > pageSize) {
-                var start = groupedIds[group].length - pageSize;
+            if (idsForThisGroup.length < pageSize) {
+                var start = groupedIds[group].length - pageSize - 1;
+                // do not allow start to be neg
+                start = (start < 0) ? 0 : start;
                 var headIds = groupedIds[group].slice(start);
                 idsForThisGroup = (headIds);
             }
