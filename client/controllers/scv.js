@@ -1,5 +1,5 @@
 ScvController = RouteController.extend({
-  waitOn: function () {	
+  waitOn: function () {
 	  Meteor.subscribe('sample_groups_index');
   },
 
@@ -8,32 +8,32 @@ ScvController = RouteController.extend({
 	  var g1 = this.params.g1;
 	  var g2 = this.params.g2;
 	  var query = this.params.query;
-	  console.log('ROUTER query', query)
-	  var studyID = Session.get('studyID');	
+	  console.log('ROUTER query', query);
+	  var studyID = Session.get('studyID');
 	  if (this.params.length > 0) {
 		  console.log('scv: group1: '+g1+' group2: '+g2);
 	  }
 	  if (query.contrast) {
-		  id = query.contrast
-		  Session.set('selectedContrast', id)
+		  id = query.contrast;
+		  Session.set('selectedContrast', id);
 	  }
 	  if (id) {
 		  return {
 			  contrast: function() {
-				  return Contrast.find({_id:id}) 
+				  return Contrast.find({_id:id}) ;
 			  },
 			  results: function() {
-				  return Results.find({contrast:id}) 
+				  return Jobs.find({"args.contrast_id":id}) ;
 			  }
-		  }
+		  };
 	  }
 	  else
 	  return {
 	  	contrast: function() {
-	  				  return Contrast.find({}) 
+	  				  return Contrast.find({}) ;
 	  	},
 		results: {}
-		}	  
+  }	  ;
   },
   edit: function() {
 	  console.log('editing mode');
