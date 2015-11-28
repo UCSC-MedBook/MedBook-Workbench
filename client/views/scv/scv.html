@@ -1,26 +1,25 @@
-	
 <template name="Scv">
 {{#if selectedStudy}}
 <div id="scv">
 	 <h3>{{name}} </h3>
 		<table class="table table-condensed">
  	    <tbody>
-		        <tr>
-		            <td>
-						
+	      <tr>
+          <td>
+
 					</td>
 					<td>
 						<div class="hidden">
-					    	<div id="group1" name="group1"> 
-					    		Group1 {{> StudyGroupsIndex}} 
-					    	</div>
+					    	<div id="group1" name="group1">
+					   		Group1 {{> StudyGroupsIndex}}
+					   	</div>
 					    	<div id="group2" name="group2" value="{{_id}}">
-					  	  		Group2 {{> StudyGroupsIndex}} 
-					    	</div>
+					  	  		Group2 {{> StudyGroupsIndex}}
+					   	</div>
 						</div>
-						
-					</td>
-		        </tr>
+
+					</td >
+				</tr>
 		    </tbody>
 		</table>
 		<div class="btn-group">
@@ -40,26 +39,25 @@
 				<li><a tabindex="-1" href="#">Generate Subtypes from Contrast</a></li>
 				<li><a tabindex="-1" href="/wb/shell/gsea">Pathway Enrichment of a Signature</a></li>
 		    </ul>
-		</div>  
-	
+		</div>
+
 		{{#with selectedContrast}}
 				<h5>Group 1: <a href={{pathFor 'SampleGroupsIndex' study=this.studyID name=this.group1}}>{{this.group1}}:</a>
 					{{> ContrastDetail _id=contrast_id list="list1"}}</h5>
 				<h5>Group 2: <a href={{pathFor 'SampleGroupsIndex' study=this.studyID name=this.group2}}>{{this.group2}}:</a>
 					{{> ContrastDetail _id=contrast_id list="list2"}}</h5>
-			
-			{{> Results contrast=selectedContrast}}
-		{{/with}}	
-		
-		<ul>	
-  		{{#each sampleGroups}}
+
+			{{> Jobs contrast=selectedContrast}}
+		{{/with}}
+
+		<ul>
+  		{{#each smeGroups}}
 		<li>{{sample}} </li>
   		{{else}}
-  			
+
   		{{/each}}
 	</ul>
 
 </div>
 {{/if}}
 </template>
-

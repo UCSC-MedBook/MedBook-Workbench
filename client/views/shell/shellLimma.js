@@ -39,16 +39,12 @@ Template.ShellLimma.events({
 	'click #addRunLimmaJob': function (event, template) {
 		var top_gene_count = template.$("input[type=text]").val();
 
-		Jobs.insert({
-			// TODO: don't insert on the client
-			user_id: Meteor.userId(),
-			name: "RunLimma",
-			args: {
-				contrast_id: Session.get('selectedContrast'),
-				top_gene_count: top_gene_count,
-			},
-		});
-	},
+		var args = {
+			contrast_id: Session.get('selectedContrast'),
+			top_gene_count: top_gene_count
+		};
+		Meteor.call('insert_limma_job', args);
+	}
 });
 
 Template.ShellLimma.helpers({

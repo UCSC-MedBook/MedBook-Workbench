@@ -9,7 +9,19 @@ Meteor.startup(function() {
     Meteor.subscribe('contrast');
     Meteor.subscribe('images');
     Meteor.subscribe('blobs');
-    Meteor.subscribe('results');
+    var job_ret = Meteor.subscribe('jobs', function(res) {
+        console.log("jobs sub 1", res);
+      },
+      function(res){
+        if (res) {
+          console.log("jobs sub 2", res);
+        }
+        else {
+          console.log("jobs sub 2");
+        }
+      }
+    );
+    console.log('jobs subscribe returns ', job_ret);
     // Meteor.subscribe('expression2');
     Meteor.subscribe('gene_sets_index');
     Meteor.subscribe('genes');
