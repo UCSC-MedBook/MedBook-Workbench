@@ -116,7 +116,19 @@ Template.Cohort.rendered = function() {
         minimumInputLength : 2,
         multiple : true,
         changeEventCallback : function(value) {
-            console.log("value", value);
+            var sessionVar = "cohort_tab_genelist_widget";
+            var sessionGeneList = Session.get(sessionVar);
+            sessionGeneList = (_.isUndefined(sessionGeneList)) ? [] : sessionGeneList;
+
+            var changes = {
+                added : [],
+                deleted : []
+            };
+
+            changes.added = _.difference(value, sessionGeneList);
+            changes.deleted = _.difference(sessionGeneList, value);
+
+            Session.set(sessionVar, value);
         }
     };
     geneListWidget.setupWidget("#selectTagForSelect2", options);
