@@ -88,6 +88,7 @@ mrt:jquery-ui@1.9.2
 mrt:jquery-ui-bootstrap@1.8.16
 msavin:jetsetter@1.0.18
 msavin:mongol@0.7.2
+natestrauser:select2@4.0.0_1
 npm-bcrypt@0.7.8_2
 npm-container@1.0.0
 oauth@1.1.4
