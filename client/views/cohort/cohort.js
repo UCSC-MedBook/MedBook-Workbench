@@ -106,6 +106,21 @@ Template.Cohort.created = function() {
 };
 
 Template.Cohort.rendered = function() {
+
+    var options = {
+        placeholder : "list of genes",
+        url : "/genes",
+        // http://localhost:3000/genes?q=MDM
+        // response looks like this: {"items":[{"id":"MDM1","text":"MDM1"},{"id":"MDM2","text":"MDM2"},{"id":"MDM4","text":"MDM4"}]}
+        // url : "https://api.github.com/search/repositories",
+        minimumInputLength : 2,
+        multiple : true,
+        changeEventCallback : function(value) {
+            console.log("value", value);
+        }
+    };
+    geneListWidget.setupWidget("#selectTagForSelect2", options);
+
     var divElem = document.getElementById("Cohort_OD_Div");
 
     // Deps.autorun is triggered when reactive data source has changed
