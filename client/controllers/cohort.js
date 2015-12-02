@@ -2,10 +2,14 @@ CohortController = RouteController.extend({
     waitOn : function() {
         var s = '<--- CohortController.waitOn in client/controllers/cohort.js';
         var studyID = Session.get("studyID");
-        var geneList = Session.get("geneList");
+        var geneList = Session.get("geneList") || [];
         // var sigNames = Session.get("signatureNames");
         var pivotSettings = Session.get("pivotSettings");
         var pagingConfig = Session.get("subscriptionPaging") || {};
+
+        var widgetGenelist = Session.get("cohort_tab_genelist_widget") || [];
+
+        var geneList = _.uniq(geneList.concat(widgetGenelist));
 
         var pName = null;
         var pDatatype = null;

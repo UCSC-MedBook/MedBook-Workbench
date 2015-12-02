@@ -133,6 +133,8 @@ Template.Cohort.rendered = function() {
     };
     geneListWidget.setupWidget("#selectTagForSelect2", options);
 
+    // $(".select2-search__field");
+
     var divElem = document.getElementById("Cohort_OD_Div");
 
     // Deps.autorun is triggered when reactive data source has changed
@@ -147,7 +149,9 @@ Template.Cohort.rendered = function() {
         var sigIdsDocList = Signature.find().fetch();
 
         // okay to access Session variable here w.r.t churning?
-        var sessionGeneList = Session.get("geneList");
+        var sessionGeneList = Session.get("geneList") || [];
+        var cohort_tab_genelist_widget = Session.get("cohort_tab_genelist_widget") || [];
+        sessionGeneList = sessionGeneList.concat(cohort_tab_genelist_widget);
 
         // build observation deck
         if ((clinDocList.length > 0) || (expDocList.length > 0)) {
