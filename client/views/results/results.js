@@ -2,7 +2,7 @@ showPDF = function() {
 		$("#frameset_div").show()
 		$("#HOTdiv").hide()
 		$('.svg_plot').hide()
-}	;	
+}	;
 showSVG = function() {
 	$('.svg_plot').show()
 	$("#HOTdiv").hide()
@@ -21,7 +21,7 @@ Template.Results.events({
 		}
 	} ,
 	'click #post-tel': function( e, tmpl){
-		/*var r = e.target.dataset["id"]	
+		/*var r = e.target.dataset["id"]
 		console.log('post result:', r, this);
 		var today = new Date();
 		HTTP.post('/medbookPost',{data:{post:{title:this.name, body:'posted from workbench on '+today, medbookfiles:this.blobs}}},
@@ -50,7 +50,7 @@ Template.Results.events({
 				.done( function(data) {
 					var mat = []
 					var sig = {}
-	
+
 					var colheaders = true;
 					var cols = ""
 					if (bname=='sig.tab') {
@@ -65,18 +65,18 @@ Template.Results.events({
 						})
 						var ret = Signature.insert({_id:contrast_id}, {$set:{'signature':sig}} )
 						console.log('insert sig with contrast', contrast_id, 'returns ', ret)
-						colheaders = ['Gene','coeff.Intercept','coeff.contrastB','stdev','stdev.contrastB','sigma','df.residual','Amean','s2.post','t.Intercept','t.contrastB',	'df.total',	'p.val.Intercept','p.value.contrastB','lods.Intercept',	'lods.contrastB','F','F.p.value']	
+						colheaders = ['Gene','coeff.Intercept','coeff.contrastB','stdev','stdev.contrastB','sigma','df.residual','Amean','s2.post','t.Intercept','t.contrastB',	'df.total',	'p.val.Intercept','p.value.contrastB','lods.Intercept',	'lods.contrastB','F','F.p.value']
 						cols  = [{},{type: 'numeric', format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00000'},{type: 'numeric',format:'0.00'}]
 					}
-				
+
 				}).fail(function(err){
 					console.log('error fetching blob', err)
 				})
 			}
 		})
-		
+
 	} ,
-	
+
 	'click #del-result': function( e, tmpl){
 		console.log('del result:', this._id);
 		Results.remove({_id: this._id})
@@ -130,24 +130,29 @@ Template.Results.helpers({
 	results: function() {
 		var id = Session.get('selectedContrast')
 		console.log('results contrast', id)
-		if (id)
-				r = Results.find({contrast:id})
-			else {
-				var result_id = Session.get('selectedResult')
-				if (result_id) {
-					r = Results.find({'_id':result_id})
-				} else {
-					r = Results.find({})
-				}			
+		if (id) {
+			r = Results.find({contrast:id})
+			console.log('found', r.count(), 'using contrast');
+		}
+		else {
+			var result_id = Session.get('selectedResult')
+			if (result_id) {
+				r = Results.find({'_id':result_id})
+				console.log('found', r.count(), 'using result_id', result_id);
+			} else {
+				r = Results.find({})
+				console.log('found', r.count(), 'using all');
 			}
-		console.log('results of Results.find', r)
-		files = r.map(function(x) {return x.blobs} )
-		if (files) {
-			console.log('files',files)
-			console.log('files[0]' , files[0])
-			if (files[0]) {
-				console.log('files[0][0]', files[0][0])
-				Session.set('currentBlob', files[0][0])			
+		}
+		console.log('# rows Results.find', r.count());
+		if (r.count() > 0) {
+			files = r.map(function(x) {return x.blobs} )
+			if (files) {
+				console.log('files',files)
+				if (files[0]) {
+					console.log('files[0][0]', files[0][0])
+					Session.set('currentBlob', files[0][0])
+				}
 			}
 		}
 		return r;
@@ -192,7 +197,7 @@ Tracker.autorun(function(c){
 	  setTimeout(function() {
 		   HOTload(cb);
   	  }, 500);
-  }	
+  }
 });
 
 
@@ -224,7 +229,7 @@ function HOTload(file_id) {
 				cols  = [{},{type: 'numeric', format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00000'},{type: 'numeric',format:'0.00000'},{type: 'numeric',format:'0.00'}]
 			}
 			if (bname=='sig.tab') {
-				colheaders = ['Gene','coeff.Intercept','coeff.contrastB','stdev','stdev.contrastB','sigma','df.residual','Amean','s2.post','t.Intercept','t.contrastB',	'df.total',	'p.val.Intercept','p.value.contrastB','lods.Intercept',	'lods.contrastB','F','F.p.value']	
+				colheaders = ['Gene','coeff.Intercept','coeff.contrastB','stdev','stdev.contrastB','sigma','df.residual','Amean','s2.post','t.Intercept','t.contrastB',	'df.total',	'p.val.Intercept','p.value.contrastB','lods.Intercept',	'lods.contrastB','F','F.p.value']
 				cols  = [{},{type: 'numeric', format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00000'},{type: 'numeric',format:'0.00'}]
 			}
 			var settings = {search:true, columns: cols, columnSorting: true, colHeaders: colheaders , height:300, data: mat};
@@ -235,7 +240,7 @@ function HOTload(file_id) {
 			alert('error',err);
 		})
     }
-  
+
 }
 window.HOTload = HOTload;
 /*****************************************************************************/
@@ -249,5 +254,3 @@ Template.Results.rendered = function () {
 
 Template.Results.destroyed = function () {
 };
-
-

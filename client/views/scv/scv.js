@@ -1,4 +1,3 @@
- 
 /*****************************************************************************/
 /* Scv: Event Handlers and Helpersss .js*/
 /*****************************************************************************/
@@ -11,8 +10,8 @@ Template.Scv.events({
 		var sampleList1 = _.pluck(SampleGroups.find({group:g1}).fetch(), 'sample');
 		var sampleList2 = _.pluck(SampleGroups.find({group:g2}).fetch(), 'sample');
 		//var sampleList2 = SampleGroups.find({group:g2},{'sample':1}).fetch();
-		if (Meteor.user()) {		
-			var collabs = Meteor.user().profile.collaborations;
+		if (Meteor.user()) {
+	var collabs = Meteor.user().profile.collaborations;
 			// FIX ME - default to first collaboration
 			var collab = collabs[0]
 		}
@@ -55,10 +54,10 @@ Template.Scv.events({
 Template.Scv.helpers({
   /*
    * Example:
-   *  items: function () 
-   *    return Items.find();
-   *  
+   *  items: function ()
+  *    return Items.find();
    */
+
  	sampleGroups: function(g1,g2) {
 	  console.log('find sampleGroups:',g1,' ',g2)
   	return SampleGroups.find({group: g1});
@@ -71,7 +70,7 @@ Template.Scv.helpers({
 	},
 	selectedContrast: function() {
 		var id = Session.get('selectedContrast');
-		console.log('contrast id ',id);
+		console.log('scv selectedContrast helper fetch contrast id ',id);
 		return Contrast.findOne({_id: id });
 	},
 	name: function() {
@@ -98,5 +97,3 @@ Template.Scv.rendered = function () {
 
 Template.Scv.destroyed = function () {
 };
-
-

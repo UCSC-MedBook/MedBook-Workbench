@@ -8,10 +8,10 @@
 	name: {{name}}
 	{{/each}}
 		<h4>
-			Select top <input class="input-sm" type="text" placeholder="200"> Genes
+			Select top <input class="input-sm" id="topGeneCount" type="text" placeholder="5000"> Genes
+			Multiple Test Correction<input class="input-sm" name="purple" id="correction" type="text" placeholder="BH">
 		</h4>
 		<br>
-		<button id="limma">Run limma </button>
 		<button id="addRunLimmaJob">Add limma job</button>
 	</div>
    <h2>Results</h2>

@@ -17,7 +17,7 @@ Router.onBeforeAction(function() {
  	Session.set('studyID', this.params.query.study);
 	console.log('set session studyID', this.params.query.study);
 	this.next();
-	console.log('BEFORE route: ',this.path);
+	console.log('onBeforeAction this.route.path(): ',this.route.path());
 
 });
 

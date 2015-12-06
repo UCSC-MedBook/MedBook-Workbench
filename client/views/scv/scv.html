@@ -24,10 +24,6 @@
 		</table>
 		<div class="btn-group">
 		    <a class="btn dropdown-toggle" onclick="$('#BoxPlot').hide()"   data-toggle="dropdown" href="#">Analyze Contrast<span class="caret"></span></a>
-			<div hidden id="BoxPlot">
-				Plot Gene Expression:
-				{{> Boxplot}}
-			</div>
 		    <ul class="dropdown-menu" style="z-index:100;" role="menu" aria-labelledby="dLabel">
 				<li><a onclick="$('#BoxPlot').show()" tabindex="1" href="#">Plot gene expression</a></li>
 				<li><a tabindex="2" href="/wb/shell/limma/{{selectedContrastId}}">Differential Gene Expression (RNAseq)</a></li>
@@ -47,7 +43,9 @@
 				<h5>Group 2: <a href={{pathFor 'SampleGroupsIndex' study=this.studyID name=this.group2}}>{{this.group2}}:</a>
 					{{> ContrastDetail _id=contrast_id list="list2"}}</h5>
 
+			{{> Results contrast=selectedContrast}}
 			{{> Jobs contrast=selectedContrast}}
+
 		{{/with}}
 
 		<ul>
