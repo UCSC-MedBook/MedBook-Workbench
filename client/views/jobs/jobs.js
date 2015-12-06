@@ -127,9 +127,9 @@ Template.Jobs.helpers({
 		console.log('mime fetch');
 		return Jobs.findOne({_id: id});
 	},
-	results: function() {
+	jobs: function() {
 		var id = Session.get('selectedContrast');
-		console.log('results contrast', id);
+		console.log('jobs contrast', id);
 		if (id)
 				r = Jobs.find({contrast_id:id});
 			else {
