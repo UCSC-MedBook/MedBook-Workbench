@@ -63,6 +63,9 @@ Template.ShellLimma.helpers({
 	selectedContrast: function(){
 			var contrastID = Session.get('selectedContrast');
 			return Contrast.find({_id:contrastID});
+	},
+	formatDate: function(date) {
+	  return moment(date).format('MM-DD-YYYY');
 	}
 });
 

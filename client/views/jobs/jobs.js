@@ -8,6 +8,11 @@ showSVG = function() {
 	$("#HOTdiv").hide();
 	$("#frameset_div").hide();
 };
+showText = function() {
+		$("#frameset_div").show();
+		$("#HOTdiv").hide();
+		$('.svg_plot').hide();
+}	;
 var hot;
 /*****************************************************************************/
 /* Jobs: Event Handlers and Helpersss .js*/
@@ -139,7 +144,6 @@ Template.Jobs.helpers({
 					r = Jobs.find({});
 				}
 			}
-		console.log('results of Jobs.find', r);
 		files = r.map(function(x) {return x.blobs;} );
 		if (files) {
 			if (files[0]) {
@@ -152,7 +156,10 @@ Template.Jobs.helpers({
 		var id = this.toString().trim();
 		if (id) {
 			var b = Blobs.findOne({_id:id});
-			var packet = {url: b.url(), name: b.name(), size: b.size(), type:b.type(), id:b._id};
+			var packet = {};
+			if (b) {
+				packet = {url: b.url(), name: b.name(), size: b.size(), type:b.type(), id:b._id};
+			}
 			//console.log('get url ', packet)
 			return packet;
 		}
@@ -166,7 +173,9 @@ Template.Jobs.helpers({
 		var id = this.toString().trim();
 		if (id) {
 			var b = Blobs.findOne({_id:id});
-			return b.type() == "application/pdf";
+			if (b) {
+				return b.type() == "application/pdf";
+			}
 		}
 	return false;
 	},
@@ -174,9 +183,24 @@ Template.Jobs.helpers({
 			var id = this.toString().trim();
 			if (id) {
 				var b = Blobs.findOne({_id:id});
-				return b.type() == "image/svg+xml";
+				if (b) {
+					return b.type() == "image/svg+xml";
+				}
 			}
 	return false;
+	},
+	isText: function() {
+		var id = this.toString().trim();
+		if (id) {
+			var b = Blobs.findOne({_id:id});
+			if (b) {
+				return b.type() == "text/plain";
+			}
+		}
+	return false;
+	},
+	formatDate: function(dt) {
+		return moment(dt).format('MM-DD-YY HH:MM');
 	}
 });
 
@@ -210,7 +234,7 @@ function HOTload(file_id) {
 				console.log( "Sample of data:", bname, mat[0], mat[1] );
 				var colheaders = true;
 				var cols = "";
-				if (bname=='genes.tab') {
+				if (bname=='Topgene.tab' || bname=='topgene.tab') {
 					colheaders = ['Gene', 'Log Fold Change', 'Avg Expression','T stat','Pval', 'FDR','log odds'];
 					cols  = [{},{type: 'numeric', format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00000'},{type: 'numeric',format:'0.00000'},{type: 'numeric',format:'0.00'}];
 				}

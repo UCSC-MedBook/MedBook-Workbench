@@ -42,7 +42,7 @@
 					{{> ContrastDetail _id=contrast_id list="list1"}}</h5>
 				<h5>Group 2: <a href={{pathFor 'SampleGroupsIndex' study=this.studyID name=this.group2}}>{{this.group2}}:</a>
 					{{> ContrastDetail _id=contrast_id list="list2"}}</h5>
-
+					{{> ShellLimma }}
 			{{> Jobs contrast=selectedContrast}}
 
 		{{/with}}

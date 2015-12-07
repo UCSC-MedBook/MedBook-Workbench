@@ -14,10 +14,6 @@
 		<br>
 		<button id="addRunLimmaJob">Add limma job</button>
 	</div>
-   <h2>Results</h2>
-	{{#each blobs}}
-		<p><a target="_blank" href="{{this.url store='blobs' download=false}}">{{this.name}} ({{this.size}} bytes)</a> {{> FS.DeleteButton class="btn btn-danger btn-xs"}}</p>
-	{{/each}}
 </div>
 
 </template>

@@ -9,7 +9,7 @@
 		 	{{#each jobs}}
 				<tr class="selectableResult" data-id="{{_id}}" >
 				<div >
-					{{name}}
+					{{name}} {{formatDate date_created}} {{status}} 
 					{{#if isDiffContrast}}
 						<button id="post-contrast" class="btn btn-mini btn-primary">Save Signature</button>
 					{{/if}}
@@ -23,7 +23,12 @@
 								<a target="svg_iframe"  onclick="showSVG()" href="{{geturl.url}}" >{{geturl.name}}</a>
 
 							{{else}}
-								<a class="selectableHot" data-id={{geturl.id}} href="#">{{geturl.name}} {{geturl.type}}</a>
+								{{#if isText}}
+
+								<a target="iframe_target"  onclick="showText()" href="{{geturl.url}}" >{{geturl.name}}</a>
+								{{else}}
+									<a class="selectableHot" data-id={{geturl.id}} href="#">{{geturl.name}} {{geturl.type}}</a>
+								{{/if}}
 							{{/if}}
 						{{/if}}
 					{{/each}}

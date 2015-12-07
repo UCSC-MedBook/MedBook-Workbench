@@ -84,6 +84,7 @@ Template.Scv.helpers({
 		return Session.get('selectedContrast');
 	}
 
+
 });
 
 /*****************************************************************************/
