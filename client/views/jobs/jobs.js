@@ -79,7 +79,7 @@ Template.Jobs.events({
 
 	'click #del-result': function( e, tmpl){
 		console.log('del result:', this._id);
-		Signatures.remove({_id: this._id});
+		Jobs.remove({_id: this._id});
 		//var today = new Date();
 		/*HTTP.post('/medbookPost',{data:{post:{title:this.name, body:'posted from workbench on '+today, medbookfiles:this.blobs}}},
 			function (err, response) {
@@ -113,7 +113,6 @@ Template.Jobs.events({
 			r = '';
 		}
 		Session.set('selectedResult',r);
-		console.log('hover',r);
 	}
 //	'mouseleave .selectableResult': function(e, tmpl) {
 //		Session.set('selectedResult',"");
@@ -131,7 +130,7 @@ Template.Jobs.helpers({
 		var id = Session.get('selectedContrast');
 		console.log('jobs contrast', id);
 		if (id)
-				r = Jobs.find({contrast_id:id});
+				r = Jobs.find({"args.contrast_id":id});
 			else {
 				var result_id = Session.get('selectedResult');
 				if (result_id) {
@@ -143,10 +142,7 @@ Template.Jobs.helpers({
 		console.log('results of Jobs.find', r);
 		files = r.map(function(x) {return x.blobs;} );
 		if (files) {
-			console.log('files',files);
-			console.log('files[0]' , files[0]);
 			if (files[0]) {
-				console.log('files[0][0]', files[0][0]);
 				Session.set('currentBlob', files[0][0]);
 			}
 		}

@@ -1,9 +1,7 @@
 /*****************************************************************************/
 /* Blobs Publish Functions
 /*****************************************************************************/
-Meteor.publish('blobs', function () {
+Meteor.publish('blobs', function (id) {
   // you can remove this if you return a cursor
-	var count = Blobs.find({}).count();
-	console.log("blob count", count)
-    return Blobs.find({});
+  return Blobs.find({});
 });

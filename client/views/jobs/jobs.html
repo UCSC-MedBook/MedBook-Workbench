@@ -3,21 +3,18 @@
 	<table class="table table-bordered">
 	    <thead>
 	        <tr>
-	            <th>New Results:</th>
-
-	        </tr>
+	            <th>Results:</th> </tr>
 	    </thead>
 	    <tbody>
 		 	{{#each jobs}}
 				<tr class="selectableResult" data-id="{{_id}}" >
 				<div >
-					hello
 					{{name}}
 					{{#if isDiffContrast}}
 						<button id="post-contrast" class="btn btn-mini btn-primary">Save Signature</button>
 					{{/if}}
 				     <button id="post-tel" class="btn btn-mini btn-primary">Share	</button>
-					{{#each blobs}}
+					{{#each output.blobs}}
 						{{#if isPDF}}
 						<a target="iframe_target"  onclick="showPDF()" href="{{geturl.url}}">{{geturl.name}}</a>
 						{{else}}
