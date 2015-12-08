@@ -1,19 +1,15 @@
 
 <template name="Jobs">
-	<table class="table table-bordered">
-	    <thead>
-	        <tr>
-	            <th>Results:</th> </tr>
-	    </thead>
-	    <tbody>
-		 	{{#each jobs}}
+	<ul class="list-group">
+		{{#each jobs}}
+			<li class="list-group-item list-group-item-success">
 				<tr class="selectableResult" data-id="{{_id}}" >
-				<div >
-					{{name}} {{formatDate date_created}} {{status}} 
+				<div>
+					{{name}} {{formatDate date_created}} {{status}}
 					{{#if isDiffContrast}}
 						<button id="post-contrast" class="btn btn-mini btn-primary">Save Signature</button>
 					{{/if}}
-				     <button id="post-tel" class="btn btn-mini btn-primary">Share	</button>
+						 <button id="post-tel" class="btn btn-mini btn-primary">Share	</button>
 					{{#each output.blobs}}
 						{{#if isPDF}}
 						<a target="iframe_target"  onclick="showPDF()" href="{{geturl.url}}">{{geturl.name}}</a>
@@ -35,7 +31,10 @@
 					<button id="del-result" class="btn btn-danger btn-mini btn-xs">Delete</button>
 					</div>
 				</tr>
-			{{/each}}
+			</li>
+		{{/each}}
+	</ul>
+
 			<iframe class="svg_plot" name="svg_iframe" hidden>
 
 			</iframe>
@@ -46,10 +45,7 @@
 			</FRAMESET >
 
 			</div>
-		<div id="HOTdiv" hidden></div>
-
-	    </tbody>
-	</table>
+			<div id="HOTdiv" hidden></div>
 
 </template>
 
