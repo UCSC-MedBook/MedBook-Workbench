@@ -201,7 +201,18 @@ Template.Jobs.helpers({
 	},
 	formatDate: function(dt) {
 		return moment(dt).format('MM-DD-YY HH:MM');
-	}
+	},
+	boostrapStatus: function () {
+		switch (this.status) {
+			case "success": return "success";
+			case "error": 	return "danger";
+			case "running": return "info";
+			case "waiting":
+			case "creating": return "warning";
+		}
+
+		return "danger";
+	},
 });
 
 Tracker.autorun(function(c){
