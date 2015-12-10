@@ -3,7 +3,7 @@
 	<ul class="list-group">
 		{{#each jobs}}
 			<li class="list-group-item list-group-item-{{boostrapStatus}}">
-				<tr class="selectableResult" data-id="{{_id}}" >
+				<div class="selectableResult" data-id="{{_id}}" >
 				<div>
 					{{name}} {{formatDate date_created}} {{status}}
 					{{#if isDiffContrast}}
@@ -30,7 +30,7 @@
 					{{/each}}
 					<button id="del-result" class="btn btn-danger btn-mini btn-xs">Delete</button>
 					</div>
-				</tr>
+				</div>
 			</li>
 		{{/each}}
 	</ul>

@@ -1,60 +1,68 @@
 <template name="Scv">
-{{#if selectedStudy}}
-<div id="scv">
-	 <h3>{{name}} </h3>
-		<table class="table table-condensed">
- 	    <tbody>
-	      <tr>
-          <td>
+	{{#if selectedStudy}}
+		<div id="scv">
+		 	<h3>{{name}} </h3>
+			<!-- <div class="hidden">
+		  	<div id="group1" name="group1">
+			 		Group1 {{> StudyGroupsIndex}}
+				</div>
+				<div id="group2" name="group2" value="{{_id}}">
+				 Group2 {{> StudyGroupsIndex}}
+				</div>
+			</div> -->
 
-					</td>
-					<td>
-						<div class="hidden">
-					    	<div id="group1" name="group1">
-					   		Group1 {{> StudyGroupsIndex}}
-					   	</div>
-					    	<div id="group2" name="group2" value="{{_id}}">
-					  	  		Group2 {{> StudyGroupsIndex}}
-					   	</div>
-						</div>
-
-					</td >
-				</tr>
-		    </tbody>
-		</table>
-		<div class="btn-group">
-		    <a class="btn dropdown-toggle" onclick="$('#BoxPlot').hide()"   data-toggle="dropdown" href="#">Analyze Contrast<span class="caret"></span></a>
-		    <ul class="dropdown-menu" style="z-index:100;" role="menu" aria-labelledby="dLabel">
-				<li><a onclick="$('#BoxPlot').show()" tabindex="1" href="#">Plot gene expression</a></li>
-				<li><a tabindex="2" href="/wb/shell/limma/{{selectedContrastId}}">Differential Gene Expression (RNAseq)</a></li>
-		        <li><a tabindex="3" href="/wb/shell/diffparadigm">Differential Paradigm</a></li>
-				<li><a tabindex="4" href="/wb/shell/pathmark">Differentially Activated Sub-networks (PATHMARK)</a></li>
-				<li><a tabindex="5" href="/wb/shell/dipsc">DIPSC Generate Differenial signatures and correlate to clinical</a></li>
-				<li><a tabindex="-1" href="/wb/shell/dipsc">Train Classifier for contrast (supervised)</a></li>
-		        <li class="divider"></li>
-				<li><a tabindex="-1" href="#">Generate Subtypes from Contrast</a></li>
-				<li><a tabindex="-1" href="/wb/shell/gsea">Pathway Enrichment of a Signature</a></li>
-		    </ul>
-		</div>
-
-		{{#with selectedContrast}}
+			{{#with selectedContrast}}
 				<h5>Group 1: <a href={{pathFor 'SampleGroupsIndex' study=this.studyID name=this.group1}}>{{this.group1}}:</a>
-					{{> ContrastDetail _id=contrast_id list="list1"}}</h5>
+					{{> ContrastDetail _id=contrast_id list="list1"}}
+				</h5>
 				<h5>Group 2: <a href={{pathFor 'SampleGroupsIndex' study=this.studyID name=this.group2}}>{{this.group2}}:</a>
-					{{> ContrastDetail _id=contrast_id list="list2"}}</h5>
-					{{> ShellLimma }}
-			{{> Jobs contrast=selectedContrast}}
+					{{> ContrastDetail _id=contrast_id list="list2"}}
+				</h5>
 
-		{{/with}}
+				<div class="col-md-4">
+					<div class="list-group">
+					  <a href="#" id="limma" class="list-group-item {{activeIfSelected 'limma'}} select-tool">Differential Gene Expression (Limma)</a>
+					  <a href="#" id="viper" class="list-group-item {{activeIfSelected 'viper'}} select-tool">Virtual Inference of Protein-activity by Enriched Regulon analysis (Viper)</a>
+					  <a href="#" id="gsea" class="list-group-item {{activeIfSelected 'gsea'}} select-tool">Gene Set Enrichment (GSEA)</a>
+					</div>
+				</div>
+				<div class="col-md-8">
+					{{#if activeIfSelected "limma"}}
+						{{> ShellLimma }}
+					{{/if}}
 
-		<ul>
-  		{{#each smeGroups}}
-		<li>{{sample}} </li>
-  		{{else}}
+					{{#if activeIfSelected "viper"}}
+						{{> ShellViper }}
+					{{/if}}
+				</div>
+				<div class="col-md-12">
+					{{> Jobs contrast=selectedContrast}}
+				</div>
 
-  		{{/each}}
-	</ul>
+			{{/with}}
+				<!-- <div class="btn-group">
+				    <a class="btn dropdown-toggle" onclick="$('#BoxPlot').hide()"   data-toggle="dropdown" href="#">Analyze Contrast<span class="caret"></span></a>
+				    <ul class="dropdown-menu" style="z-index:100;" role="menu" aria-labelledby="dLabel">
+						<li><a onclick="$('#BoxPlot').show()" tabindex="1" href="#">Plot gene expression</a></li>
+						<li><a tabindex="2" href="/wb/shell/limma/{{selectedContrastId}}">Differential Gene Expression (RNAseq)</a></li>
+				        <li><a tabindex="3" href="/wb/shell/diffparadigm">Differential Paradigm</a></li>
+						<li><a tabindex="4" href="/wb/shell/pathmark">Differentially Activated Sub-networks (PATHMARK)</a></li>
+						<li><a tabindex="5" href="/wb/shell/dipsc">DIPSC Generate Differenial signatures and correlate to clinical</a></li>
+						<li><a tabindex="-1" href="/wb/shell/dipsc">Train Classifier for contrast (supervised)</a></li>
+				        <li class="divider"></li>
+						<li><a tabindex="-1" href="#">Generate Subtypes from Contrast</a></li>
+						<li><a tabindex="-1" href="/wb/shell/gsea">Pathway Enrichment of a Signature</a></li>
+				    </ul>
+				</div> -->
 
-</div>
-{{/if}}
+				<!-- <ul>
+		  		{{#each smeGroups}}
+						<li>{{sample}} </li>
+				  		{{else}}
+
+				  		{{/each}}
+					</ul> -->
+
+		</div	>
+	{{/if}}
 </template>

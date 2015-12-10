@@ -1,7 +1,14 @@
-/*****************************************************************************/
-/* Scv: Event Handlers and Helpersss .js*/
-/*****************************************************************************/
+Template.Scv.onCreated(function () {
+	var instance = this;
+
+	instance.selectedTool = new ReactiveVar("limma");
+});
+
 Template.Scv.events({
+	"click .select-tool": function (event, instance) {
+		instance.selectedTool.set(event.target.id);
+	},
+
 	'click #createGroup': function( e, tmpl){
 		var g1 = Session.get('studyGroup1');
 		var g2 = Session.get('studyGroup2');
@@ -51,7 +58,15 @@ Template.Scv.events({
 	}
 });
 
+
+
 Template.Scv.helpers({
+	activeIfSelected: function (text) {
+		if (Template.instance().selectedTool.get() === text) {
+			return "active";
+		}
+	},
+
   /*
    * Example:
    *  items: function ()
@@ -86,15 +101,3 @@ Template.Scv.helpers({
 
 
 });
-
-/*****************************************************************************/
-/* Scv: Lifecycle Hooks */
-/*****************************************************************************/
-Template.Scv.created = function () {
-};
-
-Template.Scv.rendered = function () {
-};
-
-Template.Scv.destroyed = function () {
-};

@@ -207,7 +207,7 @@ Template.Jobs.helpers({
 			case "success": return "success";
 			case "error": 	return "danger";
 			case "running": return "info";
-			case "waiting":
+			case "waiting": return "info";
 			case "creating": return "warning";
 		}
 
