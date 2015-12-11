@@ -1,34 +1,34 @@
 <template name="Cohort">
-	<div id="cohort">
-		<button id="collapse_button" onClick="$('#controls_div').toggle();">
-			toggle controls
-		</button>
-		<div id="controls_div">
-			<div id="genelist_widget_div">
-				<!-- gene list {{> genelist }} -->
-				<select id="selectTagForSelect2" style="width:100%"></select>
-			</div>
-			<div class="genesets-panel">
-				gene set:
-				{{#with genesets}}
-				<select id="geneset" class="span1-12">
-					<option value="" >Select a geneset ...</option>
-					{{#each this}}
-					<option  value="{{members}}" selected="{{selected}}" >{{name}} ({{size}})</option>
-					{{/each}}
-				</select>
-				{{else}}
-				No genesets yet.
-				{{/with}}
-				<!-- <button class="select_geneset">
-				select
-				</button> -->
-			</div>
-		</div>
-		<div id='Cohort_OD_Div'>
-			This space reserved for an Observation Deck.
-		</div>
+    <div id="cohort">
+        <button id="collapse_button" onClick="$('#controls_div').toggle();">
+            toggle controls
+        </button>
+        <div id="controls_div">
+            <div id="genelist_widget_div">
+                <!-- gene list {{> genelist }} -->
+                <select id="selectTagForSelect2" style="width:100%"></select>
+            </div>
+            <div class="genesets-panel">
+                gene set:
+                {{#with genesets}}
+                <select id="geneset" class="span1-12">
+                    <option value="" >Select a geneset ...</option>
+                    {{#each this}}
+                    <option  value="{{members}}" selected="{{selected}}" >{{name}} ({{size}})</option>
+                    {{/each}}
+                </select>
+                {{else}}
+                No genesets yet.
+                {{/with}}
+                <!-- <button class="select_geneset">
+                select
+                </button> -->
+            </div>
+        </div>
+        <div id='Cohort_OD_Div'>
+            This space reserved for an Observation Deck.
+        </div>
 
-	</div>
+    </div>
 </template>
 
