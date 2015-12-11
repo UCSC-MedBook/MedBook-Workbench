@@ -35,8 +35,6 @@ meteorhacks:aggregate
 http
 accounts-ui
 accounts-google
-msavin:mongol
-msavin:jetsetter
 ucscmedbook:api
 medbook:primary-collections
 natestrauser:select2
@@ -45,3 +43,5 @@ momentjs:moment
 sacha:spin
 twbs:bootstrap
 reactive-var
+msavin:mongol
+msavin:jetsetter
