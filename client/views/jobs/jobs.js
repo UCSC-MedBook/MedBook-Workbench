@@ -8,6 +8,11 @@ showSVG = function() {
 	$("#HOTdiv").hide();
 	$("#frameset_div").hide();
 };
+showText = function() {
+		$("#frameset_div").show();
+		$("#HOTdiv").hide();
+		$('.svg_plot').hide();
+}	;
 var hot;
 /*****************************************************************************/
 /* Jobs: Event Handlers and Helpersss .js*/
@@ -79,7 +84,7 @@ Template.Jobs.events({
 
 	'click #del-result': function( e, tmpl){
 		console.log('del result:', this._id);
-		Signatures.remove({_id: this._id});
+		Jobs.remove({_id: this._id});
 		//var today = new Date();
 		/*HTTP.post('/medbookPost',{data:{post:{title:this.name, body:'posted from workbench on '+today, medbookfiles:this.blobs}}},
 			function (err, response) {
@@ -113,7 +118,6 @@ Template.Jobs.events({
 			r = '';
 		}
 		Session.set('selectedResult',r);
-		console.log('hover',r);
 	}
 //	'mouseleave .selectableResult': function(e, tmpl) {
 //		Session.set('selectedResult',"");
@@ -127,11 +131,11 @@ Template.Jobs.helpers({
 		console.log('mime fetch');
 		return Jobs.findOne({_id: id});
 	},
-	results: function() {
+	jobs: function() {
 		var id = Session.get('selectedContrast');
-		console.log('results contrast', id);
+		console.log('jobs contrast', id);
 		if (id)
-				r = Jobs.find({contrast_id:id});
+				r = Jobs.find({"args.contrast_id":id});
 			else {
 				var result_id = Session.get('selectedResult');
 				if (result_id) {
@@ -140,13 +144,9 @@ Template.Jobs.helpers({
 					r = Jobs.find({});
 				}
 			}
-		console.log('results of Jobs.find', r);
 		files = r.map(function(x) {return x.blobs;} );
 		if (files) {
-			console.log('files',files);
-			console.log('files[0]' , files[0]);
 			if (files[0]) {
-				console.log('files[0][0]', files[0][0]);
 				Session.set('currentBlob', files[0][0]);
 			}
 		}
@@ -156,7 +156,10 @@ Template.Jobs.helpers({
 		var id = this.toString().trim();
 		if (id) {
 			var b = Blobs.findOne({_id:id});
-			var packet = {url: b.url(), name: b.name(), size: b.size(), type:b.type(), id:b._id};
+			var packet = {};
+			if (b) {
+				packet = {url: b.url(), name: b.name(), size: b.size(), type:b.type(), id:b._id};
+			}
 			//console.log('get url ', packet)
 			return packet;
 		}
@@ -170,7 +173,9 @@ Template.Jobs.helpers({
 		var id = this.toString().trim();
 		if (id) {
 			var b = Blobs.findOne({_id:id});
-			return b.type() == "application/pdf";
+			if (b) {
+				return b.type() == "application/pdf";
+			}
 		}
 	return false;
 	},
@@ -178,10 +183,36 @@ Template.Jobs.helpers({
 			var id = this.toString().trim();
 			if (id) {
 				var b = Blobs.findOne({_id:id});
-				return b.type() == "image/svg+xml";
+				if (b) {
+					return b.type() == "image/svg+xml";
+				}
 			}
 	return false;
-	}
+	},
+	isText: function() {
+		var id = this.toString().trim();
+		if (id) {
+			var b = Blobs.findOne({_id:id});
+			if (b) {
+				return b.type() == "text/plain";
+			}
+		}
+	return false;
+	},
+	formatDate: function(dt) {
+		return moment(dt).format('MM-DD-YY HH:MM');
+	},
+	boostrapStatus: function () {
+		switch (this.status) {
+			case "success": return "success";
+			case "error": 	return "danger";
+			case "running": return "info";
+			case "waiting": return "info";
+			case "creating": return "warning";
+		}
+
+		return "danger";
+	},
 });
 
 Tracker.autorun(function(c){
@@ -214,7 +245,7 @@ function HOTload(file_id) {
 				console.log( "Sample of data:", bname, mat[0], mat[1] );
 				var colheaders = true;
 				var cols = "";
-				if (bname=='genes.tab') {
+				if (bname=='Topgene.tab' || bname=='topgene.tab') {
 					colheaders = ['Gene', 'Log Fold Change', 'Avg Expression','T stat','Pval', 'FDR','log odds'];
 					cols  = [{},{type: 'numeric', format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00'},{type: 'numeric',format:'0.00000'},{type: 'numeric',format:'0.00000'},{type: 'numeric',format:'0.00'}];
 				}

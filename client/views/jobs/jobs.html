@@ -1,23 +1,16 @@
 
 <template name="Jobs">
-	<table class="table table-bordered">
-	    <thead>
-	        <tr>
-	            <th>New Results:</th>
-
-	        </tr>
-	    </thead>
-	    <tbody>
-		 	{{#each jobs}}
-				<tr class="selectableResult" data-id="{{_id}}" >
-				<div >
-					hello
-					{{name}}
+	<ul class="list-group">
+		{{#each jobs}}
+			<li class="list-group-item list-group-item-{{boostrapStatus}}">
+				<div class="selectableResult" data-id="{{_id}}" >
+				<div>
+					{{name}} {{formatDate date_created}} {{status}}
 					{{#if isDiffContrast}}
 						<button id="post-contrast" class="btn btn-mini btn-primary">Save Signature</button>
 					{{/if}}
-				     <button id="post-tel" class="btn btn-mini btn-primary">Share	</button>
-					{{#each blobs}}
+						 <button id="post-tel" class="btn btn-mini btn-primary">Share	</button>
+					{{#each output.blobs}}
 						{{#if isPDF}}
 						<a target="iframe_target"  onclick="showPDF()" href="{{geturl.url}}">{{geturl.name}}</a>
 						{{else}}
@@ -26,14 +19,22 @@
 								<a target="svg_iframe"  onclick="showSVG()" href="{{geturl.url}}" >{{geturl.name}}</a>
 
 							{{else}}
-								<a class="selectableHot" data-id={{geturl.id}} href="#">{{geturl.name}} {{geturl.type}}</a>
+								{{#if isText}}
+
+								<a target="iframe_target"  onclick="showText()" href="{{geturl.url}}" >{{geturl.name}}</a>
+								{{else}}
+									<a class="selectableHot" data-id={{geturl.id}} href="#">{{geturl.name}} {{geturl.type}}</a>
+								{{/if}}
 							{{/if}}
 						{{/if}}
 					{{/each}}
 					<button id="del-result" class="btn btn-danger btn-mini btn-xs">Delete</button>
 					</div>
-				</tr>
-			{{/each}}
+				</div>
+			</li>
+		{{/each}}
+	</ul>
+
 			<iframe class="svg_plot" name="svg_iframe" hidden>
 
 			</iframe>
@@ -44,10 +45,7 @@
 			</FRAMESET >
 
 			</div>
-		<div id="HOTdiv" hidden></div>
-
-	    </tbody>
-	</table>
+			<div id="HOTdiv" hidden></div>
 
 </template>
 

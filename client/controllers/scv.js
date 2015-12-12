@@ -23,17 +23,20 @@ ScvController = RouteController.extend({
 				  return Contrast.find({_id:id}) ;
 			  },
 			  results: function() {
+          console.log('fetching jobs in scv controller for contrast_id', id);
 				  return Jobs.find({"args.contrast_id":id}) ;
 			  }
 		  };
 	  }
-	  else
-	  return {
-	  	contrast: function() {
-	  				  return Contrast.find({}) ;
-	  	},
-		results: {}
-  }	  ;
+	  else {
+      console.log("no contrast found in scv controller");
+  	  return {
+  	  	contrast: function() {
+  	  				  return Contrast.find({}) ;
+  	  	},
+    		results: {}
+      }	  ;
+    }
   },
   edit: function() {
 	  console.log('editing mode');

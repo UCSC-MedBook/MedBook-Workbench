@@ -1,8 +1,14 @@
- 
-/*****************************************************************************/
-/* Scv: Event Handlers and Helpersss .js*/
-/*****************************************************************************/
+Template.Scv.onCreated(function () {
+	var instance = this;
+
+	instance.selectedTool = new ReactiveVar("limma");
+});
+
 Template.Scv.events({
+	"click .select-tool": function (event, instance) {
+		instance.selectedTool.set(event.target.id);
+	},
+
 	'click #createGroup': function( e, tmpl){
 		var g1 = Session.get('studyGroup1');
 		var g2 = Session.get('studyGroup2');
@@ -11,8 +17,8 @@ Template.Scv.events({
 		var sampleList1 = _.pluck(SampleGroups.find({group:g1}).fetch(), 'sample');
 		var sampleList2 = _.pluck(SampleGroups.find({group:g2}).fetch(), 'sample');
 		//var sampleList2 = SampleGroups.find({group:g2},{'sample':1}).fetch();
-		if (Meteor.user()) {		
-			var collabs = Meteor.user().profile.collaborations;
+		if (Meteor.user()) {
+	var collabs = Meteor.user().profile.collaborations;
 			// FIX ME - default to first collaboration
 			var collab = collabs[0]
 		}
@@ -52,13 +58,21 @@ Template.Scv.events({
 	}
 });
 
+
+
 Template.Scv.helpers({
+	activeIfSelected: function (text) {
+		if (Template.instance().selectedTool.get() === text) {
+			return "active";
+		}
+	},
+
   /*
    * Example:
-   *  items: function () 
-   *    return Items.find();
-   *  
+   *  items: function ()
+  *    return Items.find();
    */
+
  	sampleGroups: function(g1,g2) {
 	  console.log('find sampleGroups:',g1,' ',g2)
   	return SampleGroups.find({group: g1});
@@ -71,7 +85,7 @@ Template.Scv.helpers({
 	},
 	selectedContrast: function() {
 		var id = Session.get('selectedContrast');
-		console.log('contrast id ',id);
+		console.log('scv selectedContrast helper fetch contrast id ',id);
 		return Contrast.findOne({_id: id });
 	},
 	name: function() {
@@ -85,18 +99,5 @@ Template.Scv.helpers({
 		return Session.get('selectedContrast');
 	}
 
+
 });
-
-/*****************************************************************************/
-/* Scv: Lifecycle Hooks */
-/*****************************************************************************/
-Template.Scv.created = function () {
-};
-
-Template.Scv.rendered = function () {
-};
-
-Template.Scv.destroyed = function () {
-};
-
-

@@ -1,0 +1,27 @@
+<template name="ShellViper">
+<div id="job">
+	<div class="tool">
+		<h3>Tool Parameters</h3>
+	{{#each selectedContrast}}
+	name: {{name}}
+	{{/each}}
+		<h4>
+			Interaction Network
+			{{#with networks}}
+				<select id="network" class="span1-12" title="list of networks">
+					<option value="">Select a Network ...</option>
+					{{#each this}}
+					<option  value="{{_id}}" selected={{selectedNetwork}}>{{name}}</option>
+					{{/each}}
+				</select>
+			{{else}}
+				No Networks yet.
+			{{/with}}
+			<br>Number of Permutations <input class="input-sm" id="permutations" type="text" placeholder="1000">
+		</h4>
+		<br>
+		<button id="RunViperJob">Run Viper</button>
+	</div>
+</div>
+
+</template>

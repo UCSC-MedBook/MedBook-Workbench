@@ -37,12 +37,16 @@ Template.ShellLimma.events({
 		});
 	},
 	'click #addRunLimmaJob': function (event, template) {
-		var top_gene_count = template.$("input[type=text]").val();
-
+		//var top_gene_count = template.$("input[type=text]").val();
+		//console.log('limma event ', template);
+		var top_gene_count = template.$("#topGeneCount").val();
+		var correction = template.$("#correction").val();
 		var args = {
 			contrast_id: Session.get('selectedContrast'),
-			top_gene_count: top_gene_count
+			top_gene_count: top_gene_count,
+			correction: correction
 		};
+		console.log('insert_limma_job with', args);
 		Meteor.call('insert_limma_job', args);
 	}
 });
@@ -59,6 +63,9 @@ Template.ShellLimma.helpers({
 	selectedContrast: function(){
 			var contrastID = Session.get('selectedContrast');
 			return Contrast.find({_id:contrastID});
+	},
+	formatDate: function(date) {
+	  return moment(date).format('MM-DD-YYYY');
 	}
 });
 

@@ -11,9 +11,10 @@ medbook_config = null;  // config file for apps and tools
 medbook_config_file = null;  // config file for apps and tools
 
 Meteor.startup(function () {
+	"use strict";
 	medbook_config_file = process.env.MEDBOOK_CONFIG;
 	console.log('Reading config from env MEDBOOK_CONFIG', medbook_config_file);
-	read_config = function(){
+	/*read_config = function(){
 	   console.log('reading ',medbook_config_file);
        fs.readFile(medbook_config_file, function (err, data) {
 		   if (err) {
@@ -28,7 +29,7 @@ Meteor.startup(function () {
 		   }
 		   medbook_config = toml.parse(data);
        });
-	};
+	};*/
 	Meteor.methods({
 		boxplot_adapter: function (argList) {
 			console.log('user', this.userId);
