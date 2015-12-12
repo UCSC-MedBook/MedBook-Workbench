@@ -35,7 +35,6 @@ meteorhacks:aggregate
 http
 accounts-ui
 accounts-google
-ucscmedbook:api
 medbook:primary-collections
 natestrauser:select2
 select2genelist
@@ -45,3 +44,4 @@ twbs:bootstrap
 reactive-var
 msavin:mongol
 msavin:jetsetter
+ucscmedbook:api
