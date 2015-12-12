@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="1"
+            tests="1">
+
+  <testsuite name="appLayout"
+    errors="0" failures="1" hostname="" id="" package="appLayout" skipped="0"
+    tests="1" time="0.000" timestamp="Fri, 11 Dec 2015 23:50:55 GMT">
+  
+    <testcase name="Upload some BD2KGeneExpression files" time="0.01200" assertions="0">
+    </testcase>
+  
+  
+  </testsuite>
+</testsuites>
