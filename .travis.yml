@@ -56,7 +56,7 @@ before_install:
 
   # setup Meteor app
 #- "cd webapp"
-  - "meteor &"
+  - "meteor --release=1.1.0.3 &"
 
   # give Meteor some time to download packages, init data, and to start
   - "sleep 60"
