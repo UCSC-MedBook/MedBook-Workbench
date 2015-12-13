@@ -2,7 +2,7 @@
 // http://nightwatchjs.org/api
 
 module.exports = {
-  "Upload some BD2KGeneExpression files": function (client) {
+  "Workbench startup": function (client) {
     client
       .url("http://localhost:3000/wb")
       .resizeWindow(1024, 768).pause(1000)

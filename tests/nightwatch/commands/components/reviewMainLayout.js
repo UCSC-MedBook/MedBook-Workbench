@@ -1,6 +1,6 @@
 exports.command = function(username, password) {
   this
-    .verify.elementPresent("#MedBookImage")
+    .verify.elementPresent("#contrast1")
       // .verify.elementPresent("#navbarHeader")
         // .verify.elementPresent("#contentContainer")
         // .verify.elementPresent("#contentContainer .content-scrollable")
