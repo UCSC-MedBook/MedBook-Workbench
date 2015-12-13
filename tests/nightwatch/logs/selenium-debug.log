@@ -1,32 +1,32 @@
-13:41:07.931 INFO - Launching a standalone server
+13:26:23.928 INFO - Launching a standalone server
 Setting system property webdriver.chrome.driver to /usr/local/lib/node_modules/starrynight/node_modules/chromedriver/bin/chromedriver
-13:41:07.959 INFO - Java: Apple Inc. 20.65-b04-466.1
-13:41:07.959 INFO - OS: Mac OS X 10.10.5 x86_64
-13:41:07.966 INFO - v2.45.0, with Core v2.45.0. Built from revision 5017cb8
-13:41:08.036 INFO - Default driver org.openqa.selenium.ie.InternetExplorerDriver registration is skipped: registration capabilities Capabilities [{platform=WINDOWS, ensureCleanSession=true, browserName=internet explorer, version=}] does not match with current platform: MAC
-13:41:08.066 INFO - RemoteWebDriver instances should connect to: http://127.0.0.1:4444/wd/hub
-13:41:08.067 INFO - Version Jetty/5.1.x
-13:41:08.067 INFO - Started HttpContext[/selenium-server/driver,/selenium-server/driver]
-13:41:08.068 INFO - Started HttpContext[/selenium-server,/selenium-server]
-13:41:08.068 INFO - Started HttpContext[/,/]
-13:41:08.100 INFO - Started org.openqa.jetty.jetty.servlet.ServletHandler@643c0007
-13:41:08.100 INFO - Started HttpContext[/wd,/wd]
-13:41:08.104 INFO - Started SocketListener on 0.0.0.0:4444
-13:41:08.105 INFO - Started org.openqa.jetty.jetty.Server@acfec48
-13:41:08.374 INFO - Executing: [new session: Capabilities [{loggingPrefs=org.openqa.selenium.logging.LoggingPreferences@670fe2b9, platform=ANY, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, name=App Layout}]])
-13:41:08.382 INFO - Creating a new session for Capabilities [{loggingPrefs=org.openqa.selenium.logging.LoggingPreferences@670fe2b9, platform=ANY, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, name=App Layout}]
-Starting ChromeDriver 2.15.322455 (ae8db840dac8d0c453355d3d922c91adfb61df8f) on port 3926
+13:26:23.967 INFO - Java: Oracle Corporation 24.51-b03
+13:26:23.968 INFO - OS: Mac OS X 10.8.5 x86_64
+13:26:23.979 INFO - v2.45.0, with Core v2.45.0. Built from revision 5017cb8
+13:26:24.070 INFO - Default driver org.openqa.selenium.ie.InternetExplorerDriver registration is skipped: registration capabilities Capabilities [{platform=WINDOWS, ensureCleanSession=true, browserName=internet explorer, version=}] does not match with current platform: MAC
+13:26:24.106 INFO - RemoteWebDriver instances should connect to: http://127.94.0.1:4444/wd/hub
+13:26:24.107 INFO - Version Jetty/5.1.x
+13:26:24.108 INFO - Started HttpContext[/selenium-server/driver,/selenium-server/driver]
+13:26:24.108 INFO - Started HttpContext[/selenium-server,/selenium-server]
+13:26:24.108 INFO - Started HttpContext[/,/]
+13:26:24.126 INFO - Started org.openqa.jetty.jetty.servlet.ServletHandler@745c172b
+13:26:24.126 INFO - Started HttpContext[/wd,/wd]
+13:26:24.129 INFO - Started SocketListener on 0.0.0.0:4444
+13:26:24.130 INFO - Started org.openqa.jetty.jetty.Server@5d64db48
+13:26:24.435 INFO - Executing: [new session: Capabilities [{loggingPrefs=org.openqa.selenium.logging.LoggingPreferences@672a1f0, platform=ANY, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, name=App Layout}]])
+13:26:24.445 INFO - Creating a new session for Capabilities [{loggingPrefs=org.openqa.selenium.logging.LoggingPreferences@672a1f0, platform=ANY, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, name=App Layout}]
+Starting ChromeDriver 2.19.346063 (38b35413bd4a486d436a9749e090454bc9ff6708) on port 5063
 Only local connections are allowed.
-13:41:10.937 INFO - Done: [new session: Capabilities [{loggingPrefs=org.openqa.selenium.logging.LoggingPreferences@670fe2b9, platform=ANY, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, name=App Layout}]]
-13:41:10.950 INFO - Executing: [get: http://localhost:3000/wb])
-13:41:12.634 INFO - Done: [get: http://localhost:3000/wb]
-13:41:12.646 INFO - Executing: [set window size])
-13:41:13.330 INFO - Done: [set window size]
-13:41:14.339 INFO - Executing: [find elements: By.cssSelector: #MedBookImage])
-13:41:14.366 INFO - Done: [find elements: By.cssSelector: #MedBookImage]
-13:41:14.369 INFO - Executing: [set script timeoutt: 1000])
-13:41:14.372 INFO - Done: [set script timeoutt: 1000]
-13:41:14.376 INFO - Executing: [execute async script: var passedArgs = Array.prototype.slice.call(arguments,0); return function (data, done){
+13:26:27.354 INFO - Done: [new session: Capabilities [{loggingPrefs=org.openqa.selenium.logging.LoggingPreferences@672a1f0, platform=ANY, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, name=App Layout}]]
+13:26:27.387 INFO - Executing: [get: http://localhost:3000/wb])
+13:26:28.761 INFO - Done: [get: http://localhost:3000/wb]
+13:26:28.768 INFO - Executing: [set window size])
+13:26:29.006 INFO - Done: [set window size]
+13:26:30.019 INFO - Executing: [find elements: By.cssSelector: #MedBookImage])
+13:26:30.041 INFO - Done: [find elements: By.cssSelector: #MedBookImage]
+13:26:30.045 INFO - Executing: [set script timeoutt: 1000])
+13:26:30.049 INFO - Done: [set script timeoutt: 1000]
+13:26:30.053 INFO - Executing: [execute async script: var passedArgs = Array.prototype.slice.call(arguments,0); return function (data, done){
         Accounts.createUser({
           email: 'testing@medbook.ucsc.edu',
           password: 'testing',
@@ -35,116 +35,114 @@ Only local connections are allowed.
           }
         }, done);
       }.apply(window, passedArgs);, []])
-13:41:16.532 WARN - Exception thrown
+13:26:32.889 WARN - Exception thrown
 org.openqa.selenium.TimeoutException: asynchronous script timeout: result was not received in 1 seconds
   (Session info: chrome=47.0.2526.80)
-  (Driver info: chromedriver=2.15.322455 (ae8db840dac8d0c453355d3d922c91adfb61df8f),platform=Mac OS X 10.10.5 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 1.06 seconds
+  (Driver info: chromedriver=2.19.346063 (38b35413bd4a486d436a9749e090454bc9ff6708),platform=Mac OS X 10.8.5 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 1.05 seconds
 Build info: version: '2.45.0', revision: '5017cb8', time: '2015-02-26 23:59:50'
-System info: host: 'Robert-UCSC.local', ip: '172.27.5.164', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.5', java.version: '1.6.0_65'
-Session ID: aa06819e362f3bff258dc9a8c639b1f9
+System info: host: 'Robert2.local', ip: '192.168.219.129', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.8.5', java.version: '1.7.0_51'
+Session ID: 7230e8c6d34057a7028a6ce9e959d760
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{platform=MAC, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, chrome={userDataDir=/var/folders/72/dqnnr5js37n3hqx0879r9t4m0000gn/T/.org.chromium.Chromium.kT90ew}, rotatable=false, locationContextEnabled=true, mobileEmulationEnabled=false, version=47.0.2526.80, takesHeapSnapshot=true, cssSelectorsEnabled=true, databaseEnabled=false, handlesAlerts=true, browserConnectionEnabled=false, webStorageEnabled=true, nativeEvents=true, applicationCacheEnabled=false, takesScreenshot=true}]
+Capabilities [{platform=MAC, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, chrome={userDataDir=/var/folders/6q/xsfkxl156dv9wk2g814c71100000gn/T/.org.chromium.Chromium.kjxN3s}, rotatable=false, locationContextEnabled=true, mobileEmulationEnabled=false, version=47.0.2526.80, takesHeapSnapshot=true, cssSelectorsEnabled=true, databaseEnabled=false, handlesAlerts=true, browserConnectionEnabled=false, webStorageEnabled=true, nativeEvents=true, hasTouchScreen=false, applicationCacheEnabled=false, takesScreenshot=true}]
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
 	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
 	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
 	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
 	at org.openqa.selenium.remote.RemoteWebDriver.executeAsyncScript(RemoteWebDriver.java:526)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
-	at java.lang.reflect.Method.invoke(Method.java:597)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
 	at org.openqa.selenium.support.events.EventFiringWebDriver$2.invoke(EventFiringWebDriver.java:101)
 	at com.sun.proxy.$Proxy1.executeAsyncScript(Unknown Source)
 	at org.openqa.selenium.support.events.EventFiringWebDriver.executeAsyncScript(EventFiringWebDriver.java:225)
 	at org.openqa.selenium.remote.server.handler.ExecuteAsyncScript.call(ExecuteAsyncScript.java:57)
-	at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:303)
-	at java.util.concurrent.FutureTask.run(FutureTask.java:138)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
 	at org.openqa.selenium.remote.server.DefaultSession$1.run(DefaultSession.java:168)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:895)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:918)
-	at java.lang.Thread.run(Thread.java:695)
-13:41:16.535 WARN - Exception: asynchronous script timeout: result was not received in 1 seconds
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+13:26:32.892 WARN - Exception: asynchronous script timeout: result was not received in 1 seconds
   (Session info: chrome=47.0.2526.80)
-  (Driver info: chromedriver=2.15.322455 (ae8db840dac8d0c453355d3d922c91adfb61df8f),platform=Mac OS X 10.10.5 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 1.06 seconds
+  (Driver info: chromedriver=2.19.346063 (38b35413bd4a486d436a9749e090454bc9ff6708),platform=Mac OS X 10.8.5 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 1.05 seconds
 Build info: version: '2.45.0', revision: '5017cb8', time: '2015-02-26 23:59:50'
-System info: host: 'Robert-UCSC.local', ip: '172.27.5.164', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.5', java.version: '1.6.0_65'
-Session ID: aa06819e362f3bff258dc9a8c639b1f9
+System info: host: 'Robert2.local', ip: '192.168.219.129', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.8.5', java.version: '1.7.0_51'
+Session ID: 7230e8c6d34057a7028a6ce9e959d760
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{platform=MAC, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, chrome={userDataDir=/var/folders/72/dqnnr5js37n3hqx0879r9t4m0000gn/T/.org.chromium.Chromium.kT90ew}, rotatable=false, locationContextEnabled=true, mobileEmulationEnabled=false, version=47.0.2526.80, takesHeapSnapshot=true, cssSelectorsEnabled=true, databaseEnabled=false, handlesAlerts=true, browserConnectionEnabled=false, webStorageEnabled=true, nativeEvents=true, applicationCacheEnabled=false, takesScreenshot=true}]
-13:41:16.663 INFO - Executing: [execute async script: var passedArgs = Array.prototype.slice.call(arguments,0); return function (data, done) {
+Capabilities [{platform=MAC, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, chrome={userDataDir=/var/folders/6q/xsfkxl156dv9wk2g814c71100000gn/T/.org.chromium.Chromium.kjxN3s}, rotatable=false, locationContextEnabled=true, mobileEmulationEnabled=false, version=47.0.2526.80, takesHeapSnapshot=true, cssSelectorsEnabled=true, databaseEnabled=false, handlesAlerts=true, browserConnectionEnabled=false, webStorageEnabled=true, nativeEvents=true, hasTouchScreen=false, applicationCacheEnabled=false, takesScreenshot=true}]
+13:26:32.981 INFO - Executing: [execute async script: var passedArgs = Array.prototype.slice.call(arguments,0); return function (data, done) {
         Meteor.logout(done);
       }.apply(window, passedArgs);, []])
-13:41:18.052 WARN - Exception thrown
+13:26:34.372 WARN - Exception thrown
 org.openqa.selenium.TimeoutException: asynchronous script timeout: result was not received in 1 seconds
   (Session info: chrome=47.0.2526.80)
-  (Driver info: chromedriver=2.15.322455 (ae8db840dac8d0c453355d3d922c91adfb61df8f),platform=Mac OS X 10.10.5 x86_64) (WARNING: The server did not provide any stacktrace information)
+  (Driver info: chromedriver=2.19.346063 (38b35413bd4a486d436a9749e090454bc9ff6708),platform=Mac OS X 10.8.5 x86_64) (WARNING: The server did not provide any stacktrace information)
 Command duration or timeout: 1.05 seconds
 Build info: version: '2.45.0', revision: '5017cb8', time: '2015-02-26 23:59:50'
-System info: host: 'Robert-UCSC.local', ip: '172.27.5.164', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.5', java.version: '1.6.0_65'
-Session ID: aa06819e362f3bff258dc9a8c639b1f9
+System info: host: 'Robert2.local', ip: '192.168.219.129', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.8.5', java.version: '1.7.0_51'
+Session ID: 7230e8c6d34057a7028a6ce9e959d760
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{platform=MAC, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, chrome={userDataDir=/var/folders/72/dqnnr5js37n3hqx0879r9t4m0000gn/T/.org.chromium.Chromium.kT90ew}, rotatable=false, locationContextEnabled=true, mobileEmulationEnabled=false, version=47.0.2526.80, takesHeapSnapshot=true, cssSelectorsEnabled=true, databaseEnabled=false, handlesAlerts=true, browserConnectionEnabled=false, webStorageEnabled=true, nativeEvents=true, applicationCacheEnabled=false, takesScreenshot=true}]
+Capabilities [{platform=MAC, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, chrome={userDataDir=/var/folders/6q/xsfkxl156dv9wk2g814c71100000gn/T/.org.chromium.Chromium.kjxN3s}, rotatable=false, locationContextEnabled=true, mobileEmulationEnabled=false, version=47.0.2526.80, takesHeapSnapshot=true, cssSelectorsEnabled=true, databaseEnabled=false, handlesAlerts=true, browserConnectionEnabled=false, webStorageEnabled=true, nativeEvents=true, hasTouchScreen=false, applicationCacheEnabled=false, takesScreenshot=true}]
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
 	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
 	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
 	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
 	at org.openqa.selenium.remote.RemoteWebDriver.executeAsyncScript(RemoteWebDriver.java:526)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
-	at java.lang.reflect.Method.invoke(Method.java:597)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
 	at org.openqa.selenium.support.events.EventFiringWebDriver$2.invoke(EventFiringWebDriver.java:101)
 	at com.sun.proxy.$Proxy1.executeAsyncScript(Unknown Source)
 	at org.openqa.selenium.support.events.EventFiringWebDriver.executeAsyncScript(EventFiringWebDriver.java:225)
 	at org.openqa.selenium.remote.server.handler.ExecuteAsyncScript.call(ExecuteAsyncScript.java:57)
-	at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:303)
-	at java.util.concurrent.FutureTask.run(FutureTask.java:138)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
 	at org.openqa.selenium.remote.server.DefaultSession$1.run(DefaultSession.java:168)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:895)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:918)
-	at java.lang.Thread.run(Thread.java:695)
-13:41:18.053 WARN - Exception: asynchronous script timeout: result was not received in 1 seconds
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+13:26:34.375 WARN - Exception: asynchronous script timeout: result was not received in 1 seconds
   (Session info: chrome=47.0.2526.80)
-  (Driver info: chromedriver=2.15.322455 (ae8db840dac8d0c453355d3d922c91adfb61df8f),platform=Mac OS X 10.10.5 x86_64) (WARNING: The server did not provide any stacktrace information)
+  (Driver info: chromedriver=2.19.346063 (38b35413bd4a486d436a9749e090454bc9ff6708),platform=Mac OS X 10.8.5 x86_64) (WARNING: The server did not provide any stacktrace information)
 Command duration or timeout: 1.05 seconds
 Build info: version: '2.45.0', revision: '5017cb8', time: '2015-02-26 23:59:50'
-System info: host: 'Robert-UCSC.local', ip: '172.27.5.164', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.5', java.version: '1.6.0_65'
-Session ID: aa06819e362f3bff258dc9a8c639b1f9
+System info: host: 'Robert2.local', ip: '192.168.219.129', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.8.5', java.version: '1.7.0_51'
+Session ID: 7230e8c6d34057a7028a6ce9e959d760
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{platform=MAC, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, chrome={userDataDir=/var/folders/72/dqnnr5js37n3hqx0879r9t4m0000gn/T/.org.chromium.Chromium.kT90ew}, rotatable=false, locationContextEnabled=true, mobileEmulationEnabled=false, version=47.0.2526.80, takesHeapSnapshot=true, cssSelectorsEnabled=true, databaseEnabled=false, handlesAlerts=true, browserConnectionEnabled=false, webStorageEnabled=true, nativeEvents=true, applicationCacheEnabled=false, takesScreenshot=true}]
-13:41:18.124 INFO - Executing: [find elements: By.cssSelector: #login-buttons])
-13:41:18.138 INFO - Done: [find elements: By.cssSelector: #login-buttons]
-13:41:18.141 INFO - Executing: [is displayed: 1 [[ChromeDriver: chrome on MAC (aa06819e362f3bff258dc9a8c639b1f9)] -> css selector: #login-buttons]])
-13:41:18.153 INFO - Done: [is displayed: 1 [[ChromeDriver: chrome on MAC (aa06819e362f3bff258dc9a8c639b1f9)] -> css selector: #login-buttons]]
-13:41:18.156 INFO - Executing: [find element: By.cssSelector: #login-sign-in-link])
-13:41:18.169 INFO - Done: [find element: By.cssSelector: #login-sign-in-link]
-13:41:18.172 INFO - Executing: [click: 2 [[ChromeDriver: chrome on MAC (aa06819e362f3bff258dc9a8c639b1f9)] -> css selector: #login-sign-in-link]])
-13:41:18.197 INFO - Done: [click: 2 [[ChromeDriver: chrome on MAC (aa06819e362f3bff258dc9a8c639b1f9)] -> css selector: #login-sign-in-link]]
-13:41:18.607 INFO - Executing: [find elements: By.cssSelector: #login-dropdown-list])
-13:41:18.622 INFO - Done: [find elements: By.cssSelector: #login-dropdown-list]
-13:41:18.625 INFO - Executing: [find elements: By.cssSelector: #login-email])
-13:41:18.637 INFO - Done: [find elements: By.cssSelector: #login-email]
-13:41:18.640 INFO - Executing: [find elements: By.cssSelector: #login-password])
-13:41:18.652 INFO - Done: [find elements: By.cssSelector: #login-password]
-13:41:18.655 INFO - Executing: [find element: By.cssSelector: #login-email])
-13:41:18.667 INFO - Done: [find element: By.cssSelector: #login-email]
-13:41:18.670 INFO - Executing: [send keys: 4 [[ChromeDriver: chrome on MAC (aa06819e362f3bff258dc9a8c639b1f9)] -> css selector: #login-email], [t, e, s, t, i, n, g, @, m, e, d, b, o, o, k, ., u, c, s, c, ., e, d, u]])
-13:41:18.758 INFO - Done: [send keys: 4 [[ChromeDriver: chrome on MAC (aa06819e362f3bff258dc9a8c639b1f9)] -> css selector: #login-email], [t, e, s, t, i, n, g, @, m, e, d, b, o, o, k, ., u, c, s, c, ., e, d, u]]
-13:41:18.762 INFO - Executing: [find element: By.cssSelector: #login-password])
-13:41:18.810 INFO - Done: [find element: By.cssSelector: #login-password]
-13:41:18.813 INFO - Executing: [send keys: 5 [[ChromeDriver: chrome on MAC (aa06819e362f3bff258dc9a8c639b1f9)] -> css selector: #login-password], [t, e, s, t, i, n, g]])
-13:41:18.860 INFO - Done: [send keys: 5 [[ChromeDriver: chrome on MAC (aa06819e362f3bff258dc9a8c639b1f9)] -> css selector: #login-password], [t, e, s, t, i, n, g]]
-13:41:18.863 INFO - Executing: [find element: By.cssSelector: #login-buttons-password])
-13:41:18.879 INFO - Done: [find element: By.cssSelector: #login-buttons-password]
-13:41:18.881 INFO - Executing: [click: 6 [[ChromeDriver: chrome on MAC (aa06819e362f3bff258dc9a8c639b1f9)] -> css selector: #login-buttons-password]])
-13:41:18.907 INFO - Done: [click: 6 [[ChromeDriver: chrome on MAC (aa06819e362f3bff258dc9a8c639b1f9)] -> css selector: #login-buttons-password]]
-13:41:19.913 INFO - Executing: [delete session: ee863bd6-fca4-4bda-9718-009693622994])
-13:41:20.477 INFO - Done: [delete session: ee863bd6-fca4-4bda-9718-009693622994]
+Capabilities [{platform=MAC, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, chrome={userDataDir=/var/folders/6q/xsfkxl156dv9wk2g814c71100000gn/T/.org.chromium.Chromium.kjxN3s}, rotatable=false, locationContextEnabled=true, mobileEmulationEnabled=false, version=47.0.2526.80, takesHeapSnapshot=true, cssSelectorsEnabled=true, databaseEnabled=false, handlesAlerts=true, browserConnectionEnabled=false, webStorageEnabled=true, nativeEvents=true, hasTouchScreen=false, applicationCacheEnabled=false, takesScreenshot=true}]
+13:26:34.420 INFO - Executing: [find elements: By.cssSelector: #login-buttons])
+13:26:34.453 INFO - Done: [find elements: By.cssSelector: #login-buttons]
+13:26:34.456 INFO - Executing: [is displayed: 0 [[ChromeDriver: chrome on MAC (7230e8c6d34057a7028a6ce9e959d760)] -> css selector: #login-buttons]])
+13:26:34.472 INFO - Done: [is displayed: 0 [[ChromeDriver: chrome on MAC (7230e8c6d34057a7028a6ce9e959d760)] -> css selector: #login-buttons]]
+13:26:34.476 INFO - Executing: [find element: By.cssSelector: #login-sign-in-link])
+13:26:34.510 INFO - Done: [find element: By.cssSelector: #login-sign-in-link]
+13:26:34.515 INFO - Executing: [click: 1 [[ChromeDriver: chrome on MAC (7230e8c6d34057a7028a6ce9e959d760)] -> css selector: #login-sign-in-link]])
+13:26:34.599 INFO - Done: [click: 1 [[ChromeDriver: chrome on MAC (7230e8c6d34057a7028a6ce9e959d760)] -> css selector: #login-sign-in-link]]
+13:26:35.007 INFO - Executing: [find elements: By.cssSelector: #login-dropdown-list])
+13:26:35.029 INFO - Done: [find elements: By.cssSelector: #login-dropdown-list]
+13:26:35.033 INFO - Executing: [find elements: By.cssSelector: #login-email])
+13:26:35.049 INFO - Done: [find elements: By.cssSelector: #login-email]
+13:26:35.053 INFO - Executing: [find elements: By.cssSelector: #login-password])
+13:26:35.069 INFO - Done: [find elements: By.cssSelector: #login-password]
+13:26:35.072 INFO - Executing: [find element: By.cssSelector: #login-email])
+13:26:35.090 INFO - Done: [find element: By.cssSelector: #login-email]
+13:26:35.094 INFO - Executing: [send keys: 3 [[ChromeDriver: chrome on MAC (7230e8c6d34057a7028a6ce9e959d760)] -> css selector: #login-email], [t, e, s, t, i, n, g, @, m, e, d, b, o, o, k, ., u, c, s, c, ., e, d, u]])
+13:26:35.346 INFO - Done: [send keys: 3 [[ChromeDriver: chrome on MAC (7230e8c6d34057a7028a6ce9e959d760)] -> css selector: #login-email], [t, e, s, t, i, n, g, @, m, e, d, b, o, o, k, ., u, c, s, c, ., e, d, u]]
+13:26:35.351 INFO - Executing: [find element: By.cssSelector: #login-password])
+13:26:35.367 INFO - Done: [find element: By.cssSelector: #login-password]
+13:26:35.371 INFO - Executing: [send keys: 4 [[ChromeDriver: chrome on MAC (7230e8c6d34057a7028a6ce9e959d760)] -> css selector: #login-password], [t, e, s, t, i, n, g]])
+13:26:35.436 INFO - Done: [send keys: 4 [[ChromeDriver: chrome on MAC (7230e8c6d34057a7028a6ce9e959d760)] -> css selector: #login-password], [t, e, s, t, i, n, g]]
+13:26:35.439 INFO - Executing: [find element: By.cssSelector: #login-buttons-password])
+13:26:35.455 INFO - Done: [find element: By.cssSelector: #login-buttons-password]
+13:26:35.457 INFO - Executing: [click: 5 [[ChromeDriver: chrome on MAC (7230e8c6d34057a7028a6ce9e959d760)] -> css selector: #login-buttons-password]])
+13:26:35.497 INFO - Done: [click: 5 [[ChromeDriver: chrome on MAC (7230e8c6d34057a7028a6ce9e959d760)] -> css selector: #login-buttons-password]]
+13:26:36.504 INFO - Executing: [delete session: 1cdc6ef6-be26-4986-aca4-0e6243d47a2d])
+13:26:37.206 INFO - Done: [delete session: 1cdc6ef6-be26-4986-aca4-0e6243d47a2d]

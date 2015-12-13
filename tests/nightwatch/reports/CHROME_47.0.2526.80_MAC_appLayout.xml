@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites errors="0"
-            failures="0"
+            failures="1"
             tests="1">
 
   <testsuite name="appLayout"
-    errors="0" failures="0" hostname="" id="" package="appLayout" skipped="0"
-    tests="1" time="0.000" timestamp="Sat, 12 Dec 2015 21:41:20 GMT">
+    errors="0" failures="1" hostname="" id="" package="appLayout" skipped="0"
+    tests="1" time="0.000" timestamp="Sun, 13 Dec 2015 14:26:37 GMT">
   
-    <testcase name="Upload some BD2KGeneExpression files" time="12.26" assertions="5">
+    <testcase name="Upload some BD2KGeneExpression files" time="12.97" assertions="5">  <failure message="Testing if element &lt;#MedBookImage&gt; is present.">    at Object.exports.command (/Users/robertbaertsch/src/meteor/MedBook-Workbench/tests/nightwatch/commands/components/reviewMainLayout.js:3:13)
+    at Object.F.command (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/api.js:274:31)
+    at Object.commandFn (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/api.js:287:24)
+    at AsyncTree.runCommand (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/queue.js:157:30)
+    at AsyncTree.runChildNode (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/queue.js:117:8)
+    at AsyncTree.walkDown (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/queue.js:83:10)
+    at AsyncTree.walkUp (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/queue.js:100:8)
+    at AsyncTree.walkDown (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/queue.js:93:12)
+    at AsyncTree.traverse (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/queue.js:71:10)
+    at F.onCommandComplete (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/queue.js:134:12)</failure>
 
     
 
