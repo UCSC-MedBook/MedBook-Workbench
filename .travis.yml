@@ -57,7 +57,7 @@ before_install:
   - "starrynight fetch"
 
   - "sleep 20"
-  - "starrynight generate --autoconfig"
+#- "starrynight generate --autoconfig"
 
 
   - "sleep 5"
