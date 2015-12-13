@@ -5,9 +5,9 @@
 
   <testsuite name="appLayout"
     errors="0" failures="1" hostname="" id="" package="appLayout" skipped="0"
-    tests="1" time="0.000" timestamp="Sun, 13 Dec 2015 14:26:37 GMT">
+    tests="1" time="0.000" timestamp="Sun, 13 Dec 2015 14:37:57 GMT">
   
-    <testcase name="Upload some BD2KGeneExpression files" time="12.97" assertions="5">  <failure message="Testing if element &lt;#MedBookImage&gt; is present.">    at Object.exports.command (/Users/robertbaertsch/src/meteor/MedBook-Workbench/tests/nightwatch/commands/components/reviewMainLayout.js:3:13)
+    <testcase name="Upload some BD2KGeneExpression files" time="11.07" assertions="5">  <failure message="Testing if element &lt;#MedBookImage&gt; is present.">    at Object.exports.command (/Users/robertbaertsch/src/meteor/MedBook-Workbench/tests/nightwatch/commands/components/reviewMainLayout.js:3:13)
     at Object.F.command (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/api.js:274:31)
     at Object.commandFn (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/api.js:287:24)
     at AsyncTree.runCommand (/usr/local/lib/node_modules/starrynight/node_modules/nightwatch/lib/core/queue.js:157:30)

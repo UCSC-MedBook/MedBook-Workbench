@@ -14,7 +14,7 @@ env:
     - CXX=g++-4.8
     - TRAVIS=true
     - DISPLAY=:99.0
-    - CONFIG_PREFIX=`npm config get prefix`
+#    - CONFIG_PREFIX=`npm config get prefix`
   matrix:
 addons:
   apt:
