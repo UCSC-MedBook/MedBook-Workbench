@@ -13,7 +13,6 @@ mrt:jquery-ui-bootstrap
 bootstrap
 iron:router
 email
-sample-pie-charts
 zimme:iron-router-active
 aldeed:collection2
 aldeed:autoform
@@ -25,7 +24,6 @@ cfs:standard-packages
 cfs:filesystem
 cfs:gridfs
 vsivsi:file-collection
-observation-deck
 cfs:ui
 underscore
 aldeed:tabular
@@ -37,11 +35,13 @@ accounts-ui
 accounts-google
 medbook:primary-collections
 natestrauser:select2
-select2genelist
 momentjs:moment
 sacha:spin
 twbs:bootstrap
 reactive-var
 msavin:mongol
 msavin:jetsetter
-ucscmedbook:api
+medbook:api
+medbook:observation-deck
+medbook:sample-pie-charts
+medbook:select2genelist
