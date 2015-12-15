@@ -41,7 +41,6 @@ twbs:bootstrap
 reactive-var
 msavin:mongol
 msavin:jetsetter
-medbook:api
 medbook:observation-deck
 medbook:sample-pie-charts
 medbook:select2genelist
