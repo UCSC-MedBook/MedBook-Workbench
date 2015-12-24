@@ -2,14 +2,17 @@ CohortController = RouteController.extend({
     waitOn : function() {
         var s = '<--- CohortController.waitOn in client/controllers/cohort.js';
         var studyID = Session.get("studyID");
-        var geneList = Session.get("geneList") || [];
-        // var sigNames = Session.get("signatureNames");
+        var selectedContrast = Session.get("selectedContrast");
         var pivotSettings = Session.get("pivotSettings");
         var pagingConfig = Session.get("subscriptionPaging") || {};
 
-        var widgetGenelist = Session.get("cohort_tab_genelist_widget") || [];
+        var sessionGeneLists = {
+            "geneList" : _.compact(Session.get("geneList")) || [],
+            "cohort_tab_genelist_widget" : Session.get("cohort_tab_genelist_widget") || [],
+            "focusGenes" : Session.get("focusGenes") || []
+        };
 
-        var geneList = _.uniq(geneList.concat(widgetGenelist));
+        console.log("sessionGeneLists", sessionGeneLists);
 
         var pName = null;
         var pDatatype = null;
@@ -24,7 +27,7 @@ CohortController = RouteController.extend({
         }
 
         // publish in /server/publish/correlator.js
-        Meteor.subscribe("correlatorResults", pName, pDatatype, pVersion, studyID, pagingConfig, geneList);
+        Meteor.subscribe("correlatorResults", pName, pDatatype, pVersion, studyID, selectedContrast, pagingConfig, sessionGeneLists);
     },
 
     data : function() {

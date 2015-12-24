@@ -71,7 +71,7 @@ livedata@1.0.13
 localstorage@1.0.3
 logging@1.0.7
 medbook:api@0.2.5
-medbook:observation-deck@0.0.1
+medbook:observation-deck@0.1.0
 medbook:primary-collections@0.0.8
 medbook:sample-pie-charts@0.0.1
 medbook:select2genelist@0.0.1

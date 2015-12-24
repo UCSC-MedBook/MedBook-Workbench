@@ -2,28 +2,29 @@
 /* Correlator Publish Functions
 /*****************************************************************************/
 
-// Meteor.publish('correlator', function(sigNames, topN) {
-// var s = "<--- publish correlator in server/publish/correlator.js";
-//
-// var nameList = [];
-// if (sigNames) {
-// for (var i = 0, length = sigNames.length; i < length; i++) {
-// var sigName = sigNames[i];
-// var fields = sigName.split('_v');
-// fields.pop();
-// var rootName = fields.join('_v');
-// nameList.push(rootName);
-// }
-// }
-//
-// var findResult = Correlator.find({
-// 'name_1' : {
-// $in : nameList
-// }
-// });
-// console.log('correlator ', sigNames, 'count:', findResult.count(), 'nameList', nameList.join(), s);
-// return findResult;
-// });
+/**
+ * Get the signature names for a list of genes.
+ */
+var getSignatureNamesForGenes = function(geneList) {
+    var regexList = [];
+    _.each(geneList, function(gene) {
+        var regex = new RegExp("^" + gene + "_");
+        regexList.push(regex);
+    });
+
+    var cursor = SignatureScores.find({
+        "name" : {
+            "$in" : regexList
+        }
+    }, {
+        fields : {
+            "name" : 1
+        }
+    });
+
+    var sigNames = _.uniq(_.pluck(cursor.fetch(), "name"));
+    return sigNames;
+};
 
 /**
  * Separate correlator event_2's by datatype. Return an object keyed on datatype.
@@ -221,14 +222,18 @@ var getCorrelatorIds_forSign = function(pivotName, pivotDatatype, pivotVersion, 
  *
  * parameter "geneList" is for specifying a geneList manually selected, ie. not via correlator.
  */
-Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVersion, Study_ID, pagingConfig, nonCorrGeneList) {
+// Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVersion, Study_ID, selectedContrast, pagingConfig, nonCorrGeneList) {
+Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVersion, Study_ID, selectedContrast, pagingConfig, sessionGeneLists) {
     var s = "<--- publish correlatorResults in server/publish/correlator.js";
+    console.log("	", "BEGIN", s);
     var pageSize = 5;
     var cursors = [];
 
-    if (nonCorrGeneList == null) {
-        nonCorrGeneList = [];
+    if (sessionGeneLists == null) {
+        sessionGeneLists = {};
     }
+
+    var nonCorrGeneList = _.union.apply(this, (_.values(sessionGeneLists)));
 
     // clinical events
     var clinicalEventsCursor = ClinicalEvents.find({
@@ -236,7 +241,10 @@ Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVers
     });
     cursors.push(clinicalEventsCursor);
 
-    console.log("arguments", pivotName, pivotDatatype, pivotVersion, Study_ID, pagingConfig, s);
+    console.log("arguments", pivotName, pivotDatatype, pivotVersion, Study_ID, selectedContrast, pagingConfig, nonCorrGeneList, s);
+
+    var nonCorrSigNames = getSignatureNamesForGenes(nonCorrGeneList);
+    console.log("nonCorrSigNames", nonCorrSigNames);
 
     // get correlator scores from Mongo collection
     if (pivotDatatype !== "clinical") {
@@ -295,8 +303,11 @@ Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVers
         var corrExpEvents = eventsByType["expression"];
         var geneList = _.pluck(corrExpEvents, "name");
         console.log("geneList", geneList.length, s);
+
+        // add nonCorrGeneList to the results
         geneList = geneList.concat(nonCorrGeneList);
         console.log("geneList", geneList.length, "after adding nonCorrGeneList", s);
+
         var expression2Cursor = Expression2.find({
             'gene' : {
                 "$in" : geneList
@@ -316,7 +327,7 @@ Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVers
     }
 
     // get signature scores from Mongo collection
-    if (eventsByType.hasOwnProperty("signature")) {
+    if (eventsByType.hasOwnProperty("signature") || nonCorrSigNames.length != 0) {
         var corrSigEvents = eventsByType["signature"];
         var sigNames = _.map(corrSigEvents, function(element) {
             var name = element["name"];
@@ -325,6 +336,11 @@ Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVers
         });
 
         console.log("sigNames", sigNames.length, s);
+
+        // add nonCorrSigNames to the results
+        sigNames = _.union(sigNames, nonCorrSigNames);
+        console.log("sigNames", sigNames.length, "after adding nonCorrSigNames", s);
+
         var signatureScoresCursor = SignatureScores.find({
             'name' : {
                 "$in" : sigNames
@@ -341,6 +357,7 @@ Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVers
     }
 
     console.log("cursors", cursors.length, pivotName, s);
+    console.log("	", "END", s);
 
     return cursors;
 });

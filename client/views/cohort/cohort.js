@@ -149,9 +149,15 @@ Template.Cohort.rendered = function() {
         var sigIdsDocList = Signature.find().fetch();
 
         // okay to access Session variable here w.r.t churning?
-        var sessionGeneList = Session.get("geneList") || [];
-        var cohort_tab_genelist_widget = Session.get("cohort_tab_genelist_widget") || [];
-        sessionGeneList = sessionGeneList.concat(cohort_tab_genelist_widget);
+        // var sessionGeneList = Session.get("geneList") || [];
+        // var cohort_tab_genelist_widget = Session.get("cohort_tab_genelist_widget") || [];
+        // sessionGeneList = sessionGeneList.concat(cohort_tab_genelist_widget);
+
+        var sessionGeneLists = {
+            "geneList" : _.compact(Session.get("geneList")) || [],
+            "cohort_tab_genelist_widget" : Session.get("cohort_tab_genelist_widget") || [],
+            "focusGenes" : Session.get("focusGenes") || []
+        };
 
         // build observation deck
         if ((clinDocList.length > 0) || (expDocList.length > 0)) {
@@ -160,7 +166,7 @@ Template.Cohort.rendered = function() {
                 "geneQueryUrl" : "/genes?q=",
                 "sigQueryUrl" : "/signatures?q=",
                 // geneList selected from geneSet UI control
-                "geneSetControl" : sessionGeneList,
+                "sessionGeneLists" : sessionGeneLists,
                 'pivotScores' : {
                     'object' : corrDocList
                 },
