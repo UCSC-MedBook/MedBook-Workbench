@@ -6,7 +6,6 @@
 
 medbook:primary-collections
 sacha:spin
-twbs:bootstrap
 accounts-password
 accounts-ui
 less
@@ -27,3 +26,4 @@ ejson
 spacebars
 check
 arillo:flow-router-helpers
+huttonr:bootstrap3

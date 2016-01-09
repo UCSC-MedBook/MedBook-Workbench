@@ -1,16 +1,23 @@
-Router.configure({
-  // we use the  appBody template to define the layout for the entire app
-  layoutTemplate: 'appBody',
+FlowRouter.notFound = {
+  action: function () {
+    BlazeLayout.render("appBody", {content: "pageNotFound"});
+  }
+};
 
-  // the appNotFound template is used for unknown routes and missing lists
-  notFoundTemplate: 'pageNotFound',
-
-  // show the appLoading template whilst the subscriptions below load their data
-  loadingTemplate: 'spinner',
+var workbench = FlowRouter.group({
+  prefix: "/Workbench"
 });
 
-Router.map(function() {
-  this.route('home', {
-    path: '/Workbench/',
-  });
+workbench.route('/', {
+  name: "home",
+  action: function() {
+    BlazeLayout.render("appBody", {content: "home"});
+  }
+});
+
+workbench.route('/limma', {
+  name: "limma",
+  action: function() {
+    BlazeLayout.render("appBody", {content: "limma"});
+  }
 });
