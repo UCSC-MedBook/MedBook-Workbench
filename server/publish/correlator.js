@@ -218,6 +218,69 @@ var getCorrelatorIds_forSign = function(pivotName, pivotDatatype, pivotVersion, 
 };
 
 /**
+ *  Get contrast data from Contrast collection.
+ */
+var getContrastData = function(studyId, contrastId) {
+    var contrastPivotMapping = {
+        "prad_wcdt" : {
+            "Liver vs Bone" : {
+                "name" : "biopsy_site",
+                "datatype" : "clinical",
+                "version" : 1
+            },
+            "path-Small Cell vs path-Adeno" : {
+                "name" : "Histology_Call",
+                "datatype" : "clinical",
+                "version" : 1
+            },
+            "path-ANCa vs path-Adeno" : {
+                "name" : "Trichotomy",
+                "datatype" : "clinical",
+                "version" : 1
+            },
+            "Enza-Resistant vs Abi-Resistant" : {
+                "name" : "Enzalutamide",
+                "datatype" : "clinical",
+                "version" : 1
+            },
+            "Abi-Resistant vs Abi-Naive" : {
+                "name" : "Abiraterone",
+                "datatype" : "clinical",
+                "version" : 1
+            },
+            "Small Cell vs Not Small Cell" : {
+                "name" : "Small_Cell",
+                "datatype" : "clinical",
+                "version" : 1
+            }
+        }
+    };
+
+    var contrastData;
+    var cursor = Contrast.find({
+        "_id" : contrastId,
+        "studyID" : studyId
+    }, {
+    });
+    var docs = cursor.fetch();
+    if (docs.length > 1) {
+        console.log("WARNING", "multiple contrasts have _id:", contrastId);
+    }
+    if (docs.length > 0) {
+        contrastData = docs[0];
+    }
+
+    if ((!_.isUndefined(contrastPivotMapping[studyId])) && (!_.isUndefined(contrastData))) {
+        var mappings = contrastPivotMapping[studyId];
+        var contrastName = contrastData["name"];
+        if ( contrastName in mappings) {
+            contrastData["pivotObj"] = mappings[contrastName];
+        }
+    }
+    return contrastData;
+};
+
+/**
  * correlatorResults publication
  *
  * parameter "geneList" is for specifying a geneList manually selected, ie. not via correlator.
@@ -242,6 +305,17 @@ Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVers
     cursors.push(clinicalEventsCursor);
 
     console.log("arguments", pivotName, pivotDatatype, pivotVersion, Study_ID, selectedContrast, pagingConfig, nonCorrGeneList, s);
+
+    var contrastData = getContrastData(Study_ID, selectedContrast);
+    if (!_.isUndefined(contrastData) && _.isNull(pivotName) && _.isNull(pivotDatatype) && _.isNull(pivotVersion)) {
+        if ("pivotObj" in contrastData) {
+            console.log(contrastData["name"], "using pre-mapped pivotObj for contrast", contrastData["pivotObj"]);
+            var contrastPivotObj = contrastData["pivotObj"];
+            pivotName = contrastPivotObj["name"];
+            pivotDatatype = contrastPivotObj["datatype"];
+            pivotVersion = contrastPivotObj["version"];
+        }
+    }
 
     var nonCorrSigNames = getSignatureNamesForGenes(nonCorrGeneList);
     console.log("nonCorrSigNames", nonCorrSigNames);
