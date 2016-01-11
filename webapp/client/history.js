@@ -52,7 +52,7 @@ Template.listAllJobs.helpers({
 
 Template.listJob.helpers({
   getTitle: function (name) {
-    return JobClasses[name].title;
+    return WranglerJobs[name].title;
   },
   active: function () {
     if (Template.instance().parent(2).selectedJob.get() === this._id) {
@@ -69,12 +69,12 @@ Template.listJob.helpers({
     }
   },
   getArgSchemaAttributes: function (name) {
-    var schema = JobClasses[name].schema.schema();
+    var schema = WranglerJobs[name].schema.schema();
 
     return Object.keys(schema);
   },
   getSchemaLabel: function (name, argName) {
-    return JobClasses[name].schema.label(argName);
+    return WranglerJobs[name].schema.label(argName);
   },
   getArgValue: function (argName) {
     return Template.parentData().args[argName];

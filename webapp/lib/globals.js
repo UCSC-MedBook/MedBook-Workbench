@@ -6,7 +6,7 @@ ensureLoggedIn = function() {
   return user_id;
 };
 
-JobClasses = {
+WranglerJobs = {
   RunLimma: {
     title: "Limma",
     description: "Linear Models for Microarray Data",

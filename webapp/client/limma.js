@@ -2,7 +2,7 @@
 
 Template.limma.helpers({
   jobSchema: function () {
-    return JobClasses.RunLimma.schema;
+    return WranglerJobs.RunLimma.schema;
   },
 });
 
