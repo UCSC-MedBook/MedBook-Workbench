@@ -70,6 +70,31 @@
   </nav>
 
   <div class="container-fluid" style="margin-top: 50px;">
-    {{>Template.dynamic template=content}}
+    {{! this div is shown when the viewport is too small and bootstrap
+        thinks it's a phone/tablet}}
+    <div id="viewport-too-small">
+      <div class="jumbotron">
+        <h1>Are you on a phone?</h1>
+        <p>
+          If you're on a laptop or desktop, please make your window wider.
+          Currently Workbench has been designed to work on large screens
+          (greater than 768px).
+        </p>
+        <p>
+          If you want to use Workbench on smaller devices, please email a
+          feature request to the MedBook team.
+        </p>
+        <p>
+          <a href="mailto:mokolodi1@gmail.com?Subject=Workbench%20feature%20request:%20mobile%20layout"
+              type="button" class="btn btn-primary">
+            Email Teo
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <div id="viewport-big-enough">
+      {{>Template.dynamic template=content}}
+    </div>
   </div>
 </template>
