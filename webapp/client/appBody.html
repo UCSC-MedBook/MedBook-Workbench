@@ -1,5 +1,11 @@
+<body>
+  <!-- needed for sAlert to work right -->
+  {{> sAlert}}
+</body>
+
 <template name="appBody">
-  <nav class="navbar navbar-default navbar-static-top">
+  {{! other option: navbar-static-top}}
+  <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -9,20 +15,20 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="{{pathFor "home"}}">MedBook</a>
+        <a class="navbar-brand" href="{{pathFor "history"}}">MedBook</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li class="{{isActiveRoute "home"}}">
-            <a href="{{pathFor "home"}}">
-              Home
+          <li class="{{isActiveRoute "history"}}">
+            <a href="{{pathFor "history"}}">
+              History
             </a>
           </li>
           <li class="{{isActiveRoute "limma"}}">
             <a href="{{pathFor "limma"}}">
-              limma
+              Limma
             </a>
           </li>
           <!-- <li><a href="#">Link</a></li>
@@ -51,11 +57,11 @@
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
+              <li><a href="">Soon this will link to other MedBook apps</a></li>
+              <!-- <li><a href="#">Another action</a></li>
               <li><a href="#">Something else here</a></li>
               <li role="separator" class="divider"></li>
-              <li><a href="#">Separated link</a></li>
+              <li><a href="#">Separated link</a></li> -->
             </ul>
           </li>
         </ul>
@@ -63,7 +69,7 @@
     </div>
   </nav>
 
-  <div class="container-fluid">
+  <div class="container-fluid" style="margin-top: 50px;">
     {{>Template.dynamic template=content}}
   </div>
 </template>

@@ -1,0 +1,28 @@
+<template name="welcome">
+  <div class="jumbotron" style="margin-top: 15px;">
+    <h1>Welcome!</h1>
+    <p>
+      Workbench is your one-stop shop for online bioinformatic tools.
+    </p>
+    <p>
+      Using the tools listed in the toolbar at the top, you can
+      run several bioinformatic tools with the touch of a button.
+    </p>
+    <p>
+      Workbench is still currently under active development, and you may
+      encounter bugs using it. Please report these bugs to the MedBook
+      team by emailing Teo Fleming at
+      <a href="mailto:mokolodi1@gmail.com?Subject=Workbench">mokolodi1@gmail.com</a>.
+    </p>
+    <p>
+      <a href="{{pathFor 'history'}}" class="btn btn-primary btn-lg" role="button">
+        Got it!
+      </a>
+
+      <a id="close-welcome-forever" href="{{pathFor 'history'}}"
+          class="btn btn-warning btn-lg" role="button">
+        Don't show again
+      </a>
+    </p>
+  </div>
+</template>

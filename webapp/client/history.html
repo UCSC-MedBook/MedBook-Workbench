@@ -1,0 +1,140 @@
+<template name="history">
+  <h1>
+    History
+    <small>of previously run tools</small>
+  </h1>
+
+  {{> jobsBrowser}}
+</template>
+
+<template name="jobsBrowser">
+  <div id="affix-job-output-top" class="row">
+    <div class="{{#if selectedJob}}col-sm-4{{else}}col-sm-12{{/if}}">
+      {{> listAllJobs name="RunLimma"}}
+    </div>
+    {{#if selectedJob}}
+      <div class="col-sm-8">
+        {{> showJobResult selectedJob}}
+      </div>
+    {{/if}}
+  </div>
+</template>
+
+<template name="listAllJobs">
+  {{#if Template.subscriptionsReady}}
+    {{#if length getJobs}}
+      <div class="list-group">
+        {{#each getJobs}}
+          {{> listJob}}
+        {{/each}}
+      </div>
+    {{else}}
+      <div class="jumbotron">
+        <h1>Ready, set, go!</h1>
+        <p>
+          You're ready to run your first tool!
+          The available tools are listed in the toolbar
+          at the top of this page.
+        </p>
+        <p>
+          Still don't know where to go?
+          <a href="{{pathFor 'limma'}}" class="btn btn-primary btn-md" role="button">
+            Take me to limma
+          </a>
+        </p>
+        <p>
+          Remember to come back to this page to view
+          your previously run tools.
+        </p>
+      </div>
+    {{/if}}
+  {{else}}
+    <div class="alert alert-info" role="alert">
+      <strong>Loading...</strong>
+      The data will arrive soon!
+    </div>
+  {{/if}}
+</template>
+
+<template name="listJob">
+  <a href="" class="select-job list-group-item {{statusClass}} {{active}}">
+    <span class="badge">{{status}}</span>
+    <h4 class="list-group-item-heading">{{getTitle name}}</h4>
+    <p class="list-group-item-text">
+      Date created: {{fromNow date_created}} <br />
+      {{#each getArgSchemaAttributes name}}
+        {{getSchemaLabel ../name this}}: {{getArgValue this}} <br />
+      {{/each}}
+    </p>
+  </a>
+</template>
+
+<template name="showJobResult">
+  <div id="job-result">
+    {{#if compare status "waiting"}}
+      <div class="well">
+        The job is in the queue and will be run soon.
+      </div>
+    {{/if}}
+
+    {{#if compare status "running"}}
+      <div class="well">
+        The job is being run!
+      </div>
+    {{/if}}
+
+    {{#if compare status "error"}}
+      <div class="alert alert-danger" role="alert">
+        <h4>Error running job</h4>
+        <p>
+          Here is a description of the error: {{error_description}}
+        </p>
+        <p>
+          If this seems to be an internal error and not a parameter problem,
+          please contact the MedBook team so we can figure out what went wrong.
+          The _id of this job is <code>{{_id}}</code>.
+        </p>
+        <p>
+          <a href="mailto:mokolodi1@gmail.com?Subject=Workbench%20job%20error:%20{{_id}}"
+              type="button" class="btn btn-danger">
+            Email Teo
+          </a>
+        </p>
+      </div>
+    {{/if}}
+
+    {{#if compare status "done"}}
+      <div class="panel panel-default"> {{! TODO: affix}}
+        <div class="panel-body">
+          {{#with output}}
+            <h3>Result: {{result}}</h3>
+            <h3>Output files:</h3>
+            {{#each blobs}}
+              {{> outputBlob}}
+            {{/each}}
+          {{/with}}
+        </div>
+      </div>
+    {{/if}}
+  </div>
+</template>
+
+<template name="outputBlob">
+  <p class="h4">
+    {{name}}
+    {{#if Template.subscriptionsReady}}
+      <button class="view-in-new-tab btn btn-primary btn-xs" type="button">
+        <!-- <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span> -->
+        View
+      </button>
+      {{#if canWrangle}}
+        <button class="wrangle-file btn btn-primary btn-xs" type="button">
+          <!-- <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span> -->
+          Wrangle
+        </button>
+      {{/if}}
+    {{else}}
+      <span class="badge">loading</span>
+    {{/if}}
+  </p>
+</template>

@@ -1,3 +1,48 @@
 <template name="limma">
-  <h1>limma</h1>
+  <h1>Limma
+    <small>Linear Models for Microarray Data</small>
+  </h1>
+
+  {{#autoForm schema=jobSchema id="addLimmaJob" type="method" meteormethod="addLimmaJob"}}
+    <fieldset>
+      <legend>Add new</legend>
+      {{> horizontalQuickField name="topGeneCount"}}
+      {{> contrastField "addLimmaJob"}}
+      {{> horizontalQuickField name="correction_method" options="allowed"
+          firstOption="(Select a p-value correction method)"}}
+      <p class="help-block col-md-9 col-sm-8 col-xs-6 col-md-offset-3 col-sm-offset-4 col-xs-offset-6">
+        BH correction method refers to Benjamini and Hochberg’s
+        method to control the false discovery rate.
+      </p>
+      <div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-default">Reset</button>
+      </div>
+    </fieldset>
+  {{/autoForm}}
+</template>
+
+<template name="contrastField">
+  {{#if Template.subscriptionsReady}}
+    {{> horizontalQuickField name="contrast_label" options=labelOptions
+        firstOption="(Select a contrast)"}}
+
+    {{#if afFieldValueIs name="contrast_label" value="test_contrast"}}
+      {{> horizontalQuickField name="contrast_version" options=versionOptions
+          firstOption="(Select the version)"}}
+    {{/if}}
+  {{else}}
+    <p>
+      Loading contrasts...
+    </p>
+  {{/if}}
+</template>
+
+<template name="horizontalQuickField">
+  {{> afQuickField name=name
+      firstOption=firstOption
+      options=options
+      template="bootstrap3-horizontal"
+      label-class="col-md-3 col-sm-4 col-xs-6"
+      input-col-class="col-md-9 col-sm-8 col-xs-6"}}
 </template>

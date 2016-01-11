@@ -9,9 +9,16 @@ var workbench = FlowRouter.group({
 });
 
 workbench.route('/', {
-  name: "home",
+  name: "welcome",
   action: function() {
-    BlazeLayout.render("appBody", {content: "home"});
+    BlazeLayout.render("appBody", {content: "welcome"});
+  }
+});
+
+workbench.route('/history', {
+  name: "history",
+  action: function() {
+    BlazeLayout.render("appBody", {content: "history"});
   }
 });
 
