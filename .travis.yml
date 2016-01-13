@@ -91,7 +91,7 @@ before_install:
   # start Workbench
   - "cd webapp"
   - "cat .meteor/versions"
-  - "../config/starrynight/run.sh &"
+  - "../config/travis/run.sh &"
 
 
   - "sleep 90"
