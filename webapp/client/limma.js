@@ -11,7 +11,10 @@ Template.limma.helpers({
 Template.contrastField.onCreated(function () {
   var instance = this;
 
-  instance.subscribe("contrasts");
+  instance.autorun(function () {
+    var userId = Meteor.userId();
+    instance.subscribe("contrasts");
+  });
 });
 
 Template.contrastField.helpers({
