@@ -58,6 +58,7 @@ before_install:
 
   # install meteor
   - "curl https://install.meteor.com | /bin/sh"
+  - "alias meteor='~/.meteor/meteor'"
 
   # give meteor a few seconds after installing
   - "sleep 5"
