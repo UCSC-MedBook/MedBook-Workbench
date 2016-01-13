@@ -18,7 +18,7 @@ module.exports = {
       .verify.visible("#viewport-big-enough")
       .verify.hidden("#viewport-too-small")
       .resizeWindow(700, 500)
-      .waitForElementVisible("#viewport-too-small")
+      .waitForElementVisible("#viewport-too-small", 5000)
       .verify.hidden("#viewport-big-enough")
       .verify.visible("#viewport-too-small")
       .verify.containsText("#viewport-too-small .jumbotron > h1", "Are you on a phone?")
@@ -31,7 +31,7 @@ module.exports = {
       .verify.attributeContains("#viewport-too-small .jumbotron > p:nth-child(4) > a",
           "href", "mailto:mokolodi1@gmail.com")
       .resizeWindow(1024, 768)
-      .waitForElementVisible("#viewport-big-enough")
+      .waitForElementVisible("#viewport-big-enough", 5000)
     ;
 
     // make sure we get an error message that we need to log in
@@ -95,6 +95,21 @@ module.exports = {
       .waitForElementVisible("#workbench-navbar-collapse > ul:nth-child(1) > li.active")
       .verify.containsText("#workbench-navbar-collapse > ul:nth-child(1) > li.active", "History")
     ;
+
+    // check out the history page if blank
+    client
+      .verify.containsText("#affix-job-output-top .jumbotron > h1", "Ready, set, go!")
+      .verify.containsText("#affix-job-output-top .jumbotron > p:nth-child(2)",
+          "You're ready to run your first tool! " +
+          "The available tools are listed in the toolbar at the top of this page.")
+      .verify.containsText("#affix-job-output-top .jumbotron > p:nth-child(3)",
+          "Still don't know where to go?")
+      .verify.containsText("#affix-job-output-top .jumbotron > p:nth-child(4)",
+          "Remember to come back to this page to view your previously run tools.")
+      // go to the limma tool from the link in the jumbotron
+      .click("#affix-job-output-top .jumbotron > p:nth-child(3) > a")
+      .verify.containsText("#workbench-navbar-collapse > ul:nth-child(1) > li.active", "Limma")
+
 
 
 

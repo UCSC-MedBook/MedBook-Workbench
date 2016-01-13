@@ -13,6 +13,10 @@ Meteor.methods({
           "profile.workbench": 1
         }
       });
+
+      Jobs.remove({
+        user_id: user_id
+      });
     } else {
       throw new Meteor.Error("not in testing collaboration");
     }

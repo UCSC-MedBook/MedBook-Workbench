@@ -70,6 +70,19 @@
         "phantomjs.binary.path": "${npm_config_prefix}/lib/node_modules/starrynight/node_modules/phantomjs/bin/phantomjs"
       }
     },
+    "travis": {
+      "launch_url": "http://localhost:3000",
+      "selenium_host": "127.0.0.1",
+      "selenium_port": 4444,
+      "pathname": "/wd/hub",
+      "silent": true,
+      "disable_colors": false,
+      "firefox_profile": false,
+      "screenshots": {
+        "enabled": false,
+        "path": "./tests/nightwatch/screenshots"
+      }
+    },
     "unittests": {
       "selenium": {
         "start_process": false,
