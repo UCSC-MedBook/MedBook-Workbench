@@ -19,13 +19,13 @@ Template.contrastField.onCreated(function () {
 
 Template.contrastField.helpers({
   labelOptions: function () {
-    var labels = Contrasts.find().map(function (contrast) {
+    var uniqueLabels = _.uniq(_.pluck(Contrasts.find().fetch(), "contrast_label"));
+    return uniqueLabels.map(function (label) {
       return {
-        label: contrast.contrast_label,
-        value: contrast.contrast_label,
+        label: label,
+        value: label,
       };
     });
-    return _.uniq(labels);
   },
   contrastSelected: function () {
     return AutoForm.getFieldValue(this, "contrast_label");

@@ -94,10 +94,8 @@ module.exports = {
       .waitForElementVisible("#logged-in")
       .waitForElementVisible("#workbench-navbar-collapse > ul:nth-child(1) > li.active")
       .verify.containsText("#workbench-navbar-collapse > ul:nth-child(1) > li.active", "History")
-    ;
 
-    // check out the history page if blank
-    client
+      // check out the history page if blank
       .verify.containsText("#affix-job-output-top .jumbotron > h1", "Ready, set, go!")
       .verify.containsText("#affix-job-output-top .jumbotron > p:nth-child(2)",
           "You're ready to run your first tool! " +
