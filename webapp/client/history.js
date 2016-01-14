@@ -90,7 +90,7 @@ Template.listJob.events({
 // Template.showJobResult
 
 Template.showJobResult.onRendered(function () {
-  $('#affix-job-output-top #job-result').affix({
+  $('#affix-job-output #job-result').affix({
     offset: {
       top: 59,
     }
