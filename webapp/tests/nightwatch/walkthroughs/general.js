@@ -128,7 +128,7 @@ module.exports = {
           "to control the false discovery rate.")
       .verify.elementPresent("#addLimmaJob button[type=reset]")
       .click("#addLimmaJob button[type=submit]")
-      .waitForElementNotVisible("#addLimmaJob select[name=contrast_version]")
+      .waitForElementNotVisible("#addLimmaJob select[name=contrast_version]", 5000)
       .verify.value("#addLimmaJob input[name=topGeneCount]", "") // form cleared
 
       // go to history and check it out
