@@ -108,6 +108,29 @@ module.exports = {
       .click("#affix-job-output-top .jumbotron > p:nth-child(3) > a")
       .verify.containsText("#workbench-navbar-collapse > ul:nth-child(1) > li.active", "Limma")
 
+      // set options for limma
+      .waitForElementVisible("#addLimmaJob select[name=contrast_label]") // subscriptions loaded
+      .clearValue("#addLimmaJob input[name=topGeneCount]")
+      .setValue("#addLimmaJob input[name=topGeneCount]", 1000)
+      .click("#addLimmaJob select[name=contrast_label] > option[value=test_contrast]")
+      // two contrasts loaded: only one should show because they share a label
+      .verify.elementNotPresent("#addLimmaJob select[name=contrast_label] > option:nth-child(3)")
+      // wait for form to show versions also
+      .waitForElementVisible("#addLimmaJob select[name=contrast_version]")
+      .click("#addLimmaJob select[name=contrast_version] > option[value='1']")
+      // two contrasts loaded: should show two versions
+      .verify.elementPresent("#addLimmaJob select[name=contrast_version] > option[value='2']")
+      .click("#addLimmaJob select[name=correction_method] > option[value=BH]")
+      .verify.containsText("#addLimmaJob > fieldset > p:nth-child(6)",
+          "BH correction method refers to Benjamini and Hochberg’s method " +
+          "to control the false discovery rate.")
+      .verify.elementPresent("#addLimmaJob button[type=reset]")
+      .click("#addLimmaJob button[type=submit]")
+      .waitForElementNotVisible("#addLimmaJob select[name=contrast_version]")
+      .verify.value("#addLimmaJob input[name=topGeneCount]", "") // form cleared
+
+    ;
+
 
 
 
