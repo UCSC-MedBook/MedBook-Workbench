@@ -228,6 +228,11 @@ var getContrastData = function(studyId, contrastId) {
                 "datatype" : "clinical",
                 "version" : 1
             },
+            "Bone vs Liver+Lymph" : {
+                "name" : "biopsy_site",
+                "datatype" : "clinical",
+                "version" : 1
+            },
             "path-Small Cell vs path-Adeno" : {
                 "name" : "Histology_Call",
                 "datatype" : "clinical",
@@ -252,6 +257,11 @@ var getContrastData = function(studyId, contrastId) {
                 "name" : "Small_Cell",
                 "datatype" : "clinical",
                 "version" : 1
+            },
+            "Histology:Not Small Cell vs  Histology:Small Cell" : {
+                "name" : "Small_Cell",
+                "datatype" : "clinical",
+                "version" : 1
             }
         }
     };
@@ -273,6 +283,7 @@ var getContrastData = function(studyId, contrastId) {
     if ((!_.isUndefined(contrastPivotMapping[studyId])) && (!_.isUndefined(contrastData))) {
         var mappings = contrastPivotMapping[studyId];
         var contrastName = contrastData["name"];
+        contrastName = contrastName.trim();
         if ( contrastName in mappings) {
             contrastData["pivotObj"] = mappings[contrastName];
         }
@@ -281,16 +292,71 @@ var getContrastData = function(studyId, contrastId) {
 };
 
 /**
+ *Classify events by type... so we'll know what mongo collection to get the data from.
+ */
+var classifyLockedEvents = function(lockedEventsObj) {
+    var classifiedEvents = {
+        "clinical" : [],
+        "expression" : [],
+        "mutation" : [],
+        "signature" : [],
+        "unknown" : []
+    };
+
+    // classify locked events
+    _.each(lockedEventsObj, function(value, key) {
+        switch(key.toLowerCase()) {
+            case "clinical data":
+                classifiedEvents["clinical"] = _.union(classifiedEvents["clinical"], value);
+                break;
+            case "expression data":
+                // classifiedEvents["expression"] = _.union(classifiedEvents["expression"], _.map(value, function(eventName) {
+                // // get gene name
+                // return eventName.replace(/_mRNA$/, "");
+                // }));
+                classifiedEvents["expression"] = _.union(classifiedEvents["expression"], value);
+                break;
+            case "mutation call":
+                // classifiedEvents["mutation"] = _.union(classifiedEvents["mutation"], _.map(value, function(eventName) {
+                // // get gene name
+                // return eventName.replace(/_mutation$/, "");
+                // }));
+                classifiedEvents["mutation"] = _.union(classifiedEvents["mutation"], value);
+                break;
+            case "kinase target activity":
+                classifiedEvents["signature"] = _.union(classifiedEvents["signature"], value);
+                break;
+            case "tf target activity":
+                classifiedEvents["signature"] = _.union(classifiedEvents["signature"], value);
+                break;
+            case "expression signature":
+                classifiedEvents["signature"] = _.union(classifiedEvents["signature"], value);
+                break;
+            case "mvl drug sensitivity":
+                classifiedEvents["signature"] = _.union(classifiedEvents["signature"], value);
+                break;
+            default:
+                classifiedEvents["unknown"] = _.union(classifiedEvents["unknown"], value);
+        }
+    });
+
+    return classifiedEvents;
+};
+
+/**
  * correlatorResults publication
  *
  * parameter "geneList" is for specifying a geneList manually selected, ie. not via correlator.
  */
 // Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVersion, Study_ID, selectedContrast, pagingConfig, nonCorrGeneList) {
-Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVersion, Study_ID, selectedContrast, pagingConfig, sessionGeneLists) {
+Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVersion, Study_ID, selectedContrast, pagingConfig, sessionGeneLists, lockedEvents) {
     var s = "<--- publish correlatorResults in server/publish/correlator.js";
     console.log("	", "BEGIN", s);
     var pageSize = 5;
     var cursors = [];
+
+    // handle eventIds in lockedEvents parameter
+    var classifiedLockedEvents = classifyLockedEvents(lockedEvents);
 
     if (sessionGeneLists == null) {
         sessionGeneLists = {};
@@ -304,7 +370,7 @@ Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVers
     });
     cursors.push(clinicalEventsCursor);
 
-    console.log("arguments", pivotName, pivotDatatype, pivotVersion, Study_ID, selectedContrast, pagingConfig, nonCorrGeneList, s);
+    console.log("arguments", pivotName, pivotDatatype, pivotVersion, Study_ID, selectedContrast, pagingConfig, nonCorrGeneList, lockedEvents, s);
 
     var contrastData = getContrastData(Study_ID, selectedContrast);
     if (!_.isUndefined(contrastData) && _.isNull(pivotName) && _.isNull(pivotDatatype) && _.isNull(pivotVersion)) {
@@ -318,7 +384,7 @@ Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVers
     }
 
     var nonCorrSigNames = getSignatureNamesForGenes(nonCorrGeneList);
-    console.log("nonCorrSigNames", nonCorrSigNames);
+    // console.log("nonCorrSigNames", nonCorrSigNames);
 
     // get correlator scores from Mongo collection
     if (pivotDatatype !== "clinical") {
@@ -362,46 +428,60 @@ Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVers
     var sig_ids = getCorrelatorIds_forSign(pivotName, pivotDatatype, pivotVersion, skipCount);
 
     correlatorIds = correlatorIds.concat(sig_ids);
-    console.log("correlatorIds", correlatorIds.length, s);
+    // console.log("correlatorIds", correlatorIds.length, s);
 
     // get correlator scores
     var correlatorCursor = getCorrelatorCursorByMongoId(correlatorIds);
     cursors.push(correlatorCursor);
-    console.log("correlatorCursor", correlatorCursor.fetch().length, s);
+    // console.log("correlatorCursor", correlatorCursor.fetch().length, s);
 
     // separate correlator scores by datatype
     var eventsByType = separateCorrelatorScoresByDatatype(correlatorCursor);
 
     // get expression values from Mongo collection
-    if (eventsByType.hasOwnProperty("expression") || nonCorrGeneList.length != 0) {
+    if (eventsByType.hasOwnProperty("expression") || nonCorrGeneList.length != 0 || classifiedLockedEvents["expression"].length > 0) {
         var corrExpEvents = eventsByType["expression"];
         var geneList = _.pluck(corrExpEvents, "name");
-        console.log("geneList", geneList.length, s);
+        // console.log("geneList", geneList.length, s);
 
         // add nonCorrGeneList to the results
         geneList = geneList.concat(nonCorrGeneList);
-        console.log("geneList", geneList.length, "after adding nonCorrGeneList", s);
+        // console.log("geneList", geneList.length, "after adding nonCorrGeneList", s);
+
+        var mappedList = _.map(classifiedLockedEvents["expression"], function(eventName) {
+            return eventName.replace(/_mRNA$/, "");
+        });
+
+        var expressionGeneList = _.union(geneList, mappedList);
+
+        // console.log("expressionGeneList", expressionGeneList);
 
         var expression2Cursor = Expression2.find({
             'gene' : {
-                "$in" : geneList
+                "$in" : expressionGeneList
             },
             'Study_ID' : Study_ID
         });
         cursors.push(expression2Cursor);
 
-        console.log("expression2Cursor", expression2Cursor.fetch().length, s);
+        // console.log("expression2Cursor", expression2Cursor.fetch().length, s);
+
+        mappedList = _.map(classifiedLockedEvents["mutation"], function(eventName) {
+            return eventName.replace(/_mutation$/, "");
+        });
+
+        var mutationGeneList = _.union(geneList, mappedList);
 
         var mutationsCursor = Mutations.find({
             "gene_label" : {
-                "$in" : geneList
+                "$in" : mutationGeneList
             }
         });
         cursors.push(mutationsCursor);
     }
 
     // get signature scores from Mongo collection
-    if (eventsByType.hasOwnProperty("signature") || nonCorrSigNames.length != 0) {
+    if (eventsByType.hasOwnProperty("signature") || nonCorrSigNames.length != 0 || classifiedLockedEvents["signature"].length > 0) {
         var corrSigEvents = eventsByType["signature"];
         var sigNames = _.map(corrSigEvents, function(element) {
             var name = element["name"];
@@ -409,11 +489,11 @@ Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVers
             return name + "_v" + version;
         });
 
-        console.log("sigNames", sigNames.length, s);
+        // console.log("sigNames", sigNames.length, s);
 
         // add nonCorrSigNames to the results
-        sigNames = _.union(sigNames, nonCorrSigNames);
-        console.log("sigNames", sigNames.length, "after adding nonCorrSigNames", s);
+        sigNames = _.union(sigNames, nonCorrSigNames, classifiedLockedEvents["signature"]);
+        // console.log("sigNames", sigNames.length, "after adding nonCorrSigNames", s);
 
         var signatureScoresCursor = SignatureScores.find({
             'name' : {
@@ -430,7 +510,7 @@ Meteor.publish("correlatorResults", function(pivotName, pivotDatatype, pivotVers
         cursors.push(signatureScoresCursor);
     }
 
-    console.log("cursors", cursors.length, pivotName, s);
+    // console.log("cursors", cursors.length, pivotName, s);
     console.log("	", "END", s);
 
     return cursors;

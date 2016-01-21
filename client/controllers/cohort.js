@@ -6,6 +6,8 @@ CohortController = RouteController.extend({
         var pivotSettings = Session.get("pivotSettings");
         var pagingConfig = Session.get("subscriptionPaging") || {};
 
+        var lockedEvents = Session.get("lockedEvents") || {};
+
         var sessionGeneLists = {
             "geneList" : _.compact(Session.get("geneList")) || [],
             "cohort_tab_genelist_widget" : Session.get("cohort_tab_genelist_widget") || [],
@@ -27,7 +29,7 @@ CohortController = RouteController.extend({
         }
 
         // publish in /server/publish/correlator.js
-        Meteor.subscribe("correlatorResults", pName, pDatatype, pVersion, studyID, selectedContrast, pagingConfig, sessionGeneLists);
+        Meteor.subscribe("correlatorResults", pName, pDatatype, pVersion, studyID, selectedContrast, pagingConfig, sessionGeneLists, lockedEvents);
     },
 
     data : function() {
