@@ -159,6 +159,12 @@ Template.Cohort.rendered = function() {
             "focusGenes" : Session.get("focusGenes") || []
         };
 
+        // get contrast data
+        var contrastId = Session.get("selectedContrast");
+        var contrastDocs = Contrast.find({
+            "_id" : contrastId
+        }).fetch();
+
         // build observation deck
         if ((clinDocList.length > 0) || (expDocList.length > 0)) {
             od_config = observation_deck.buildObservationDeck(divElem, {
@@ -171,6 +177,7 @@ Template.Cohort.rendered = function() {
                     'object' : corrDocList
                 },
                 'mongoData' : {
+                    'contrast' : contrastDocs[0],
                     'clinical' : clinDocList,
                     'expression' : expDocList,
                     'mutation' : mutDocList
