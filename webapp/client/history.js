@@ -102,7 +102,9 @@ Template.showJobResult.onRendered(function () {
 Template.outputBlob.onCreated(function () {
   var instance = this;
 
-  instance.subscribe("blob", instance.data.blob_id);
+  instance.autorun(function () {
+    instance.subscribe("blob", Template.currentData().blob_id);
+  });
 });
 
 function getBlobUrl(blobId) {
