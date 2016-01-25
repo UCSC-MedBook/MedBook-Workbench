@@ -133,7 +133,7 @@ module.exports = {
 
       // go to history and check it out
       .click("#workbench-navbar-collapse > ul:nth-child(1) > li:nth-child(1)")
-      .waitForElementVisible(firstJobSuccess, 20000)
+      .waitForElementVisible(firstJobSuccess, 30000)
       .verify.containsText(firstJobSuccess + " > span.badge", "done")
       .verify.containsText(firstJobSuccess + " > h4", "Limma")
       .verify.containsText(firstJobSuccess + " > p", "Date created: a few seconds ago\n" +
