@@ -34,10 +34,10 @@ Template.contrastField.helpers({
     var contrast_label = AutoForm.getFieldValue(this, "contrast_label");
     return Contrasts.find({
       contrast_label: contrast_label,
-    }, {sort: {version: 1}}).map(function (contrast) {
+    }, {sort: {contrast_version: 1}}).map(function (contrast) {
       return {
-        label: contrast.version,
-        value: contrast.version,
+        label: contrast.contrast_version,
+        value: contrast.contrast_version,
       };
     });
   },

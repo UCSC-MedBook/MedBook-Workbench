@@ -118,7 +118,7 @@ Template.outputBlob.helpers({
   canWrangle: function () {
     var blob = Blobs.findOne(this.blob_id);
     if (blob) {
-      return blob.metadata.wrangler_file_type;
+      return blob.metadata.wrangler_file_options;
     }
   },
   getBlobUrl: getBlobUrl,
@@ -129,14 +129,29 @@ Template.outputBlob.events({
     window.open(getBlobUrl.call(instance.data));
   },
   "click .wrangle-file": function (event, instance) {
-    wrangler = DDP.connect("localhost:3002"); // URL of wrangler app
+    // var wranglerUrl = Meteor.settings.public.medbook_apps.Wrangler.url;
+    wrangler = DDP.connect("http://localhost:3002/"); // URL of wrangler app
     // "login" is the method that Meteor uses internally to log in
     wrangler.call("login", {
       resume: Accounts._storedLoginToken()
-    }, function () {
+    }, function (error, result) {
+      if (error) {
+        sAlert.error("There was a problem connecting to the Wrangler app: " +
+            error.error);
+        console.log("error:", error);
+        return;
+      }
+
       // creates a new submission
-      wrangler.call("addSubmission", [instance.data.blob_id], function () {
-        sAlert.success("Created submission in Wrangler");
+      wrangler.call("addSubmission", [instance.data.blob_id], function (error, result) {
+        if (error) {
+          sAlert.error("There was a problem creating the Wrangler submission: " +
+              error.error);
+          console.log("error:", error);
+        } else {
+          sAlert.success("Created submission in Wrangler");
+        }
+
         wrangler.disconnect(); // TODO: don't know if I need this
       });
     });

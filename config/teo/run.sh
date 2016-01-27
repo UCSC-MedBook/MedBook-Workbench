@@ -1,7 +1,7 @@
 export MONGO_URL="mongodb://localhost:27017/MedBook"
 
 if [ -z "$1" ]; then
-    meteor --port 3004
+    meteor --port 3004 --settings ~/work/medbook/workbench/config/teo/settings.json
 else
-    meteor $1 --port 3004
+    meteor $1 --port 3004 --settings ~/work/medbook/workbench/config/teo/settings.json
 fi
