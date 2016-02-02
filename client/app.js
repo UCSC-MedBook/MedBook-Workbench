@@ -19,7 +19,7 @@ Meteor.startup(function() {
     console.log('jobs subscribe returns ', job_ret);
     // Meteor.subscribe('expression2');
     Meteor.subscribe('results');
-    Meteor.subscribe('gene_sets_index');
+    // Meteor.subscribe('geneSets');
     Meteor.subscribe('genes');
     Meteor.subscribe('studies');
 

@@ -1,1 +1,1 @@
-GeneSets = new Mongo.Collection('gene_sets');
+// GeneSets = new Meteor.Collection('gene_sets');
