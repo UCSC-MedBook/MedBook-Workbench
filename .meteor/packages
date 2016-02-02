@@ -43,5 +43,6 @@ msavin:mongol
 msavin:jetsetter
 medbook:observation-deck
 medbook:sample-pie-charts
-medbook:select2genelist
-geneset-selector
+medbook:geneset-selector
+select2genelist
+medbook:api
