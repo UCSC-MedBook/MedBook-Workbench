@@ -41,7 +41,7 @@ cfs:upload-http@0.0.20
 cfs:worker@0.1.4
 check@1.0.5
 coffeescript@1.0.6
-d3js:d3@3.4.13
+d3js:d3@3.5.8
 dburles:mongo-collection-instances@0.3.4
 ddp@1.1.0
 deps@1.0.7
@@ -74,7 +74,7 @@ localstorage@1.0.3
 logging@1.0.7
 medbook:api@0.2.9
 medbook:geneset-selector@0.0.1
-medbook:observation-deck@0.1.4
+medbook:observation-deck@0.2.0
 medbook:primary-collections@0.0.8
 medbook:sample-pie-charts@0.0.1
 medbook:select2genelist@0.1.12
