@@ -1,1 +1,1 @@
-Correlator = new Mongo.Collection('correlator');
+// Correlator = new Mongo.Collection('correlator');

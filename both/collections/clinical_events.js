@@ -1,4 +1,4 @@
-ClinicalEvents = new Meteor.Collection('clinical_events');
+// ClinicalEvents = new Meteor.Collection('clinical_events');
 
 /*
  * Add query methods like this:

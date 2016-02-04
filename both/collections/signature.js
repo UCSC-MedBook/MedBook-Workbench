@@ -1,4 +1,4 @@
-Signature = Collections.Signature = new Mongo.Collection("signature");
+// Signature = Collections.Signature = new Mongo.Collection("signature");
 
 /*
  * Add query methods like this:
@@ -19,7 +19,7 @@ Schemas.Signature = new SimpleSchema({
   studyID: {
       type: String,
       index: 1,
-      unique: false, 	
+      unique: false,
   },
   contrast: {
 	  type: Schemas.Contrast,
@@ -29,11 +29,11 @@ Schemas.Signature = new SimpleSchema({
   version: {
       type: Number,
 	  decimal: true,
-      unique: false 	
+      unique: false
   },
   signature: {
 	  type: Object,
-	  blackbox: true	
+	  blackbox: true
   }
 });
 Signature.attachSchema(Schemas.Signature);

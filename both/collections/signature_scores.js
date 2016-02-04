@@ -1,4 +1,4 @@
-SignatureScores = Collections.SignatureScores = new Mongo.Collection("signature_scores");
+// SignatureScores = Collections.SignatureScores = new Mongo.Collection("signature_scores");
 
 
 UI.registerHelper("Schemas", Schemas);
@@ -12,7 +12,7 @@ Schemas.SignatureScores = new SimpleSchema({
   gene: {
       type: String,
 	  index: 1,
-	  unique: true	  
+	  unique: true
   },
   weight: {
     type: Number,
@@ -22,6 +22,6 @@ Schemas.SignatureScores = new SimpleSchema({
   version: {
       type: Number,
 	  decimal: true,
-      unique: false 	
-  }	
+      unique: false
+  }
 })
