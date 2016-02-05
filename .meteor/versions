@@ -78,6 +78,7 @@ medbook:observation-deck@0.2.0
 medbook:primary-collections@0.0.8
 medbook:sample-pie-charts@0.0.1
 medbook:select2genelist@0.1.12
+medbook:study-contrast-selector@0.0.1
 meteor@1.1.6
 meteor-platform@1.2.2
 meteorhacks:aggregate@1.2.1

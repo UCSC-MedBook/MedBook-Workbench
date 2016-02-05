@@ -46,3 +46,4 @@ medbook:sample-pie-charts
 medbook:api
 medbook:select2genelist
 medbook:geneset-selector
+medbook:study-contrast-selector

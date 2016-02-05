@@ -13,23 +13,8 @@
 		            	<div style="float:left">
 						MedBook Workbench
 					    </div>
-						<div class="studies-panel" style="float:left">
-			 <!-- Study: -->
-			{{#with studies}}
-				<select id="study" class="span1-12" title="study">
-					<option value="">Select a Study ...</option>
-					{{#each this}}
-					<option  value="{{id}}" selected={{selected}}>{{short_name}}</option>
-					{{/each}}
-				</select>
-			{{else}}
-				No studies yet.
-			{{/with}}
-		</div>
-
-	 	<div id="contrast1" style="float:left" width=200 title="contrast">
-			<!-- Contrast --> {{> Contrast}}
-		</div>
+			{{> studySelectorTemplate}}
+			{{> contrastSelectorTemplate}}
 
 		<div style="float:left">
 			<button class="nuc" title="reset session">Reset</button>
