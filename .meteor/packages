@@ -33,7 +33,6 @@ meteorhacks:aggregate
 http
 accounts-ui
 accounts-google
-medbook:primary-collections
 natestrauser:select2
 momentjs:moment
 sacha:spin
@@ -41,9 +40,10 @@ twbs:bootstrap
 reactive-var
 msavin:mongol
 msavin:jetsetter
-medbook:observation-deck
 medbook:sample-pie-charts
 medbook:api
 medbook:select2genelist
 medbook:geneset-selector
 medbook:study-contrast-selector
+medbook:observation-deck
+medbook:primary-collections
