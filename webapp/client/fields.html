@@ -1,0 +1,25 @@
+<template name="contrastField">
+  {{#if Template.subscriptionsReady}}
+    {{> horizontalQuickField name="contrast_label" options=labelOptions
+        firstOption="(Select a contrast)"}}
+
+    {{#if afFieldValueIs name="contrast_label" value="test_contrast"}}
+      {{> horizontalQuickField name="contrast_version" options=versionOptions
+          firstOption="(Select the version)"}}
+    {{/if}}
+  {{else}}
+    <p>
+      Loading contrasts...
+    </p>
+  {{/if}}
+</template>
+
+<template name="horizontalQuickField">
+  {{> afQuickField name=name
+      firstOption=firstOption
+      options=options
+      template="bootstrap3-horizontal"
+      label-class=labelClass
+      input-col-class=inputColClass
+      disabled=disabled}}
+</template>

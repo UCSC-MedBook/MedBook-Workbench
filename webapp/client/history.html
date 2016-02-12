@@ -10,7 +10,7 @@
 <template name="jobsBrowser">
   <div id="affix-job-output" class="row">
     <div class="{{#if selectedJob}}col-sm-4{{else}}col-sm-12{{/if}}">
-      {{> listAllJobs name="RunLimma"}}
+      {{> listAllJobs}}
     </div>
     {{#if selectedJob}}
       <div class="col-sm-8">
@@ -60,12 +60,14 @@
   <a href="" class="select-job list-group-item {{statusClass}} {{active}}">
     <span class="badge">{{status}}</span>
     <h4 class="list-group-item-heading">{{getTitle name}}</h4>
-    <p class="list-group-item-text">
-      Date created: {{fromNow date_created}} <br />
-      {{#each getArgSchemaAttributes name}}
-        {{getSchemaLabel ../name this}}: {{getArgValue this}} <br />
-      {{/each}}
+    <p class="list-group-item-text"> {{! NOTE: not totally dry}}
+      Date created: {{fromNow date_created}}
     </p>
+    {{#each getInfo}}
+      <p class="list-group-item-text">
+        {{key}}: {{value}}
+      </p>
+    {{/each}}
   </a>
 </template>
 
@@ -107,8 +109,8 @@
       <div class="panel panel-default">
         <div class="panel-body">
           {{#with output}}
-            <h3>Result: {{result}}</h3>
-            <h3>Output files:</h3>
+            <h4>Result: {{result}}</h4>
+            <h4>Output files:</h4>
             {{#each blobs}}
               {{> outputBlob}}
             {{/each}}
@@ -120,7 +122,7 @@
 </template>
 
 <template name="outputBlob">
-  <p class="h4">
+  <p class="h5">
     {{name}}
     {{#if Template.subscriptionsReady}}
       <button class="view-in-new-tab btn btn-primary btn-xs" type="button">

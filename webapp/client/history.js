@@ -37,14 +37,12 @@ Template.jobsBrowser.helpers({
 Template.listAllJobs.onCreated(function () {
   var instance = this;
 
-  instance.subscribe("jobs", instance.data.name);
+  instance.subscribe("jobs");
 });
 
 Template.listAllJobs.helpers({
   getJobs: function () {
-    return Jobs.find({
-      name: this.name,
-    }, { sort: { date_created: -1 } });
+    return Jobs.find({}, { sort: { date_created: -1 } });
   },
 });
 
@@ -52,7 +50,7 @@ Template.listAllJobs.helpers({
 
 Template.listJob.helpers({
   getTitle: function (name) {
-    return WranglerJobs[name].title;
+    return WorkbenchJobs[name].title;
   },
   active: function () {
     if (Template.instance().parent(2).selectedJob.get() === this._id) {
@@ -68,16 +66,45 @@ Template.listJob.helpers({
       return "list-group-item-info";
     }
   },
-  getArgSchemaAttributes: function (name) {
-    var schema = WranglerJobs[name].schema.schema();
+  getInfo: function () {
+    if (this.name === "RunLimma") {
+      return [
+        { key: "Top gene count", value: this.args.topGeneCount },
+        { key: "Contrast name", value: this.args.contrast_label },
+        { key: "Contrast version", value: this.args.contrast_version },
+        { key: "Correction method", value: this.args.correction_method },
+      ];
+    } else if (this.name === "UpDownGenes") {
+      var info = [
+        {
+          key: "Reference sample count",
+          value: this.args.reference_samples_count
+        },
+      ];
 
-    return Object.keys(schema);
-  },
-  getSchemaLabel: function (name, argName) {
-    return WranglerJobs[name].schema.label(argName);
-  },
-  getArgValue: function (argName) {
-    return Template.parentData().args[argName];
+      if (this.args.reference_sample_group_id) {
+        Array.prototype.push.apply(info, [
+          {
+            key: "Reference name",
+            value: this.args.reference_sample_group_label
+          },
+          {
+            key: "Reference version",
+            value: this.args.reference_sample_group_version
+          },
+        ]);
+      } else {
+        Array.prototype.push.apply(info, [
+          { key: "Reference sample group", value: "N/A" },
+        ]);
+      }
+
+      return info;
+    } else {
+      return [
+        { key: "Unknown job", value: "add to the getInfo helper!" }
+      ];
+    }
   },
 });
 

@@ -1,0 +1,73 @@
+<template name="nOfOne">
+  {{#with WorkbenchJobs.UpDownGenes}}
+    <h1>
+      {{title}}
+      <small>{{description}}</small>
+    </h1>
+
+    <h3>Reference sample group</h3>
+    <div class="panel panel-default">
+      {{> sampleGroupWidget "upDownSampleGroup"}}
+    </div>
+
+    <h3>Test sample</h3>
+    {{> sampleWidget "testSample"}}
+
+    {{#if submitError}}
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close close-submit-error" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Not so fast!</strong>
+        {{submitError}}
+      </div>
+    {{/if}}
+
+    <div>
+      <button id="newFindUpDownGenes" class="btn btn-primary">Submit</button>
+    </div>
+  {{/with}}
+</template>
+
+<template name="sampleWidget">
+  <div id={{this}} class="row">
+    <div class="col-xs-6">
+      <div class="form-group">
+        <label class="control-label">Study:</label>
+        {{#if studiesLoaded}}
+          <!-- <input type="number" name="topGeneCount" required="" data-schema-key="topGeneCount" min="1" class="form-control"> -->
+          <select class="select-study form-control">
+            <option value="">(Select a study)</option>
+            {{#each getStudies}}
+              <option value={{id}}>{{short_name}}</option>
+            {{/each}}
+          </select>
+        {{else}}
+          <p>
+            Studies loading...
+          </p>
+        {{/if}}
+      </div>
+    </div>
+
+    <div class="col-xs-6">
+      <div class="form-group">
+        <label class="control-label">Sample:</label>
+        {{#if selectedStudy}}
+          {{#if samplesLoaded}}
+            <select class="select-sample form-control">
+              <option>(Select a sample)</option>
+              {{#each getSamples}}
+                <option>{{sample_label}}</option>
+              {{/each}}
+            </select>
+          {{else}}
+            <span>Samples loading...</span>
+          {{/if}}
+        {{else}}
+          <span>Select a study to continue</span>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</template>

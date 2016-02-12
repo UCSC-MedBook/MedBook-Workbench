@@ -29,6 +29,13 @@ workbench.route("/limma", {
   }
 });
 
+workbench.route("/nOfOne", {
+  name: "nOfOne",
+  action: function() {
+    BlazeLayout.render("appBody", {content: "nOfOne"});
+  }
+});
+
 var testing = workbench.group({
   prefix: "/testing"
 });
