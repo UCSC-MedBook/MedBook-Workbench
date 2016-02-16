@@ -1,5 +1,5 @@
 Meteor.publish("contrasts", function () {
-  var user = MedBook.findUser(this.userId);
+  var user = MedBook.ensureUser(this.userId);
 
   return Contrasts.find({
     collaborations: { $in: user.getCollaborations() }
@@ -23,11 +23,7 @@ Meteor.publish("blob", function (blobId) {
 });
 
 Meteor.publish("studies", function () {
-  var user = MedBook.findUser(this.userId);
-  if (!user) {
-    this.ready();
-    return;
-  }
+  var user = MedBook.ensureUser(this.userId);
 
   return Studies.find({
     collaborations: {
@@ -37,11 +33,9 @@ Meteor.publish("studies", function () {
 });
 
 Meteor.publish("samplesFromStudy", function (study_label) {
-  var user = MedBook.findUser(this.userId);
-  if (!user) {
-    this.ready();
-    return;
-  }
+  var user = MedBook.ensureUser(this.userId);
+  var study = Studies.findOne({id: study_label});
+  user.ensureAccess(study);
 
   return Samples.find({
     study_label: study_label
