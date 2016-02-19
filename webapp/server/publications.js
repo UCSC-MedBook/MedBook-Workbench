@@ -34,7 +34,7 @@ Meteor.publish("studies", function () {
 
 Meteor.publish("samplesFromStudy", function (study_label) {
   var user = MedBook.ensureUser(this.userId);
-  var study = Studies.findOne({id: study_label});
+  var study = Studies.findOne({study_label: study_label});
   user.ensureAccess(study);
 
   return Samples.find({

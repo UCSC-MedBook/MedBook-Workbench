@@ -69,10 +69,10 @@ less@2.5.1
 livedata@1.0.15
 localstorage@1.0.5
 logging@1.0.8
-medbook:collaborations@2.4.9
+medbook:collaborations@2.4.11
 medbook:namespace@0.0.2
-medbook:primary-collections@0.0.16
-medbook:sample-group-widget@0.0.2
+medbook:primary-collections@0.0.17
+medbook:sample-group-widget@0.0.3
 meteor@1.1.10
 meteor-base@1.0.1
 minifiers@1.1.7

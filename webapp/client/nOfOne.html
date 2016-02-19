@@ -39,7 +39,7 @@
           <select class="select-study form-control">
             <option value="">(Select a study)</option>
             {{#each getStudies}}
-              <option value={{id}}>{{short_name}}</option>
+              <option value={{study_label}}>{{short_name}}</option>
             {{/each}}
           </select>
         {{else}}

@@ -119,7 +119,6 @@ Template.sampleWidget.helpers({
   },
   samplesLoaded: function () {
     var subscription = Template.instance().samplesSubscription.get();
-    console.log("subscription:", subscription);
     if (subscription) {
       return subscription.ready();
     }
