@@ -4,39 +4,35 @@ FlowRouter.notFound = {
   }
 };
 
-var workbench = FlowRouter.group({
-  prefix: "/Workbench"
-});
-
-workbench.route("/", {
+FlowRouter.route("/", {
   name: "welcome",
   action: function() {
     BlazeLayout.render("appBody", {content: "welcome"});
   }
 });
 
-workbench.route("/history", {
+FlowRouter.route("/history", {
   name: "history",
   action: function() {
     BlazeLayout.render("appBody", {content: "history"});
   }
 });
 
-workbench.route("/limma", {
+FlowRouter.route("/limma", {
   name: "limma",
   action: function() {
     BlazeLayout.render("appBody", {content: "limma"});
   }
 });
 
-workbench.route("/nOfOne", {
+FlowRouter.route("/nOfOne", {
   name: "nOfOne",
   action: function() {
     BlazeLayout.render("appBody", {content: "nOfOne"});
   }
 });
 
-var testing = workbench.group({
+var testing = FlowRouter.group({
   prefix: "/testing"
 });
 

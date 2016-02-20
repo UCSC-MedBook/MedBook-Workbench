@@ -9,7 +9,7 @@ EXPOSE 3000
 ENV PORT 3000
 
 RUN mkdir /bundle
-ENV RELEASE=1.1.0.2
+ENV RELEASE=1.2.1
 
 RUN meteor --release $RELEASE update
 ADD webapp /app
